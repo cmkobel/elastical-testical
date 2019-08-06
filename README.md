@@ -1,13 +1,23 @@
-# elastisk-skaldyr
+# Hidden Markov-Model Library
 
-* Hidden Markov-Model python-library skrevet i C++
+* HMM library written in c++ 
+* Has Python bindings allowing it to be used by Python as well
+* The library should be made in a modular way such that the user can easely add functionalities
 
 
-Målet med dette projekt er følgende:
+## GOAL
 
-	- Få en stærk teoretisk forståelse for HMM'er (og de forskellige versioner heraf)
-	- Lave et python biblotek for HMM'er skrevet i programmerings sproget C++
-	- Efter sucessfuld lancering af biblotektet at lave dette til et opensource projekt
+The goal of this project is:
 
-At lave et biblotek kræver en dybforståelse for HMM'er samt at kunne lave ordenligt og gennemskulig kode. 
-Sidstnævnte er især vigtigt da vi ønsker at lave projektet open source. 	 
+	- To get a strong theoretical understanding of HMM's and different versions of the latter
+	- Create a robust and easy to use libeary for both c++ and python
+	- After finishing the initial project make it open source for everyone to add and use
+
+## DOCUMENTATION
+
+In this section all the documentation for the libeary is written as well as the different papers thathave been implemented.
+
+### READING METERIAL
+
+* https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
+
