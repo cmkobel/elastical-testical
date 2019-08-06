@@ -20,4 +20,4 @@ In this section all the documentation for the libeary is written as well as the 
 ### READING METERIAL
 
 * https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
-
+* https://en.wikipedia.org/wiki/Hidden_Markov_model
