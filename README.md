@@ -17,7 +17,7 @@ The goal of this project is:
 
 In this section all the documentation for the libeary is written as well as the different papers thathave been implemented.
 
-### READING METERIAL
+### READING MATERIAL
 
 * https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
 * https://en.wikipedia.org/wiki/Hidden_Markov_model
