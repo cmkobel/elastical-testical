@@ -1,6 +1,6 @@
 # Hidden Markov-Model Library
 
-* HMM library written in c++ 
+* HMM library written in C++ 
 * Has Python bindings allowing it to be used by Python as well
 * The library should be made in a modular way such that the user can easely add functionalities
 
