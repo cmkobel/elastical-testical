@@ -24,6 +24,11 @@ A brief and clear presentation of what the student should be able do to after th
 * The student should be able to discuss and evaluate the findings of the experiments in contrast to the implementation decisions.
 
 
+## WEEKLY MEETING:
+
+* INTERNAL: Torsdag kl 12
+* THOMAS: ???
+
 ## TODO:
 
 - create a cmake for project
