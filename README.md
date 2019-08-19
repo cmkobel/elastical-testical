@@ -27,6 +27,7 @@ A brief and clear presentation of what the student should be able do to after th
 ## TODO:
 
 - create a cmake for project
+- Find special algorithms for optimisation of these (focus on topics in bio informatics)
 - 
 
 
