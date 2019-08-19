@@ -29,12 +29,6 @@ A brief and clear presentation of what the student should be able do to after th
 * INTERNAL: Torsdag kl 12
 * THOMAS: ???
 
-## TODO:
-
-- create a cmake for project
-- Find special algorithms for optimisation of HMM (focus on topics in bio informatics)
-- Research BLAST
-
 ## GENERAL WORK PLAN
 
 1. Make HMM with basic algorithms
@@ -54,4 +48,10 @@ http://scrumblr.ca/CWBL4IB7QF5VQ4
 
 * https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
 * https://en.wikipedia.org/wiki/Hidden_Markov_model
+
+## TODO:
+
+- create a cmake for project
+- Find special algorithms for optimisation of HMM (focus on topics in bio informatics)
+- Research BLAST
 
