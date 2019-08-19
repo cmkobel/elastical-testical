@@ -19,9 +19,9 @@ The goal of the project is to implement an efficient C library for hidden Markov
 
 ### Learning goals:
 A brief and clear presentation of what the student should be able do to after the project. Formulated as 3-5 items, e.g.: 
-* - The student should be able to describe the general HMM, forward and backward algorithm and Viterbi and posterior decoding
-* - The student should be able to implement HMM, forward and backward algorithm and Viterbi and posterior decoding - The student should be able to analyse the different implementations of the latter in terms og speed.
-* - The student should be able to discuss and evaluate the findings of the experiments in contrast to the implementation decisions.
+* The student should be able to describe the general HMM, forward and backward algorithm and Viterbi and posterior decoding
+* The student should be able to implement HMM, forward and backward algorithm and Viterbi and posterior decoding - The student should be able to analyse the different implementations of the latter in terms og speed.
+* The student should be able to discuss and evaluate the findings of the experiments in contrast to the implementation decisions.
 
 
 ## TODO:
