@@ -29,7 +29,12 @@ A brief and clear presentation of what the student should be able do to after th
 - create a cmake for project
 - Find special algorithms for optimisation of HMM (focus on topics in bio informatics)
 - Research BLAST
-- 
+
+## GENERAL WORK PLAN
+
+1. Make HMM with basic algorithms
+2. Make a test framework with blast
+3. Implement optimised algorithms
 
 
 ## DOCUMENTATION
