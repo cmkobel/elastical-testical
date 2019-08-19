@@ -17,6 +17,10 @@ The goal of this project is:
 
 In this section all the documentation for the libeary is written as well as the different papers thathave been implemented.
 
+## TASK MANAGEMENT 
+
+http://scrumblr.ca/CWBL4IB7QF5VQ4
+
 ### READING MATERIAL
 
 * https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
