@@ -32,7 +32,7 @@ A brief and clear presentation of what the student should be able do to after th
 ## GENERAL WORK PLAN
 
 1. Make HMM with basic algorithms
-2. Make a test framework with blast
+2. Make a test framework with BLAST
 3. Implement optimised algorithms
 
 
