@@ -11,7 +11,7 @@
 
 int main() {
     HMM * objectieMcObjectyface;
-    objectieMcObjectyface = HMMCreate(3, 3, 3.0);
+    objectieMcObjectyface = HMMCreate(3, 3);
     
     return 0;
 }

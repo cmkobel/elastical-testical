@@ -31,3 +31,9 @@ HMM * HMMCreate(int hiddenStates, int observations) {
     
     return newHMM;
 }
+
+void HMMSetTransitionProbs(HMM * this, double ** transitionProbs){
+    
+    
+    
+}
