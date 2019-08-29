@@ -3,16 +3,31 @@
 #include <stdlib.h>
 
 struct HMM {
+    
     int hiddenStates;
     int observations;
-    float transitionProbs;
+    double ** transitionProbs;
+    double ** emissionProbs;
     
 };
 
 HMM * HMMCreate(int hiddenStates, int observations) {
     HMM * newHMM = malloc(sizeof(HMM));
+    
     newHMM->hiddenStates = hiddenStates;
     newHMM->observations = observations;
-    newHMM->transitionProbs = float[hiddenStates][observations];
+    
+    // The transition probability is a N*N matrix
+    newHMM->transitionProbs = malloc(sizeof(double *)*hiddenStates);
+    for(int i = 0; i < hiddenStates; i++){
+        newHMM->transitionProbs[i] = malloc(sizeof(double)*hiddenStates);
+    }
+    
+    // The emission probability is a N*M matrix
+    newHMM->emissionProbs = malloc(sizeof(double *)*observations);
+    for(int i = 0; i < observations; i++){
+        newHMM->emissionProbs[i] = malloc(sizeof(double)*hiddenStates);
+    }
+    
     return newHMM;
 }
