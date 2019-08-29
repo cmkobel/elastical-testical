@@ -13,5 +13,7 @@ int main() {
     HMM * objectieMcObjectyface;
     objectieMcObjectyface = HMMCreate(3, 3);
     
+    printf("hello world");
+    
     return 0;
 }

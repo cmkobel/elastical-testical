@@ -2,15 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct HMM {
-    
-    int hiddenStates;
-    int observations;
-    double ** transitionProbs;
-    double ** emissionProbs;
-    
-};
-
 HMM * HMMCreate(int hiddenStates, int observations) {
     HMM * newHMM = malloc(sizeof(HMM));
     
@@ -30,10 +21,4 @@ HMM * HMMCreate(int hiddenStates, int observations) {
     }
     
     return newHMM;
-}
-
-void HMMSetTransitionProbs(HMM * this, double ** transitionProbs){
-    
-    
-    
 }
