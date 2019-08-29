@@ -2,7 +2,7 @@
 
 * HMM library written in C 
 * Has Python bindings allowing it to be used by Python as well
-* The library should be made in a modular way such that the user can easely add functionalities
+* The library should be made in a modular way such that the user can easily add functionalities
 
 
 ## GOAL
@@ -32,13 +32,13 @@ A brief and clear presentation of what the student should be able do to after th
 ## GENERAL WORK PLAN
 
 1. Make HMM with basic algorithms
-2. Make a test framework with BLAST
+2. Make a test framework with BLAS
 3. Implement optimised algorithms
 
 
 ## DOCUMENTATION
 
-In this section all the documentation for the libeary is written as well as the different papers thathave been implemented.
+In this section all the documentation for the library is written as well as the different papers that have been implemented.
 
 ## TASK MANAGEMENT 
 
