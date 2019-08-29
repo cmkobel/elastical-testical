@@ -18,8 +18,8 @@
             "args": [
                 "main.c",
                 "-o",
-                "main&&",
-                "./main"
+                "../exe/main&&",
+                "../exe/main"
             ],
             "group": {
                 "kind": "build",
