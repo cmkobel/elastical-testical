@@ -9,10 +9,10 @@ struct HMM {
     
 };
 
-HMM * HMMCreate(int hiddenStates, int observations, float transitionProbs) {
+HMM * HMMCreate(int hiddenStates, int observations) {
     HMM * newHMM = malloc(sizeof(HMM));
     newHMM->hiddenStates = hiddenStates;
     newHMM->observations = observations;
-    newHMM->transitionProbs = transitionProbs;
+    newHMM->transitionProbs = float[hiddenStates][observations];
     return newHMM;
 }
