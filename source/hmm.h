@@ -1,7 +1,5 @@
 typedef struct HMM HMM;
-HMM * HMMCreate(int hiddenStates, int observations);
+HMM * HMMCreate(int hiddenStates, int observations, float transitionProbs);
 
-void HMMSetStates(HMM * this, int hiddenStates);
-void HMMSetObservation(HMM * this, int observations);
-
+void HMMSetTransitionProbs(HMM * this, int transitionProbs);
 
