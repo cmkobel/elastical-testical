@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 typedef struct HMM HMM;
 HMM * HMMCreate(int hiddenStates, int observations, float transitionProbs);
 
