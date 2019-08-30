@@ -36,6 +36,18 @@ A brief and clear presentation of what the student should be able do to after th
 3. Implement optimised algorithms
 
 
+### Evaluation problem
+Evaluation problem answers the question: what is the probability that a particular sequence of symbols is produced by a particular model?
+For evaluation we use two algorithms: the forward algorithm or the backwards algorithm
+
+### Decoding problem
+Decoding problem answers the question: Given a sequence of symbols (your observations) and a model, what is the most likely sequence of states that produced the sequence.
+For decoding we use the Viterbi algorithm.
+
+### Training problem
+Training problem answers the question: Given a model structure and a set of sequences, find the model that best fits the data.
+For this problem we can use the Baum Welch = forward-backward algorithm
+
 ## DOCUMENTATION
 
 In this section all the documentation for the library is written as well as the different papers that have been implemented.
@@ -44,7 +56,7 @@ In this section all the documentation for the library is written as well as the 
 
 http://scrumblr.ca/CWBL4IB7QF5VQ4
 
-### READING MATERIAL
+## READING MATERIAL
 
 * https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
 * https://en.wikipedia.org/wiki/Hidden_Markov_model
