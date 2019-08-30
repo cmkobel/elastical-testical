@@ -10,8 +10,9 @@
 #import "hmm.h"
 
 int main() {
-    HMM * objectieMcObjectyface;
-    objectieMcObjectyface = HMMCreate(3, 3);
+    HMM * objectieMcObjectyface = HMMCreate(3, 3);
+    
+    
     
     printf("hello world");
     

@@ -49,9 +49,7 @@ http://scrumblr.ca/CWBL4IB7QF5VQ4
 * https://web.stanford.edu/class/cs262/archives/notes/lecture6.pdf
 * https://en.wikipedia.org/wiki/Hidden_Markov_model
 
-## TODO:
+#### For c programming
 
-- create a cmake for project
-- Find special algorithms for optimisation of HMM (focus on topics in bio informatics)
-- Research BLAST
+* http://c-faq.com/aryptr/dynmuldimary.html
 
