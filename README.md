@@ -27,7 +27,7 @@ A brief and clear presentation of what the student should be able do to after th
 ## WEEKLY MEETING:
 
 * INTERNAL: Torsdag kl 12
-* THOMAS: ???
+* THOMAS: Torsdag kl 12
 
 ## GENERAL WORK PLAN
 
