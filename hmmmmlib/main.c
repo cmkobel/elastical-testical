@@ -12,11 +12,14 @@
 
 int main() {
     
-    bool forwardAlgorithmTests = testForwardAlgorithm();
-    
-    if(forwardAlgorithmTests){
+    /*
+     Testing the forward algorithm
+     */
+    if(testForwardAlgorithm()){
         printf("all tests succed\n");
     }
+    
+    
     
     return 0;
 }
