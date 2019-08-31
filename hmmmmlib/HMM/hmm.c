@@ -26,12 +26,42 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     return newHMM;
 }
 
+//should be static
 bool valdidateHMM(const HMM *hmm){
     
     return true;
 }
 
-
+//should be static
 void printHMM(const HMM *hmm){
-    printf("hello");
+    
+    unsigned int i;
+    unsigned int j;
+    
+    //Printing init probs
+    for(i=0; i < hmm->hiddenStates; i++){
+        printf("%f, ", hmm->initProbs[i]);
+    }
+    
+    printf("\n\n\n");
+    
+    //Print the transitionpos
+    for(i = 0; i < hmm->hiddenStates; i++) {
+        for (j = 0; j < hmm->hiddenStates; j++){
+            printf("%f, ", hmm->transitionProbs[i][j]);
+        }
+        printf("\n");
+    }
+    
+    printf("\n\n\n");
+    
+    //Print the emissionprobs
+    for(i = 0; i < hmm->hiddenStates; i++) {
+        for (j = 0; j < hmm->observations; j++){
+            printf("%f, ", hmm->emissionProbs[i][j]);
+        }
+        printf("\n");
+    }
+    
+    printf("\n\n\n");
 }

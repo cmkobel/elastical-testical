@@ -9,6 +9,7 @@
 #include "TestsForwardAlgorithm.h"
 #import "hmm.h"
 #import "forward.h"
+#include <assert.h>
 
 bool testForwardAlgorithm() {
     HMM * hmm = HMMCreate(7, 4);
@@ -55,43 +56,18 @@ bool testForwardAlgorithm() {
         hmm->initProbs[i] = initProbs[i];
     }
     
-    
-    //Print the transitionpos
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < hmm->hiddenStates; j++){
-            printf("%f, ", hmm->transitionProbs[i][j]);
-        }
-        printf("\n");
-    }
-    
-    printf("\n\n\n");
-    
-    //Print the emissionprobs
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < hmm->observations; j++){
-            printf("%f, ", hmm->emissionProbs[i][j]);
-        }
-        printf("\n");
-    }
-    
-    printf("\n\n\n");
-    
-    //Printing init probs
-    for(i=0; i < hmm->hiddenStates; i++){
-        printf("%f, ", hmm->initProbs[i]);
-    }
-    
-    printf("\n\n\n");
-    
-    int observations[4] = {0, 1, 1, 2};
-    int * obs = observations;
+
+    int obsTest1[4] = {1, 1, 1, 2};
+    int * obs = obsTest1;
     double forwardResult = forward(hmm, obs, 4);
     
-    printf("Forward Algorithm: %f", forwardResult);
+    assert(forwardResult == 0.0057575000000000005);
     
-    printf("\n\n\n");
+    int obsTest2[7] = {1, 1, 1, 2, 3, 3, 1};
+    obs = obsTest2;
+    forwardResult = forward(hmm, obs, 7);
     
-    printHMM(hmm);
+    assert(forwardResult == 0.00017099775000000006);
     
     return true;
 }
