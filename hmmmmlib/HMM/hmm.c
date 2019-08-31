@@ -25,3 +25,13 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     
     return newHMM;
 }
+
+bool valdidateHMM(const HMM *hmm){
+    
+    return true;
+}
+
+
+void printHMM(const HMM *hmm){
+    printf("hello");
+}
