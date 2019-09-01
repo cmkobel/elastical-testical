@@ -9,6 +9,7 @@
 #include <stdio.h>
 #import "hmm.h"
 #import "TestsForwardAlgorithm.h"
+#import "testBackwardAlgorithm.h"
 
 int main() {
     
@@ -16,10 +17,15 @@ int main() {
      Testing the forward algorithm
      */
     if(testForwardAlgorithm()){
-        printf("all tests succed\n");
+        printf("all Forward Algorithm tests succed\n");
     }
-    
-    
+   
+    /*
+     Testing the backward algorithm
+     */
+    if(testBackwardAlgorithm()){
+        printf("all Backward Algorithm tests succed\n");
+    }
     
     return 0;
 }
