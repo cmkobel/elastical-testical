@@ -24,24 +24,14 @@ double **backward(HMM *hmm, const int *Y, const int T){
     
     // Now for the step"BACKWARD" step
     for(i = T-1; i-- >0;){
-        
-        for(j = 0; j < hmm->hiddenStates; j++){
-            for(int q = 0; q < 4; q++){
-                printf("%f, ", beta[j][q]);
-            }
-            printf("\n");
-        }
-        printf("\n\n");
-        
         for(j = 0; j < hmm->hiddenStates; j++){
             for(int l = 0; l < hmm->hiddenStates; l++){
                 double emissionProb = hmm->emissionProbs[j][Y[i+1]];
                 double transitionProb = hmm->transitionProbs[l][j];
-                double oldBeta = beta[i+1][l];
+                double oldBeta = beta[l][i+1];
                 beta[j][i] += transitionProb*emissionProb*oldBeta;
             }
         }
-        
     }
 
     return beta;
