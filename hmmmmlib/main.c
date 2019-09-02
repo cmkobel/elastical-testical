@@ -22,7 +22,7 @@ int main() {
    
     /*
      Testing the backward algorithm
-     */
+    */
     if(testBackwardAlgorithm()){
         printf("all Backward Algorithm tests succed\n");
     }
