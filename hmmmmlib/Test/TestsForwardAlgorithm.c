@@ -55,10 +55,6 @@ bool testForwardAlgorithm() {
     for(i = 0; i < hmm->hiddenStates; i++){
         hmm->initProbs[i] = initProbs[i];
     }
-    
-    printf("Now printing HMM after values\n");
-    printHMM(hmm);
-    printf("END printing\n");
 
     int obsTest1[4] = {1, 1, 1, 2};
     int * obs = obsTest1;

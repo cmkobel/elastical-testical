@@ -13,6 +13,7 @@ double forward(HMM *hmm, const int *Y, const int T){
         alpha[i] = calloc(T, sizeof(double));
     }
     
+    /*
     printf("\n Printing Y\n");
     for(i=0; i < T; i++) printf("%d, ", Y[i]);
     
@@ -26,7 +27,8 @@ double forward(HMM *hmm, const int *Y, const int T){
     }
     
     printf("End printing \n");
-    
+    */
+     
     // Initial is the same as the initProbs times the probs of emitting Y[0]
     for(i = 0; i < hmm->hiddenStates; i++){
         alpha[i][0] = hmm->initProbs[i]*hmm->emissionProbs[i][Y[0]];
@@ -44,12 +46,14 @@ double forward(HMM *hmm, const int *Y, const int T){
         }
     }
     
+    /*
     for(i = 0; i < hmm->hiddenStates; i++){
         for(j = 0; j < T; j++){
             printf("%f, ", alpha[i][j]);
         }
         printf("\n");
     }
+    */
     
     // Summing over the last column in alpha
     double probOfObservingY = 0;
@@ -57,7 +61,7 @@ double forward(HMM *hmm, const int *Y, const int T){
         probOfObservingY += alpha[i][T-1];
     }
     
-    printf("%f \n", probOfObservingY);
+    //printf("%f \n", probOfObservingY);
     
     for(i = 0; i < hmm->hiddenStates; i++){
         free(alpha[i]);
