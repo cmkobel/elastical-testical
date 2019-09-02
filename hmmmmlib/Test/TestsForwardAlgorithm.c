@@ -9,6 +9,7 @@
 #include "TestsForwardAlgorithm.h"
 #import "hmm.h"
 #import "forward.h"
+#include <stdlib.h>
 #include <assert.h>
 
 bool testForwardAlgorithm() {
@@ -36,7 +37,6 @@ bool testForwardAlgorithm() {
         {0.15,0.3,0.2,0.35}
     };
     
-    
     unsigned int i;
     unsigned int j;
     
@@ -56,18 +56,21 @@ bool testForwardAlgorithm() {
         hmm->initProbs[i] = initProbs[i];
     }
     
+    printf("Now printing HMM after values\n");
+    printHMM(hmm);
+    printf("END printing\n");
 
     int obsTest1[4] = {1, 1, 1, 2};
     int * obs = obsTest1;
     double forwardResult = forward(hmm, obs, 4);
     
-    assert(forwardResult == 0.0057575000000000005);
+    assert(forwardResult == 0.0067856249999999991);
     
     int obsTest2[7] = {1, 1, 1, 2, 3, 3, 1};
     obs = obsTest2;
     forwardResult = forward(hmm, obs, 7);
-    
-    assert(forwardResult == 0.00017099775000000006);
+
+    assert(forwardResult == 0.00013674062499999999);
     
     return true;
 }
