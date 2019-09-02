@@ -64,4 +64,6 @@ http://scrumblr.ca/CWBL4IB7QF5VQ4
 #### For c programming
 
 * http://c-faq.com/aryptr/dynmuldimary.html
+* https://www.dipmat.univpm.it/~demeio/public/the_c_programming_language_2.pdf
+
 
