@@ -4,6 +4,7 @@
 
 /* Hej Thor. Jeg hygger stadig med at faa styr paa de grundlaeggende ting i c. */
 
+// Hej Carl! Du skal bare tage det stille og roligt vi har ikke travlt! :D Sig bare til hvis du gerne vil snakke om noget :D
 int power(int, int); /* function prototype */
 
 int main() {

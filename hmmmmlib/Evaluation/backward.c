@@ -34,6 +34,9 @@ double **backward(HMM *hmm, const int *Y, const int T){
         }
     }
 
+    // Freeing up memory
+    
+    
     return beta;
     
 }
