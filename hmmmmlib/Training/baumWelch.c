@@ -44,6 +44,31 @@ void baumWelch(HMM *hmm, const int *Y, const int T){
                 
             }
         }
+        
+        //Updating initial probs
+        for (i = 0; i < hmm->hiddenStates; i++) {
+            hmm->initProbs[i] = gamma[0][i];
+        }
+        
+        //Updating transition probs
+        for (i = 0; i < hmm->hiddenStates; i++) {
+            for (j = 0; j < hmm->hiddenStates; j++) {
+                
+                
+                
+                
+            }
+        }
+        
+        //Updating observations probs
+        for (i = 0; i < hmm->observations; i++) {
+            for (j = 0; j < hmm->hiddenStates; j++) {
+                
+                
+                
+                
+            }
+        }
     
     }
     
