@@ -1,7 +1,7 @@
 #include "forward.h"
 #include <stdlib.h>
 
-double forward(HMM *hmm, const int *Y, const int T){
+double ** forward(HMM *hmm, const int *Y, const int T){
     
     
     
@@ -54,7 +54,7 @@ double forward(HMM *hmm, const int *Y, const int T){
         printf("\n");
     }
     */
-    
+    /*
     // Summing over the last column in alpha
     double probOfObservingY = 0;
     for(i = 0; i < hmm->hiddenStates; i++){
@@ -62,11 +62,12 @@ double forward(HMM *hmm, const int *Y, const int T){
     }
     
     //printf("%f \n", probOfObservingY);
-    
+
     for(i = 0; i < hmm->hiddenStates; i++){
         free(alpha[i]);
     }
     free(alpha);
+    */
     
-    return probOfObservingY;
+    return alpha;
 }
