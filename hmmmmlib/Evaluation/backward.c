@@ -6,9 +6,9 @@ double **backward(HMM *hmm, const int *Y, const int T){
     unsigned int i;
     unsigned int j;
     
-    double **beta = malloc(sizeof(double*)*hmm->hiddenStates);
+    double **beta = calloc(hmm->hiddenStates, sizeof(double*));
     for(i = 0; i < hmm->hiddenStates; i++){
-        beta[i] = malloc(sizeof(double)*T);
+        beta[i] = calloc(T, sizeof(double));
     }
     
     for(i = 0; i < hmm->hiddenStates; i++){
@@ -34,8 +34,6 @@ double **backward(HMM *hmm, const int *Y, const int T){
         }
     }
 
-    // Freeing up memory
-    
     
     return beta;
     
