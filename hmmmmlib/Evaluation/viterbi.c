@@ -8,26 +8,43 @@
 
 // Hej Thor! Tusind tak, hvor er du sød.
 
-int power(int, int); /* function prototype */
+#include <stdio.h>
+#define MAXLINE 1000
+
+
+//int arrayLength(char[]);
+char reverse(char[], char[]);
+char reversed(char[]);
 
 int main() {
-    int i;
+    // Den streng jeg faktisk vil reverse.
+    char string_[MAXLINE] = "abemade";
 
-    for (i = 0; i < 100; i = i + 1)
-        printf("%d %d %d\n", i, power(2, i), power(-3, i));
+    printf("%s", reverse(string_));
+
     return 0;
+}
+/*
+int arrayLength(char line[]) {
+    int rv = 0;
+    for (int i = 0; i < MAXLINE && line[i] != '\0'; ++i)
+        ++rv;
 
-    /* power: raise base to n-th power; n >= 0 */
+    return rv;
+}
+*/
+
+char reverse(char reverse[], char reversed[]) {
+    // sets the returned
     
+    
+    // get length
+    int i = 0;
+    while (i < MAXLINE && reverse[i] != '\0')
+        ++i;
+
+    
+    return reversed;
+
 
 }
-
-int power(int base, int n) {
-        int i, p;
-
-        p = 1;
-        for (i = 1; i <=n ; ++i)
-            p = p * base;
-        return p;
-
-    }
