@@ -31,6 +31,28 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
 //should be static
 bool valdidateHMM(const HMM *hmm){
     
+    unsigned int i = 0;
+    unsigned int j = 0;
+    double sum = 0.0;
+    
+    //Summing initprobs
+    for(i=0; i < hmm->hiddenStates; i++){
+        sum += hmm->initProbs[i];
+    }
+    if(sum != 1.0){
+        return false;
+    }
+    
+    for (i = 0; i < hmm->hiddenStates; i++) {
+        sum = 0.0;
+        for (j = 0; j < hmm->hiddenStates; j++) {
+            
+        }
+        if (sum != 1.0) {
+            return false;
+        }
+    }
+    
     return true;
 }
 
