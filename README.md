@@ -48,6 +48,10 @@ For decoding we use the Viterbi algorithm.
 Training problem answers the question: Given a model structure and a set of sequences, find the model that best fits the data.
 For this problem we can use the Baum Welch = forward-backward algorithm
 
+Possible optimisations: 
+
+* Solving the "training" problem as a constrinted optimisation problem and use lagrange multipliers.
+
 ## DOCUMENTATION
 
 In this section all the documentation for the library is written as well as the different papers that have been implemented.
