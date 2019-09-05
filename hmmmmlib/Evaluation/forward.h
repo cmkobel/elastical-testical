@@ -1,5 +1,5 @@
 #include <stdio.h>
-#import "hmm.h"
+#include "hmm.h"
 
 /*
  
