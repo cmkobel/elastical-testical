@@ -14,11 +14,20 @@ int main() {
     // make compatible pointer types.
     double * start_p = start_p_; 
     double ** trans_p = calloc(2, sizeof(double));
-    for(int i = 0; i < 2; i++) trans_p[i] = calloc(2, sizeof(double));
+    for (int i = 0; i < 2; i++) trans_p[i] = calloc(2, sizeof(double));
+    
+    for (int i = 0; i < states; i++)
+        for (int j = 0; j < states; j++)
+            trans_p[i][j] = trans_p_[i][j];
+    
 
     double ** emit_p = calloc(2, sizeof(double));
     for (int i = 0; i < 2; i++) emit_p[i] = calloc(2, sizeof(double));
 
+    for (int i = 0; i < states; i++)
+        for (int j = 0; j < obs; j++)
+            emit_p[i][j] = emit_p_[i][j];
+    
     
 
 
@@ -41,7 +50,3 @@ int viterbi(int obs, int states, double start_p, double *trans_p, double *emit_p
 
 
 }
-
-
-
-
