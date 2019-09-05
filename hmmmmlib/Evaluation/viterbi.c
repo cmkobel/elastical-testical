@@ -2,36 +2,39 @@
 #include <stdlib.h>
 
 
-int viterbi(int obs, int states, double start_p, double *trans_p, double *emit_p);
+int viterbi(int n_obs, int n_states, double start_p, double *trans_p, double *emit_p);
 
 int main() {
-    int obs = 3; // normal, cold, dizzy
-    int states = 2; // healthy, fever
+    // set hardcoded probs
+    int n_obs = 3; // normal, cold, dizzy
+    int n_states = 2; // healthy, fever
     double start_p_[2] = {0.6, 0.4};
     double trans_p_[2][2] = {{0.7, 0.3}, {0.4, 0.6}};
     double emit_p_[2][3] = {{0.5, 0.4, 0.1}, {0.1, 0.3, 0.6}};
     
     // make compatible pointer types.
     double * start_p = start_p_; 
+    
     double ** trans_p = calloc(2, sizeof(double));
     for (int i = 0; i < 2; i++) trans_p[i] = calloc(2, sizeof(double));
-    
-    for (int i = 0; i < states; i++)
-        for (int j = 0; j < states; j++)
+
+    // copy
+    for (int i = 0; i < n_states; i++)
+        for (int j = 0; j < n_states; j++)
             trans_p[i][j] = trans_p_[i][j];
-    
 
     double ** emit_p = calloc(2, sizeof(double));
     for (int i = 0; i < 2; i++) emit_p[i] = calloc(2, sizeof(double));
-
-    for (int i = 0; i < states; i++)
-        for (int j = 0; j < obs; j++)
+    
+    //copy
+    for (int i = 0; i < n_states; i++)
+        for (int j = 0; j < n_obs; j++)
             emit_p[i][j] = emit_p_[i][j];
     
     
 
 
-    viterbi(obs, states, *start_p, *trans_p, *emit_p);
+    viterbi(n_obs, n_states, *start_p, *trans_p, *emit_p);
 
 
 
@@ -39,12 +42,12 @@ int main() {
 }
 
 
-int viterbi(int obs, int states, double start_p, double *trans_p, double *emit_p) {
+int viterbi(int n_obs, int n_states, double start_p, double *trans_p, double *emit_p) {
 
     double rv;
     rv = 0.0;
 
-    printf("day 1:\n%f", rv);
+    printf("day 1:\n%f", trans_p[1][0]);
 
     return rv;
 
