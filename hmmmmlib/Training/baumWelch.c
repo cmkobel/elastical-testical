@@ -1,12 +1,9 @@
 #include "baumWelch.h"
 #include <stdlib.h>
 
-void baumWelch(HMM *hmm, const int *Y, const int T){
+HMM * baumWelch(HMM *hmm, const int *Y, const int T){
     
     //Initial random init of HMM
-    assignRandomValues(hmm);
-    
-    bool converge = false;
     
     unsigned int i;
     unsigned int j;
@@ -33,7 +30,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T){
         }
     }
 
-    while (converge) {
+    for(int q = 0; q < 1; q++) {
         
         double ** alpha = forward(hmm, Y, T);
         double ** beta = backward(hmm, Y, T);
@@ -50,20 +47,31 @@ void baumWelch(HMM *hmm, const int *Y, const int T){
             }
         }
         
+        printf("Gamma\n");
+        for(i = 0; i < T; i++) {
+            for (j = 0; j < hmm->hiddenStates; j++){
+                printf("%f, ", gamma[i][j]);
+            }
+            printf("\n");
+        }
+        printf("\n");
+        
         // xi denominator
         double * xiDenominator = calloc(T, sizeof(double));
+        
         for(l = 0; l < T; l++){
             for(i = 0; i < hmm->hiddenStates; i++){
                 for(j = 0; j < hmm->hiddenStates; j++){
-                    xiDenominator[l] += alpha[i][l]*beta[i][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][i+1];
+                    xiDenominator[l] += alpha[i][l]*beta[i][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
                 }
             }
         }
+        
         // Updating xi
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
                 for(l = 0; l < T; l++){
-                    double numerator = alpha[i][l]*beta[i][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][i+1];
+                    double numerator = alpha[i][l]*beta[i][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[i+1]];
                     double denominator = xiDenominator[l];
                     xi[i][j][l] = numerator/denominator;
                 }
@@ -103,6 +111,10 @@ void baumWelch(HMM *hmm, const int *Y, const int T){
             }
         }
     }
+    
+    free(gamma);
+    
+    return hmm;
 }
 
 // Asign random variables to all initprobs, transprobs and obsprobs

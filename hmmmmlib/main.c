@@ -7,9 +7,10 @@
 //
 
 #include <stdio.h>
-#import "hmm.h"
-#import "TestsForwardAlgorithm.h"
-#import "testBackwardAlgorithm.h"
+#include "hmm.h"
+#include "TestsForwardAlgorithm.h"
+#include "testBackwardAlgorithm.h"
+#include "TestBaumWelch.h"
 
 int main() {
     
@@ -25,6 +26,12 @@ int main() {
     */
     if(testBackwardAlgorithm()){
         printf("all Backward Algorithm tests succed\n");
+    }
+    /*
+     Testing the backward algorithm
+     */
+    if(testBaumWelch()){
+        printf("all Baum Welch tests succed\n");
     }
     
     return 0;

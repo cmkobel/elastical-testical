@@ -45,14 +45,6 @@ bool testBackwardAlgorithm() {
     int obsTest1[4] = {1, 1, 1, 2};
     int *obs = obsTest1;
     double **backWardResult = backward(hmm, obs, 4);
-
-    for(j = 0; j < hmm->hiddenStates; j++){
-        for(i = 0; i < 4; i++){
-            printf("%f, ", backWardResult[j][i]);
-        }
-        printf("\n");
-    }
-    printf("\n\n");
     
     return true;
 }

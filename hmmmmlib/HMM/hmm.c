@@ -72,6 +72,7 @@ void printHMM(const HMM *hmm){
     unsigned int j;
     
     //Printing init probs
+    printf("Init probs\n");
     for(i=0; i < hmm->hiddenStates; i++){
         printf("%f, ", hmm->initProbs[i]);
     }
@@ -79,6 +80,7 @@ void printHMM(const HMM *hmm){
     printf("\n\n\n");
     
     //Print the transitionpos
+    printf("Transition probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->hiddenStates; j++){
             printf("%f, ", hmm->transitionProbs[i][j]);
@@ -89,6 +91,7 @@ void printHMM(const HMM *hmm){
     printf("\n\n\n");
     
     //Print the emissionprobs
+    printf("Emission probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->observations; j++){
             printf("%f, ", hmm->emissionProbs[i][j]);
