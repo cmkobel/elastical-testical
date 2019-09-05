@@ -21,14 +21,16 @@ bool testBaumWelch() {
     for(int i = 0; i < 2; i++) hmm->transitionProbs[i] = transitionProbs[i];
     for(int i = 0; i < 2; i++) hmm->emissionProbs[i] = emissionProbs[i];
     
-    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0};
-    const int obsLenght = 10;
+    const int observation[3] = {0, 1, 0};
+    const int obsLenght = 3;
     
+    printf("BEFORE: \n");
     printHMM(hmm);
     
-    hmm = baumWelch(hmm, observation, obsLenght);
+    baumWelch(hmm, observation, obsLenght, 1);
     
+    printf("AFTER: \n");
     printHMM(hmm);
     
-    return true;
+    return valdidateHMM(hmm);
 }
