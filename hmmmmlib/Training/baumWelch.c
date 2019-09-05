@@ -1,7 +1,7 @@
 #include "baumWelch.h"
 #include <stdlib.h>
 
-HMM * baumWelch(HMM *hmm, const int *Y, const int T){
+void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
     
     //Initial random init of HMM
     
@@ -30,7 +30,7 @@ HMM * baumWelch(HMM *hmm, const int *Y, const int T){
         }
     }
 
-    for(int q = 0; q < 1; q++) {
+    for(int q = 0; q < itterations; q++) {
         
         double ** alpha = forward(hmm, Y, T);
         double ** beta = backward(hmm, Y, T);
@@ -46,7 +46,7 @@ HMM * baumWelch(HMM *hmm, const int *Y, const int T){
                 gamma[i][j] = numerator/denominator;
             }
         }
-        
+        /*
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
@@ -55,7 +55,7 @@ HMM * baumWelch(HMM *hmm, const int *Y, const int T){
             printf("\n");
         }
         printf("\n");
-        
+        */
         // xi denominator
         double * xiDenominator = calloc(T-1, sizeof(double));
         
@@ -67,12 +67,13 @@ HMM * baumWelch(HMM *hmm, const int *Y, const int T){
             }
         }
         
+        /*
         printf("XI Denominator\n");
         for(i = 0; i < T-1; i++){
             printf("%f, ", xiDenominator[i]);
         }
         printf("\n\n");
-        
+        */
         // Updating xi
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
@@ -117,8 +118,17 @@ HMM * baumWelch(HMM *hmm, const int *Y, const int T){
             }
         }
     }
-
-    return hmm;
+    
+    
+    //Normalization step
+    for(i = 0; i < hmm->hiddenStates; i++){
+        double sum = 0.0;
+        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
+        for (j = 0; j < hmm->hiddenStates; j++) hmm->transitionProbs[i][j] = hmm->transitionProbs[i][j]/sum;
+        sum = 0.0;
+        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
+        for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i][j] = hmm->emissionProbs[i][j]/sum;
+    }
 }
 
 // Asign random variables to all initprobs, transprobs and obsprobs

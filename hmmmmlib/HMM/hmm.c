@@ -54,12 +54,11 @@ bool valdidateHMM(const HMM *hmm){
     
     for (i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;
-        for (j = 0; j < hmm->hiddenStates; j++) {
-            
-        }
-        if (sum != 1.0) {
-            return false;
-        }
+        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
+        if (sum != 1.0) return false;
+        sum = 0.0;
+        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
+        if (sum != 1.0) return false;
     }
     
     return true;
