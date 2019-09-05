@@ -11,15 +11,24 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     unsigned int i;
     
     // The init probs
+    //
+    // [state]
+    //
     newHMM->initProbs = calloc(newHMM->hiddenStates ,sizeof(double));
     
     // The transition probability is a N*N matrix
+    //
+    // [from state][to state]
+    //
     newHMM->transitionProbs = calloc(newHMM->hiddenStates, sizeof(double *));
     for(i = 0; i < hiddenStates; i++){
         newHMM->transitionProbs[i] = calloc(newHMM->hiddenStates, sizeof(double));
     }
     
     // The emission probability is a M*N matrix
+    //
+    // [state][observation]
+    //
     newHMM->emissionProbs = calloc(newHMM->hiddenStates, sizeof(double *));
     for(int i = 0; i < newHMM->hiddenStates; i++){
         newHMM->emissionProbs[i] = calloc(newHMM->observations, sizeof(double));
