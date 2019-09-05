@@ -6,15 +6,13 @@ double **backward(HMM *hmm, const int *Y, const int T){
     unsigned int i;
     unsigned int j;
     
+    // 2D beta matrix
+    //
+    // [state][time]
+    //
     double **beta = calloc(hmm->hiddenStates, sizeof(double*));
     for(i = 0; i < hmm->hiddenStates; i++){
         beta[i] = calloc(T, sizeof(double));
-    }
-    
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < T; j++){
-            beta[i][j] = 0;
-        }
     }
     
     // Initial setting the beta[T] values, these are said to be 1

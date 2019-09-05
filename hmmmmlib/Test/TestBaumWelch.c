@@ -1,9 +1,8 @@
-#include "testBackwardAlgorithm.h"
+#include "TestBaumWelch.h"
+#include "baumWelch.h"
 #include "hmm.h"
-#include "backward.h"
-#include <assert.h>
 
-bool testBackwardAlgorithm() {
+bool testBaumWelch() {
     HMM * hmm = HMMCreate(7, 4);
     
     double transitionProbs[7][7] = {
@@ -45,7 +44,7 @@ bool testBackwardAlgorithm() {
     int obsTest1[4] = {1, 1, 1, 2};
     int *obs = obsTest1;
     double **backWardResult = backward(hmm, obs, 4);
-
+    
     for(j = 0; j < hmm->hiddenStates; j++){
         for(i = 0; i < 4; i++){
             printf("%f, ", backWardResult[j][i]);

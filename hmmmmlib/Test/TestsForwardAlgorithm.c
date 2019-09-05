@@ -7,8 +7,8 @@
 //
 
 #include "TestsForwardAlgorithm.h"
-#import "hmm.h"
-#import "forward.h"
+#include "hmm.h"
+#include "forward.h"
 #include <stdlib.h>
 #include <assert.h>
 
