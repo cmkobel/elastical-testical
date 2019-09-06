@@ -46,7 +46,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 gamma[i][j] = numerator/denominator;
             }
         }
-        /*
+        
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
@@ -55,14 +55,14 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
             printf("\n");
         }
         printf("\n");
-        */
+        
         // xi denominator
         double * xiDenominator = calloc(T-1, sizeof(double));
         
         for(l = 0; l < T-1; l++){
             for(i = 0; i < hmm->hiddenStates; i++){
                 for(j = 0; j < hmm->hiddenStates; j++){
-                    xiDenominator[l] += alpha[i][l]*beta[i][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
+                    xiDenominator[l] += alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
                 }
             }
         }
@@ -78,7 +78,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
                 for(l = 0; l < T-1; l++){
-                    double numerator = alpha[i][l]*beta[i][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
+                    double numerator = alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
                     double denominator = xiDenominator[l];
                     xi[i][j][l] = numerator/denominator;
                 }
@@ -118,7 +118,6 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
             }
         }
     }
-    
     
     //Normalization step
     for(i = 0; i < hmm->hiddenStates; i++){

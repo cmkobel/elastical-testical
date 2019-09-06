@@ -28,12 +28,12 @@ double ** forward(HMM *hmm, const int *Y, const int T){
             double emissionProb = hmm->emissionProbs[j][Y[i]];
             double pastTransProb = 0.0;
             for(int l = 0; l < hmm->hiddenStates; l++){
-                pastTransProb += hmm->transitionProbs[j][l]*alpha[l][i-1];
+                pastTransProb += hmm->transitionProbs[l][j]*alpha[l][i-1];
             }
             alpha[j][i] = emissionProb*pastTransProb;
         }
     }
-    /*
+    
     printf("Forward\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < T; j++){
@@ -42,6 +42,6 @@ double ** forward(HMM *hmm, const int *Y, const int T){
         printf("\n");
     }
     printf("\n");
-    */
+    
     return alpha;
 }
