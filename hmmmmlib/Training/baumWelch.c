@@ -117,16 +117,16 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 hmm->emissionProbs[i][j] = numerator/denominator;
             }
         }
-    }
-    
-    //Normalization step
-    for(i = 0; i < hmm->hiddenStates; i++){
-        double sum = 0.0;
-        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
-        for (j = 0; j < hmm->hiddenStates; j++) hmm->transitionProbs[i][j] = hmm->transitionProbs[i][j]/sum;
-        sum = 0.0;
-        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
-        for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i][j] = hmm->emissionProbs[i][j]/sum;
+        
+        //Normalization step
+        for(i = 0; i < hmm->hiddenStates; i++){
+            double sum = 0.0;
+            for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
+            for (j = 0; j < hmm->hiddenStates; j++) hmm->transitionProbs[i][j] = hmm->transitionProbs[i][j]/sum;
+            sum = 0.0;
+            for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
+            for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i][j] = hmm->emissionProbs[i][j]/sum;
+        }
     }
 }
 
