@@ -31,9 +31,9 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
     }
 
     for(int q = 0; q < itterations; q++) {
-        
-        double ** alpha = forward(hmm, Y, T);
-        double ** beta = backward(hmm, Y, T);
+        double * scaleFactor = calloc(T, sizeof(double));
+        double ** alpha = forward(hmm, Y, T, scaleFactor);
+        double ** beta = backward(hmm, Y, T, scaleFactor);
         
         // Updating gamma
         for(i = 0; i < T; i++){

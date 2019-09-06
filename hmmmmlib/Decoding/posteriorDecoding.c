@@ -6,8 +6,9 @@ int posteriorDecoding(HMM * hmm, const int *Y, const int T, const int t){
     unsigned int i;
     unsigned int j;
     
-    double ** alpha = forward(hmm, Y, T);
-    double ** beta = backward(hmm, Y, T);
+    double * scalingFactor = calloc(T, sizeof(double));
+    double ** alpha = forward(hmm, Y, T, scalingFactor);
+    double ** beta = backward(hmm, Y, T, scalingFactor);
     
     double largest = 0.0;
     double denominator = 0.0;

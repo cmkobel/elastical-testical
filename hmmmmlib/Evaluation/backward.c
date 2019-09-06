@@ -1,7 +1,7 @@
 #include "backward.h"
 #include <stdlib.h>
 
-double **backward(HMM *hmm, const int *Y, const int T){
+double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;
@@ -22,6 +22,7 @@ double **backward(HMM *hmm, const int *Y, const int T){
     
     // Now for the step"BACKWARD" step
     for(i = T-1; i-- >0;){
+        printf("%d, \n", i);
         for(j = 0; j < hmm->hiddenStates; j++){
             for(int l = 0; l < hmm->hiddenStates; l++){
                 double emissionProb = hmm->emissionProbs[l][Y[i+1]];
@@ -29,10 +30,12 @@ double **backward(HMM *hmm, const int *Y, const int T){
                 double oldBeta = beta[l][i+1];
                 beta[j][i] += transitionProb*emissionProb*oldBeta;
             }
+            printf("%f, %f, %f\n", beta[j][i], scalingFactor[i], beta[j][i]/scalingFactor[i]);
+            beta[j][i] = beta[j][i] / scalingFactor[i+1];
         }
     }
     
-    /*
+    
     printf("Backward\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < T; j++){
@@ -41,7 +44,7 @@ double **backward(HMM *hmm, const int *Y, const int T){
         printf("\n");
     }
     printf("\n");
-    */
+    
     return beta;
     
 }

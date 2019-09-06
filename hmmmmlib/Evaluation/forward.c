@@ -1,13 +1,12 @@
 #include "forward.h"
 #include <stdlib.h>
 
-double ** forward(HMM *hmm, const int *Y, const int T){
+double ** forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     
     
     
     unsigned int i;
     unsigned int j;
-    double * scalingFactor = calloc(T, sizeof(double));
     
     // 2D alpha matrix
     //
@@ -48,6 +47,10 @@ double ** forward(HMM *hmm, const int *Y, const int T){
     }
     
     printf("Forward\n");
+    for(i = 0; i < T; i++){
+        printf("%f, ", scalingFactor[i]);
+    }
+    printf("\n\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < T; j++){
             printf("%f, ", alpha[i][j]);
