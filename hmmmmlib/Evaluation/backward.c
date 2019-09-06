@@ -32,7 +32,7 @@ double **backward(HMM *hmm, const int *Y, const int T){
         }
     }
     
-    /*
+    
     printf("Backward\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < T; j++){
@@ -41,7 +41,7 @@ double **backward(HMM *hmm, const int *Y, const int T){
         printf("\n");
     }
     printf("\n");
-    */
+    
     return beta;
     
 }
