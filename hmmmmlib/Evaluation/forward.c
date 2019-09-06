@@ -45,7 +45,7 @@ double ** forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
             alpha[j][i] = alpha[j][i]/scalingFactor[i];
         }
     }
-    
+    /*
     printf("Forward\n");
     for(i = 0; i < T; i++){
         printf("%f, ", scalingFactor[i]);
@@ -58,6 +58,6 @@ double ** forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
         printf("\n");
     }
     printf("\n");
-    
+    */
     return alpha;
 }

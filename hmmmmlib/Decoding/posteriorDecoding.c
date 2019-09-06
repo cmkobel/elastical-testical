@@ -1,26 +1,20 @@
 #include "posteriorDecoding.h"
+#include <stdlib.h>
 
 int posteriorDecoding(HMM * hmm, const int *Y, const int T, const int t){
     
     int index = 0;
     unsigned int i;
-    unsigned int j;
     
     double * scalingFactor = calloc(T, sizeof(double));
     double ** alpha = forward(hmm, Y, T, scalingFactor);
     double ** beta = backward(hmm, Y, T, scalingFactor);
     
     double largest = 0.0;
-    double denominator = 0.0;
-    
-    for(j = 0; j < hmm->hiddenStates; j++){
-        denominator += alpha[j][t]*beta[j][t];
-    }
     
     for (i = 0; i < hmm->hiddenStates; i++) {
         
-        double numerator = alpha[i][t]*beta[i][t];
-        double gamma = numerator/denominator;
+        double gamma = alpha[i][t]*beta[i][t];
         
         if(gamma > largest){
             index = i;
@@ -28,5 +22,5 @@ int posteriorDecoding(HMM * hmm, const int *Y, const int T, const int t){
         }
     }
     
-    return 1;
+    return index;
 }

@@ -36,7 +36,7 @@ bool testBaumWelch() {
     
     // Checking the emission probs
     assert(hmm->emissionProbs[0][0] == 0.46160107308583781);
-    assert(hmm->emissionProbs[1][1] == 0.08498443320347944);
+    assert(hmm->emissionProbs[1][1] == 0.084984433203479412);
     
     printf("AFTER: \n");
     printHMM(hmm);
