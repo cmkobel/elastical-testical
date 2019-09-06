@@ -58,7 +58,7 @@ In this section all the documentation for the library is written as well as the 
 
 ## TASK MANAGEMENT 
 
-http://scrumblr.ca/CWBL4IB7QF5VQ4
+See the project manager in GITHUB
 
 ## READING MATERIAL
 
