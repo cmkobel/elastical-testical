@@ -71,3 +71,4 @@ See the project manager in GITHUB
 * https://www.dipmat.univpm.it/~demeio/public/the_c_programming_language_2.pdf
 * https://developer.ibm.com/articles/au-toughgame/
 * https://cdecl.org/
+* http://derekmolloy.ie/hello-world-introductions-to-cmake/
