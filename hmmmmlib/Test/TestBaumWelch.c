@@ -25,8 +25,8 @@ bool testBaumWelch() {
     const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
     const int obsLenght = 10;
     
-    printf("BEFORE: \n");
-    printHMM(hmm);
+    //printf("BEFORE: \n");
+    //printHMM(hmm);
     
     baumWelch(hmm, observation, obsLenght, 1);
     
@@ -38,8 +38,8 @@ bool testBaumWelch() {
     assert(hmm->emissionProbs[0][0] == 0.46160107308583781);
     assert(hmm->emissionProbs[1][1] == 0.084984433203479412);
     
-    printf("AFTER: \n");
-    printHMM(hmm);
+    //printf("AFTER: \n");
+    //printHMM(hmm);
     
     return valdidateHMM(hmm);
 }

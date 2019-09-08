@@ -46,7 +46,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 gamma[i][j] = numerator/denominator;
             }
         }
-        
+        /*
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
@@ -55,7 +55,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
             printf("\n");
         }
         printf("\n");
-        
+        */
         // xi denominator
         double * xiDenominator = calloc(T-1, sizeof(double));
         
