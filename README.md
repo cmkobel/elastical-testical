@@ -48,13 +48,17 @@ For decoding we use the Viterbi algorithm.
 Training problem answers the question: Given a model structure and a set of sequences, find the model that best fits the data.
 For this problem we can use the Baum Welch = forward-backward algorithm
 
+Possible optimisations: 
+
+* Solving the "training" problem as a constrinted optimisation problem and use lagrange multipliers.
+
 ## DOCUMENTATION
 
 In this section all the documentation for the library is written as well as the different papers that have been implemented.
 
 ## TASK MANAGEMENT 
 
-http://scrumblr.ca/CWBL4IB7QF5VQ4
+See the project manager in GITHUB
 
 ## READING MATERIAL
 
@@ -67,3 +71,4 @@ http://scrumblr.ca/CWBL4IB7QF5VQ4
 * https://www.dipmat.univpm.it/~demeio/public/the_c_programming_language_2.pdf
 * https://developer.ibm.com/articles/au-toughgame/
 * https://cdecl.org/
+* http://derekmolloy.ie/hello-world-introductions-to-cmake/

@@ -1,57 +1,45 @@
 #include "TestBaumWelch.h"
 #include "baumWelch.h"
 #include "hmm.h"
+#include <assert.h>
 
 bool testBaumWelch() {
-    HMM * hmm = HMMCreate(7, 4);
+    HMM * hmm = HMMCreate(2, 2);
     
-    double transitionProbs[7][7] = {
-        {0.0,0.0,0.9,0.1,0.0,0.0,0.0},
-        {1.0,0.0,0.0,0.0,0.0,0.0,0.0},
-        {0.0,1.0,0.0,0.0,0.0,0.0,0.0},
-        {0.0,0.0,0.05,0.9,0.05,0.0,0.0},
-        {0.0,0.0,0.0,0.0,0.0,1.0,0.0},
-        {0.0,0.0,0.0,0.0,0.0,0.0,1.0},
-        {0.0,0.0,0.0,0.1,0.9,0.0,0.0},
+    double transitionProbs[2][2] = {
+        {0.5, 0.5},
+        {0.3, 0.7}
     };
     
-    double emissionProbs[7][4] = {
-        {0.3,0.25,0.25,0.2},
-        {0.2,0.35,0.15,0.3},
-        {0.4,0.15,0.2,0.25},
-        {0.25,0.25,0.25,0.25},
-        {0.2,0.4,0.3,0.1},
-        {0.3,0.2,0.3,0.2},
-        {0.15,0.3,0.2,0.35}
+    double emissionProbs[2][2] = {
+        {0.3, 0.7},
+        {0.8, 0.2}
     };
     
+    double initProbs[2] = {0.2, 0.8};
     
-    unsigned int i;
-    unsigned int j;
+    hmm->initProbs = initProbs;
+    for(int i = 0; i < 2; i++) hmm->transitionProbs[i] = transitionProbs[i];
+    for(int i = 0; i < 2; i++) hmm->emissionProbs[i] = emissionProbs[i];
     
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 7; j++){
-            hmm->transitionProbs[i][j] = transitionProbs[i][j];
-        }
-    }
+    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const int obsLenght = 10;
     
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 4; j++){
-            hmm->emissionProbs[i][j] = emissionProbs[i][j];
-        }
-    }
+    //printf("BEFORE: \n");
+    //printHMM(hmm);
     
-    int obsTest1[4] = {1, 1, 1, 2};
-    int *obs = obsTest1;
-    double **backWardResult = backward(hmm, obs, 4);
+    baumWelch(hmm, observation, obsLenght, 1);
     
-    for(j = 0; j < hmm->hiddenStates; j++){
-        for(i = 0; i < 4; i++){
-            printf("%f, ", backWardResult[j][i]);
-        }
-        printf("\n");
-    }
-    printf("\n\n");
+    // Checking the trans probs
+    assert(hmm->transitionProbs[0][0] == 0.43921478415604948);
+    assert(hmm->transitionProbs[1][1] == 0.78554317773503979);
     
-    return true;
+    // Checking the emission probs
+    assert(hmm->emissionProbs[0][0] == 0.46160107308583781);
+    assert(hmm->emissionProbs[1][1] == 0.084984433203479412);
+    
+    //printf("AFTER: \n");
+    //printHMM(hmm);
+    
+    return valdidateHMM(hmm);
 }

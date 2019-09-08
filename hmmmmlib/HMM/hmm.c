@@ -54,12 +54,11 @@ bool valdidateHMM(const HMM *hmm){
     
     for (i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;
-        for (j = 0; j < hmm->hiddenStates; j++) {
-            
-        }
-        if (sum != 1.0) {
-            return false;
-        }
+        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
+        if (sum != 1.0) return false;
+        sum = 0.0;
+        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
+        if (sum != 1.0) return false;
     }
     
     return true;
@@ -72,6 +71,7 @@ void printHMM(const HMM *hmm){
     unsigned int j;
     
     //Printing init probs
+    printf("Init probs\n");
     for(i=0; i < hmm->hiddenStates; i++){
         printf("%f, ", hmm->initProbs[i]);
     }
@@ -79,6 +79,7 @@ void printHMM(const HMM *hmm){
     printf("\n\n\n");
     
     //Print the transitionpos
+    printf("Transition probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->hiddenStates; j++){
             printf("%f, ", hmm->transitionProbs[i][j]);
@@ -89,6 +90,7 @@ void printHMM(const HMM *hmm){
     printf("\n\n\n");
     
     //Print the emissionprobs
+    printf("Emission probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->observations; j++){
             printf("%f, ", hmm->emissionProbs[i][j]);
