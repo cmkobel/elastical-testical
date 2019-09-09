@@ -22,9 +22,6 @@ int main() {
     for (int i = 0; i < 2; i++) emit_p[i] = emit_p_[i];
     
     
-
-
-
     
     // feed data to the viterbi alg.
 
@@ -36,7 +33,7 @@ int main() {
 
     viterbi(n_obs, n_states, start_p, trans_p, emit_p, n_data, &data);
 
-
+    
 
 
     return 0;
@@ -47,8 +44,8 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
 
     
     //initialiser returnerings-arrays
-    //float output[] = calloc(n_states, sizeof(float*));
 
+    //printf("abemad %f\n", trans_p[1]);
     float* probs = calloc(n_states, sizeof(float)); 
 
     int hidden_state = -1; // -1 for uninitialized value
@@ -69,32 +66,22 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
             // All iterations after the first.
             ;
 
-        
-
-
-
             
         }
 
         // Find the hidden state
         float max_ = 0.0;
         for (int j = 0; j < n_states-1; j++) {
-                if (probs[j] > max_) {
-                    max_ = probs[j];
-                    hidden_state = j;
-                }
+            if (probs[j] > max_) {
+                max_ = probs[j];
+                hidden_state = j;
             }
-        printf("hs is %d with p = %f\n\n", hidden_state, max_);
+        }
+        printf("hs is %i with p = %f\n\n", hidden_state, max_);
         
         break;
-
-
-
-        
         
     }
-    
-
     
     return 0;
 
