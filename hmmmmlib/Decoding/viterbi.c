@@ -42,17 +42,24 @@ int main() {
 
 int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **emit_p, int n_data, int *data[]) {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 46128f9f1d88ecd03762feffe258dbb1dd0df658
 
 
     //printf("abemad %f\n", trans_p[1]);
     float* probs = calloc(n_states, sizeof(float)); 
+    float max_ = 0.0;
 
     int hidden_state = -1; // -1 for uninitialized value
 
-    // set initial emission probs
+    
     for (int i = 0; i < n_data; ++i) {
-        if (hidden_state == -1) {
+        if (hidden_state == -1) { 
             // first iteration. Compute only with start_p
+            printf("entered initial with i = %d\n", i);
+
             for (int j = 0; j < n_states-1; j++) {
                 probs[j] = start_p[j]*emit_p[j][i];
                 printf("%d>%f ", j, probs[j]);
@@ -63,14 +70,28 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
         
         else {
             // All iterations after the first.
+<<<<<<< HEAD
             // this is code that works
             ;
+=======
+            printf("entered next with i = %d\n", i);
+            
+            
+            for (int j = 0; j < n_states-1; j++) {
+                // For hver state, ønsker vi at beregne ssh. for den nye observation
+                ;
+                probs[j] = max_ * trans_p[hidden_state][j] * emit_p[j][i];
+                //printf("max_ %f, trans_p %f, emit_p %f\n", max_, trans_p[hidden_state][j], emit_p[j][i]);
+                printf("%d>%f ", j, probs[j]);
+            }
+>>>>>>> 46128f9f1d88ecd03762feffe258dbb1dd0df658
 
             
         }
 
         // Find the hidden state
-        float max_ = 0.0;
+        //float max_ = 0.0;
+        max_ = 0.0;
         for (int j = 0; j < n_states-1; j++) {
             if (probs[j] > max_) {
                 max_ = probs[j];
@@ -79,7 +100,11 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
         }
         printf("hs is %i with p = %f\n\n", hidden_state, max_);
         
+<<<<<<< HEAD
         break;
+=======
+        //break;
+>>>>>>> 46128f9f1d88ecd03762feffe258dbb1dd0df658
         
     }
     
