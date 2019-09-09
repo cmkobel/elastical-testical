@@ -42,8 +42,7 @@ int main() {
 
 int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **emit_p, int n_data, int *data[]) {
 
-    
-    //initialiser returnerings-arrays
+
 
     //printf("abemad %f\n", trans_p[1]);
     float* probs = calloc(n_states, sizeof(float)); 
@@ -64,6 +63,7 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
         
         else {
             // All iterations after the first.
+            // this is code that works
             ;
 
             
