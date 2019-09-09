@@ -27,5 +27,5 @@ int posteriorDecoding(HMM * hmm, const int *Y, const int T, const int t){
         }
     }
     
-    return 1;
+    return index;
 }
