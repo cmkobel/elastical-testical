@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/backward.c.o"
   "CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/forward.c.o"
   "CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.o"
-  "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o"
   "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o"
   "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o"
   "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o"

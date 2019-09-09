@@ -8,7 +8,9 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/posteriorDecoding.c.o
  /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Decoding/posteriorDecoding.c
  /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Decoding/posteriorDecoding.h
 CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/viterbi.c.o
+ ../hmmmmlib/HMM/hmm.h
  /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Decoding/viterbi.c
+ /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Decoding/viterbi.h
 CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/backward.c.o
  ../hmmmmlib/HMM/hmm.h
  /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Evaluation/backward.c
@@ -20,9 +22,6 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/forward.c.o
 CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.o
  /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/HMM/hmm.c
  /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/HMM/hmm.h
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o
- ../hmmmmlib/HMM/hmm.h
- /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/ForwardAlgorithmTest.c
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o
  ../hmmmmlib/Evaluation/backward.h
  ../hmmmmlib/Evaluation/forward.h

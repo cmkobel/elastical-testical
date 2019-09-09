@@ -7,7 +7,9 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/posteriorDecoding.c.o: ../hmmmmlib/HMM/h
 CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/posteriorDecoding.c.o: ../hmmmmlib/Decoding/posteriorDecoding.c
 CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/posteriorDecoding.c.o: ../hmmmmlib/Decoding/posteriorDecoding.h
 
+CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/viterbi.c.o: ../hmmmmlib/HMM/hmm.h
 CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/viterbi.c.o: ../hmmmmlib/Decoding/viterbi.c
+CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/viterbi.c.o: ../hmmmmlib/Decoding/viterbi.h
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/backward.c.o: ../hmmmmlib/HMM/hmm.h
 CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/backward.c.o: ../hmmmmlib/Evaluation/backward.c
@@ -19,9 +21,6 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/forward.c.o: ../hmmmmlib/Evaluation/fo
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.o: ../hmmmmlib/HMM/hmm.c
 CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.o: ../hmmmmlib/HMM/hmm.h
-
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o: ../hmmmmlib/HMM/hmm.h
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o: ../hmmmmlib/Test/ForwardAlgorithmTest.c
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o: ../hmmmmlib/Evaluation/backward.h
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o: ../hmmmmlib/Evaluation/forward.h

@@ -258,33 +258,6 @@ hmmmmlib/HMM/hmm.c.s:
 	$(MAKE) -f CMakeFiles/HMMLIB.dir/build.make CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.s
 .PHONY : hmmmmlib/HMM/hmm.c.s
 
-hmmmmlib/Test/ForwardAlgorithmTest.o: hmmmmlib/Test/ForwardAlgorithmTest.c.o
-
-.PHONY : hmmmmlib/Test/ForwardAlgorithmTest.o
-
-# target to build an object file
-hmmmmlib/Test/ForwardAlgorithmTest.c.o:
-	$(MAKE) -f CMakeFiles/HMMLIB.dir/build.make CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o
-.PHONY : hmmmmlib/Test/ForwardAlgorithmTest.c.o
-
-hmmmmlib/Test/ForwardAlgorithmTest.i: hmmmmlib/Test/ForwardAlgorithmTest.c.i
-
-.PHONY : hmmmmlib/Test/ForwardAlgorithmTest.i
-
-# target to preprocess a source file
-hmmmmlib/Test/ForwardAlgorithmTest.c.i:
-	$(MAKE) -f CMakeFiles/HMMLIB.dir/build.make CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.i
-.PHONY : hmmmmlib/Test/ForwardAlgorithmTest.c.i
-
-hmmmmlib/Test/ForwardAlgorithmTest.s: hmmmmlib/Test/ForwardAlgorithmTest.c.s
-
-.PHONY : hmmmmlib/Test/ForwardAlgorithmTest.s
-
-# target to generate assembly for a file
-hmmmmlib/Test/ForwardAlgorithmTest.c.s:
-	$(MAKE) -f CMakeFiles/HMMLIB.dir/build.make CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.s
-.PHONY : hmmmmlib/Test/ForwardAlgorithmTest.c.s
-
 hmmmmlib/Test/TestBaumWelch.o: hmmmmlib/Test/TestBaumWelch.c.o
 
 .PHONY : hmmmmlib/Test/TestBaumWelch.o
@@ -444,9 +417,6 @@ help:
 	@echo "... hmmmmlib/HMM/hmm.o"
 	@echo "... hmmmmlib/HMM/hmm.i"
 	@echo "... hmmmmlib/HMM/hmm.s"
-	@echo "... hmmmmlib/Test/ForwardAlgorithmTest.o"
-	@echo "... hmmmmlib/Test/ForwardAlgorithmTest.i"
-	@echo "... hmmmmlib/Test/ForwardAlgorithmTest.s"
 	@echo "... hmmmmlib/Test/TestBaumWelch.o"
 	@echo "... hmmmmlib/Test/TestBaumWelch.i"
 	@echo "... hmmmmlib/Test/TestBaumWelch.s"

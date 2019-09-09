@@ -122,22 +122,9 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/HMM/hmm.c -o CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.s
 
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o: CMakeFiles/HMMLIB.dir/flags.make
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o: ../hmmmmlib/Test/ForwardAlgorithmTest.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o   -c /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/ForwardAlgorithmTest.c
-
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/ForwardAlgorithmTest.c > CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.i
-
-CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/ForwardAlgorithmTest.c -o CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.s
-
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o: CMakeFiles/HMMLIB.dir/flags.make
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o: ../hmmmmlib/Test/TestBaumWelch.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o   -c /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/TestBaumWelch.c
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.i: cmake_force
@@ -150,7 +137,7 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.s: cmake_force
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o: CMakeFiles/HMMLIB.dir/flags.make
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o: ../hmmmmlib/Test/TestsForwardAlgorithm.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o   -c /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/TestsForwardAlgorithm.c
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.i: cmake_force
@@ -163,7 +150,7 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.s: cmake_force
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o: CMakeFiles/HMMLIB.dir/flags.make
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o: ../hmmmmlib/Test/testBackwardAlgorithm.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o   -c /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/testBackwardAlgorithm.c
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.i: cmake_force
@@ -176,7 +163,7 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.s: cmake_force
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.o: CMakeFiles/HMMLIB.dir/flags.make
 CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.o: ../hmmmmlib/Training/baumWelch.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.o   -c /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Training/baumWelch.c
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.i: cmake_force
@@ -189,7 +176,7 @@ CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.s: cmake_force
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.o: CMakeFiles/HMMLIB.dir/flags.make
 CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.o: ../hmmmmlib/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.o   -c /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/main.c
 
 CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.i: cmake_force
@@ -207,7 +194,6 @@ HMMLIB_OBJECTS = \
 "CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/backward.c.o" \
 "CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/forward.c.o" \
 "CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.o" \
-"CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o" \
 "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o" \
 "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o" \
 "CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o" \
@@ -222,7 +208,6 @@ HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Decoding/viterbi.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/backward.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Evaluation/forward.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/HMM/hmm.c.o
-HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Test/ForwardAlgorithmTest.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestBaumWelch.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Test/TestsForwardAlgorithm.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Test/testBackwardAlgorithm.c.o
@@ -230,7 +215,7 @@ HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/Training/baumWelch.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/hmmmmlib/main.c.o
 HMMLIB: CMakeFiles/HMMLIB.dir/build.make
 HMMLIB: CMakeFiles/HMMLIB.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking C executable HMMLIB"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable HMMLIB"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HMMLIB.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
