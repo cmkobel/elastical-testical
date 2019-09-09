@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-int viterbi(int n_obs, int n_states, float *start_p, float **trans_p, float **emit_p, int n_data, int *data[]);
+int viterbi(int n_obs, int n_states, float *start_p, float **trans_p, float **emit_p, int n_data, int *data);
 
 
 int main() {
@@ -31,7 +31,7 @@ int main() {
     
 
 
-    viterbi(n_obs, n_states, start_p, trans_p, emit_p, n_data, &data);
+    viterbi(n_obs, n_states, start_p, trans_p, emit_p, n_data, data);
 
     
 
@@ -40,21 +40,23 @@ int main() {
 }
  
 
-int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **emit_p, int n_data, int *data[]) {
+int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **emit_p, int n_data, int *data) {
 
 
 
-    //printf("abemad %f\n", trans_p[1]);
     float* probs = calloc(n_states, sizeof(float)); 
+    float max_ = 0.0;
 
     int hidden_state = -1; // -1 for uninitialized value
 
-    // set initial emission probs
-    for (int i = 0; i < n_data; ++i) {
-        if (hidden_state == -1) {
+    
+    for (int i = 0; i < n_data; ++i) { // i points into data
+        if (hidden_state == -1) { 
             // first iteration. Compute only with start_p
+            printf("entered initial with i = %d\n", i);
+
             for (int j = 0; j < n_states-1; j++) {
-                probs[j] = start_p[j]*emit_p[j][i];
+                probs[j] = start_p[j]*emit_p[j][data[i]];
                 printf("%d>%f ", j, probs[j]);
 
             }
@@ -63,14 +65,23 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
         
         else {
             // All iterations after the first.
-            // this is code that works
-            ;
+            printf("entered next with i = %d\n", i);
+            
+            
+            for (int j = 0; j < n_states-1; j++) {
+                // For hver state, ønsker vi at beregne ssh. for den nye observation
+                ;
+                probs[j] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
+                //printf("max_ %f, trans_p %f, emit_p %f\n", max_, trans_p[hidden_state][j], emit_p[j][data[i]]);
+                printf("%d>%f ", j, probs[j]);
+            }
 
             
         }
 
         // Find the hidden state
-        float max_ = 0.0;
+        //float max_ = 0.0;
+        max_ = 0.0;
         for (int j = 0; j < n_states-1; j++) {
             if (probs[j] > max_) {
                 max_ = probs[j];
@@ -79,8 +90,13 @@ int viterbi(int n_states, int n_obs, float *start_p, float **trans_p, float **em
         }
         printf("hs is %i with p = %f\n\n", hidden_state, max_);
         
-        break;
+        //break;
         
+    }
+    
+    for (int m = 0; m < n_data; m++)
+    {   
+        printf("%i, ", data[m]);
     }
     
     return 0;
