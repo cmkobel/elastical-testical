@@ -9,7 +9,6 @@
 #include "TestsForwardAlgorithm.h"
 #include "hmm.h"
 #include "forward.h"
-#include <stdlib.h>
 #include <assert.h>
 
 bool testForwardAlgorithm() {

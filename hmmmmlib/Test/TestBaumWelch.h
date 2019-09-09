@@ -2,4 +2,5 @@
 #include <stdbool.h>
 
 
+#pragma once
 bool testBaumWelch(void);

@@ -1,0 +1,3 @@
+/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles/rebuild_cache.dir
+/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles/edit_cache.dir
+/Users/thorjakobsen/GIT/elastical-testical/build/CMakeFiles/HMMLIB.dir

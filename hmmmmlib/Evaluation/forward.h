@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "hmm.h"
 
+#pragma once
+
 /*
  
  Returns the likeliyhood for observing a sequence Y of length T

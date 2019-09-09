@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#pragma once
 #include "hmm.h"
 #include "forward.h"
 #include "backward.h"

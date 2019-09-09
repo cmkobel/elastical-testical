@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../hmmmmlib/Evaluation/forward.h
+stdio.h
+-
+hmm.h
+../hmmmmlib/Evaluation/hmm.h
+
+../hmmmmlib/HMM/hmm.h
+stdio.h
+-
+stdbool.h
+-
+
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/TestsForwardAlgorithm.c
+TestsForwardAlgorithm.h
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/TestsForwardAlgorithm.h
+hmm.h
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/hmm.h
+forward.h
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/forward.h
+assert.h
+-
+
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/Test/TestsForwardAlgorithm.h
+stdio.h
+-
+stdbool.h
+-
+
