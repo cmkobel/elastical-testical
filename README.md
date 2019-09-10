@@ -72,3 +72,7 @@ See the project manager in GITHUB
 * https://developer.ibm.com/articles/au-toughgame/
 * https://cdecl.org/
 * http://derekmolloy.ie/hello-world-introductions-to-cmake/
+
+### CMAKE
+
+* http://derekmolloy.ie/hello-world-introductions-to-cmake/
