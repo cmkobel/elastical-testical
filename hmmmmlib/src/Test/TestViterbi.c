@@ -1,5 +1,6 @@
 #include "TestViterbi.h"
 #include "viterbi.h"
+#include <stdlib.h>
 
 bool testViterbi(){
     // set hardcoded probs
