@@ -1,7 +1,7 @@
 #include "backward.h"
 #include <stdlib.h>
 
-double **backward(HMM *hmm, const int *Y, const int T){
+double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;
@@ -29,6 +29,7 @@ double **backward(HMM *hmm, const int *Y, const int T){
                 double oldBeta = beta[l][i+1];
                 beta[j][i] += transitionProb*emissionProb*oldBeta;
             }
+            beta[j][i] = beta[j][i] / scalingFactor[i+1];
         }
     }
     

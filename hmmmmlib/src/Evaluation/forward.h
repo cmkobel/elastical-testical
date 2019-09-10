@@ -9,4 +9,4 @@
  given a HMM hmm
  
  */
-double **forward(HMM *hmm, const int *Y, const int T);
+double **forward(HMM *hmm, const int *Y, const int T, double * scalingFactor);

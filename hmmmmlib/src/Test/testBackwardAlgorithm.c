@@ -44,7 +44,8 @@ bool testBackwardAlgorithm() {
     
     int obsTest1[4] = {1, 1, 1, 2};
     int *obs = obsTest1;
-    double **backWardResult = backward(hmm, obs, 4);
+    double * scalingFactor = calloc(4, sizeof(double));
+    double **backWardResult = backward(hmm, obs, 4, scalingFactor);
     
     return true;
 }

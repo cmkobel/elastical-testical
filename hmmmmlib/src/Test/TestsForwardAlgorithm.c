@@ -57,13 +57,15 @@ bool testForwardAlgorithm() {
 
     int obsTest1[4] = {1, 1, 1, 2};
     int * obs = obsTest1;
-    double ** forwardResult = forward(hmm, obs, 4);
+    double * scalingFactor = calloc(4, sizeof(double));
+    double ** forwardResult = forward(hmm, obs, 4, scalingFactor);
     
     //assert(forwardResult == 0.0067856249999999991);
-    
+    free(scalingFactor);
+    scalingFactor = calloc(7, sizeof(double));
     int obsTest2[7] = {1, 1, 1, 2, 3, 3, 1};
     obs = obsTest2;
-    forwardResult = forward(hmm, obs, 7);
+    forwardResult = forward(hmm, obs, 7, scalingFactor);
 
     //assert(forwardResult == 0.00013674062499999999);
     
