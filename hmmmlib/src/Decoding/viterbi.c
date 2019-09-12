@@ -9,7 +9,11 @@ int* viterbi(HMM *hmm, const int *observations, const int nData) {
     //Det virker fint at tage log til et bestemt tal:
     
     printf("Det virker fint at tage log til et bestemt tal: log(e) = %f\n", log(2.71828));
+<<<<<<< HEAD
     printf("Men hvis jeg prøver en værdi der kommer fra en pointet matrix, får jeg problemer: %f\n", log(hmm->emissionProbs[0][0]));
+=======
+    printf("Men hvis jeg prøver en værdi der kommer fra en pointet matrix, får jeg problemer: %f\n", hmm->emissionProbs[0][0]);
+>>>>>>> d93223321b0e5d25ad599ae2be62c5e7a6bbd1be
     
     //Nu prøver jeg at putte værdien ind i en pladsholder-varibel:
     double pladsholder = hmm->emissionProbs[0][0];
