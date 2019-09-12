@@ -62,7 +62,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(l = 0; l < T-1; l++){
             for(i = 0; i < hmm->hiddenStates; i++){
                 for(j = 0; j < hmm->hiddenStates; j++){
-                    xiDenominator[l] += alpha[i*T+l]*beta[j*hmm->hiddenStates+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
+                    xiDenominator[l] += alpha[i*T+l]*beta[j*T+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                 }
             }
         }
@@ -78,7 +78,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
                 for(l = 0; l < T-1; l++){
-                    double numerator = alpha[i*T+l]*beta[j*hmm->hiddenStates+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
+                    double numerator = alpha[i*T+l]*beta[j*T+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                     double denominator = xiDenominator[l];
                     xi[i][j][l] = numerator/denominator;
                 }

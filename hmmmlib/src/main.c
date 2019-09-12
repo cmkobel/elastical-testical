@@ -31,7 +31,7 @@ int main() {
      Testing the backward algorithm
      */
     if(testBaumWelch()){
-        printf("all Baum Welch tests succed\n");
+        printf("\nall Baum Welch tests succed\n\n");
     }
     return 0;
 }

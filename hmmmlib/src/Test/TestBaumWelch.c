@@ -35,14 +35,14 @@ bool testBaumWelch() {
     const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
     const int obsLenght = 10;
     
-    printf("BEFORE: \n");
-    printHMM(hmm);
     baumWelch(hmm, observation, obsLenght, 1);
     
     // Checking the trans probs
+    /*
     for(i = 0; i < hmm->hiddenStates*hmm->hiddenStates; i++){
         printf("%f, ", hmm->transitionProbs[i]);
     }
+     */
     assert(hmm->transitionProbs[0] == 0.43921478415604948);
     assert(hmm->transitionProbs[1*hmm->hiddenStates+1] == 0.78554317773503979);
     
