@@ -20,6 +20,7 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     //
     // [from state][to state]
     //
+    //
     newHMM->transitionProbs = calloc(newHMM->hiddenStates, sizeof(double *));
     for(i = 0; i < hiddenStates; i++){
         newHMM->transitionProbs[i] = calloc(newHMM->hiddenStates, sizeof(double));
