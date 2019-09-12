@@ -27,7 +27,6 @@ int* viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **trans_
         // Calculate probability based on data
         probs[j] = start_p[j]*emit_p[j][data[0]];
 
-        
         printf("P_state_%d = %f\n", j, probs[j]);
         
         // Find the state with the highest prob.
@@ -39,7 +38,6 @@ int* viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **trans_
     output[0] = hidden_state;
 
     // Debug
-    // printf("hs is %i with p = %f\n\n", hidden_state, max_);
     printf("0: hs is %i with p = %f\n", hidden_state, max_);
 
 
@@ -47,17 +45,13 @@ int* viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **trans_
     // Second observation onwards.
     for (int i = 1; i < n_data; ++i) {
         
-        // Debug
-        // printf("i = %d\n", i);
-        
         
         // For each state
         for (int j = 0; j < n_states-1; j++) {
             
             // Calculate prob. based on data.
-            probs[j] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
+            probs[j] = trans_p[hidden_state][j] * emit_p[j][data[i]];// * max_;
 
-            //outputTable[j][i] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
         }
 
 

@@ -30,24 +30,22 @@ bool testViterbi(){
     // feed data to the viterbi alg.
     int n_data = 7;
     int data_[7] = {0, 1, 2, 2, 1, 1, 0}; // normal, cold, dizzy, dizzy, cold, cold, normal
+    int expected[7] = {0, 0, 1, 1, 1, 1, 0};
     int* data = data_;
-    
-    
-    
-   
-    
+        
     int* rv = viterbi(hmm, n_obs, n_states, (double*)&start_p_, trans_p, emit_p, n_data, data);
    
-    //printf("WGC %f\n", rv[0][6]);
-    //assert((double)rv[0][6] ==  (double)0.000035);
+    
 
+    
     
 
 
     printf("Viterbi decoding gives the following state sequence:\n");
     for (int i = 0; i < n_data; i++)
     {
-        printf("%i, ", rv[i]);
+        printf("%i (%i)  , ", rv[i], expected[i]);
+        assert(rv[i] == expected[i]);
     }
     printf("\n");
 
