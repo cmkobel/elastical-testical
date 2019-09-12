@@ -5,10 +5,10 @@ empty:=
 space:= $(empty) $(empty)
 spaceplus:= $(empty)\ $(empty)
 
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/3.15.1/CMakeCCompiler.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/3.15.1/CMakeCXXCompiler.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/3.15.1/CMakeSystem.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/3.15.1/CMakeCCompiler.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/3.15.1/CMakeCXXCompiler.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/3.15.1/CMakeSystem.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.1/share/cmake/Modules/CMakeCCompiler.cmake.in))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.1/share/cmake/Modules/CMakeCCompilerABI.c))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.1/share/cmake/Modules/CMakeCInformation.cmake))
@@ -98,5 +98,5 @@ TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.1/share/cmake/Modules/Platform/Darwin.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.1/share/cmake/Modules/Platform/UnixPaths.cmake))
 
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/cmake.check_cache: $(TARGETS)
-	/usr/local/Cellar/cmake/3.15.1/bin/cmake -H/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib -B/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/cmake.check_cache: $(TARGETS)
+	/usr/local/Cellar/cmake/3.15.1/bin/cmake -H/Users/thorjakobsen/GIT/elastical-testical/hmmmlib -B/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build

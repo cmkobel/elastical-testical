@@ -1,4 +1,4 @@
-# Install script for directory: /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib
+# Install script for directory: /Users/thorjakobsen/GIT/elastical-testical/hmmmlib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

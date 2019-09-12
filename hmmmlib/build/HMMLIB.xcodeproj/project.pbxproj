@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		A26B93C06A194CEBB9DA88AB /* ZERO_CHECK */ = {
+		295B9E48DA234DB99F3E708B /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 82178BBDA4334EBDAAFE9CBC /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = E994F29CB0744E359937B93A /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				EE192399456E47B789C9A1F0 /* CMake Rules */,
+				62222FD2E7B04C8D95E8C5F9 /* CMake Rules */,
 			);
 			dependencies = (
 			);
 			name = ZERO_CHECK;
 			productName = ZERO_CHECK;
 		};
-		F4FB5DF8C25D47C6B3D31C01 /* ALL_BUILD */ = {
+		D2ED88B71258408C82CF2578 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = E8405D0C9F1A44E8953CDF2F /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = A69E399C354F49A4A8FF1517 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
-				C7AFE7429273458C8DB725CA /* CMake Rules */,
+				336D9DCB0FB8483F955C3F50 /* CMake Rules */,
 			);
 			dependencies = (
-				EF4771032C8D4D47A29A820C /* PBXTargetDependency */,
-				8B4173C7FA3A49409C9FF816 /* PBXTargetDependency */,
+				2FE1CA2A4B7A43249F83B074 /* PBXTargetDependency */,
+				40638AF3360B4ED986CFC569 /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
@@ -34,331 +34,342 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		057D987F73044428973D74FA /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.c */ = {isa = PBXBuildFile; fileRef = BD9753B4C877406B8E8F41F1 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.c */; };
-		0A6D2917F62E4C078B085FC8 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.h */ = {isa = PBXBuildFile; fileRef = 5615FDCE9C184EA68FE6DC12 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.h */; };
-		13C9572FC6664CCD9DAA29AD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.h */ = {isa = PBXBuildFile; fileRef = E66C28C141D74DA5BE5F7199 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.h */; };
-		1F61DD95D35143A78DBE1617 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.c */ = {isa = PBXBuildFile; fileRef = C486D7FE2FA24F03B7063BDC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.c */; };
-		2E813C293C2043198299EE2F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.h */ = {isa = PBXBuildFile; fileRef = C02A248719FC485DB4805B46 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.h */; };
-		41EF73261B05405B90C54BF3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.c */ = {isa = PBXBuildFile; fileRef = CFB69CFDBFD542FAA2A31464 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.c */; };
-		635A8044101E4961ADC67418 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.c */ = {isa = PBXBuildFile; fileRef = 10EE5628AA164001927B6215 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.c */; };
-		7ED351B165E04CC7914B53DD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.c */ = {isa = PBXBuildFile; fileRef = E97E9D49780343E7ACB64DE8 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.c */; };
-		8DA50E3ED2B9497EA18B32CF /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 45DDE681457746D1B87499DD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt */; };
-		95120D5420F346589FC0DB4F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/main.c */ = {isa = PBXBuildFile; fileRef = BD39ABD77B034D3EA50B1AB5 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/main.c */; };
-		A10F5FB2D5304CF18DC67276 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.h */ = {isa = PBXBuildFile; fileRef = 8138E0B5435945D892156B27 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.h */; };
-		A7F9E5A8BC1742C5839D3A65 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.h */ = {isa = PBXBuildFile; fileRef = 3D636F3AD5774BF0801C7EAE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.h */; };
-		ACF4F61388FE47069B9BD6E8 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.h */ = {isa = PBXBuildFile; fileRef = 8CA761B6FC924E30BFA4DABA /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.h */; };
-		AFC515D7CD524D3A8B10C9CE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.h */ = {isa = PBXBuildFile; fileRef = 89465624319E4A238DEFE916 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.h */; };
-		B054FA90CBE0423C8AB01863 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.c */ = {isa = PBXBuildFile; fileRef = 0420E4EDB7524928A960AEC7 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.c */; };
-		BD72E404DF0E4593B17B0477 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.c */ = {isa = PBXBuildFile; fileRef = 39F9F07A294240E29BC02D78 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.c */; };
-		BE2D7902F220445EAA61E049 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.c */ = {isa = PBXBuildFile; fileRef = 90631D9A79024BCDAF0D3DB2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.c */; };
-		C31D0FF12C0B4B0AABE81ED7 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.c */ = {isa = PBXBuildFile; fileRef = F63E80AD8B4348719D01DBFB /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.c */; };
-		CD0DDDD921304A228461EF20 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.h */ = {isa = PBXBuildFile; fileRef = 8246FB8C62774897B19E1F50 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.h */; };
-		EF79F94FB7EF4372B3F85665 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.h */ = {isa = PBXBuildFile; fileRef = 79E2A4733280472E9E4E262B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.h */; };
-		F5F67E69E7BF4CFF8CD06409 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.h */ = {isa = PBXBuildFile; fileRef = 367C30AD2B5C460A89C74172 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.h */; };
-		F91F14E0E00F4797959113C9 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.c */ = {isa = PBXBuildFile; fileRef = AC5DA6FFC73F435987B428A3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.c */; };
+		038326334BBC4B0CBFDB7DCE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.c */ = {isa = PBXBuildFile; fileRef = 029B4DCB818C4327A098C56C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.c */; };
+		0446B5C8A2FF4832B59E935B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.h */ = {isa = PBXBuildFile; fileRef = 0DF2185DE85D491CA7450C80 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.h */; };
+		0C1A69AE6EB8496C86EDE8EF /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/main.c */ = {isa = PBXBuildFile; fileRef = 70E632A2BF9C47E9AD640069 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/main.c */; };
+		2042E8684E1D4D2796516AAD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.h */ = {isa = PBXBuildFile; fileRef = 8FEE98FC8284442B8BE4F4BC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.h */; };
+		25C04D53AEA6445981E7EE22 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.c */ = {isa = PBXBuildFile; fileRef = C7CD4827E67340FD9675C19F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.c */; };
+		33A6D9A1B7CD496190D56AD2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.c */ = {isa = PBXBuildFile; fileRef = 7C58BD9230C445D38DF35A11 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.c */; };
+		3B9E64341DB34494A8DA4DB2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.c */ = {isa = PBXBuildFile; fileRef = 258A640147C444BD8EA0854E /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.c */; };
+		401CCAF90DE347DFB913F120 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.c */ = {isa = PBXBuildFile; fileRef = 33368AAD905D4BD798968678 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.c */; };
+		53B5E91F50B24F068DF6B758 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.c */ = {isa = PBXBuildFile; fileRef = D4EA39088106474DA5626544 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.c */; };
+		56B9F41434EB46D7B38B216D /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.h */ = {isa = PBXBuildFile; fileRef = 3B78BE96EE884988A3FBEF13 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.h */; };
+		59D99BAD237549928B34C94D /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.h */ = {isa = PBXBuildFile; fileRef = A0F0545B96504A8292665B1C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.h */; };
+		6D54024AF9A54EBFB125746A /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.h */ = {isa = PBXBuildFile; fileRef = F049DA64CA494F9195B04925 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.h */; };
+		7E4506AB9D7C4BBD9971DCB3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.h */ = {isa = PBXBuildFile; fileRef = A4B7D8D991BC44A3A73F119B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.h */; };
+		85D8CF7D7E4A40F2B964B926 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.h */ = {isa = PBXBuildFile; fileRef = 8AA1A8821DF645C5B233F9E6 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.h */; };
+		91C2B3584DD741739E937BA2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.c */ = {isa = PBXBuildFile; fileRef = 4E5EB42CBB4D49528E55F768 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.c */; };
+		9B01278564D74BCA9C411E58 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.c */ = {isa = PBXBuildFile; fileRef = 314D4954E7CA4BBF95202D5F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.c */; };
+		9CE266A6527B4511BF9E37EC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.c */ = {isa = PBXBuildFile; fileRef = 92059B2B0F9C4BD3BDFB024D /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.c */; };
+		AD336206F98F4BC7AB22BB4F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = A6806B4EFB864C5BBEB369FE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt */; };
+		B583640AA5A34A55839E888E /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.c */ = {isa = PBXBuildFile; fileRef = 14D254C792384C079C384869 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.c */; };
+		C0B225A03FAE4F5EA7E854FB /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.h */ = {isa = PBXBuildFile; fileRef = 9550CE3076364FA1919D42C3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.h */; };
+		E237A876759340C4AAC0B1CA /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.h */ = {isa = PBXBuildFile; fileRef = EB80A63DF3F0485290051D54 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.h */; };
+		F8C149A419FD4C619610C29C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.h */ = {isa = PBXBuildFile; fileRef = 1B56BA5FA15946A8B2AA8518 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
-		45B366CEBACD4ED2B9596815 /* Debug */ = {
+		1B380BC5822E4B0BB9B99FA6 /* Debug */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Debug;
 		};
-		81C1E369EBEA4EC4B1CD1559 /* Release */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = Release;
-		};
-		9624DF1A810C4735B86CBBCD /* RelWithDebInfo */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = RelWithDebInfo;
-		};
-		FAFC9A90FEA6448D9971853E /* MinSizeRel */ = {
+		555B6EF492C54110B009F940 /* MinSizeRel */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = MinSizeRel;
 		};
+		B08D10EBDBE541DF8CE9160F /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+		F5C44C62BD984A0DB1E5223B /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		6DD10FA510584116901723A9 /* PBXContainerItemProxy */ = {
+		0E348D13789C4C6889A643E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E1E8C6D6C3E64EBBB9514D25 /* Project object */;
+			containerPortal = 520A6A8034974D289B433D54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A26B93C06A194CEBB9DA88AB;
+			remoteGlobalIDString = 295B9E48DA234DB99F3E708B;
 			remoteInfo = ZERO_CHECK;
 		};
-		8E23B229B73D448AB9E9FFD5 /* PBXContainerItemProxy */ = {
+		8D7F166C22AF4F028BD612A0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E1E8C6D6C3E64EBBB9514D25 /* Project object */;
+			containerPortal = 520A6A8034974D289B433D54 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A26B93C06A194CEBB9DA88AB;
-			remoteInfo = ZERO_CHECK;
-		};
-		A086015DAF914C0885BE913F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E1E8C6D6C3E64EBBB9514D25 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EFDD76C925B4D428213AF32;
+			remoteGlobalIDString = C24A1FA3CD1345E9BE35563A;
 			remoteInfo = HMMLIB;
+		};
+		9771B2D0EF764DE4A122974E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 520A6A8034974D289B433D54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 295B9E48DA234DB99F3E708B;
+			remoteInfo = ZERO_CHECK;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0420E4EDB7524928A960AEC7 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = TestViterbi.c; path = src/Test/TestViterbi.c; sourceTree = SOURCE_ROOT; };
-		10EE5628AA164001927B6215 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = TestsForwardAlgorithm.c; path = src/Test/TestsForwardAlgorithm.c; sourceTree = SOURCE_ROOT; };
-		1FFF615F55A3481197C91407 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		367C30AD2B5C460A89C74172 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = testBackwardAlgorithm.h; path = src/Test/testBackwardAlgorithm.h; sourceTree = SOURCE_ROOT; };
-		39F9F07A294240E29BC02D78 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = posteriorDecoding.c; path = src/Decoding/posteriorDecoding.c; sourceTree = SOURCE_ROOT; };
-		3D636F3AD5774BF0801C7EAE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = viterbi.h; path = src/Decoding/viterbi.h; sourceTree = SOURCE_ROOT; };
-		45DDE681457746D1B87499DD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		5615FDCE9C184EA68FE6DC12 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TestViterbi.h; path = src/Test/TestViterbi.h; sourceTree = SOURCE_ROOT; };
-		79E2A4733280472E9E4E262B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = baumWelch.h; path = src/Training/baumWelch.h; sourceTree = SOURCE_ROOT; };
-		7AD79EDCBCDA458A8FD3074A /* HMMLIB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = HMMLIB; sourceTree = BUILT_PRODUCTS_DIR; };
-		8138E0B5435945D892156B27 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = forward.h; path = src/Evaluation/forward.h; sourceTree = SOURCE_ROOT; };
-		8246FB8C62774897B19E1F50 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TestsForwardAlgorithm.h; path = src/Test/TestsForwardAlgorithm.h; sourceTree = SOURCE_ROOT; };
-		89465624319E4A238DEFE916 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = backward.h; path = src/Evaluation/backward.h; sourceTree = SOURCE_ROOT; };
-		8CA761B6FC924E30BFA4DABA /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TestBaumWelch.h; path = src/Test/TestBaumWelch.h; sourceTree = SOURCE_ROOT; };
-		90631D9A79024BCDAF0D3DB2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = TestBaumWelch.c; path = src/Test/TestBaumWelch.c; sourceTree = SOURCE_ROOT; };
-		AC5DA6FFC73F435987B428A3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = testBackwardAlgorithm.c; path = src/Test/testBackwardAlgorithm.c; sourceTree = SOURCE_ROOT; };
-		BD39ABD77B034D3EA50B1AB5 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/main.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = main.c; path = src/main.c; sourceTree = SOURCE_ROOT; };
-		BD9753B4C877406B8E8F41F1 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = viterbi.c; path = src/Decoding/viterbi.c; sourceTree = SOURCE_ROOT; };
-		C02A248719FC485DB4805B46 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = posteriorDecoding.h; path = src/Decoding/posteriorDecoding.h; sourceTree = SOURCE_ROOT; };
-		C486D7FE2FA24F03B7063BDC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = hmm.c; path = src/HMM/hmm.c; sourceTree = SOURCE_ROOT; };
-		CFB69CFDBFD542FAA2A31464 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = backward.c; path = src/Evaluation/backward.c; sourceTree = SOURCE_ROOT; };
-		E66C28C141D74DA5BE5F7199 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = hmm.h; path = src/HMM/hmm.h; sourceTree = SOURCE_ROOT; };
-		E97E9D49780343E7ACB64DE8 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = forward.c; path = src/Evaluation/forward.c; sourceTree = SOURCE_ROOT; };
-		F63E80AD8B4348719D01DBFB /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = baumWelch.c; path = src/Training/baumWelch.c; sourceTree = SOURCE_ROOT; };
+		029B4DCB818C4327A098C56C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = backward.c; path = src/Evaluation/backward.c; sourceTree = SOURCE_ROOT; };
+		0DF2185DE85D491CA7450C80 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = forward.h; path = src/Evaluation/forward.h; sourceTree = SOURCE_ROOT; };
+		14D254C792384C079C384869 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = forward.c; path = src/Evaluation/forward.c; sourceTree = SOURCE_ROOT; };
+		177567AFC98844D980410243 /* HMMLIB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = HMMLIB; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B56BA5FA15946A8B2AA8518 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = posteriorDecoding.h; path = src/Decoding/posteriorDecoding.h; sourceTree = SOURCE_ROOT; };
+		258A640147C444BD8EA0854E /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = baumWelch.c; path = src/Training/baumWelch.c; sourceTree = SOURCE_ROOT; };
+		314D4954E7CA4BBF95202D5F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = posteriorDecoding.c; path = src/Decoding/posteriorDecoding.c; sourceTree = SOURCE_ROOT; };
+		33368AAD905D4BD798968678 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = testBackwardAlgorithm.c; path = src/Test/testBackwardAlgorithm.c; sourceTree = SOURCE_ROOT; };
+		3B78BE96EE884988A3FBEF13 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TestBaumWelch.h; path = src/Test/TestBaumWelch.h; sourceTree = SOURCE_ROOT; };
+		4E5EB42CBB4D49528E55F768 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = TestBaumWelch.c; path = src/Test/TestBaumWelch.c; sourceTree = SOURCE_ROOT; };
+		70E632A2BF9C47E9AD640069 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/main.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = main.c; path = src/main.c; sourceTree = SOURCE_ROOT; };
+		7C58BD9230C445D38DF35A11 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = hmm.c; path = src/HMM/hmm.c; sourceTree = SOURCE_ROOT; };
+		8AA1A8821DF645C5B233F9E6 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TestsForwardAlgorithm.h; path = src/Test/TestsForwardAlgorithm.h; sourceTree = SOURCE_ROOT; };
+		8FEE98FC8284442B8BE4F4BC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = baumWelch.h; path = src/Training/baumWelch.h; sourceTree = SOURCE_ROOT; };
+		92059B2B0F9C4BD3BDFB024D /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = TestsForwardAlgorithm.c; path = src/Test/TestsForwardAlgorithm.c; sourceTree = SOURCE_ROOT; };
+		9550CE3076364FA1919D42C3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = viterbi.h; path = src/Decoding/viterbi.h; sourceTree = SOURCE_ROOT; };
+		A0F0545B96504A8292665B1C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = hmm.h; path = src/HMM/hmm.h; sourceTree = SOURCE_ROOT; };
+		A4B7D8D991BC44A3A73F119B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = backward.h; path = src/Evaluation/backward.h; sourceTree = SOURCE_ROOT; };
+		A6806B4EFB864C5BBEB369FE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		B11F8CDA4D2B4D12975A6242 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		C7CD4827E67340FD9675C19F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = TestViterbi.c; path = src/Test/TestViterbi.c; sourceTree = SOURCE_ROOT; };
+		D4EA39088106474DA5626544 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = viterbi.c; path = src/Decoding/viterbi.c; sourceTree = SOURCE_ROOT; };
+		EB80A63DF3F0485290051D54 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = TestViterbi.h; path = src/Test/TestViterbi.h; sourceTree = SOURCE_ROOT; };
+		F049DA64CA494F9195B04925 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = testBackwardAlgorithm.h; path = src/Test/testBackwardAlgorithm.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		19AC9E3CDB804079BF697F30 /* Header Files */ = {
+		3864D4AA66E14CD4927579A2 /* HMMLIB */ = {
 			isa = PBXGroup;
 			children = (
-				6D2A32A14FB145EF9E7A2A1B /* src */,
+				8ED2E813987A4CE08EB88FB0 /* src */,
+				8AAC79A2B8A54A59A87C1354 /* Header Files */,
+				A6806B4EFB864C5BBEB369FE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt */,
 			);
-			name = "Header Files";
+			name = HMMLIB;
 			sourceTree = "<group>";
 		};
-		2607F98341A449DC94FB625D /* CMake Rules */ = {
+		444398938BFD4F68A96E9370 /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		365DDC3D794F40A4B000CC44 /* src */ = {
+		4EAC5961E0D549B3B6BB6610 /* Decoding */ = {
 			isa = PBXGroup;
 			children = (
-				3995E58ECE1E4CA196C2B199 /* Decoding */,
-				5FEC5E4E9BAB43A8A2ED466C /* Evaluation */,
-				8A48703FEAF945CCB4318AC6 /* HMM */,
-				FCAEB6B900EC4E3F9E7CC797 /* Test */,
-				6E99A1EECCC147898D31AEC6 /* Training */,
-				BD39ABD77B034D3EA50B1AB5 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/main.c */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
-		3995E58ECE1E4CA196C2B199 /* Decoding */ = {
-			isa = PBXGroup;
-			children = (
-				39F9F07A294240E29BC02D78 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.c */,
-				BD9753B4C877406B8E8F41F1 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.c */,
+				314D4954E7CA4BBF95202D5F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.c */,
+				D4EA39088106474DA5626544 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.c */,
 			);
 			name = Decoding;
 			sourceTree = "<group>";
 		};
-		3A23D262DF0A42AC84C3BADC /* HMMLIB */ = {
+		5BD592A4A05F473EA89AB97D /* Decoding */ = {
 			isa = PBXGroup;
 			children = (
-				365DDC3D794F40A4B000CC44 /* src */,
-				19AC9E3CDB804079BF697F30 /* Header Files */,
-				45DDE681457746D1B87499DD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt */,
+				1B56BA5FA15946A8B2AA8518 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.h */,
+				9550CE3076364FA1919D42C3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.h */,
 			);
-			name = HMMLIB;
+			name = Decoding;
 			sourceTree = "<group>";
 		};
-		5B879FDDF06442959F1B5A30 /* HMM */ = {
+		67280A9CC42840B18C37974B /* Evaluation */ = {
 			isa = PBXGroup;
 			children = (
-				E66C28C141D74DA5BE5F7199 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.h */,
-			);
-			name = HMM;
-			sourceTree = "<group>";
-		};
-		5FEC5E4E9BAB43A8A2ED466C /* Evaluation */ = {
-			isa = PBXGroup;
-			children = (
-				CFB69CFDBFD542FAA2A31464 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.c */,
-				E97E9D49780343E7ACB64DE8 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.c */,
+				A4B7D8D991BC44A3A73F119B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.h */,
+				0DF2185DE85D491CA7450C80 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.h */,
 			);
 			name = Evaluation;
 			sourceTree = "<group>";
 		};
-		694BAAA36609422E922C6EDE = {
+		731A9684BEB845D68E68C566 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				3A23D262DF0A42AC84C3BADC /* HMMLIB */,
-				767C26280019424B90638586 /* ALL_BUILD */,
-				EC842B1062D5401A93250B66 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		6D2A32A14FB145EF9E7A2A1B /* src */ = {
-			isa = PBXGroup;
-			children = (
-				A972AE4471454263AAB03906 /* Decoding */,
-				C1D11EE634EA46D8A4DA622A /* Evaluation */,
-				5B879FDDF06442959F1B5A30 /* HMM */,
-				BA242AFB835842889AB4F204 /* Test */,
-				81BE7A3D5BA34E5182DA354C /* Training */,
+				5BD592A4A05F473EA89AB97D /* Decoding */,
+				67280A9CC42840B18C37974B /* Evaluation */,
+				D5B6B97823C7429791C6B436 /* HMM */,
+				822969649488452781DB9B69 /* Test */,
+				E3C698958C1E417E8721CECC /* Training */,
 			);
 			name = src;
 			sourceTree = "<group>";
 		};
-		6E99A1EECCC147898D31AEC6 /* Training */ = {
+		78E56714BA144F539589FE1E /* ALL_BUILD */ = {
 			isa = PBXGroup;
 			children = (
-				F63E80AD8B4348719D01DBFB /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.c */,
-			);
-			name = Training;
-			sourceTree = "<group>";
-		};
-		767C26280019424B90638586 /* ALL_BUILD */ = {
-			isa = PBXGroup;
-			children = (
-				2607F98341A449DC94FB625D /* CMake Rules */,
-				1FFF615F55A3481197C91407 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/CMakeLists.txt */,
+				444398938BFD4F68A96E9370 /* CMake Rules */,
+				B11F8CDA4D2B4D12975A6242 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/CMakeLists.txt */,
 			);
 			name = ALL_BUILD;
 			sourceTree = "<group>";
 		};
-		81BE7A3D5BA34E5182DA354C /* Training */ = {
+		7ED102A77AE946C48CA31B43 /* HMM */ = {
 			isa = PBXGroup;
 			children = (
-				79E2A4733280472E9E4E262B /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.h */,
-			);
-			name = Training;
-			sourceTree = "<group>";
-		};
-		8A48703FEAF945CCB4318AC6 /* HMM */ = {
-			isa = PBXGroup;
-			children = (
-				C486D7FE2FA24F03B7063BDC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.c */,
+				7C58BD9230C445D38DF35A11 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.c */,
 			);
 			name = HMM;
 			sourceTree = "<group>";
 		};
-		A972AE4471454263AAB03906 /* Decoding */ = {
+		822969649488452781DB9B69 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				C02A248719FC485DB4805B46 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.h */,
-				3D636F3AD5774BF0801C7EAE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.h */,
-			);
-			name = Decoding;
-			sourceTree = "<group>";
-		};
-		BA242AFB835842889AB4F204 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				8CA761B6FC924E30BFA4DABA /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.h */,
-				5615FDCE9C184EA68FE6DC12 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.h */,
-				8246FB8C62774897B19E1F50 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.h */,
-				367C30AD2B5C460A89C74172 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.h */,
+				3B78BE96EE884988A3FBEF13 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.h */,
+				EB80A63DF3F0485290051D54 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.h */,
+				8AA1A8821DF645C5B233F9E6 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.h */,
+				F049DA64CA494F9195B04925 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.h */,
 			);
 			name = Test;
 			sourceTree = "<group>";
 		};
-		C1D11EE634EA46D8A4DA622A /* Evaluation */ = {
+		8445770ADEF5484C9387527E /* Training */ = {
 			isa = PBXGroup;
 			children = (
-				89465624319E4A238DEFE916 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.h */,
-				8138E0B5435945D892156B27 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.h */,
+				258A640147C444BD8EA0854E /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.c */,
+			);
+			name = Training;
+			sourceTree = "<group>";
+		};
+		8AAC79A2B8A54A59A87C1354 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				731A9684BEB845D68E68C566 /* src */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		8ED2E813987A4CE08EB88FB0 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				4EAC5961E0D549B3B6BB6610 /* Decoding */,
+				BB4B85AE273940ABA16BFB9C /* Evaluation */,
+				7ED102A77AE946C48CA31B43 /* HMM */,
+				A52E4FFCB61549F3A060A2F1 /* Test */,
+				8445770ADEF5484C9387527E /* Training */,
+				70E632A2BF9C47E9AD640069 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/main.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		A52E4FFCB61549F3A060A2F1 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				4E5EB42CBB4D49528E55F768 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.c */,
+				C7CD4827E67340FD9675C19F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.c */,
+				92059B2B0F9C4BD3BDFB024D /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.c */,
+				33368AAD905D4BD798968678 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.c */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
+		BB4B85AE273940ABA16BFB9C /* Evaluation */ = {
+			isa = PBXGroup;
+			children = (
+				029B4DCB818C4327A098C56C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.c */,
+				14D254C792384C079C384869 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.c */,
 			);
 			name = Evaluation;
 			sourceTree = "<group>";
 		};
-		EC842B1062D5401A93250B66 /* Products */ = {
+		D3BC25C41C93443DA8A4624C = {
 			isa = PBXGroup;
 			children = (
-				7AD79EDCBCDA458A8FD3074A /* HMMLIB */,
+				3864D4AA66E14CD4927579A2 /* HMMLIB */,
+				78E56714BA144F539589FE1E /* ALL_BUILD */,
+				FF1AA422324D4ECC8AF2B3D0 /* Products */,
 			);
-			name = Products;
 			sourceTree = "<group>";
 		};
-		FCAEB6B900EC4E3F9E7CC797 /* Test */ = {
+		D5B6B97823C7429791C6B436 /* HMM */ = {
 			isa = PBXGroup;
 			children = (
-				90631D9A79024BCDAF0D3DB2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.c */,
-				0420E4EDB7524928A960AEC7 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.c */,
-				10EE5628AA164001927B6215 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.c */,
-				AC5DA6FFC73F435987B428A3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.c */,
+				A0F0545B96504A8292665B1C /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.h */,
 			);
-			name = Test;
+			name = HMM;
+			sourceTree = "<group>";
+		};
+		E3C698958C1E417E8721CECC /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				8FEE98FC8284442B8BE4F4BC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.h */,
+			);
+			name = Training;
+			sourceTree = "<group>";
+		};
+		FF1AA422324D4ECC8AF2B3D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				177567AFC98844D980410243 /* HMMLIB */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2EFDD76C925B4D428213AF32 /* HMMLIB */ = {
+		C24A1FA3CD1345E9BE35563A /* HMMLIB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9BD53FDEFE6B425ABAA41757 /* Build configuration list for PBXNativeTarget "HMMLIB" */;
+			buildConfigurationList = 02F1268DA22E450C80B7D8CB /* Build configuration list for PBXNativeTarget "HMMLIB" */;
 			buildPhases = (
-				E10355F2F6EE4F378679F788 /* Sources */,
+				C73A24453D1C448CBA12C9C4 /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D83F92D695F948F0BB917CE6 /* PBXTargetDependency */,
+				20BC6CAD6E554CC0A5B97366 /* PBXTargetDependency */,
 			);
 			name = HMMLIB;
 			productName = HMMLIB;
-			productReference = 7AD79EDCBCDA458A8FD3074A /* HMMLIB */;
+			productReference = 177567AFC98844D980410243 /* HMMLIB */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E1E8C6D6C3E64EBBB9514D25 /* Project object */ = {
+		520A6A8034974D289B433D54 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1030;
 			};
-			buildConfigurationList = 5BA62ACCB515481DA79C3BF8 /* Build configuration list for PBXProject "HMMLIB" */;
+			buildConfigurationList = 15271B41EA714CC28DF18418 /* Build configuration list for PBXProject "HMMLIB" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				45B366CEBACD4ED2B9596815 /* Debug */,
-				81C1E369EBEA4EC4B1CD1559 /* Release */,
-				FAFC9A90FEA6448D9971853E /* MinSizeRel */,
-				9624DF1A810C4735B86CBBCD /* RelWithDebInfo */,
+				1B380BC5822E4B0BB9B99FA6 /* Debug */,
+				F5C44C62BD984A0DB1E5223B /* Release */,
+				555B6EF492C54110B009F940 /* MinSizeRel */,
+				B08D10EBDBE541DF8CE9160F /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = 694BAAA36609422E922C6EDE;
+			mainGroup = D3BC25C41C93443DA8A4624C;
 			projectDirPath = ../;
 			projectRoot = "";
 			targets = (
-				F4FB5DF8C25D47C6B3D31C01 /* ALL_BUILD */,
-				2EFDD76C925B4D428213AF32 /* HMMLIB */,
-				A26B93C06A194CEBB9DA88AB /* ZERO_CHECK */,
+				D2ED88B71258408C82CF2578 /* ALL_BUILD */,
+				C24A1FA3CD1345E9BE35563A /* HMMLIB */,
+				295B9E48DA234DB99F3E708B /* ZERO_CHECK */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		39BA3C8FD1034FF0A053C2E7 = {
+		336D9DCB0FB8483F955C3F50 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		5C091309A20549C9A9CC5801 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,7 +384,18 @@
 exit 0";
 			showEnvVarsInLog = 0;
 		};
-		9792DA76DDAA441F914FAA72 = {
+		62222FD2E7B04C8D95E8C5F9 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		65486C58A1E24B1189FE20CD = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,73 +408,69 @@ exit 0";
 			shellPath = /bin/sh;
 			shellScript = "# shell script goes here
 exit 0";
-			showEnvVarsInLog = 0;
-		};
-		C7AFE7429273458C8DB725CA /* CMake Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
-			showEnvVarsInLog = 0;
-		};
-		EE192399456E47B789C9A1F0 /* CMake Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E10355F2F6EE4F378679F788 /* Sources */ = {
+		C73A24453D1C448CBA12C9C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD72E404DF0E4593B17B0477 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/posteriorDecoding.c */,
-				057D987F73044428973D74FA /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding/viterbi.c */,
-				41EF73261B05405B90C54BF3 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/backward.c */,
-				7ED351B165E04CC7914B53DD /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation/forward.c */,
-				1F61DD95D35143A78DBE1617 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM/hmm.c */,
-				BE2D7902F220445EAA61E049 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestBaumWelch.c */,
-				B054FA90CBE0423C8AB01863 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestViterbi.c */,
-				635A8044101E4961ADC67418 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/TestsForwardAlgorithm.c */,
-				F91F14E0E00F4797959113C9 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test/testBackwardAlgorithm.c */,
-				C31D0FF12C0B4B0AABE81ED7 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training/baumWelch.c */,
-				95120D5420F346589FC0DB4F /* /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/main.c */,
+				9B01278564D74BCA9C411E58 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/posteriorDecoding.c */,
+				53B5E91F50B24F068DF6B758 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding/viterbi.c */,
+				038326334BBC4B0CBFDB7DCE /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/backward.c */,
+				B583640AA5A34A55839E888E /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation/forward.c */,
+				33A6D9A1B7CD496190D56AD2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM/hmm.c */,
+				91C2B3584DD741739E937BA2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestBaumWelch.c */,
+				25C04D53AEA6445981E7EE22 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestViterbi.c */,
+				9CE266A6527B4511BF9E37EC /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/TestsForwardAlgorithm.c */,
+				401CCAF90DE347DFB913F120 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test/testBackwardAlgorithm.c */,
+				3B9E64341DB34494A8DA4DB2 /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training/baumWelch.c */,
+				0C1A69AE6EB8496C86EDE8EF /* /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/main.c */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		8B4173C7FA3A49409C9FF816 /* PBXTargetDependency */ = {
+		20BC6CAD6E554CC0A5B97366 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2EFDD76C925B4D428213AF32 /* HMMLIB */;
-			targetProxy = A086015DAF914C0885BE913F /* PBXContainerItemProxy */;
+			target = 295B9E48DA234DB99F3E708B /* ZERO_CHECK */;
+			targetProxy = 0E348D13789C4C6889A643E3 /* PBXContainerItemProxy */;
 		};
-		D83F92D695F948F0BB917CE6 /* PBXTargetDependency */ = {
+		2FE1CA2A4B7A43249F83B074 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A26B93C06A194CEBB9DA88AB /* ZERO_CHECK */;
-			targetProxy = 8E23B229B73D448AB9E9FFD5 /* PBXContainerItemProxy */;
+			target = 295B9E48DA234DB99F3E708B /* ZERO_CHECK */;
+			targetProxy = 9771B2D0EF764DE4A122974E /* PBXContainerItemProxy */;
 		};
-		EF4771032C8D4D47A29A820C /* PBXTargetDependency */ = {
+		40638AF3360B4ED986CFC569 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A26B93C06A194CEBB9DA88AB /* ZERO_CHECK */;
-			targetProxy = 6DD10FA510584116901723A9 /* PBXContainerItemProxy */;
+			target = C24A1FA3CD1345E9BE35563A /* HMMLIB */;
+			targetProxy = 8D7F166C22AF4F028BD612A0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0BCEBB790F1141FB88F0B591 /* Debug */ = {
+		440718934652492999A1EE83 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/build";
+			};
+			name = MinSizeRel;
+		};
+		49B82DA53095450D9CE41037 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/build";
+			};
+			name = RelWithDebInfo;
+		};
+		5826D62722F749FEB2645581 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -463,7 +481,7 @@ exit 0";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training");
+				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training");
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "    ";
@@ -471,107 +489,33 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = HMMLIB;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = Debug;
 		};
-		0E27208CCD7F4139B10CEF2A /* RelWithDebInfo */ = {
+		7B88B55E3DD34822A81A0307 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				EXECUTABLE_PREFIX = "";
-				EXECUTABLE_SUFFIX = "";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training");
 				INSTALL_PATH = "";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = "       -DNDEBUG  ";
-				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  ";
+				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = HMMLIB;
+				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = RelWithDebInfo;
 		};
-		3C9BFF68A6554B5AB618D60E /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		4FDF6C961C094CEBA7A24D60 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/build";
-			};
-			name = MinSizeRel;
-		};
-		6019A5B595784B8793B6C62B /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		68A8D80A6B4D49789ACCF57C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		6D931324F4424D4E8941DFED /* Release */ = {
+		91099386A55846F29F76AC3C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -582,7 +526,7 @@ exit 0";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training");
+				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training");
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "    -DNDEBUG  ";
@@ -590,22 +534,22 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = HMMLIB;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = Release;
 		};
-		770F5B4622BD402EB2499E10 /* Release */ = {
+		974F3DD6A1F64171AD64FF75 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/build";
 			};
 			name = Release;
 		};
-		8731F26449BC4A1F96ECA344 /* MinSizeRel */ = {
+		9F1C7F4C694A42BDBFF9AD87 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -616,7 +560,7 @@ exit 0";
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/src/Training");
+				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training");
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "    -DNDEBUG  ";
@@ -624,13 +568,22 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = HMMLIB;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = MinSizeRel;
 		};
-		894FC96FFBAB4179A73F9417 /* Release */ = {
+		9FC3AAF212174E9C9BD90B8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/build";
+			};
+			name = Debug;
+		};
+		A6371A2BA88F48F48DDA6C35 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -644,13 +597,13 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = Release;
 		};
-		AA4AB305DA8544DEBDCC54F4 /* Release */ = {
+		B85F93272FE34F16A50EF091 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -664,13 +617,58 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		CCDAF20BEE7B4B39841118D2 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = ("/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Decoding","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Evaluation","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/HMM","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Test","/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/src/Training");
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "       -DNDEBUG  ";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = HMMLIB;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D6F7FF7E616641AB8E73B163 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = Release;
 		};
-		B576DB7848304E1480D6EE0C /* RelWithDebInfo */ = {
+		E3AD282018A84DCEB9042771 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -684,51 +682,33 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		C696050C3A94499695535189 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/build";
-			};
-			name = Debug;
-		};
-		C949B193F796415A971DFF79 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk;
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/build";
-			};
-			name = RelWithDebInfo;
-		};
-		ED4848E180B8433897765A08 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = Debug;
 		};
-		F831735D4D6F4B5FA93AD9A9 /* MinSizeRel */ = {
+		F6EAD6B0391B4E6B9C91C36D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		FC995BDD8B814835AFA00E38 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -742,7 +722,27 @@ exit 0";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = ALL_BUILD;
 				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		FFD95F3B942342DDA0330BF6 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
@@ -751,51 +751,51 @@ exit 0";
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5BA62ACCB515481DA79C3BF8 /* Build configuration list for PBXProject "HMMLIB" */ = {
+		02F1268DA22E450C80B7D8CB /* Build configuration list for PBXNativeTarget "HMMLIB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C696050C3A94499695535189 /* Debug */,
-				770F5B4622BD402EB2499E10 /* Release */,
-				4FDF6C961C094CEBA7A24D60 /* MinSizeRel */,
-				C949B193F796415A971DFF79 /* RelWithDebInfo */,
+				5826D62722F749FEB2645581 /* Debug */,
+				91099386A55846F29F76AC3C /* Release */,
+				9F1C7F4C694A42BDBFF9AD87 /* MinSizeRel */,
+				CCDAF20BEE7B4B39841118D2 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		82178BBDA4334EBDAAFE9CBC /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		15271B41EA714CC28DF18418 /* Build configuration list for PBXProject "HMMLIB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				68A8D80A6B4D49789ACCF57C /* Debug */,
-				894FC96FFBAB4179A73F9417 /* Release */,
-				6019A5B595784B8793B6C62B /* MinSizeRel */,
-				3C9BFF68A6554B5AB618D60E /* RelWithDebInfo */,
+				9FC3AAF212174E9C9BD90B8B /* Debug */,
+				974F3DD6A1F64171AD64FF75 /* Release */,
+				440718934652492999A1EE83 /* MinSizeRel */,
+				49B82DA53095450D9CE41037 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		9BD53FDEFE6B425ABAA41757 /* Build configuration list for PBXNativeTarget "HMMLIB" */ = {
+		A69E399C354F49A4A8FF1517 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0BCEBB790F1141FB88F0B591 /* Debug */,
-				6D931324F4424D4E8941DFED /* Release */,
-				8731F26449BC4A1F96ECA344 /* MinSizeRel */,
-				0E27208CCD7F4139B10CEF2A /* RelWithDebInfo */,
+				E3AD282018A84DCEB9042771 /* Debug */,
+				D6F7FF7E616641AB8E73B163 /* Release */,
+				B85F93272FE34F16A50EF091 /* MinSizeRel */,
+				FC995BDD8B814835AFA00E38 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		E8405D0C9F1A44E8953CDF2F /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		E994F29CB0744E359937B93A /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ED4848E180B8433897765A08 /* Debug */,
-				AA4AB305DA8544DEBDCC54F4 /* Release */,
-				F831735D4D6F4B5FA93AD9A9 /* MinSizeRel */,
-				B576DB7848304E1480D6EE0C /* RelWithDebInfo */,
+				F6EAD6B0391B4E6B9C91C36D /* Debug */,
+				A6371A2BA88F48F48DDA6C35 /* Release */,
+				FFD95F3B942342DDA0330BF6 /* MinSizeRel */,
+				7B88B55E3DD34822A81A0307 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E1E8C6D6C3E64EBBB9514D25 /* Project object */;
+	rootObject = 520A6A8034974D289B433D54 /* Project object */;
 }

@@ -2,9 +2,9 @@
 # Custom rules for ZERO_CHECK
 .SUFFIXES: 
 all: \
-	/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/ZERO_CHECK
+	/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/ZERO_CHECK
 
 
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/ZERO_CHECK: 
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/ZERO_CHECK: 
 	echo ""
-	make -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeScripts/ReRunCMake.make
+	make -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeScripts/ReRunCMake.make
