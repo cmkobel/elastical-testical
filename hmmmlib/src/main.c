@@ -17,29 +17,20 @@ int main() {
      Testing the forward algorithm
      */
     if(testForwardAlgorithm()){
-        printf("all Forward Algorithm tests succeded\n");
+        printf("\nall Forward Algorithm tests succed\n");
     }
    
     /*
      Testing the backward algorithm
     */
     if(testBackwardAlgorithm()){
-        printf("all Backward Algorithm tests succeded\n");
+        printf("\nall Backward Algorithm tests succed\n");
     }
     /*
      Testing the backward algorithm
      */
     if(testBaumWelch()){
-        printf("all Baum Welch tests succeded\n");
+        printf("\nall Baum Welch tests succed\n\n");
     }
-
-    /*
-     Testing the Viterbi algorithm
-    */
-     
-    if(testViterbi()){
-        printf("all Viterbi tests succeeded\n");
-    }
-    
     return 0;
 }
