@@ -55,9 +55,9 @@ bool testViterbi() {
         hmm->initProbs[i] = initProbs[i];
     }
 
-    int obsTest1[4] = {0, 1, 2, 3}; // A C G T
+    int obsTest1[8] = {0, 1, 2, 3, 3, 2, 1, 0}; // A C G T T G C A
     int * obs = obsTest1;
-    int nData = 4;
+    int nData = 8;
     int * viterbiResult = viterbi(hmm, obs, nData); 
     assert(viterbiResult[0] == 32837);
 
