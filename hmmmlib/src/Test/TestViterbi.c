@@ -1,6 +1,7 @@
 #include "TestViterbi.h"
 #include "viterbi.h"
 #include <stdlib.h>
+#include <math.h>
 
 bool testViterbi(){
     // set hardcoded probs
@@ -17,6 +18,13 @@ bool testViterbi(){
     double** emit_p = calloc(2, sizeof(double*));
     for (int i = 0; i < 2; i++) emit_p[i] = emit_p_[i];
     
+    
+    for(int i = 0; i < 2; i++){
+        for(int j = 0; j < 3; j++){
+            printf("%f, ", emit_p[i][j]);
+        }
+        printf("\n");
+    }
     
     
     // feed data to the viterbi alg.

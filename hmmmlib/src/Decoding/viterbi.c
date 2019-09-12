@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "viterbi.h"
+#include <math.h>
 
 void viterbi(int n_states, int n_obs, double *start_p, double **trans_p, double **emit_p, int n_data, int *data, int* output) {
 

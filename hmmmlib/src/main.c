@@ -10,6 +10,7 @@
 #include "TestsForwardAlgorithm.h"
 #include "testBackwardAlgorithm.h"
 #include "TestBaumWelch.h"
+#include "TestViterbi.h"
 
 int main() {
     
@@ -31,6 +32,12 @@ int main() {
      */
     if(testBaumWelch()){
         printf("\nall Baum Welch tests succed\n\n");
+    }
+    /*
+     Testing the viterbi algorithm
+     */
+    if(testViterbi()){
+        printf("\nall Viterbi tests succed\n\n");
     }
     return 0;
 }
