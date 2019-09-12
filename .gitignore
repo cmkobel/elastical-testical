@@ -3,4 +3,6 @@
 hmmmlib.xcodeproj
 .vscode
 /hmmmlib/build/*
+hmmmlib/build
+hmmmlib/build/*
 carl_*
