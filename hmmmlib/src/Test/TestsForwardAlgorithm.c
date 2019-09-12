@@ -10,64 +10,53 @@
 #include "hmm.h"
 #include "forward.h"
 #include <assert.h>
+#include <stdlib.h>
+#include <math.h>
 
 bool testForwardAlgorithm() {
-    HMM * hmm = HMMCreate(7, 4);
+    HMM * hmm = HMMCreate(2, 2);
     
-    double initProbs[7] = {0.0, 0.0, 0.2, 0.8, 0.0, 0.0, 0.0};
-    
-    double transitionProbs[7][7] = {
-        {0.0,0.0,0.9,0.1,0.0,0.0,0.0},
-        {1.0,0.0,0.0,0.0,0.0,0.0,0.0},
-        {0.0,1.0,0.0,0.0,0.0,0.0,0.0},
-        {0.0,0.0,0.05,0.9,0.05,0.0,0.0},
-        {0.0,0.0,0.0,0.0,0.0,1.0,0.0},
-        {0.0,0.0,0.0,0.0,0.0,0.0,1.0},
-        {0.0,0.0,0.0,0.1,0.9,0.0,0.0},
+    double transitionProbs[2][2] = {
+        {0.5, 0.5},
+        {0.3, 0.7}
     };
     
-    double emissionProbs[7][4] = {
-        {0.3,0.25,0.25,0.2},
-        {0.2,0.35,0.15,0.3},
-        {0.4,0.15,0.2,0.25},
-        {0.25,0.25,0.25,0.25},
-        {0.2,0.4,0.3,0.1},
-        {0.3,0.2,0.3,0.2},
-        {0.15,0.3,0.2,0.35}
+    double emissionProbs[2][2] = {
+        {0.3, 0.7},
+        {0.8, 0.2}
     };
     
-    unsigned int i;
-    unsigned int j;
+    double initProbs[2] = {0.2, 0.8};
     
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 7; j++){
-            hmm->transitionProbs[i][j] = transitionProbs[i][j];
-        }
-    }
-    
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 4; j++){
-            hmm->emissionProbs[i][j] = emissionProbs[i][j];
-        }
-    }
-    
+    hmm->initProbs = initProbs;
+    int i;
+    int j;
     for(i = 0; i < hmm->hiddenStates; i++){
-        hmm->initProbs[i] = initProbs[i];
+        for(j = 0; j < hmm->hiddenStates; j++){
+            hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
+        }
     }
-
-    int obsTest1[4] = {1, 1, 1, 2};
-    int * obs = obsTest1;
-    double * scalingFactor = calloc(4, sizeof(double));
-    double ** forwardResult = forward(hmm, obs, 4, scalingFactor);
+    for(i = 0; i < hmm->hiddenStates; i++){
+        for(j = 0; j < hmm->observations; j++){
+            hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
+        }
+    }
     
-    //assert(forwardResult == 0.0067856249999999991);
-    free(scalingFactor);
-    scalingFactor = calloc(7, sizeof(double));
-    int obsTest2[7] = {1, 1, 1, 2, 3, 3, 1};
-    obs = obsTest2;
-    forwardResult = forward(hmm, obs, 7, scalingFactor);
-
-    //assert(forwardResult == 0.00013674062499999999);
+    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const int obsLenght = 10;
+    
+    double * scaleFactor = calloc(obsLenght, sizeof(double));
+    double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
+    
+    double test[20] = {0.085714, 0.148330, 0.155707, 0.156585, 0.156690, 0.634280, 0.722736, 0.230843, 0.165653, 0.157773,
+        0.914286, 0.851670, 0.844293, 0.843415, 0.843310, 0.365720, 0.277264, 0.769157, 0.834347, 0.842227};
+    
+    
+    for(i = 0; i < hmm->hiddenStates; i++) {
+        for (j = 0; j < obsLenght; j++){
+            assert(fabs(alpha[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+        }
+    }
     
     return true;
 }
