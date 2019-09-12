@@ -1,66 +1,81 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "viterbi.h"
-#include <math.h>
 
-void viterbi(int n_states, int n_obs, double *start_p, double **trans_p, double **emit_p, int n_data, int *data, int* output) {
-
-    // TODO save output
-
-
-    double* probs = calloc(n_states, sizeof(double)); 
-    double max_ = 0.0;
-
-    int hidden_state = -1; // -1 for uninitialized value
-
-
-    // First observation, based on start_p rather than trans_p.
-    for (int j = 0; j < n_states-1; j++) {
-
-        // Calculate probability based on data
-        probs[j] = start_p[j]*emit_p[j][data[0]];
-        
-        printf("P_state_%d = %f\n", j, probs[j]);
-        
-        // Find the state with the highest prob.
-        if (probs[j] > max_) {
-            max_ = probs[j];
-            hidden_state = j; 
-        }
+int* viterbi(HMM *hmm, const int *Y, const int T) {
+    
+    
+    //Det virker fint at tage log til et bestemt tal:
+    
+    printf("Det virker fint at tage log til et bestemt tal: log(e) = %f\n", log(2.71828));
+    
+    //Nu prøver jeg at putte værdien ind i en pladsholder-varibel:
+    double pladsholder = hmm->emissionProbs[0];
+    printf("Det hjælper ingenting. %f", log(pladsholder));
+    
+    
+    unsigned int i;
+    unsigned int k;
+    unsigned int j;
+    
+    // table[data][states]
+    double** table = calloc(T, sizeof(double*));
+    for (i = 0; i < T; ++i) {
+        table[i] = calloc(hmm->hiddenStates, sizeof(double));
     }
-    output[0] = hidden_state;
-
-    // Debug
-    printf("hs is %i with p = %f\n\n", hidden_state, max_);
-
-
-    // Second observation onwards.
-    for (int i = 1; i < n_data; ++i) {
-        
-        // Debug
-        printf("i = %d\n", i);
-        
-        
-        // For each state
-        for (int j = 0; j < n_states-1; j++) {
-            
-            // Calculate prob. based on data.
-            probs[j] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
-            printf("P_state_%d = %f\n", j, probs[j]);
-        }
-
-
-        // Find the hidden state and its prob.
-        max_ = 0.0;
-        for (int j = 0; j < n_states-1; j++) {
-            if (probs[j] > max_) {
-                max_ = probs[j];
-                hidden_state = j;
+    
+    // base
+    for (i = 0; i < hmm->hiddenStates; ++i) {
+        table[0][i] = hmm->initProbs[i] * hmm->emissionProbs[i*hmm->observations+Y[0]];
+    }
+    
+    // for (int get = 0; get < 7; get++)
+    // {
+    //     printf("%f ", table[0][get]);
+    // }
+    // printf("\n");
+    
+    
+    
+    
+    for (i = 1; i < T; ++i) {
+        for (k = 0; k < hmm->hiddenStates; ++k) {
+            float value = 0;
+            for (j = 0; j < hmm->hiddenStates; ++j) {
+                if (table[i-1][j] * hmm->transitionProbs[j*hmm->hiddenStates+k] > value) {
+                    value = table[i-1][j] * hmm->transitionProbs[j*hmm->hiddenStates+k];
+                }
             }
+            table[i][k] = hmm->emissionProbs[k*hmm->observations+Y[i]] * value;
         }
-        output[i] = hidden_state;
-        printf("hs is %i with p = %f\n\n", hidden_state, max_);
-
     }
-
+    
+    
+    
+    
+    
+    
+    
+    /*
+    // debug print table
+    printf("\n");
+    for (int row = 0; row < T; row++)
+    {
+        for (int col = 0; col < hmm->hiddenStates; col++)
+        {
+            printf("%.6f  ", table[row][col]);
+        }
+        printf("\n");
+        
+    }
+    printf("\n");
+    */
+    
+    int* dummyoutput = calloc(2, sizeof(int));
+    dummyoutput[0] = 32837;
+    return dummyoutput;
+    
+    
+    
 }

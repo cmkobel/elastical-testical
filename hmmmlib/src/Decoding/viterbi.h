@@ -1,3 +1,5 @@
 #include "hmm.h"
 
-void viterbi(int n_obs, int n_states, double *start_p, double **trans_p, double** emit_p, int n_data, int *data, int* output);
+int* viterbi(HMM *hmm, const int *Y, const int T);
+
+double log_(double);
