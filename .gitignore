@@ -3,12 +3,5 @@
 hmmmlib.xcodeproj
 .vscode
 /hmmmlib/build/*
-<<<<<<< HEAD
-hmmmlib/build
 hmmmlib/build/*
 carl_*
-=======
-/hmmmlib/build
-hmmmlib/build
-hmmmlib/build/*
->>>>>>> OneD2Darrays
