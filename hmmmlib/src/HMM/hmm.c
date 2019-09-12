@@ -8,8 +8,6 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     newHMM->hiddenStates = hiddenStates;
     newHMM->observations = observations;
     
-    unsigned int i;
-    
     // The init probs
     //
     // [state]
@@ -20,19 +18,13 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     //
     // [from state][to state]
     //
-    newHMM->transitionProbs = calloc(newHMM->hiddenStates, sizeof(double *));
-    for(i = 0; i < hiddenStates; i++){
-        newHMM->transitionProbs[i] = calloc(newHMM->hiddenStates, sizeof(double));
-    }
+    newHMM->transitionProbs = calloc(newHMM->hiddenStates*newHMM->hiddenStates, sizeof(double));
     
     // The emission probability is a M*N matrix
     //
     // [state][observation]
     //
-    newHMM->emissionProbs = calloc(newHMM->hiddenStates, sizeof(double *));
-    for(int i = 0; i < newHMM->hiddenStates; i++){
-        newHMM->emissionProbs[i] = calloc(newHMM->observations, sizeof(double));
-    }
+    newHMM->emissionProbs = calloc(newHMM->hiddenStates*newHMM->observations, sizeof(double));
     
     return newHMM;
 }
@@ -54,10 +46,10 @@ bool valdidateHMM(const HMM *hmm){
     
     for (i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;
-        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
+        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i*hmm->hiddenStates+j];
         if (sum != 1.0) return false;
         sum = 0.0;
-        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
+        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->hiddenStates+j];
         if (sum != 1.0) return false;
     }
     
@@ -82,7 +74,7 @@ void printHMM(const HMM *hmm){
     printf("Transition probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->hiddenStates; j++){
-            printf("%f, ", hmm->transitionProbs[i][j]);
+            printf("%f, ", hmm->transitionProbs[i*hmm->hiddenStates+j]);
         }
         printf("\n");
     }
@@ -93,7 +85,7 @@ void printHMM(const HMM *hmm){
     printf("Emission probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->observations; j++){
-            printf("%f, ", hmm->emissionProbs[i][j]);
+            printf("%f, ", hmm->emissionProbs[i*hmm->hiddenStates+j]);
         }
         printf("\n");
     }

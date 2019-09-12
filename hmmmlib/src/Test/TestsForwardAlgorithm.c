@@ -39,17 +39,17 @@ bool testForwardAlgorithm() {
     unsigned int i;
     unsigned int j;
     
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 7; j++){
-            hmm->transitionProbs[i][j] = transitionProbs[i][j];
+    for(i = 0; i < hmm->hiddenStates; i++){
+        for(j = 0; j < hmm->hiddenStates; j++){
+            hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
+        }
+    }
+    for(i = 0; i < hmm->hiddenStates; i++){
+        for(j = 0; j < hmm->observations; j++){
+            hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
         }
     }
     
-    for(i = 0; i < 7; i++){
-        for(j = 0; j < 4; j++){
-            hmm->emissionProbs[i][j] = emissionProbs[i][j];
-        }
-    }
     
     for(i = 0; i < hmm->hiddenStates; i++){
         hmm->initProbs[i] = initProbs[i];

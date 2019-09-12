@@ -62,7 +62,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(l = 0; l < T-1; l++){
             for(i = 0; i < hmm->hiddenStates; i++){
                 for(j = 0; j < hmm->hiddenStates; j++){
-                    xiDenominator[l] += alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
+                    xiDenominator[l] += alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                 }
             }
         }
@@ -78,7 +78,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
                 for(l = 0; l < T-1; l++){
-                    double numerator = alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i][j]*hmm->emissionProbs[j][Y[l+1]];
+                    double numerator = alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                     double denominator = xiDenominator[l];
                     xi[i][j][l] = numerator/denominator;
                 }
@@ -99,7 +99,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                     xiSum += xi[i][j][l];
                     gammaSum += gamma[l][i];
                 }
-                hmm->transitionProbs[i][j] = xiSum/gammaSum;
+                hmm->transitionProbs[i*hmm->hiddenStates+j] = xiSum/gammaSum;
             }
         }
         
@@ -114,18 +114,18 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                     }
                     denominator += gamma[l][i];
                 }
-                hmm->emissionProbs[i][j] = numerator/denominator;
+                hmm->emissionProbs[i*hmm->observations+j] = numerator/denominator;
             }
         }
         
         //Normalization step
         for(i = 0; i < hmm->hiddenStates; i++){
             double sum = 0.0;
-            for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i][j];
-            for (j = 0; j < hmm->hiddenStates; j++) hmm->transitionProbs[i][j] = hmm->transitionProbs[i][j]/sum;
+            for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i*hmm->hiddenStates+j];
+            for (j = 0; j < hmm->hiddenStates; j++) hmm->transitionProbs[i*hmm->hiddenStates+j] = hmm->transitionProbs[i*hmm->hiddenStates+j]/sum;
             sum = 0.0;
-            for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i][j];
-            for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i][j] = hmm->emissionProbs[i][j]/sum;
+            for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->observations+j];
+            for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i*hmm->observations+j] = hmm->emissionProbs[i*hmm->observations+j]/sum;
         }
     }
 }

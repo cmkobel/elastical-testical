@@ -6,8 +6,8 @@ struct HMM {
     
     unsigned int hiddenStates;
     unsigned int observations;
-    double ** transitionProbs;
-    double ** emissionProbs;
+    double * transitionProbs;
+    double * emissionProbs;
     double * initProbs;
     
 };

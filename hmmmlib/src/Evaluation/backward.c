@@ -24,8 +24,8 @@ double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     for(i = T-1; i-- >0;){
         for(j = 0; j < hmm->hiddenStates; j++){
             for(int l = 0; l < hmm->hiddenStates; l++){
-                double emissionProb = hmm->emissionProbs[l][Y[i+1]];
-                double transitionProb = hmm->transitionProbs[j][l];
+                double emissionProb = hmm->emissionProbs[l*hmm->observations+Y[i+1]];
+                double transitionProb = hmm->transitionProbs[j*hmm->hiddenStates+l];
                 double oldBeta = beta[l][i+1];
                 beta[j][i] += transitionProb*emissionProb*oldBeta;
             }

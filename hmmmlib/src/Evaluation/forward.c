@@ -19,7 +19,7 @@ double ** forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
 
     // Initial is the same as the initProbs times the probs of emitting Y[0]
     for(i = 0; i < hmm->hiddenStates; i++){
-        alpha[i][0] = hmm->initProbs[i]*hmm->emissionProbs[i][Y[0]];
+        alpha[i][0] = hmm->initProbs[i]*hmm->emissionProbs[i*hmm->observations+Y[0]];
         scalingFactor[0] += alpha[i][0];
     }
     // Scaling step
@@ -30,11 +30,11 @@ double ** forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     // Now the "recursive" step starts
     for(i = 1; i < T; i++){
         for(j = 0; j < hmm->hiddenStates; j++){
-            double emissionProb = hmm->emissionProbs[j][Y[i]];
+            double emissionProb = hmm->emissionProbs[j*hmm->observations+Y[i]];
             if(emissionProb > 0){
                 double pastTransProb = 0.0;
                 for(int l = 0; l < hmm->hiddenStates; l++){
-                    pastTransProb += hmm->transitionProbs[l][j]*alpha[l][i-1];
+                    pastTransProb += hmm->transitionProbs[l*hmm->hiddenStates+j]*alpha[l][i-1];
                 }
                 alpha[j][i] = emissionProb*pastTransProb;
             }
