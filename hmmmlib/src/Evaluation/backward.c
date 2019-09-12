@@ -1,7 +1,7 @@
 #include "backward.h"
 #include <stdlib.h>
 
-double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
+double *backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;
@@ -10,14 +10,10 @@ double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     //
     // [state][time]
     //
-    double **beta = calloc(hmm->hiddenStates, sizeof(double*));
-    for(i = 0; i < hmm->hiddenStates; i++){
-        beta[i] = calloc(T, sizeof(double));
-    }
-    
+    double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
     // Initial setting the beta[T] values, these are said to be 1
     for(i = 0; i < hmm->hiddenStates; i++){
-        beta[i][T-1] = 1;
+        beta[i*hmm->hiddenStates+T-1] = 1;
     }
     
     // Now for the step"BACKWARD" step
@@ -26,10 +22,10 @@ double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
             for(int l = 0; l < hmm->hiddenStates; l++){
                 double emissionProb = hmm->emissionProbs[l*hmm->observations+Y[i+1]];
                 double transitionProb = hmm->transitionProbs[j*hmm->hiddenStates+l];
-                double oldBeta = beta[l][i+1];
-                beta[j][i] += transitionProb*emissionProb*oldBeta;
+                double oldBeta = beta[l*hmm->hiddenStates+i+1];
+                beta[j*hmm->hiddenStates+i] += transitionProb*emissionProb*oldBeta;
             }
-            beta[j][i] = beta[j][i] / scalingFactor[i+1];
+            beta[j*hmm->hiddenStates+i] = beta[j*hmm->hiddenStates+i] / scalingFactor[i+1];
         }
     }
     

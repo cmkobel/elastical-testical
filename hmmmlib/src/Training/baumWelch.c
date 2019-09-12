@@ -33,15 +33,15 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
     for(int q = 0; q < itterations; q++) {
         double * scaleFactor = calloc(T, sizeof(double));
         double ** alpha = forward(hmm, Y, T, scaleFactor);
-        double ** beta = backward(hmm, Y, T, scaleFactor);
+        double * beta = backward(hmm, Y, T, scaleFactor);
         
         // Updating gamma
         for(i = 0; i < T; i++){
             for (j = 0; j < hmm->hiddenStates; j++) {
-                double numerator = alpha[j][i]*beta[j][i];
+                double numerator = alpha[j][i]*beta[j*hmm->hiddenStates+i];
                 double denominator = 0.0;
                 for(l = 0; l < hmm->hiddenStates; l++){
-                    denominator += alpha[l][i]*beta[l][i];
+                    denominator += alpha[l][i]*beta[l*hmm->hiddenStates+i];
                 }
                 gamma[i][j] = numerator/denominator;
             }
@@ -62,7 +62,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(l = 0; l < T-1; l++){
             for(i = 0; i < hmm->hiddenStates; i++){
                 for(j = 0; j < hmm->hiddenStates; j++){
-                    xiDenominator[l] += alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
+                    xiDenominator[l] += alpha[i][l]*beta[j*hmm->hiddenStates+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                 }
             }
         }
@@ -78,7 +78,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
                 for(l = 0; l < T-1; l++){
-                    double numerator = alpha[i][l]*beta[j][l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
+                    double numerator = alpha[i][l]*beta[j*hmm->hiddenStates+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                     double denominator = xiDenominator[l];
                     xi[i][j][l] = numerator/denominator;
                 }

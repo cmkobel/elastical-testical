@@ -35,8 +35,8 @@ bool testBaumWelch() {
     const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
     const int obsLenght = 10;
     
-    //printf("BEFORE: \n");
-    //printHMM(hmm);
+    printf("BEFORE: \n");
+    printHMM(hmm);
     
     baumWelch(hmm, observation, obsLenght, 1);
     

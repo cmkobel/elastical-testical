@@ -85,7 +85,7 @@ void printHMM(const HMM *hmm){
     printf("Emission probs\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < hmm->observations; j++){
-            printf("%f, ", hmm->emissionProbs[i*hmm->hiddenStates+j]);
+            printf("%f, ", hmm->emissionProbs[i*hmm->observations+j]);
         }
         printf("\n");
     }

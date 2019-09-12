@@ -54,6 +54,8 @@ bool testForwardAlgorithm() {
     for(i = 0; i < hmm->hiddenStates; i++){
         hmm->initProbs[i] = initProbs[i];
     }
+    
+    printHMM(hmm);
 
     int obsTest1[4] = {1, 1, 1, 2};
     int * obs = obsTest1;
@@ -66,7 +68,9 @@ bool testForwardAlgorithm() {
     int obsTest2[7] = {1, 1, 1, 2, 3, 3, 1};
     obs = obsTest2;
     forwardResult = forward(hmm, obs, 7, scalingFactor);
-
+    
+    printHMM(hmm);
+    free(hmm);
     //assert(forwardResult == 0.00013674062499999999);
     
     return true;
