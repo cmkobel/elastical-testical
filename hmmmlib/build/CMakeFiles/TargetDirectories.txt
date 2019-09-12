@@ -1,3 +1,0 @@
-/mnt/c/Users/admin/Sync/Bioinformatik/hmm/hmmmlib/hmmmlib/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/admin/Sync/Bioinformatik/hmm/hmmmlib/hmmmlib/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/admin/Sync/Bioinformatik/hmm/hmmmlib/hmmmlib/build/CMakeFiles/HMMLIB.dir
