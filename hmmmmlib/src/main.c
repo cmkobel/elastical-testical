@@ -33,6 +33,14 @@ int main() {
     if(testBaumWelch()){
         printf("all Baum Welch tests succed\n");
     }
+
+    /*
+     Testing the Viterbi algorithm
+     */
+    if(testViterbi()){
+        printf("all Viterbi tests succeeded\n");
+    }
+
     
     return 0;
 }
