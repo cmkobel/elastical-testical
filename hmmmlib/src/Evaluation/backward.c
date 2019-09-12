@@ -34,15 +34,15 @@ double **backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     }
     
     /*
-    printf("Backward\n");
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < T; j++){
-            printf("%f, ", beta[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    */
+     printf("Backward\n");
+     for(i = 0; i < hmm->hiddenStates; i++) {
+     for (j = 0; j < T; j++){
+     printf("%f, ", beta[i][j]);
+     }
+     printf("\n");
+     }
+     printf("\n");
+     */
     return beta;
     
 }
