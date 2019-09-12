@@ -29,10 +29,9 @@ int main() {
     }
     /*
      Testing the backward algorithm
-     
+     */
     if(testBaumWelch()){
         printf("all Baum Welch tests succed\n");
     }
-    */
     return 0;
 }

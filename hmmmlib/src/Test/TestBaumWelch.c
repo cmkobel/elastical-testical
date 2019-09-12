@@ -40,6 +40,9 @@ bool testBaumWelch() {
     baumWelch(hmm, observation, obsLenght, 1);
     
     // Checking the trans probs
+    for(i = 0; i < hmm->hiddenStates*hmm->hiddenStates; i++){
+        printf("%f, ", hmm->transitionProbs[i]);
+    }
     assert(hmm->transitionProbs[0] == 0.43921478415604948);
     assert(hmm->transitionProbs[1*hmm->hiddenStates+1] == 0.78554317773503979);
     
