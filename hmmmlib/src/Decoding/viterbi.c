@@ -1,8 +1,20 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "viterbi.h"
 
 int* viterbi(HMM *hmm, const int *observations, const int nData) {                    
+    
+    
+    //Det virker fint at tage log til et bestemt tal:
+    
+    printf("Det virker fint at tage log til et bestemt tal: log(e) = %f\n", log(2.71828));
+    printf("Men hvis jeg prøver en værdi der kommer fra en pointet matrix, får jeg problemer: %f\n", log(hmm->emissionProbs[0][0]));
+    
+    //Nu prøver jeg at putte værdien ind i en pladsholder-varibel:
+    double pladsholder = hmm->emissionProbs[0][0];
+    printf("Det hjælper ingenting. %f", log((double)pladsholder));
+    
     
     unsigned int i;
     unsigned int k;
@@ -58,7 +70,7 @@ int* viterbi(HMM *hmm, const int *observations, const int nData) {
     {
         for (int col = 0; col < hmm->hiddenStates; col++)
         {
-            printf("%f, ", table[row][col]);
+            printf("%.6f  ", table[row][col]);
         }
         printf("\n");
         
