@@ -8,23 +8,23 @@ default:
 # link.  This forces Xcode to relink the targets from scratch.  It
 # does not seem to check these dependencies itself.
 PostBuild.HMMLIB.Debug:
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/Debug/HMMLIB:
-	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/Debug/HMMLIB
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/Debug/HMMLIB:
+	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/Debug/HMMLIB
 
 
 PostBuild.HMMLIB.Release:
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/Release/HMMLIB:
-	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/Release/HMMLIB
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/Release/HMMLIB:
+	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/Release/HMMLIB
 
 
 PostBuild.HMMLIB.MinSizeRel:
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/MinSizeRel/HMMLIB:
-	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/MinSizeRel/HMMLIB
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/MinSizeRel/HMMLIB:
+	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/MinSizeRel/HMMLIB
 
 
 PostBuild.HMMLIB.RelWithDebInfo:
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/RelWithDebInfo/HMMLIB:
-	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/RelWithDebInfo/HMMLIB
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/RelWithDebInfo/HMMLIB:
+	/bin/rm -f /Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/RelWithDebInfo/HMMLIB
 
 
 

@@ -2,9 +2,9 @@
 # Custom rules for ALL_BUILD
 .SUFFIXES: 
 all: \
-	/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/ALL_BUILD
+	/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/ALL_BUILD
 
 
-/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/ALL_BUILD: 
+/Users/thorjakobsen/GIT/elastical-testical/hmmmlib/build/CMakeFiles/ALL_BUILD: 
 	echo ""
 	echo Build\ all\ projects
