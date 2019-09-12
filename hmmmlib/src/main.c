@@ -16,16 +16,16 @@ int main() {
     
     /*
      Testing the forward algorithm
-     
+     */
     if(testForwardAlgorithm()){
-        printf("all Forward Algorithm tests succed\n");
+        printf("\nall Forward Algorithm tests succed\n");
     }
-   */
+   
     /*
      Testing the backward algorithm
     */
     if(testBackwardAlgorithm()){
-        printf("all Backward Algorithm tests succed\n");
+        printf("\nall Backward Algorithm tests succed\n");
     }
     /*
      Testing the backward algorithm
