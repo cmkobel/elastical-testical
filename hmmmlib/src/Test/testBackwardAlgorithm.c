@@ -4,32 +4,23 @@
 #include <assert.h>
 
 bool testBackwardAlgorithm() {
-    HMM * hmm = HMMCreate(7, 4);
+    HMM * hmm = HMMCreate(2, 2);
     
-    double transitionProbs[7][7] = {
-        {0.0,0.0,0.9,0.1,0.0,0.0,0.0},
-        {1.0,0.0,0.0,0.0,0.0,0.0,0.0},
-        {0.0,1.0,0.0,0.0,0.0,0.0,0.0},
-        {0.0,0.0,0.05,0.9,0.05,0.0,0.0},
-        {0.0,0.0,0.0,0.0,0.0,1.0,0.0},
-        {0.0,0.0,0.0,0.0,0.0,0.0,1.0},
-        {0.0,0.0,0.0,0.1,0.9,0.0,0.0},
+    double transitionProbs[2][2] = {
+        {0.5, 0.5},
+        {0.3, 0.7}
     };
     
-    double emissionProbs[7][4] = {
-        {0.3,0.25,0.25,0.2},
-        {0.2,0.35,0.15,0.3},
-        {0.4,0.15,0.2,0.25},
-        {0.25,0.25,0.25,0.25},
-        {0.2,0.4,0.3,0.1},
-        {0.3,0.2,0.3,0.2},
-        {0.15,0.3,0.2,0.35}
+    double emissionProbs[2][2] = {
+        {0.3, 0.7},
+        {0.8, 0.2}
     };
     
+    double initProbs[2] = {0.2, 0.8};
     
-    unsigned int i;
-    unsigned int j;
-    
+    hmm->initProbs = initProbs;
+    int i;
+    int j;
     for(i = 0; i < hmm->hiddenStates; i++){
         for(j = 0; j < hmm->hiddenStates; j++){
             hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
@@ -41,11 +32,23 @@ bool testBackwardAlgorithm() {
         }
     }
     
+    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const int obsLenght = 10;
     
-    int obsTest1[4] = {1, 1, 1, 2};
-    int *obs = obsTest1;
-    double * scalingFactor = calloc(4, sizeof(double));
-    double *backWardResult = backward(hmm, obs, 4, scalingFactor);
+    double * scaleFactor = calloc(obsLenght, sizeof(double));
+    double ** alpha = forward(hmm, observation, obsLenght, scaleFactor);
+    double * beta = backward(hmm, observation, obsLenght, scaleFactor);
+    
+
+    
+    double test[20] = {0.838486, 0.848495, 0.854859, 0.898964, 1.267584, 1.076550, 0.944879, 0.862481, 0.868282, 1.000000, 1.015142, 1.026387, 1.026767, 1.018758, 0.950282, 0.867237, 1.143683, 1.041273, 1.026152, 1.000000};
+    
+    
+    for(i = 0; i < hmm->hiddenStates; i++) {
+        for (j = 0; j < obsLenght; j++){
+            assert(fabs(beta[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+        }
+    }
     
     return true;
 }

@@ -13,7 +13,7 @@ double *backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
     // Initial setting the beta[T] values, these are said to be 1
     for(i = 0; i < hmm->hiddenStates; i++){
-        beta[i*hmm->hiddenStates+T-1] = 1;
+        beta[i*T+(T-1)] = 1;
     }
     
     // Now for the step"BACKWARD" step
@@ -22,23 +22,24 @@ double *backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
             for(int l = 0; l < hmm->hiddenStates; l++){
                 double emissionProb = hmm->emissionProbs[l*hmm->observations+Y[i+1]];
                 double transitionProb = hmm->transitionProbs[j*hmm->hiddenStates+l];
-                double oldBeta = beta[l*hmm->hiddenStates+i+1];
-                beta[j*hmm->hiddenStates+i] += transitionProb*emissionProb*oldBeta;
+                double oldBeta = beta[l*T+(i+1)];
+                
+                beta[j*T+i] += transitionProb*emissionProb*oldBeta;
             }
-            beta[j*hmm->hiddenStates+i] = beta[j*hmm->hiddenStates+i] / scalingFactor[i+1];
+            beta[j*T+i] = beta[j*T+i] / scalingFactor[i+1];
         }
     }
     
     /*
      printf("Backward\n");
      for(i = 0; i < hmm->hiddenStates; i++) {
-     for (j = 0; j < T; j++){
-     printf("%f, ", beta[i][j]);
+         for (j = 0; j < T; j++){
+             printf("%f, ", beta[i*T+j]);
+        }
+        printf("\n");
      }
      printf("\n");
-     }
-     printf("\n");
-     */
+    */
     return beta;
     
 }

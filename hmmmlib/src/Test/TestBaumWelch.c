@@ -37,7 +37,6 @@ bool testBaumWelch() {
     
     printf("BEFORE: \n");
     printHMM(hmm);
-    
     baumWelch(hmm, observation, obsLenght, 1);
     
     // Checking the trans probs

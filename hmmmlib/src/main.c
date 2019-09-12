@@ -16,11 +16,11 @@ int main() {
     
     /*
      Testing the forward algorithm
-     */
+     
     if(testForwardAlgorithm()){
         printf("all Forward Algorithm tests succed\n");
     }
-   
+   */
     /*
      Testing the backward algorithm
     */
@@ -29,10 +29,10 @@ int main() {
     }
     /*
      Testing the backward algorithm
-     */
+     
     if(testBaumWelch()){
         printf("all Baum Welch tests succed\n");
     }
-    
+    */
     return 0;
 }
