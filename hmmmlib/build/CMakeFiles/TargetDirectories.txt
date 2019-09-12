@@ -1,0 +1,3 @@
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/HMMLIB.dir
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/ALL_BUILD.dir
+/Users/thorjakobsen/GIT/elastical-testical/hmmmmlib/build/CMakeFiles/ZERO_CHECK.dir
