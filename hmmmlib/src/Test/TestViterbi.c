@@ -32,16 +32,14 @@ bool testViterbi(){
     int data_[7] = {0, 1, 2, 2, 1, 1, 0}; // normal, cold, dizzy, dizzy, cold, cold, normal
     int* data = data_;
     
-    int output_[7];
+    
     
    
     
-    double** rv = viterbi(hmm, n_obs, n_states, (double*)&start_p_, trans_p, emit_p, n_data, data, (int*)&output_);
-    if (rv[0][6] == 0.000035) {
-        printf("men det passer jo");
-    }
-    printf("WGC %f\n", rv[0][6]);
-    assert((double)rv[0][6] ==  (double)0.000035);
+    int* rv = viterbi(hmm, n_obs, n_states, (double*)&start_p_, trans_p, emit_p, n_data, data);
+   
+    //printf("WGC %f\n", rv[0][6]);
+    //assert((double)rv[0][6] ==  (double)0.000035);
 
     
 
@@ -49,14 +47,10 @@ bool testViterbi(){
     printf("Viterbi decoding gives the following state sequence:\n");
     for (int i = 0; i < n_data; i++)
     {
-        printf("%i, ", output_[i]);
+        printf("%i, ", rv[i]);
     }
     printf("\n");
-    
-    for (int i = 0; i < n_data; ++i)
-    {
-        printf("%f %f \n", rv[0][i], rv [1][i]);
-    }
+
     
     
     

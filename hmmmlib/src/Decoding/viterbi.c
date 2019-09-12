@@ -2,14 +2,16 @@
 #include <stdlib.h>
 #include "viterbi.h"
 
-double** viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **trans_p, double **emit_p, int n_data, int *data, int* output) {
+int* viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **trans_p, double **emit_p, int n_data, int *data) {
     
     
-    
+    /*
     double** outputTable = calloc(hmm->hiddenStates, sizeof(double*));
     for (int i = 0; i < hmm->hiddenStates; ++i) {
         outputTable[i] = calloc(n_data, sizeof(double));
     }
+    */
+    int* output = calloc(n_data, sizeof(int));
 
 
     double* probs = calloc(n_states, sizeof(double)); 
@@ -25,8 +27,6 @@ double** viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **tr
         // Calculate probability based on data
         probs[j] = start_p[j]*emit_p[j][data[0]];
 
-        //copy into table as well.
-        outputTable[j][0] = start_p[j]*emit_p[j][data[0]];
         
         printf("P_state_%d = %f\n", j, probs[j]);
         
@@ -57,7 +57,7 @@ double** viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **tr
             // Calculate prob. based on data.
             probs[j] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
 
-            outputTable[j][i] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
+            //outputTable[j][i] = max_ * trans_p[hidden_state][j] * emit_p[j][data[i]];
         }
 
 
@@ -73,6 +73,6 @@ double** viterbi(HMM *hmm, int n_states, int n_obs, double *start_p, double **tr
         printf("%i: hs is %i with p = %f\n", i, hidden_state, max_);
 
     }
-    return outputTable;
+    return output;
 
 }

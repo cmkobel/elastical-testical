@@ -35,11 +35,11 @@ int main() {
 
     /*
      Testing the Viterbi algorithm
+    */
      
     if(testViterbi()){
         printf("all Viterbi tests succeeded\n");
     }
-*/
     
     return 0;
 }
