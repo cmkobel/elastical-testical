@@ -59,7 +59,5 @@ bool testViterbi() {
     int * viterbiResult = viterbi(hmm, obs, nData);
     assert(viterbiResult[0] == 32837);
     
-    
-    
     return true;
 }

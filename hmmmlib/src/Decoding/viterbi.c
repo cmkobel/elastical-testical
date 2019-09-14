@@ -12,6 +12,7 @@ int* viterbi(HMM *hmm, const int *Y, const int T) {
     
     //Nu prøver jeg at putte værdien ind i en pladsholder-varibel:
     double pladsholder = hmm->emissionProbs[0];
+    printf("%f, ", pladsholder);
     printf("Det hjælper ingenting. %f", log(pladsholder));
     
     
