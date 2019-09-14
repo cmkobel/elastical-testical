@@ -24,6 +24,7 @@ file(GLOB SOURCES
 
 
 add_executable(HMMLIB ${SOURCES})
+target_link_libraries(HMMLIB m)
 
 foreach(FILE ${SOURCES}) 
     # Get the directory of the source file
