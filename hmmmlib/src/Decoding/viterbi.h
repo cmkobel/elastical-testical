@@ -2,4 +2,4 @@
 
 int* viterbi(HMM *hmm, const int *Y, const int T);
 
-double log_(double);
+unsigned int argMax(double* array_, unsigned int length);
