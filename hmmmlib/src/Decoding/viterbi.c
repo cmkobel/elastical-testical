@@ -18,7 +18,7 @@ unsigned int argMax(double* list_, unsigned int n) {
     return max_index;
 }
 
-int* viterbi(HMM *hmm, const int *Y, const int T) {
+unsigned int* viterbi(HMM *hmm, const int *Y, const int T) {
     // Y is the data, T is the length of the data
 
     
@@ -35,14 +35,9 @@ int* viterbi(HMM *hmm, const int *Y, const int T) {
     
     // Compute initial probabilities
     for (i = 0; i < hmm->hiddenStates; ++i) {
-        table[0][i] = hmm->initProbs[i] * hmm->emissionProbs[i*hmm->observations+Y[0]];
+        table[0][i] = log(hmm->initProbs[i]) + log(hmm->emissionProbs[i*hmm->observations+Y[0]]);
     }
-    
-    // for (int get = 0; get < 7; get++)
-    // {
-    //     printf("%f ", table[0][get]);
-    // }
-    // printf("\n");
+
 
     // tast argMax
     /* 
@@ -59,13 +54,13 @@ int* viterbi(HMM *hmm, const int *Y, const int T) {
     // Fill the rest of the dynamic programming matrix.
     for (i = 1; i < T; ++i) {
         for (k = 0; k < hmm->hiddenStates; ++k) {
-            float value = 0;
+            float value = -INFINITY;
             for (j = 0; j < hmm->hiddenStates; ++j) {
-                if (table[i-1][j] * hmm->transitionProbs[j*hmm->hiddenStates+k] > value) {
-                    value = table[i-1][j] * hmm->transitionProbs[j*hmm->hiddenStates+k];
+                if (table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates+k]) > value) {
+                    value = table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates+k]);
                 }
             }
-            table[i][k] = hmm->emissionProbs[k*hmm->observations+Y[i]] * value;
+            table[i][k] = log(hmm->emissionProbs[k*hmm->observations+Y[i]]) + value;
         }
     }
 
@@ -80,7 +75,7 @@ int* viterbi(HMM *hmm, const int *Y, const int T) {
     printf("\n");
     for (int row = 0; row < T; row++) {
         for (int col = 0; col < hmm->hiddenStates; col++) {
-            printf("%.6f  ", table[row][col]);
+            printf("%9.3f  ", table[row][col]);
         }
         printf("\n");
     }
@@ -88,26 +83,34 @@ int* viterbi(HMM *hmm, const int *Y, const int T) {
     
     
     
-    /* 
+    
     // Backtrack
     unsigned int* z = calloc(T, sizeof(int));
-    z[T-1] = argMax(table[T-1] - 1, T);
-    for (unsigned int i = T; i > 0; i--) {
-        //Husk altid at sige i-1
-        printf("%u", i);
+    z[T-1] = argMax(table[T-1], T); // havde jeg ikke en minus 1 for meget her?
+    for (unsigned int i = T-1; i > 0; i--) {
+        
+
         for (unsigned int j = 0; j < hmm->hiddenStates; j++) {
-            if (table[i-2][j] + )
+            float c = table[i-1][j];
+            float a = log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]);
+            float b = log(hmm->emissionProbs[z[i-1]*hmm->observations+Y[i]]);
+            //printf("%f",c );
+            if (table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]) + log(hmm->emissionProbs[z[i]*hmm->observations+Y[i]]) == table[i][z[i]]) {
+                z[i-1] = j;
+                break;
+            }
         }
         
-    } */
+    }
     
 
     
     
-    int* dummyoutput = calloc(2, sizeof(int));
+    /* unsigned int* dummyoutput = calloc(2, sizeof(int));
     dummyoutput[0] = 32837;
     return dummyoutput;
-    
-    
+     */
+    return z;
+
     
 }
