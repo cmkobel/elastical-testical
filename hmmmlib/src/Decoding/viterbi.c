@@ -8,12 +8,14 @@ unsigned int argMax(double* list_, unsigned int n) {
     // Would it be faster to use more pointers?  
     double max_value = -INFINITY;
     unsigned int max_index = 0;
+    double dbg1;
     for (unsigned int i = 0; i < n; i++) {
+        dbg1 = list_[i];
         if (list_[i] > max_value) {
             max_value = list_[i];
             max_index = i;
         }
-        printf("%i\n", i);
+        //printf("%i\n", i);
     }
     return max_index;
 }
@@ -52,7 +54,7 @@ unsigned int* viterbi(HMM *hmm, const int *Y, const int T) {
     
     
     // Fill the rest of the dynamic programming matrix.
-    for (i = 1; i < T; ++i) {
+    for (i = 1; i < T; ++i) { 
         for (k = 0; k < hmm->hiddenStates; ++k) {
             float value = -INFINITY;
             for (j = 0; j < hmm->hiddenStates; ++j) {
@@ -82,20 +84,32 @@ unsigned int* viterbi(HMM *hmm, const int *Y, const int T) {
     printf("\n");
     
     
+    // Der er noget galt med den måde argMax læser den liste den får. 
+    // Den skal returnene 3, det gør python i hvert fald.
+    // Jeg vil starte med at tage et skridt af vejen fra læsningen af table[T-1] 
+    // til den bliver givet til argMax og beregnet. Og se hvad der sker 
+    // på vejen.
+
+    for (unsigned int idx = 0; idx < T; idx++)
+    {
+        printf(" idx: %f", table[T-1][idx]);
+    }
     
     
     // Backtrack
     unsigned int* z = calloc(T, sizeof(int));
-    z[T-1] = argMax(table[T-1], T); // havde jeg ikke en minus 1 for meget her?
+    z[T-1] = argMax(table[T-1], hmm->hiddenStates); // havde jeg ikke en minus 1 for meget her?
+    printf("max = %u", argMax(table[T-1], hmm->hiddenStates));
     for (unsigned int i = T-1; i > 0; i--) {
         
 
         for (unsigned int j = 0; j < hmm->hiddenStates; j++) {
-            float c = table[i-1][j];
-            float a = log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]);
-            float b = log(hmm->emissionProbs[z[i-1]*hmm->observations+Y[i]]);
-            //printf("%f",c );
-            if (table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]) + log(hmm->emissionProbs[z[i]*hmm->observations+Y[i]]) == table[i][z[i]]) {
+            float a = table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]) + log(hmm->emissionProbs[z[i]*hmm->observations + Y[i]]);
+            float b = table[i][z[i]];
+            
+                      
+            printf("%u, %u, %u  %f =?= %f\n",i, j, k, a, b);
+            if (table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]) + log(hmm->emissionProbs[z[i]*hmm->observations + Y[i]]) == table[i][z[i]]) {
                 z[i-1] = j;
                 break;
             }
