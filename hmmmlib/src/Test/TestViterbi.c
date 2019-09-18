@@ -53,15 +53,24 @@ bool testViterbi() {
         hmm->initProbs[i] = initProbs[i];
     }
     
-    int obsTest1[8] = {0, 1, 2, 3, 3, 2, 1, 0}; // A C G T T G C A
+    /* int obsTest1[8] = {0, 1, 2, 3, 3, 2, 1, 0}; // A C G T T G C A
     int * obs = obsTest1;
     int nData = 8;
+     */
+    
+    // obstest should be unsigned
+    int obsTest1[99] = {3, 0, 2, 0, 2, 3, 3, 2, 3, 3, 2, 1, 3, 1, 0, 2, 3, 1, 0, 1, 0, 1, 0, 1, 3, 0, 1, 0, 2, 1, 0, 3, 0, 0, 0, 2, 3, 2, 0, 3, 0, 2, 3, 0, 2, 3, 0, 2, 2, 0, 1, 0, 2, 1, 0, 0, 3, 1, 2, 3, 1, 0, 3, 1, 0, 3, 1, 2, 0, 1, 0, 2, 0, 2, 1, 3, 0, 1, 2, 0, 3, 1, 0, 2, 3, 0, 2, 0, 0, 2, 0, 1, 0, 3, 1, 0, 3, 0, 0};
+    int * obs = obsTest1;
+    int nData = 99;
     int * viterbiResult = viterbi(hmm, obs, nData);
+    
+    /*
     printf("\nviterbiresult\n");
     for (int i = 0; i < nData; i++)
     {
         printf("%u, ", viterbiResult[i]);
-    }
+    } 
+    */
     
     //assert(viterbiResult[0] == 32837);
     
