@@ -94,22 +94,35 @@ unsigned int* viterbi(HMM *hmm, const int *Y, const int T) {
     {
         printf(" idx: %f", table[T-1][idx]);
     }
+    printf("\n");
     
     
     // Backtrack
     unsigned int* z = calloc(T, sizeof(int));
     z[T-1] = argMax(table[T-1], hmm->hiddenStates); // havde jeg ikke en minus 1 for meget her?
-    printf("max = %u", argMax(table[T-1], hmm->hiddenStates));
+    printf("max = %u\n", argMax(table[T-1], hmm->hiddenStates));
     for (unsigned int i = T-1; i > 0; i--) {
+        printf("i = %u\n", i);
         
 
         for (unsigned int j = 0; j < hmm->hiddenStates; j++) {
-            float a = table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]) + log(hmm->emissionProbs[z[i]*hmm->observations + Y[i]]);
-            float b = table[i][z[i]];
-            
+            printf(" j = %u\n", j);
+                
+
+            float a = table[i-1][j];
+            float b = log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]);
+            float c = log(hmm->emissionProbs[z[i]*hmm->observations + Y[i]]);
+            float d = table[i][z[i]];
                       
-            printf("%u, %u, %u  %f =?= %f\n",i, j, k, a, b);
+            printf("  a = %f, b = %f, c = %f\n", a, b, c);
+            printf("  a + b + c = %f\n", a + b + c);
+            printf("  d = %f\n", d);
+            
+            
+
+            
             if (table[i-1][j] + log(hmm->transitionProbs[j*hmm->hiddenStates + z[i]]) + log(hmm->emissionProbs[z[i]*hmm->observations + Y[i]]) == table[i][z[i]]) {
+                printf("   a + b + c == d\n");
                 z[i-1] = j;
                 break;
             }
