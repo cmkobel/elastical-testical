@@ -22,5 +22,9 @@ int posteriorDecoding(HMM * hmm, const int *Y, const int T, const int t){
         }
     }
     
+    free(scalingFactor);
+    free(alpha);
+    free(beta);
+    
     return index;
 }
