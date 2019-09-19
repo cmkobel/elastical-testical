@@ -31,13 +31,13 @@ int main() {
      Testing the backward algorithm
      */
     if(testBaumWelch()){
-        printf("\nall Baum Welch tests succed\n\n");
+        printf("\nall Baum Welch tests succed\n");
     }
     /*
      Testing the viterbi algorithm
      */
     if(testViterbi()){
-        printf("\nall Viterbi tests succed\n\n");
+        printf("\nall Viterbi tests succed\n");
     }
     return 0;
 }

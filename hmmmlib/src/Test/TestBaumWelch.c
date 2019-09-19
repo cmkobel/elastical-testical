@@ -2,6 +2,7 @@
 #include "baumWelch.h"
 #include "hmm.h"
 #include <assert.h>
+#include <math.h>
 
 bool testBaumWelch() {
     HMM * hmm = HMMCreate(2, 2);
@@ -43,12 +44,13 @@ bool testBaumWelch() {
      printf("%f, ", hmm->transitionProbs[i]);
      }
      */
-    assert(hmm->transitionProbs[0] == 0.43921478415604948);
-    assert(hmm->transitionProbs[1*hmm->hiddenStates+1] == 0.78554317773503979);
+    float epsilon = 0.000001;
+    assert(fabs(hmm->transitionProbs[0]-0.43921478415604948) < epsilon);
+    assert(fabs(hmm->transitionProbs[1*hmm->hiddenStates+1]-0.78554317773503979) < epsilon);
     
     // Checking the emission probs
-    assert(hmm->emissionProbs[0] == 0.46160107308583781);
-    assert(hmm->emissionProbs[1*hmm->observations+1] == 0.084984433203479412);
+    assert(fabs(hmm->emissionProbs[0]-0.46160107308583781) < epsilon);
+    assert(fabs(hmm->emissionProbs[1*hmm->observations+1]-0.084984433203479412) < epsilon);
     
     //printf("AFTER: \n");
     //printHMM(hmm);
