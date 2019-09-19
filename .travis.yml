@@ -6,3 +6,4 @@ compiler:
 script:
         - make -C hmmmlib/build/
 
+
