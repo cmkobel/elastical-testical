@@ -14,16 +14,13 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
     // [time][state]
     //
     double * gamma = calloc(T*hmm->hiddenStates, sizeof(double));
-    /*
-    double ** gamma = calloc(T, sizeof(double*));
-    for(i = 0; i < T; i++){
-        gamma[i] = calloc(hmm->hiddenStates, sizeof(double));
-    }
-    */
+    
     // Xi 3d matrix
     //
     // [state][state][time]
     //
+    double * xi = calloc(hmm->hiddenStates*hmm->hiddenStates*T, sizeof(double));
+    /*
     double *** xi = (double ***)calloc(hmm->hiddenStates, sizeof(double**));
     for(i = 0; i < hmm->hiddenStates; i++){
         xi[i] = (double **)calloc(hmm->hiddenStates, sizeof(double*));
@@ -31,7 +28,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
             xi[i][j] = (double *)calloc(T, sizeof(double));
         }
     }
-
+    */
     for(int q = 0; q < itterations; q++) {
         double * scaleFactor = calloc(T, sizeof(double));
         double * alpha = forward(hmm, Y, T, scaleFactor);
@@ -48,7 +45,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 gamma[i*hmm->hiddenStates+j] = numerator/denominator;
             }
         }
-        
+        /*
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
@@ -57,7 +54,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
             printf("\n");
         }
         printf("\n");
-        
+        */
         // xi denominator
         double * xiDenominator = calloc(T-1, sizeof(double));
         
@@ -82,7 +79,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 for(l = 0; l < T-1; l++){
                     double numerator = alpha[i*T+l]*beta[j*T+l+1]*hmm->transitionProbs[i*hmm->hiddenStates+j]*hmm->emissionProbs[j*hmm->observations+Y[l+1]];
                     double denominator = xiDenominator[l];
-                    xi[i][j][l] = numerator/denominator;
+                    xi[i*hmm->hiddenStates*T+j*T+l] = numerator/denominator;
                 }
             }
         }
@@ -98,7 +95,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 double xiSum = 0.0;
                 double gammaSum = 0.0;
                 for(l = 0; l < T-1; l++){
-                    xiSum += xi[i][j][l];
+                    xiSum += xi[i*hmm->hiddenStates*T+j*T+l];
                     gammaSum += gamma[l*hmm->hiddenStates+i];
                 }
                 hmm->transitionProbs[i*hmm->hiddenStates+j] = xiSum/gammaSum;
