@@ -52,7 +52,7 @@ unsigned int* viterbi(HMM *hmm, const int *Y, const int T) {
         }
     }
 
-
+    /* 
     // debug print table
     if (false) { 
         printf("\n");
@@ -64,7 +64,7 @@ unsigned int* viterbi(HMM *hmm, const int *Y, const int T) {
         }
         printf("\n");
     }    
-    
+     */
     
     // Backtrack
     unsigned int* decodedStates = calloc(T, sizeof(int));
