@@ -70,16 +70,13 @@ bool testViterbi() {
 
     
     
-    printf("\nviterbiresult\n");
     for (int i = 0; i < nData; i++)
     {
-        printf("%u/%u ", viterbiResult[i], expectedTest1[i]);
+        //printf("%u/%u ", viterbiResult[i], expectedTest1[i]);
         assert(viterbiResult[i] == expectedTest1[i]);
     } 
     
-    assert(3 == 3);
-    
-    //assert(viterbiResult[0] == 32837);
+
     
     return true;
 }
