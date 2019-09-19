@@ -3,12 +3,6 @@ compiler:
         - clang
         - gcc
 
-matrix:
-  include:
-    
-    - os: linux
-      addons:
-        apt:
-          packages:
-            - gcc-8.3.0
-            - cmake
+script:
+        - make -C hmmmlib/build/
+
