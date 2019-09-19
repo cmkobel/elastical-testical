@@ -60,17 +60,24 @@ bool testViterbi() {
     
     // obstest should be unsigned
     int obsTest1[99] = {3, 0, 2, 0, 2, 3, 3, 2, 3, 3, 2, 1, 3, 1, 0, 2, 3, 1, 0, 1, 0, 1, 0, 1, 3, 0, 1, 0, 2, 1, 0, 3, 0, 0, 0, 2, 3, 2, 0, 3, 0, 2, 3, 0, 2, 3, 0, 2, 2, 0, 1, 0, 2, 1, 0, 0, 3, 1, 2, 3, 1, 0, 3, 1, 0, 3, 1, 2, 0, 1, 0, 2, 0, 2, 1, 3, 0, 1, 2, 0, 3, 1, 0, 2, 3, 0, 2, 0, 0, 2, 0, 1, 0, 3, 1, 0, 3, 0, 0};
+    //                 'T, A, G, A, G, T, T, G, T, T, G, C, T, C, A, G, T, C, A, C, A, C, A, C, T, A, C, A, G, C, A, T, A, A, A, G, T, G, A, T, A, G, T, A, G, T, A, G, G, A, C, A, G, C, A, A, T, C, G, T, C, A, T, C, A, T, C, G, A, C, A, G, A, G, C, T, A, C, G, A, T, C, A, G, T, A, G, A, A, G, A, C, A, T, C, A, T, A, A'
+    unsigned int expectedTest1[99] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1};
+
     int * obs = obsTest1;
     int nData = 99;
     int * viterbiResult = viterbi(hmm, obs, nData);
+
+
     
-    /*
+    
     printf("\nviterbiresult\n");
     for (int i = 0; i < nData; i++)
     {
-        printf("%u, ", viterbiResult[i]);
+        printf("%u/%u ", viterbiResult[i], expectedTest1[i]);
+        assert(viterbiResult[i] == expectedTest1[i]);
     } 
-    */
+    
+    assert(3 == 3);
     
     //assert(viterbiResult[0] == 32837);
     
