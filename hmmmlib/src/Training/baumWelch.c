@@ -21,6 +21,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
     //
     double * xi = calloc(hmm->hiddenStates*hmm->hiddenStates*T, sizeof(double));
     /*
+     
     double *** xi = (double ***)calloc(hmm->hiddenStates, sizeof(double**));
     for(i = 0; i < hmm->hiddenStates; i++){
         xi[i] = (double **)calloc(hmm->hiddenStates, sizeof(double*));
