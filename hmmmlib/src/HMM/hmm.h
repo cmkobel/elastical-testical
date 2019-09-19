@@ -18,3 +18,5 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
 bool valdidateHMM(const HMM *hmm);
 
 void printHMM(const HMM *hmm);
+
+bool HMMDeallocate(HMM * hmm);

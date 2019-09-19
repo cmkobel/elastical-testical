@@ -92,3 +92,16 @@ void printHMM(const HMM *hmm){
     
     printf("\n\n\n");
 }
+
+bool HMMDeallocate(HMM * hmm){
+    
+    free(hmm->initProbs);
+    free(hmm->emissionProbs);
+    free(hmm->transitionProbs);
+    free(hmm->hiddenStates);
+    free(hmm->observations);
+    free(hmm);
+    
+    return true;
+    
+}
