@@ -48,16 +48,16 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
     unsigned int* decodedStates = calloc(T, sizeof(int)); // freed by caller?
 
     // Find max value in last row in table[]
-    unsigned int temp_max_index_ = 0;
-    double temp_maximum = -INFINITY;
+    unsigned int backtrackMaxIndex = 0;
+    double backtrackMaximum = -INFINITY;
     for (unsigned int m = 0; m < hmm->hiddenStates; m++) {
-        if (table[((T-1) * hmm->hiddenStates )+ m] > temp_maximum) {
-            temp_max_index_ = m;
-            temp_maximum = table[(T-1) * hmm->hiddenStates + m];
-            //printf("max is %f\n", temp_maximum);
+        if (table[((T-1) * hmm->hiddenStates )+ m] > backtrackMaximum) {
+            backtrackMaxIndex = m;
+            backtrackMaximum = table[(T-1) * hmm->hiddenStates + m];
+            //printf("max is %f\n", backtrackMaximum);
         }
     }
-    decodedStates[T-1] = temp_max_index_;
+    decodedStates[T-1] = backtrackMaxIndex;
     
     // finish backtracking
     for (unsigned int i = T-1; i > 0; i--) {
