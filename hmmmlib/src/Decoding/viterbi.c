@@ -8,25 +8,21 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
     // Y is the data, T is the length of the data
     
     
-    unsigned int i;
-    unsigned int k;
-    unsigned int j;
-    
     // allocate matrix[data][states]
     double* table = calloc(T*hmm->hiddenStates, sizeof(double*)); //
 
     
     // Compute initial probabilities
-    for (i = 0; i < hmm->hiddenStates; ++i) {
+    for (unsigned int i = 0; i < hmm->hiddenStates; ++i) {
         table[0*hmm->hiddenStates+i] = log(hmm->initProbs[i]) + log(hmm->emissionProbs[i*hmm->observations+Y[0]]);
     }
 
     
     // Fill the table
-    for (i = 1; i < T; ++i) { 
-        for (k = 0; k < hmm->hiddenStates; ++k) {
+    for (unsigned int i = 1; i < T; ++i) { 
+        for (unsigned int k = 0; k < hmm->hiddenStates; ++k) {
             double value = -INFINITY;
-            for (j = 0; j < hmm->hiddenStates; ++j) {
+            for (unsigned j = 0; j < hmm->hiddenStates; ++j) {
                 if (table[(i-1)*hmm->hiddenStates+j] + log(hmm->transitionProbs[j*hmm->hiddenStates+k]) > value) {
                     value = table[(i-1)*hmm->hiddenStates+j] + log(hmm->transitionProbs[j*hmm->hiddenStates+k]);
                 }
@@ -71,7 +67,6 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
                 break;
             }
         }
-        
     }
 
 
