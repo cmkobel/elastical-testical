@@ -22,7 +22,7 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
     for (unsigned int i = 1; i < T; ++i) { 
         for (unsigned int k = 0; k < hmm->hiddenStates; ++k) {
             double value = -INFINITY;
-            for (unsigned j = 0; j < hmm->hiddenStates; ++j) {
+            for (unsigned int j = 0; j < hmm->hiddenStates; ++j) {
                 if (table[(i-1)*hmm->hiddenStates+j] + log(hmm->transitionProbs[j*hmm->hiddenStates+k]) > value) {
                     value = table[(i-1)*hmm->hiddenStates+j] + log(hmm->transitionProbs[j*hmm->hiddenStates+k]);
                 }
