@@ -72,6 +72,7 @@ bool testViterbi() {
         //printf("%u/%u ", viterbiResult[i], expectedTest1[i]);
         assert(viterbiResult[i] == expectedTest1[i]);
     } 
+    free(viterbiResult);
     
 
     

@@ -9,7 +9,7 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
     
     
     // allocate matrix[data][states]
-    double* table = calloc(T*hmm->hiddenStates, sizeof(double*)); //
+    double* table = calloc(T*hmm->hiddenStates, sizeof(double*)); // freed before return in viterbi()
 
     
     // Compute initial probabilities
@@ -45,7 +45,7 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
      */
    
     // Backtrack
-    unsigned int* decodedStates = calloc(T, sizeof(int));
+    unsigned int* decodedStates = calloc(T, sizeof(int)); // freed by caller?
 
     // Find max value in last row in table[]
     unsigned int temp_max_index_ = 0;
@@ -61,7 +61,7 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
     
     // finish backtracking
     for (unsigned int i = T-1; i > 0; i--) {
-        for (unsigned int j = 0; j < hmm->hiddenStates; j++) {            
+        for (unsigned int j = 0; j < hmm->hiddenStates; j++) {
             if (table[(i-1)*hmm->hiddenStates + j] + log(hmm->transitionProbs[j*hmm->hiddenStates + decodedStates[i]]) + log(hmm->emissionProbs[decodedStates[i]*hmm->observations + Y[i]]) == table[i*hmm->hiddenStates + decodedStates[i]]) {
                 decodedStates[i-1] = j;
                 break;
@@ -70,7 +70,7 @@ unsigned int* viterbi(HMM *hmm, const unsigned int *Y, const unsigned int T) {
     }
 
 
-
+    free(table);
     return decodedStates;
 
     
