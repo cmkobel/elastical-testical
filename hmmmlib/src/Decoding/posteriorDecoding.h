@@ -8,6 +8,6 @@
 #include "backward.h"
 #include "hmm.h"
 
-int posteriorDecoding(HMM * hmm, const int *Y, const int T, const int t);
+double * posteriorDecoding(HMM * hmm, const int *Y, const int T);
 
 #endif
