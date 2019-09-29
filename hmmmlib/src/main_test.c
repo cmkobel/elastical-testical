@@ -12,7 +12,9 @@
 #include "TestBaumWelch.h"
 #include "TestViterbi.h"
 
-int main() {
+int main_test();
+
+int main_test() {
     
     /*
      Testing the forward algorithm

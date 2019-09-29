@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.7.2)
 project(HMMLIB)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+
 
  
 include_directories(
@@ -12,7 +13,7 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/Training)
 
 file(GLOB SOURCES
-       ${PROJECT_SOURCE_DIR}/src/main.c
+       ${PROJECT_SOURCE_DIR}/src/main_test.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.h
        ${PROJECT_SOURCE_DIR}/src/Evaluation/*.c
@@ -24,8 +25,7 @@ file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/Training/*.c
        ${PROJECT_SOURCE_DIR}/src/Training/*.h)
 
-
-add_executable(HMMLIB ${SOURCES})
+add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/main_test.c)
 target_link_libraries(HMMLIB m)
 
 foreach(FILE ${SOURCES}) 
