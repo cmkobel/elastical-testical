@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.7.2)
 project(HMMLIB)
 
 
+SET (CMAKE_CXX_FLAGS "-fPIC")
 
  
 include_directories(

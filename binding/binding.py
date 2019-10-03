@@ -22,7 +22,8 @@ libhmm.HMMCreate.restype = POINTER(HMM)
 # Call, and Python returns pointer to Python definition of struct
 _test = libhmm.HMMCreate(6,7)
 
-print(_test.__dir__())
+print('a', dir(_test[0]))
+print(_test[0].hiddenStates)
 
 #print(HMM(_test))
 
