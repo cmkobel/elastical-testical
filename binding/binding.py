@@ -1,11 +1,11 @@
 from ctypes import *
 import os
 
-# Load the shared library into c types.
+
+# Load the shared library into ctypes.
 libhmm = CDLL(os.path.abspath("libhmm.so"))
 
-
-# Tell python how to interpret the structs
+# 
 class HMM(Structure):
     """ creates a struct to match HMM """
     _fields_ = [("hiddenStates", c_uint),
@@ -15,23 +15,32 @@ class HMM(Structure):
                 ("initProbs", POINTER(c_double))]
 
 
-# Load library as normal
 
-# New, so Python knows how to interpret result
+# Tell python the restypes of needed functions.
 libhmm.HMMCreate.restype = POINTER(HMM)
-# Call, and Python returns pointer to Python definition of struct
-_test = libhmm.HMMCreate(6,7)
-
-print('a', dir(_test[0]))
-print(_test[0].hiddenStates)
-
-#print(HMM(_test))
-
-
-
 libhmm.valdidateHMM.restype = c_bool
-print(libhmm.valdidateHMM(_test))
+#libhmm.printHMM.restype = c_void_p
+#libhmm.HMMDeallocate.restype = c_void_p
 
 
-libhmm.printHMM(_test)
+# Create HMM object
+hmm_object = libhmm.HMMCreate(6,7)
+#print(dir(hmm_object[0]))
+
+
+print('hiddenStates =', hmm_object[0].hiddenStates)
+print('observations =', hmm_object[0].observations)
+
+# The following variables are accessible from the HMM struct
+for i in [i for i in dir(hmm_object[0]) if str(i)[0:1] != '_']:
+    print(i)
+
+
+print('Validation of the hmm yields:', libhmm.valdidateHMM(hmm_object))
+
+
+#libhmm.printHMM(hmm_object)
+
+
+#libhmm.HMMDeallocate(hmm_object)
 

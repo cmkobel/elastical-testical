@@ -29,11 +29,7 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     //
     newHMM->emissionProbs = calloc(newHMM->hiddenStates*newHMM->observations, sizeof(double));
     
-    /* 
-    assert(hiddenStates == 7);
-    assert(observations == 7);
-     */
-
+    
     return newHMM;
 }
 
