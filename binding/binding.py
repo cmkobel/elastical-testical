@@ -7,15 +7,30 @@ libhmm = CDLL(os.path.abspath("libhmm.so"))
 
 # Tell python how to interpret the structs
 class HMM(Structure):
-    _fields_ = [("hiddenStates", c_uint64),
+    """ creates a struct to match HMM """
+    _fields_ = [("hiddenStates", c_uint),
                 ("observations", c_uint),
                 ("transitionProbs", POINTER(c_double)),
                 ("emissionProbs", POINTER(c_double)),
                 ("initProbs", POINTER(c_double))]
 
 
-hmm_object = libhmm.HMMCreate(7, 7)
+# Load library as normal
+
+# New, so Python knows how to interpret result
+libhmm.HMMCreate.restype = POINTER(HMM)
+# Call, and Python returns pointer to Python definition of struct
+_test = libhmm.HMMCreate(6,7)
+
+print(_test.__dir__())
+
+#print(HMM(_test))
 
 
-print(HMM(hmm_object).hiddenStates)
-print(HMM(hmm_object)._fields_)
+
+libhmm.valdidateHMM.restype = c_bool
+print(libhmm.valdidateHMM(_test))
+
+
+libhmm.printHMM(_test)
+

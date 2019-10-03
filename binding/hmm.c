@@ -29,9 +29,10 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
     //
     newHMM->emissionProbs = calloc(newHMM->hiddenStates*newHMM->observations, sizeof(double));
     
+    /* 
     assert(hiddenStates == 7);
     assert(observations == 7);
-    
+     */
 
     return newHMM;
 }
@@ -111,9 +112,4 @@ bool HMMDeallocate(HMM * hmm){
     
     return true;
     
-}
-
-
-void test() {
-    printf("The C file has been summoned.\n");
 }
