@@ -11,8 +11,15 @@
 #include "testBackwardAlgorithm.h"
 #include "TestBaumWelch.h"
 #include "TestViterbi.h"
+#include <Accelerate/Accelerate.h>
 
 int main() {
+    
+    double inVector1[2] = {1,1};
+    double inVector2[2] = {1,1};
+    double result = cblas_ddot(2, inVector1, 1, inVector2, 1);
+    
+    printf("%f\n", result);
     
     /*
      Testing the forward algorithm

@@ -6,6 +6,7 @@ double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     unsigned int i;
     unsigned int j;
     
+
     // 2D alpha matrix
     //
     // [state][time]
