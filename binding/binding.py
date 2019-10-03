@@ -31,16 +31,32 @@ hmm_object = libhmm.HMMCreate(6,7)
 print('hiddenStates =', hmm_object[0].hiddenStates)
 print('observations =', hmm_object[0].observations)
 
-# The following variables are accessible from the HMM struct
+print('The following variables are accessible from the HMM struct')
 for i in [i for i in dir(hmm_object[0]) if str(i)[0:1] != '_']:
-    print(i)
+    print('\t', i)
 
 
 print('Validation of the hmm yields:', libhmm.valdidateHMM(hmm_object))
 
 
-#libhmm.printHMM(hmm_object)
+libhmm.printHMM(hmm_object)
 
 
 #libhmm.HMMDeallocate(hmm_object)
 
+
+
+## Test ##
+
+for i in range(10):
+    # Jeg ved ikke om det her en den rigtige måde at printe et array på.
+    print(hmm_object[0].initProbs[i])
+    
+new_init_probs = (c_double * 7)(0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00)
+hmm_object[0].initProbs = new_init_probs
+
+
+print('efter indsættelse af ny')
+for i in range(7):
+    # Jeg ved ikke om det her en den rigtige måde at printe et array på.
+    print(hmm_object[0].initProbs[i])
