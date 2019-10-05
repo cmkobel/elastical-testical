@@ -3,7 +3,7 @@ import os
 
 
 # Load the shared library into ctypes.
-libhmm = CDLL(os.path.abspath("libhmm.so"))
+libhmm = CDLL(os.path.abspath("../hmmmlib/build/libHMMLIB.so"))
 
 # 
 class HMM(Structure):

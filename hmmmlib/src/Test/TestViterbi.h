@@ -12,6 +12,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool testViterbi(void);
+extern bool testViterbi(void);
 
 #endif

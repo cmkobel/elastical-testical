@@ -7,10 +7,24 @@
 //
 
 #include <stdio.h>
+
+#include "hmm.h"
+#include "hmm.c"
+
 #include "TestsForwardAlgorithm.h"
+#include "TestsForwardAlgorithm.c"
+
+
 #include "testBackwardAlgorithm.h"
+#include "testBackwardAlgorithm.c"
+
+
 #include "TestBaumWelch.h"
+#include "TestBaumWelch.c"
+
+
 #include "TestViterbi.h"
+#include "TestViterbi.c"
 
 int main_test();
 

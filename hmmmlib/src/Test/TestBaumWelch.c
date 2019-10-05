@@ -1,5 +1,7 @@
 #include "TestBaumWelch.h"
 #include "baumWelch.h"
+#include "baumWelch.c"
+
 #include "hmm.h"
 #include <assert.h>
 #include <math.h>

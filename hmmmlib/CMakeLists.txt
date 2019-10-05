@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.7.2)
 project(HMMLIB)
 
 
-SET (CMAKE_CXX_FLAGS "-fPIC")
 
  
 include_directories(
@@ -27,7 +26,10 @@ file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/Training/*.h)
 
 add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/main_test.c)
+
 target_link_libraries(HMMLIB m)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 
 foreach(FILE ${SOURCES}) 
     # Get the directory of the source file

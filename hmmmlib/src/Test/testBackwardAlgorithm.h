@@ -3,4 +3,4 @@
 
 #pragma once
 
-bool testBackwardAlgorithm(void);
+extern bool testBackwardAlgorithm(void);

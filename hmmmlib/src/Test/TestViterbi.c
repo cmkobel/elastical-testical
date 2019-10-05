@@ -1,5 +1,9 @@
 #include "TestViterbi.h"
+
+
 #include "viterbi.h"
+#include "viterbi.c"
+
 #include "hmm.h"
 
 
@@ -8,7 +12,7 @@
 
 
 
-bool testViterbi() {
+extern bool testViterbi() {
     HMM * hmm = HMMCreate(7, 4);
     
 
