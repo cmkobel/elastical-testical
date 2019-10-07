@@ -1,11 +1,13 @@
 #include "forward.h"
 #include <stdlib.h>
+#include <Accelerate/Accelerate.h>
 
 double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;
     
+    cblas_dgemv
 
     // 2D alpha matrix
     //
