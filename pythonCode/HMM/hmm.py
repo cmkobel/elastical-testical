@@ -52,6 +52,7 @@
 import sys
 import math
 import string
+import numpy as np
 
 class hmm:
     """
@@ -208,6 +209,45 @@ class hmm:
                     break
 
         return z, w[-1][z[-1]]
+        
+    def forward_without_scaling(self, x):
+        """
+        Returns the alpha_hat table and scaling factors as explained in Bishop
+        """
+        # Allocate dynamic programming table for forward
+        alpha_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
+
+        # Compute column 0 (base case)
+        for k in range(self.num_of_states):
+            alpha_hat[0][k] = self.init_prob[k] * self.emit_prob[k][x[0]]
+
+        # Compute column 1..n-1
+        for i in range(1, len(x)):
+            for k in range(self.num_of_states):
+                val = 0
+                if self.emit_prob[k][x[i]] > 0:
+                    for j in range(self.num_of_states):
+                        val = val + alpha_hat[i-1][j] * self.trans_prob[j][k]
+                    val = val * self.emit_prob[k][x[i]]
+                alpha_hat[i][k] = val
+
+        return alpha_hat
+    
+    def forward_using_matrix(self, x):
+        """
+        Returns the alpha_hat table and scaling factors as explained in Bishop
+        """
+        # Allocate dynamic programming table for forward
+        alpha_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
+        
+        emits = [[[self.emit_prob[0][0], 0],[0, self.emit_prob[1][0]]], [[self.emit_prob[0][1], 0],[0, self.emit_prob[1][1]]]]
+        alpha_hat[0] = np.dot(self.init_prob, emits[0])
+
+        for i in range(1, len(x)):
+            alpha_hat[i] = np.dot(emits[x[i]], np.dot(alpha_hat[i-1], self.trans_prob))
+        return alpha_hat
+        
+        
 
     def forward_with_scaling(self, x):
         """
@@ -263,6 +303,59 @@ class hmm:
                 logalpha[i][k] = logval
 
         return logalpha
+        
+    def backward_using_matrix(self, x):
+        """
+        Returns the beta_hat table as explained in Bishop. Needs the list of scaling factors computed by forward
+        """
+        # Allocate dynamic programming table for forward
+        beta_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
+
+        # Compute column n-1 (base case)
+        beta_hat[len(x)-1] = self.num_of_states*[1.0]
+        
+        emits = [[[self.emit_prob[0][0], 0],[0, self.emit_prob[1][0]]], [[self.emit_prob[0][1], 0],[0, self.emit_prob[1][1]]]]
+        
+        # Compute column n-2..0
+        for i in range(len(x)-2, -1, -1):
+            #print("I:",i,"\n", emits[x[i+1]])
+            #print("\n", beta_hat[i+1])
+            #print("\n", np.dot(self.trans_prob,emits[x[i+1]]))
+            #print("\n", np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose()))
+            beta_hat[i] = np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose())
+        '''
+            for k in range(self.num_of_states):
+                val = 0
+                for j in range(self.num_of_states):
+                    val = val + beta_hat[i+1][j] * self.emit_prob[j][x[i+1]] * self.trans_prob[k][j]
+                beta_hat[i][k] = val
+        '''
+        return beta_hat
+        
+    def backward_without_scaling(self, x):
+        """
+        Returns the beta_hat table as explained in Bishop. Needs the list of scaling factors computed by forward
+        """
+        # Allocate dynamic programming table for forward
+        beta_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
+
+        # Compute column n-1 (base case)
+        for k in range(self.num_of_states):
+            beta_hat[len(x)-1][k] = 1
+
+        # Compute column n-2..0
+        for i in range(len(x)-2, -1, -1):
+            print("I: ",i)
+            for k in range(self.num_of_states):
+                val = 0
+                print("->K:", k)
+                for j in range(self.num_of_states):
+                    #print(self.emit_prob[j][x[i+1]])
+                    print("---> B:", beta_hat[i+1][j], "E:", self.emit_prob[j][x[i+1]], "T:", self.trans_prob[k][j])
+                    val = val + beta_hat[i+1][j] * self.emit_prob[j][x[i+1]] * self.trans_prob[k][j]
+                beta_hat[i][k] = val
+
+        return beta_hat
     
     def backward_with_scaling(self, x, scaling_factor):
         """
