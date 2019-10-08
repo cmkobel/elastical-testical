@@ -345,13 +345,9 @@ class hmm:
 
         # Compute column n-2..0
         for i in range(len(x)-2, -1, -1):
-            print("I: ",i)
             for k in range(self.num_of_states):
                 val = 0
-                print("->K:", k)
                 for j in range(self.num_of_states):
-                    #print(self.emit_prob[j][x[i+1]])
-                    print("---> B:", beta_hat[i+1][j], "E:", self.emit_prob[j][x[i+1]], "T:", self.trans_prob[k][j])
                     val = val + beta_hat[i+1][j] * self.emit_prob[j][x[i+1]] * self.trans_prob[k][j]
                 beta_hat[i][k] = val
 
