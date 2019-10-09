@@ -3,7 +3,7 @@ import os
 
 
 # Load the shared library into ctypes.
-libhmm = CDLL(os.path.abspath("../hmmmlib/build/libHMMLIB.so"))
+libhmm = CDLL(os.path.abspath("hmmmlib/build/libHMMLIB.so"))
 
 # 
 class HMM(Structure):
@@ -42,13 +42,13 @@ print('Validation of the hmm yields:', libhmm.valdidateHMM(hmm_object))
 libhmm.printHMM(hmm_object)
 
 
-#libhmm.HMMDeallocate(hmm_object)
+#libhmm.HMMDeallocate(hmm_object) # Jeg ved ikke hvorfor denne ikke virker???
 
 
 
 ## Test ##
 
-for i in range(10):
+for i in range(7):
     # Jeg ved ikke om det her en den rigtige måde at printe et array på.
     print(hmm_object[0].initProbs[i])
     
