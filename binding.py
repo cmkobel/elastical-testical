@@ -1,6 +1,12 @@
 from ctypes import *
 import os
 
+"""
+TODO
+* make getters for the datastructures
+* set up tests for each algorithm
+
+"""
 
 
 class binded_HMM:
