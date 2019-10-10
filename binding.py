@@ -50,14 +50,15 @@ class binded_HMM:
         print(' observations =', obs)
         
         print()
-        print(' initProbs:', [self.hmm_object[0].initProbs[i] for i in range(hs)])
+        formattedInitProbs = ["{:7.3f}".format(self.hmm_object[0].initProbs[i]) for i in range(hs)]
+        print(' initProbs:', ''.join(formattedInitProbs))
 
 
         print()
         print(' transitionProbs: [hs][hs]', end = '\n  ')
         for row in range(hs):
             for col in range(hs):
-                print(round(self.hmm_object[0].transitionProbs[row*hs+col], 3), end = '  ')
+                print("{:7.3f}".format(self.hmm_object[0].transitionProbs[row*hs+col]), end = ' ')
             print(end = '\n  ')
         print()
 
@@ -65,7 +66,8 @@ class binded_HMM:
         print(' emissionProbs: [hs][obs]', end = '\n  ') # [7][4] eller [hs][obs]
         for row in range(hs):
             for col in range(obs):
-                print(round(self.hmm_object[0].emissionProbs[row*obs+col], 3), end = '  ')
+                #print(round(self.hmm_object[0].emissionProbs[row*obs+col], 3), end = '  ')
+                print("{:7.3f}".format(self.hmm_object[0].emissionProbs[row*obs+col]), end = ' ')
             print(end = '\n  ') 
         print()
         print(' The internal validation state is:', self.libhmm.valdidateHMM(self.hmm_object))
@@ -114,7 +116,6 @@ class binded_HMM:
     def getEmissionProbs(self):
         hs = self.hmm_object[0].hiddenStates
         obs = self.hmm_object[0].observations
-
         return [[self.hmm_object[0].emissionProbs[row*obs + col] for col in range(obs)] for row in range(hs)]
         
 
@@ -126,25 +127,28 @@ class binded_HMM:
 
 
 
-o = binded_HMM(3, 2)
+o = binded_HMM(7, 4)
 
 
-o.setInitProbs([0.01, 0.20, 0.33])
-o.setTransitionProbs([[0.1111, 0.2, 0.3],
-                      [0.22, 0.33, 0.44],
-                      [0.33, 0.44, 0.555]])
+o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
+o.setTransitionProbs([[0.00, 0.00, 0.90, 0.10, 0.00, 0.00, 0.00],
+                      [1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+                      [0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+                      [0.00, 0.00, 0.05, 0.90, 0.05, 0.00, 0.00],
+                      [0.00, 0.00, 0.00, 0.00, 0.00, 1.00, 0.00],
+                      [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 1.00],
+                      [0.00, 0.00, 0.00, 0.10, 0.90, 0.00, 0.00]])
 
-o.setEmissionProbs([[0.1, 0.2],
-                  [0.22, 0.33],
-                  [0.44, 0.55555555]])
+o.setEmissionProbs([[0.30, 0.25, 0.25, 0.20],
+                    [0.20, 0.35, 0.15, 0.30],
+                    [0.40, 0.15, 0.20, 0.25],
+                    [0.25, 0.25, 0.25, 0.25],
+                    [0.20, 0.40, 0.30, 0.10],
+                    [0.30, 0.20, 0.30, 0.20],
+                    [0.15, 0.30, 0.20, 0.35]])
 
 o.presentHMM()
 
 
 #o.deallocate()  # Jeg ved ikke hvorfor denne ikke virker???
 
-print('getInitProbs:', o.getInitProbs())
-
-print('getTransitionProbs', o.getTransitionProbs())
-
-print('getEmissionProbs', o.getEmissionProbs())
