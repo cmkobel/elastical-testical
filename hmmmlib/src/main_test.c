@@ -26,6 +26,9 @@
 #include "TestViterbi.h"
 #include "TestViterbi.c"
 
+#include "posteriorDecoding.h"
+#include "posteriorDecoding.c"
+
 int main_test();
 
 int main_test() {
