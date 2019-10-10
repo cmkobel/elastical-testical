@@ -1,4 +1,4 @@
-#
+ #
 # hmm.py
 #
 # Implements a HMM class that can initialize a HMM from a file in the format used
@@ -53,6 +53,7 @@ import sys
 import math
 import string
 import numpy as np
+import time
 
 class hmm:
     """
@@ -232,6 +233,7 @@ class hmm:
                 alpha_hat[i][k] = val
 
         return alpha_hat
+        
     
     def forward_using_matrix(self, x):
         """
@@ -241,11 +243,21 @@ class hmm:
         alpha_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
         
         emits = [[[self.emit_prob[0][0], 0],[0, self.emit_prob[1][0]]], [[self.emit_prob[0][1], 0],[0, self.emit_prob[1][1]]]]
+        
         alpha_hat[0] = np.dot(self.init_prob, emits[0])
+        alpha_hat[0] = alpha_hat[0]*(1/np.sum(alpha_hat[0]))
+        scaling_factor = [0.0]*len(x)
+        
+        timenow = time.time()
 
         for i in range(1, len(x)):
-            alpha_hat[i] = np.dot(emits[x[i]], np.dot(alpha_hat[i-1], self.trans_prob))
-        return alpha_hat
+            alpha_hat[i] = np.dot(emits[x[i]], np.dot(alpha_hat[i-1],self.trans_prob))
+            scaling_factor[i] = (1/np.sum(alpha_hat[i]))
+            alpha_hat[i] = alpha_hat[i]*scaling_factor[i]
+            #alpha_hat[i] = alpha_hat[i]*(1/np.sum(alpha_hat[i]))
+        print(time.time()-timenow)
+        
+        return alpha_hat, scaling_factor
         
         
 
@@ -276,6 +288,7 @@ class hmm:
                     val = val * self.emit_prob[k][x[i]]
                 alpha_hat[i][k] = val
                 scaling_factor[i] = scaling_factor[i] + alpha_hat[i][k]
+            #print(alpha_hat[i])
             for k in range(self.num_of_states):
                 alpha_hat[i][k] = alpha_hat[i][k] / scaling_factor[i]
 
@@ -304,7 +317,7 @@ class hmm:
 
         return logalpha
         
-    def backward_using_matrix(self, x):
+    def backward_using_matrix(self, x, scaling):
         """
         Returns the beta_hat table as explained in Bishop. Needs the list of scaling factors computed by forward
         """
@@ -318,18 +331,8 @@ class hmm:
         
         # Compute column n-2..0
         for i in range(len(x)-2, -1, -1):
-            #print("I:",i,"\n", emits[x[i+1]])
-            #print("\n", beta_hat[i+1])
-            #print("\n", np.dot(self.trans_prob,emits[x[i+1]]))
-            #print("\n", np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose()))
             beta_hat[i] = np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose())
-        '''
-            for k in range(self.num_of_states):
-                val = 0
-                for j in range(self.num_of_states):
-                    val = val + beta_hat[i+1][j] * self.emit_prob[j][x[i+1]] * self.trans_prob[k][j]
-                beta_hat[i][k] = val
-        '''
+            beta_hat[i] = beta_hat[i]*scaling[i+1]
         return beta_hat
         
     def backward_without_scaling(self, x):

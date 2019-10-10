@@ -27,23 +27,25 @@ m = hmm("hmm-2-state.txt")
 
 """
 print("\n\nFORWARD:")
-alpha = m.forward_without_scaling([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
-print("""\nUsing forloops - no scaling""")
+alpha, scale = m.forward_with_scaling([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
+print("""\nUsing forloops""")
 for i in alpha:
     print(i)
-
-alpha = m.forward_using_matrix([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
-print("""\nUsing Matrix - no scaling """)
+    
+print("\n\n")
+alpha, scaling = m.forward_using_matrix([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
+print("""\nUsing Matrix """)
 for i in alpha:
     print(i)
 
 print("\n\nBACKWARD:")
-beta = m.backward_without_scaling([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
+beta = m.backward_with_scaling([0, 0, 0, 0, 0, 1, 1, 0, 0, 0], scale)
 print("""\nUsing forloops - no scaling""")
 for i in beta:
     print(i)
     
-beta = m.backward_using_matrix([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
+beta = m.backward_using_matrix([0, 0, 0, 0, 0, 1, 1, 0, 0, 0], scaling)
 print("""\nUsing matrix - no scaling""")
 for i in beta:
     print(i)
+
