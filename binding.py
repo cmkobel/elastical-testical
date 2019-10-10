@@ -71,6 +71,7 @@ class binded_HMM:
         print(' The internal validation state is:', self.libhmm.valdidateHMM(self.hmm_object))
 
 
+    ## Setters ##
     def setInitProbs(self, pi):
         if len(pi) != self.hmm_object[0].hiddenStates:
             raise Exception(f'Failed to set initProbs[]. initProbs[] should contain {self.hmm_object[0].hiddenStates} values but {len(pi)} were given.')
@@ -102,6 +103,22 @@ class binded_HMM:
         self.hmm_object[0].emissionProbs = (c_double * (self.hmm_object[0].hiddenStates * self.hmm_object[0].observations))(*one_dimensional)
 
 
+    ## Getters ##
+    def getInitProbs(self):
+        return [self.hmm_object[0].initProbs[i] for i in range(self.hmm_object[0].hiddenStates)]
+
+    def getTransitionProbs(self):
+        hs = self.hmm_object[0].hiddenStates
+        return [[self.hmm_object[0].transitionProbs[row * hs + col] for col in range(hs)] for row in range(hs)]
+
+    def getEmissionProbs(self):
+        hs = self.hmm_object[0].hiddenStates
+        obs = self.hmm_object[0].observations
+
+        return [[self.hmm_object[0].emissionProbs[row*obs + col] for col in range(obs)] for row in range(hs)]
+        
+
+
 
     def deallocate(self):
         self.libhmm.HMMDeallocate(self.hmm_object) # Jeg ved ikke hvorfor denne ikke virker???
@@ -113,7 +130,7 @@ o = binded_HMM(3, 2)
 
 
 o.setInitProbs([0.01, 0.20, 0.33])
-o.setTransitionProbs([[0.1, 0.2, 0.3],
+o.setTransitionProbs([[0.1111, 0.2, 0.3],
                       [0.22, 0.33, 0.44],
                       [0.33, 0.44, 0.555]])
 
@@ -125,3 +142,9 @@ o.presentHMM()
 
 
 #o.deallocate()  # Jeg ved ikke hvorfor denne ikke virker???
+
+print('getInitProbs:', o.getInitProbs())
+
+print('getTransitionProbs', o.getTransitionProbs())
+
+print('getEmissionProbs', o.getEmissionProbs())
