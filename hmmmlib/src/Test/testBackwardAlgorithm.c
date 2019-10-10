@@ -47,7 +47,14 @@ extern bool testBackwardAlgorithm() {
     double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
     double * beta = backward(hmm, observation, obsLenght, scaleFactor);
     
-    
+    /* 
+    printf("scaleFactor from backward");
+    for (unsigned int i = 0; i < obsLenght; i++) {
+        
+        printf(" %f", scaleFactor[i]);
+    }
+    printf("\n");
+     */
     
     double test[20] = {0.838486, 0.848495, 0.854859, 0.898964, 1.267584, 1.076550, 0.944879, 0.862481, 0.868282, 1.000000, 1.015142, 1.026387, 1.026767, 1.018758, 0.950282, 0.867237, 1.143683, 1.041273, 1.026152, 1.000000};
     
