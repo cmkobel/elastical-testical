@@ -1,4 +1,4 @@
-from ctypes import *
+import ctypes as c
 import os
 
 """
@@ -13,22 +13,24 @@ class binded_HMM:
 
     def __init__(self, n_hiddenstates, n_observations, address_to_so = "hmmmlib/build/libHMMLIB.so"):
         
-        class HMM(Structure): # Jeg kan ikke finde ud af at definere denne klasse udenfor __init__, medmindre det er udenfor binded_HMM
+        class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse udenfor __init__, medmindre det er udenfor binded_HMM
             """ creates a struct to match HMM """
-            _fields_ = [("hiddenStates", c_uint),
-                        ("observations", c_uint),
-                        ("transitionProbs", POINTER(c_double)),
-                        ("emissionProbs", POINTER(c_double)),
-                        ("initProbs", POINTER(c_double))]
+            _fields_ = [("hiddenStates", c.c_uint),
+                        ("observations", c.c_uint),
+                        ("transitionProbs", c.POINTER(c.c_double)),
+                        ("emissionProbs", c.POINTER(c.c_double)),
+                        ("initProbs", c.POINTER(c.c_double))]
         
         # Load the shared library into ctypes.
-        self.libhmm = CDLL(os.path.abspath(address_to_so))
+        self.libhmm = c.CDLL(os.path.abspath(address_to_so))
         
         # Set restypes of needed functions.
-        self.libhmm.HMMCreate.restype = POINTER(HMM)
-        self.libhmm.valdidateHMM.restype = c_bool
-        self.libhmm.printHMM.restype = c_void_p
-        self.libhmm.HMMDeallocate.restype = c_void_p
+        self.libhmm.HMMCreate.restype = c.POINTER(HMM)
+        self.libhmm.valdidateHMM.restype = c.c_bool
+        self.libhmm.printHMM.restype = c.c_void_p
+        self.libhmm.HMMDeallocate.restype = c.c_void_p
+
+        self.libhmm.viterbi.restype = c.POINTER(c.c_uint)
 
         # Create HMM object
         self.hmm_object = self.libhmm.HMMCreate(n_hiddenstates, n_observations)
@@ -78,7 +80,7 @@ class binded_HMM:
         if len(pi) != self.hmm_object[0].hiddenStates:
             raise Exception(f'Failed to set initProbs[]. initProbs[] should contain {self.hmm_object[0].hiddenStates} values but {len(pi)} were given.')
 
-        self.hmm_object[0].initProbs = (c_double * self.hmm_object[0].hiddenStates)(*pi)
+        self.hmm_object[0].initProbs = (c.c_double * self.hmm_object[0].hiddenStates)(*pi)
 
 
     def setTransitionProbs(self, new_trans_p):
@@ -90,7 +92,7 @@ class binded_HMM:
 
         one_dimensional = [j for sub in new_trans_p for j in sub]
         # print(one_dimensional)
-        self.hmm_object[0].transitionProbs = (c_double * (self.hmm_object[0].hiddenStates * self.hmm_object[0].hiddenStates))(*one_dimensional)
+        self.hmm_object[0].transitionProbs = (c.c_double * (self.hmm_object[0].hiddenStates * self.hmm_object[0].hiddenStates))(*one_dimensional)
 
 
     def setEmissionProbs(self, new_emiss_p):
@@ -102,7 +104,7 @@ class binded_HMM:
 
         one_dimensional = [j for sub in new_emiss_p for j in sub]
         # print(one_dimensional)
-        self.hmm_object[0].emissionProbs = (c_double * (self.hmm_object[0].hiddenStates * self.hmm_object[0].observations))(*one_dimensional)
+        self.hmm_object[0].emissionProbs = (c.c_double * (self.hmm_object[0].hiddenStates * self.hmm_object[0].observations))(*one_dimensional)
 
 
     ## Getters ##
@@ -125,30 +127,4 @@ class binded_HMM:
         self.libhmm.HMMDeallocate(self.hmm_object) # Jeg ved ikke hvorfor denne ikke virker???
 
 
-
-
-o = binded_HMM(7, 4)
-
-
-o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
-o.setTransitionProbs([[0.00, 0.00, 0.90, 0.10, 0.00, 0.00, 0.00],
-                      [1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
-                      [0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00],
-                      [0.00, 0.00, 0.05, 0.90, 0.05, 0.00, 0.00],
-                      [0.00, 0.00, 0.00, 0.00, 0.00, 1.00, 0.00],
-                      [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 1.00],
-                      [0.00, 0.00, 0.00, 0.10, 0.90, 0.00, 0.00]])
-
-o.setEmissionProbs([[0.30, 0.25, 0.25, 0.20],
-                    [0.20, 0.35, 0.15, 0.30],
-                    [0.40, 0.15, 0.20, 0.25],
-                    [0.25, 0.25, 0.25, 0.25],
-                    [0.20, 0.40, 0.30, 0.10],
-                    [0.30, 0.20, 0.30, 0.20],
-                    [0.15, 0.30, 0.20, 0.35]])
-
-o.presentHMM()
-
-
-#o.deallocate()  # Jeg ved ikke hvorfor denne ikke virker???
 
