@@ -121,6 +121,10 @@ class binded_HMM:
         return [[self.hmm_object[0].emissionProbs[row*obs + col] for col in range(obs)] for row in range(hs)]
         
 
+    ## Algorithms ##
+    def viterbi(self, observation_data):
+        output = self.libhmm.viterbi(self.hmm_object, (c.c_int * len(observation_data))(*observation_data), len(observation_data))
+        return [output[i] for i in range(len(observation_data))]
 
 
     def deallocate(self):
