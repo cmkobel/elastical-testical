@@ -14,7 +14,7 @@ double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
     double posterior;
     
     for (i = 0; i < T; i++){
-        posterior = -1;
+        posterior = -1.0;
         for (j = 0; j < hmm->hiddenStates; j++){
             if(alpha[i*T+j]*beta[i*T+j] > posterior){
                 posterior = alpha[i*T+j]*beta[i*T+j];

@@ -6,8 +6,6 @@ double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;
-    
-    cblas_dgemv
 
     // 2D alpha matrix
     //
@@ -20,6 +18,7 @@ double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
         alpha[i*T+0] = hmm->initProbs[i]*hmm->emissionProbs[i*hmm->observations+Y[0]];
         scalingFactor[0] += alpha[i*T+0];
     }
+    
     // Scaling step
     for(j = 0; j < hmm->hiddenStates; j++){
         alpha[j*T+0] = alpha[j*T+0]/scalingFactor[0];

@@ -242,8 +242,8 @@ class hmm:
         # Allocate dynamic programming table for forward
         alpha_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
         
-        emits = [[[self.emit_prob[0][0], 0],[0, self.emit_prob[1][0]]], [[self.emit_prob[0][1], 0],[0, self.emit_prob[1][1]]]]
-        
+        emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(len(self.emit_prob))]
+
         alpha_hat[0] = np.dot(self.init_prob, emits[0])
         alpha_hat[0] = alpha_hat[0]*(1/np.sum(alpha_hat[0]))
         scaling_factor = [0.0]*len(x)
@@ -327,7 +327,7 @@ class hmm:
         # Compute column n-1 (base case)
         beta_hat[len(x)-1] = self.num_of_states*[1.0]
         
-        emits = [[[self.emit_prob[0][0], 0],[0, self.emit_prob[1][0]]], [[self.emit_prob[0][1], 0],[0, self.emit_prob[1][1]]]]
+        emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(len(self.emit_prob))]
         
         # Compute column n-2..0
         for i in range(len(x)-2, -1, -1):
