@@ -247,15 +247,14 @@ class hmm:
         alpha_hat[0] = np.dot(self.init_prob, emits[0])
         alpha_hat[0] = alpha_hat[0]*(1/np.sum(alpha_hat[0]))
         scaling_factor = [0.0]*len(x)
-        
-        timenow = time.time()
 
         for i in range(1, len(x)):
+            sub_result = np.dot(alpha_hat[i-1],self.trans_prob)
+            print("alpha[i-1]*trans:", sub_result)
             alpha_hat[i] = np.dot(emits[x[i]], np.dot(alpha_hat[i-1],self.trans_prob))
+            print("alpha[i] before scaling:", alpha_hat[i])
             scaling_factor[i] = (1/np.sum(alpha_hat[i]))
             alpha_hat[i] = alpha_hat[i]*scaling_factor[i]
-            #alpha_hat[i] = alpha_hat[i]*(1/np.sum(alpha_hat[i]))
-        print(time.time()-timenow)
         
         return alpha_hat, scaling_factor
         
