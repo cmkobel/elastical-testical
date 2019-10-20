@@ -327,11 +327,15 @@ class hmm:
         beta_hat[len(x)-1] = self.num_of_states*[1.0]
         
         emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(len(self.emit_prob))]
-        
+        print("Initial emits", beta_hat[len(x)-1])
         # Compute column n-2..0
         for i in range(len(x)-2, -1, -1):
+            print("Transprob*emits",np.dot(self.trans_prob,emits[x[i+1]]))
             beta_hat[i] = np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose())
-            beta_hat[i] = beta_hat[i]*scaling[i+1]
+            print("beta[i]", beta_hat[i])
+            print("Scaling:", scaling[i+1])
+            #beta_hat[i] = beta_hat[i]*scaling[i+1]
+            print("beta scaled,", beta_hat[i])
         return beta_hat
         
     def backward_without_scaling(self, x):

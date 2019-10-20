@@ -37,7 +37,7 @@ int main() {
      Testing the viterbi algorithm
      */
     if(testViterbi()){
-        printf("\nall Viterbi tests succed\n");
+        printf("\nall Viterbi tests succed\n\n");
     }
     return 0;
 }
