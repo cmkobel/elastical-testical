@@ -1,6 +1,7 @@
 #include "hmm.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations) {
     HMM * newHMM = calloc(1, sizeof(HMM));
@@ -44,13 +45,15 @@ bool valdidateHMM(const HMM *hmm){
         return false;
     }
     
+    float epsilon = 0.000001;
+    
     for (i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;
         for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i*hmm->hiddenStates+j];
-        if (sum != 1.0) return false;
+        if (fabs(hmm->transitionProbs[0]-1.0) < epsilon) return false;
         sum = 0.0;
         for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->hiddenStates+j];
-        if (sum != 1.0) return false;
+        if (fabs(hmm->transitionProbs[0]-1.0) < epsilon) return false;
     }
     
     return true;
