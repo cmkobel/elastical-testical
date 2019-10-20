@@ -17,7 +17,7 @@ double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
         new_emission_probs[i] = matrix;
     }
     
-    double * alpha = malloc(hmm->hiddenStates*T*sizeof(double));
+    double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
     
     // Doing the matrix multiplication and then scalingFactor
     cblas_dsymv(CblasRowMajor, 121, hmm->hiddenStates, 1.0, new_emission_probs[Y[0]], hmm->hiddenStates, hmm->initProbs, 1, 1, alpha, 1);
@@ -30,13 +30,13 @@ double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
         scalingFactor[i] = cblas_dasum(hmm->hiddenStates, alpha+2*i, 1);
         cblas_dscal(hmm->hiddenStates, (1.0/scalingFactor[i]), alpha+2*i, 1);
     }
-    
+    /*
     for(i = 0; i < T; i++){
         for(j = 0; j < hmm->hiddenStates; j++){
             printf("%f, ", alpha[i*hmm->hiddenStates+j]);
         }
         printf("\n");
     }
-
+    */
     return alpha;
 }
