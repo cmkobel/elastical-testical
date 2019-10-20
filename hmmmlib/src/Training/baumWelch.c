@@ -1,7 +1,7 @@
 #include "baumWelch.h"
 #include <stdlib.h>
 
-void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
+void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int itterations){
     
     //Initial random init of HMM
     

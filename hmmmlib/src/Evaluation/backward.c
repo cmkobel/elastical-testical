@@ -1,7 +1,7 @@
 #include "backward.h"
 #include <stdlib.h>
 
-double *backward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
+double *backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;

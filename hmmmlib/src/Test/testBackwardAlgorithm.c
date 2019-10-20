@@ -35,8 +35,8 @@ bool testBackwardAlgorithm() {
         }
     }
     
-    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
-    const int obsLenght = 10;
+    const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const unsigned int obsLenght = 10;
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
     double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
