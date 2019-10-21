@@ -15,9 +15,9 @@ data_grouped %>% ggplot(aes(observations, mean)) +
     facet_wrap(.~algorithm)
 
 
-ggsave("main.svg", height = 10, width = 15)
-ggsave("main.pdf", height = 10, width = 15)
-ggsave("main.png", height = 10, width = 15)
+ggsave("main.svg", height = 5, width = 7)
+ggsave("main.pdf", height = 5, width = 7)
+ggsave("main.png", height = 5, width = 7)
 
 
 
