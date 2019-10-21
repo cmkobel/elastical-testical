@@ -26,7 +26,7 @@ double *backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     }
     
     for(i = 1; i < T; i++){
-        cblas_dgemv(CblasRowMajor, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[i]], hmm->hiddenStates, beta+2*(i-1), 1, 0, beta+2*i, 1);
+        cblas_dgemv(CblasRowMajor, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[i+1]], hmm->hiddenStates, beta+2*(i-1), 1, 0, beta+2*i, 1);
         cblas_dscal(hmm->hiddenStates, scalingFactor[T-i], beta+2*i, 1);
     }
     
@@ -37,7 +37,7 @@ double *backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
         }
         printf("\n");
     }
-     */
+    */
     return beta;
     
 }

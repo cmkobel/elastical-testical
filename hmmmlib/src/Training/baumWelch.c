@@ -20,8 +20,7 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     // [state][state][time]
     //
     double * xi = calloc(hmm->hiddenStates*hmm->hiddenStates*T, sizeof(double));
-    /*
-     
+    
     double *** xi = (double ***)calloc(hmm->hiddenStates, sizeof(double**));
     for(i = 0; i < hmm->hiddenStates; i++){
         xi[i] = (double **)calloc(hmm->hiddenStates, sizeof(double*));
@@ -29,7 +28,7 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             xi[i][j] = (double *)calloc(T, sizeof(double));
         }
     }
-    */
+    
     for(int q = 0; q < itterations; q++) {
         double * scaleFactor = calloc(T, sizeof(double));
         double * alpha = forward(hmm, Y, T, scaleFactor);
@@ -46,7 +45,7 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
                 gamma[i*hmm->hiddenStates+j] = numerator/denominator;
             }
         }
-        /*
+       
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
@@ -55,7 +54,8 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             printf("\n");
         }
         printf("\n");
-        */
+       
+        
         // xi denominator
         double * xiDenominator = calloc(T-1, sizeof(double));
         
@@ -67,13 +67,13 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             }
         }
         
-        /*
+        
         printf("XI Denominator\n");
         for(i = 0; i < T-1; i++){
             printf("%f, ", xiDenominator[i]);
         }
         printf("\n\n");
-        */
+        
         // Updating xi
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
