@@ -29,7 +29,6 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
         cblas_dgemv(CblasRowMajor, CblasTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[i]], hmm->hiddenStates, alpha+2*i, 1, 0, alpha+2*i, 1);
         scalingFactor[i] = 1.0/cblas_dasum(hmm->hiddenStates, alpha+2*i, 1);
         cblas_dscal(hmm->hiddenStates, scalingFactor[i], alpha+2*i, 1);
-        printf("Scale: %f\n", scalingFactor[i]);
     }
     /*
     for(i = 0; i < T; i++){
