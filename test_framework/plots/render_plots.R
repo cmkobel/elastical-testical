@@ -4,14 +4,16 @@ library(svglite)
 
 setwd("~/bioinformatics/hmm/git_hmmmlib/test_framework/plots")
 #data <- read_csv("../time2.csv",)
-data <- read_csv("../short.csv")
+#data <- read_csv("../short.csv")
+data <- read_csv("../medium.csv")
 
 
-data_grouped = data %>% group_by(observations, algorithm) %>% 
+
+data_grouped = data %>% group_by(observations, algorithm, variant) %>% 
     summarise(mean = mean(time), sd = sd(time)) 
 
 
-data_grouped %>% ggplot(aes(observations, mean)) +
+data_grouped %>% ggplot(aes(observations, mean, color = variant)) +
     geom_point() + 
     geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd)) +
     facet_wrap(.~algorithm)
