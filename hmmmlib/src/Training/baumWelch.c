@@ -34,6 +34,8 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
                 for(l = 0; l < hmm->hiddenStates; l++){
                     denominator += alpha[l*T+i]*beta[l*T+i];
                 }
+                printf("Nynerator:%f\n", numerator);
+                printf("Denominator:%f\n", denominator);
                 gamma[i*hmm->hiddenStates+j] = numerator/denominator;
             }
         }
