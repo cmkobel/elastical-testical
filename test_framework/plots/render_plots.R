@@ -1,5 +1,6 @@
 library(tidyverse)
 library(ggpubr)
+library(svglite)
 
 setwd("~/bioinformatics/hmm/git_hmmmlib/test_framework/plots")
 data <- read_csv("../time2.csv",)
@@ -14,7 +15,9 @@ data_grouped %>% ggplot(aes(observations, mean)) +
     facet_wrap(.~algorithm)
 
 
-ggsave("full.svg", height = 10, width = 15)
+ggsave("main.svg", height = 10, width = 15)
+ggsave("main.pdf", height = 10, width = 15)
+ggsave("main.png", height = 10, width = 15)
 
 
 
