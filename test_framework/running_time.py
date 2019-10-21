@@ -15,11 +15,10 @@ def read_fasta(n_lines, file):
 
 
 
-def standard_test(o, test_setup, start, stop, increment, algorithm = '', file = 'data/pantro3_X.fasta', linewidth = 60, **kwargs):
+def standard_test(o, test_setup, start, stop, increment, file, algorithm = '', linewidth = 60, **kwargs):
     name = test_setup.__name__
-    
 
-    ## Test standard setup ##
+    ## Test setup ##
     o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
     o.setTransitionProbs([[0.00, 0.00, 0.90, 0.10, 0.00, 0.00, 0.00],
                         [1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
@@ -36,10 +35,7 @@ def standard_test(o, test_setup, start, stop, increment, algorithm = '', file = 
                         [0.30, 0.20, 0.30, 0.20],
                         [0.15, 0.30, 0.20, 0.35]])
 
-
-
-    print(name)
-    ## Test standard loop ##
+    ## Test loop ##
     for i in range(start, stop, increment):
         test_standard_data = [i for i in read_fasta(i, file)]
         print(f'{name}\t{i*linewidth}', file = sys.stderr, end = '\t', flush = True)
@@ -63,41 +59,31 @@ def standard_test(o, test_setup, start, stop, increment, algorithm = '', file = 
 
 
 
-
-
-
-
-
-
 start = 100
 stop = 1101
 increment = 500
 replicates = 5
+file = 'data/pantro3_X.fasta'
 
 
 
 # Viterbi
 o = hmm_binding.binded_HMM(7, 4)
-standard_test(o, o.viterbi, start, stop, increment, '1D')
+standard_test(o, o.viterbi, start, stop, increment, file, '1D')
 
 
 # Forward
 o = hmm_binding.binded_HMM(7, 4)
-standard_test(o, o.forward, start, stop, increment, '1D')
+standard_test(o, o.forward, start, stop, increment, file, '1D')
 
 
 # Backward
 o = hmm_binding.binded_HMM(7, 4)
-standard_test(o, o.backward, start, stop, increment, '1D')
-
-
-
-
-
+standard_test(o, o.backward, start, stop, increment, file, '1D')
 
 
 o = hmm_binding.binded_HMM(7, 4)
 # Baum-Welch
-standard_test(o, o.baumWelch, start, stop, increment, '1D', n_iterations = 1)
+standard_test(o, o.baumWelch, start, stop, increment, file, '1D', n_iterations = 1)
 
 

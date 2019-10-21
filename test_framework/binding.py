@@ -146,10 +146,21 @@ class binded_HMM:
         return [output[i] for i in range(len(observation_data)*self.hmm[0].hiddenStates)], scalefactor_p
 
 
-    def backward(self, observation_data, scalefactor_from_forward):
-        """ Returns the table denoting the probability of each 
-            state for each observation. 2: The scalefactors used for each 
-            column in said table. """
+    def backward(self, observation_data, scalefactor_from_forward = None):
+        """ Inputs: 1: observation data: a list of integers, 2: scalefactors
+                for each columnn in observation data provided from forward. If
+                not supplied, the scalefactors will be retrieved automatically, 
+                though this may be a waste of resources if already computed.
+            Outputs: Returns the table denoting the probability of each 
+                state for each observation. 2: The scalefactors used for each 
+                column in said table. """
+        if scalefactor_from_forward == None: # retrieve scalefactors automatically
+            scalefactor = len(observation_data) * [0]
+            scalefactor_from_forward = (c.c_double * len(observation_data))(*scalefactor)
+            output = self.libhmm.forward(self.hmm,
+                                         (c.c_int * len(observation_data))(*observation_data),
+                                         len(observation_data),
+                                         scalefactor_from_forward)
 
         output = self.libhmm.backward(self.hmm,
                                      (c.c_int * len(observation_data))(*observation_data),
