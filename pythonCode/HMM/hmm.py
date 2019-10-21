@@ -1,4 +1,4 @@
- #
+#
 # hmm.py
 #
 # Implements a HMM class that can initialize a HMM from a file in the format used
