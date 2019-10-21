@@ -50,6 +50,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
+        
                 printf("%f, ", gamma[i*hmm->hiddenStates+j]);
             }
             printf("\n");
@@ -84,6 +85,7 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
                 }
             }
         }
+    
         
         //Updating initial probs
         for (i = 0; i < hmm->hiddenStates; i++) {
@@ -127,7 +129,15 @@ void baumWelch(HMM *hmm, const int *Y, const int T, const int itterations){
             for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->observations+j];
             for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i*hmm->observations+j] = hmm->emissionProbs[i*hmm->observations+j]/sum;
         }
+        free(scaleFactor);
+        
+        free(xiDenominator);
+        
     }
+
+    free(gamma);
+    free(xi);
+    
 }
 
 // Asign random variables to all initprobs, transprobs and obsprobs

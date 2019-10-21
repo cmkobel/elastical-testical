@@ -10,7 +10,7 @@ TODO
 
 """
 
-class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse udenfor __init__, medmindre det er udenfor binded_HMM
+class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse udenfor __init__, medmindre det er udenfor binded_HMM. Den er åbenbart nødt til at være udenfor, for at self.deallocate() i binded_HMM kan finde den.
     """ creates a struct to match HMM """
     _fields_ = [("hiddenStates", c.c_uint),
                 ("observations", c.c_uint),

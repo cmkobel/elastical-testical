@@ -44,6 +44,7 @@ def running_time_viterbi(start = 1000, stop = 100000, increment = 5000, replicat
             test_viterbi_output = o.viterbi(test_viterbi_data)
             t1 = time.time()
             print(f'{i*linewidth}, {t1-t0}, viterbi_1D')
+    o.deallocate()
         
 
 
@@ -81,6 +82,7 @@ def running_time_forward(start = 1000, stop = 100000, increment = 5000, replicat
             test_forward_output = o.forward(test_forward_data)
             t1 = time.time()
             print(f'{i*linewidth}, {t1-t0}, forward_1D')
+    o.deallocate()
 
         
 
@@ -124,6 +126,7 @@ def running_time_backward(start = 1000, stop = 100000, increment = 5000, replica
             test_backward_output = o.backward(test_backward_data, scalefactor_from_forward)
             t1 = time.time()
             print(f'{i*linewidth}, {t1-t0}, backward_1D')
+    o.deallocate()
 
 
 
@@ -151,27 +154,32 @@ def running_time_baumWelch(start = 1000, stop = 100000, increment = 5000, replic
     ## Test baumWelch loop ##
     for i in range(start, stop, increment):
         test_baumWelch_data = [i for i in read_fasta(i, file)]
-        print(f'baumWelch {i}', file = sys.stderr)
+        print(f'baumWelch {i}', file = sys.stderr, end = '\t', flush = True)
+
         for replicate in range(replicates):
-            
+            print('.', end = '', file = sys.stderr, flush = True)    
             
             t0 = time.time()
             test_baumWelch_output = o.baumWelch(test_baumWelch_data, n_iterations)
             t1 = time.time()
             print(f'{i*linewidth}, {t1-t0}, baumWelch_1D_1it')
+        print('', file = sys.stderr, flush = True) # newline
 
-        
-
-
-
+    o.deallocate()
 
 
 
 
-start = 10
-stop = 100000
-increment = 1000
-replicates = 5
+
+
+
+
+
+
+start = 1000
+stop = 10000
+increment = 100
+replicates = 3
 
 
 print('observations, time, algorithm')
