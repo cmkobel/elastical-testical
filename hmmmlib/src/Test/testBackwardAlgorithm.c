@@ -35,8 +35,8 @@ bool testBackwardAlgorithm() {
         }
     }
     
-    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
-    const int obsLenght = 10;
+    const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const unsigned int obsLenght = 10;
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
     double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
@@ -44,7 +44,16 @@ bool testBackwardAlgorithm() {
     
     
     
-    double test[20] = {0.838486, 0.848495, 0.854859, 0.898964, 1.267584, 1.076550, 0.944879, 0.862481, 0.868282, 1.000000, 1.015142, 1.026387, 1.026767, 1.018758, 0.950282, 0.867237, 1.143683, 1.041273, 1.026152, 1.000000};
+    double test[20] = {1.000000, 1.000000,
+        0.868282, 1.026152,
+        0.862481, 1.041273,
+        0.944879, 1.143683,
+        1.449358, 1.754844,
+        1.867152, 1.504211,
+        1.267337, 0.950106,
+        0.898670, 1.018426,
+        0.853588, 1.025241,
+        0.838962, 1.014856};
     
     
     for(i = 0; i < hmm->hiddenStates; i++) {

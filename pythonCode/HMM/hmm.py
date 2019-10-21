@@ -334,7 +334,7 @@ class hmm:
             beta_hat[i] = np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose())
             print("beta[i]", beta_hat[i])
             print("Scaling:", scaling[i+1])
-            #beta_hat[i] = beta_hat[i]*scaling[i+1]
+            beta_hat[i] = beta_hat[i]*scaling[i+1]
             print("beta scaled,", beta_hat[i])
         return beta_hat
         
