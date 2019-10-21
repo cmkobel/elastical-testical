@@ -19,4 +19,4 @@ bool valdidateHMM(const HMM *hmm);
 
 void printHMM(const HMM *hmm);
 
-bool HMMDeallocate(HMM * hmm);
+void HMMDeallocate(HMM * hmm);

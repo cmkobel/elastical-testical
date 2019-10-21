@@ -10,28 +10,29 @@ TODO
 
 """
 
+class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse udenfor __init__, medmindre det er udenfor binded_HMM
+    """ creates a struct to match HMM """
+    _fields_ = [("hiddenStates", c.c_uint),
+                ("observations", c.c_uint),
+                ("transitionProbs", c.POINTER(c.c_double)),
+                ("emissionProbs", c.POINTER(c.c_double)),
+                ("initProbs", c.POINTER(c.c_double))]
 
 class binded_HMM:
 
     def __init__(self, n_hiddenstates, n_observations, address_to_so = "../hmmmlib/build/libHMMLIB.so"):
         
-        class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse udenfor __init__, medmindre det er udenfor binded_HMM
-            """ creates a struct to match HMM """
-            _fields_ = [("hiddenStates", c.c_uint),
-                        ("observations", c.c_uint),
-                        ("transitionProbs", c.POINTER(c.c_double)),
-                        ("emissionProbs", c.POINTER(c.c_double)),
-                        ("initProbs", c.POINTER(c.c_double))]
         
         # Load the shared library into ctypes.
         self.libhmm = c.CDLL(os.path.abspath(address_to_so))
         
-        # Set restypes of needed functions.
+        # Set restypes for internal functions.
         self.libhmm.HMMCreate.restype = c.POINTER(HMM)
         self.libhmm.valdidateHMM.restype = c.c_bool
         self.libhmm.printHMM.restype = c.c_void_p
         self.libhmm.HMMDeallocate.restype = c.c_void_p
 
+        # Set restypes for algorithms.
         self.libhmm.forward.restype = c.POINTER(c.c_double)
         self.libhmm.backward.restype = c.POINTER(c.c_double)
         self.libhmm.viterbi.restype = c.POINTER(c.c_uint)
@@ -132,6 +133,9 @@ class binded_HMM:
 
     ## Algorithms ##
     def forward(self, observation_data):
+        """ Returns a tuple. 1: The table denoting the probability of each 
+            state for each observation. 2: The scalefactors used for each 
+            column in said table. """
         scalefactor = len(observation_data) * [0]
         scalefactor_p = (c.c_double * len(observation_data))(*scalefactor)
         output = self.libhmm.forward(self.hmm,
@@ -143,8 +147,10 @@ class binded_HMM:
 
 
     def backward(self, observation_data, scalefactor_from_forward):
-        """ if scalefactor_from_forward == None:
-            scalefactor_from_forward = len(observation_data) * [1] """
+        """ Returns the table denoting the probability of each 
+            state for each observation. 2: The scalefactors used for each 
+            column in said table. """
+
         output = self.libhmm.backward(self.hmm,
                                      (c.c_int * len(observation_data))(*observation_data),
                                      len(observation_data),
@@ -180,7 +186,9 @@ class binded_HMM:
 
 
     def deallocate(self):
-        self.libhmm.HMMDeallocate(self.hmm) # Jeg ved ikke hvorfor denne ikke virker???
+        
+        c_struct = c.POINTER(HMM)(self.hmm)
+        self.libhmm.HMMDeallocate(c_struct) # Jeg ved ikke hvorfor denne ikke virker???
 
 
 
