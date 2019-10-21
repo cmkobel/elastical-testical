@@ -46,7 +46,7 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
             t0 = time.time()
             test_standard_output = test_setup(test_standard_data, **kwargs)
             t1 = time.time()
-            print(f'{i*linewidth}, {t1-t0}, {algorithm_name}_{algorithm_version}')
+            print(f'{i*linewidth}, {t1-t0}, {algorithm_name}, {algorithm_version}')
         print('', file = sys.stderr, flush = True) # newline
 
     o.deallocate()
@@ -57,15 +57,14 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
 
 
 
-
-
-start = 100
+start = 10
 stop = 20000
 increment = 1000
 replicates = 5
 file = 'data/pantro3_X.fasta'
 
-print('observations, time, algorithm')
+
+print('observations, time, algorithm, variant')
 
 
 # Viterbi
@@ -80,11 +79,21 @@ standard_test(o, o.forward, start, stop, increment, file, '1D')
 
 # Backward
 o = hmm_binding.binded_HMM(7, 4)
-standard_test(o, o.backward, start, stop, increment, file, '1D')
+standard_test(o, o.backward, start, stop, increment, file, '1D') 
 
 
+# Baum-Welch 1
 o = hmm_binding.binded_HMM(7, 4)
-# Baum-Welch
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D', n_iterations = 1)
+standard_test(o, o.baumWelch, start, stop, increment, file, '1D_1it', n_iterations = 1)
+
+# Baum-Welch 2
+o = hmm_binding.binded_HMM(7, 4)
+standard_test(o, o.baumWelch, start, stop, increment, file, '1D_2it', n_iterations = 2)
+
+# Baum-Welch 4
+o = hmm_binding.binded_HMM(7, 4)
+standard_test(o, o.baumWelch, start, stop, increment, file, '1D_4it', n_iterations = 4)
+
+
 
 
