@@ -15,7 +15,7 @@ def read_fasta(n_lines, file):
 
 
 
-def standard_test(o, test_setup, start, stop, increment, file, algorithm = '', linewidth = 60, **kwargs):
+def standard_test(o, test_setup, start, stop, increment, file, algorithm_version = '', linewidth = 60, **kwargs):
     name = test_setup.__name__
 
     ## Test setup ##
@@ -46,7 +46,7 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm = '', l
             t0 = time.time()
             test_standard_output = test_setup(test_standard_data, **kwargs)
             t1 = time.time()
-            print(f'{i*linewidth}, {t1-t0}, {name}_{algorithm}')
+            print(f'{i*linewidth}, {t1-t0}, {name}_{algorithm_version}')
         print('', file = sys.stderr, flush = True) # newline
 
     o.deallocate()
