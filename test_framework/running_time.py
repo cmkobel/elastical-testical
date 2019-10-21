@@ -59,9 +59,9 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
 
 
 
-start = 1000
-stop = 2000
-increment = 500
+start = 100
+stop = 20000
+increment = 1000
 replicates = 5
 file = 'data/pantro3_X.fasta'
 
