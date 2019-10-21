@@ -38,8 +38,8 @@ bool testBaumWelch() {
     
     baumWelch(hmm, observation, obsLenght, 1);
     
-    printf("AFTER: \n");
-    printHMM(hmm);
+    //printf("AFTER: \n");
+    //printHMM(hmm);
     
     
     float epsilon = 0.000001;

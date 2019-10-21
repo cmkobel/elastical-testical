@@ -21,14 +21,6 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     //
     double * xi = calloc(hmm->hiddenStates*hmm->hiddenStates*T, sizeof(double));
     
-    double *** xi = (double ***)calloc(hmm->hiddenStates, sizeof(double**));
-    for(i = 0; i < hmm->hiddenStates; i++){
-        xi[i] = (double **)calloc(hmm->hiddenStates, sizeof(double*));
-        for(j = 0; j < hmm->hiddenStates; j++){
-            xi[i][j] = (double *)calloc(T, sizeof(double));
-        }
-    }
-    
     for(int q = 0; q < itterations; q++) {
         double * scaleFactor = calloc(T, sizeof(double));
         double * alpha = forward(hmm, Y, T, scaleFactor);
@@ -37,10 +29,10 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
         // Updating gamma
         for(i = 0; i < T; i++){
             for (j = 0; j < hmm->hiddenStates; j++) {
-                double numerator = alpha[j*hmm->hiddenStates+i]*beta[j*hmm->hiddenStates+i];
+                double numerator = alpha[i*hmm->hiddenStates+j]*beta[i*hmm->hiddenStates+j];
                 double denominator = 0.0;
                 for(l = 0; l < hmm->hiddenStates; l++){
-                    denominator += alpha[l*hmm->hiddenStates+i]*beta[l*hmm->hiddenStates+i];
+                    denominator += alpha[i*hmm->hiddenStates+l]*beta[i*hmm->hiddenStates+l];
                 }
                 gamma[i*hmm->hiddenStates+j] = numerator/denominator;
             }
