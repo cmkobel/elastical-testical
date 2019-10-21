@@ -65,6 +65,7 @@ increment = 1000
 replicates = 5
 file = 'data/pantro3_X.fasta'
 
+print('observations, time, algorithm')
 
 
 # Viterbi

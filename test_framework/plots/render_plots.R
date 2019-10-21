@@ -3,7 +3,9 @@ library(ggpubr)
 library(svglite)
 
 setwd("~/bioinformatics/hmm/git_hmmmlib/test_framework/plots")
-data <- read_csv("../time2.csv",)
+#data <- read_csv("../time2.csv",)
+data <- read_csv("../short.csv")
+
 
 data_grouped = data %>% group_by(observations, algorithm) %>% 
     summarise(mean = mean(time), sd = sd(time)) 
