@@ -25,10 +25,10 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     cblas_dscal(hmm->hiddenStates, (1.0/scalingFactor[0]), alpha, 1);
     
     for(i = 1; i<T; i++){
-        cblas_dgemv(CblasRowMajor, CblasTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, hmm->transitionProbs, hmm->hiddenStates, alpha+2*(i-1), 1, 0, alpha+2*i, 1);
-        cblas_dgemv(CblasRowMajor, CblasTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[i]], hmm->hiddenStates, alpha+2*i, 1, 0, alpha+2*i, 1);
-        scalingFactor[i] = 1.0/cblas_dasum(hmm->hiddenStates, alpha+2*i, 1);
-        cblas_dscal(hmm->hiddenStates, scalingFactor[i], alpha+2*i, 1);
+        cblas_dgemv(CblasRowMajor, CblasTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, hmm->transitionProbs, hmm->hiddenStates, alpha+hmm->hiddenStates*(i-1), 1, 0, alpha+hmm->hiddenStates*i, 1);
+        cblas_dgemv(CblasRowMajor, CblasTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[i]], hmm->hiddenStates, alpha+hmm->hiddenStates*i, 1, 0, alpha+hmm->hiddenStates*i, 1);
+        scalingFactor[i] = 1.0/cblas_dasum(hmm->hiddenStates, alpha+hmm->hiddenStates*i, 1);
+        cblas_dscal(hmm->hiddenStates, scalingFactor[i], alpha+hmm->hiddenStates*i, 1);
     }
     
     printf("Forward\n");

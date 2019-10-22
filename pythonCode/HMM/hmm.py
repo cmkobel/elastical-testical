@@ -236,6 +236,7 @@ class hmm:
         
     
     def forward_using_matrix(self, x):
+    
         """
         Returns the alpha_hat table and scaling factors as explained in Bishop
         """
@@ -247,14 +248,16 @@ class hmm:
         alpha_hat[0] = np.dot(self.init_prob, emits[0])
         alpha_hat[0] = alpha_hat[0]*(1/np.sum(alpha_hat[0]))
         scaling_factor = [0.0]*len(x)
-
+        import time
         for i in range(1, len(x)):
+            timestart = time.time()
             sub_result = np.dot(alpha_hat[i-1],self.trans_prob)
             #print("alpha[i-1]*trans:", sub_result)
             alpha_hat[i] = np.dot(emits[x[i]], np.dot(alpha_hat[i-1],self.trans_prob))
             #print("alpha[i] before scaling:", alpha_hat[i])
             scaling_factor[i] = (1/np.sum(alpha_hat[i]))
             alpha_hat[i] = alpha_hat[i]*scaling_factor[i]
+            print(time.time()-timestart)
         
         return alpha_hat, scaling_factor
         
@@ -276,9 +279,10 @@ class hmm:
             scaling_factor[0] = scaling_factor[0] + alpha_hat[0][k]
         for k in range(self.num_of_states):
             alpha_hat[0][k] = alpha_hat[0][k] / scaling_factor[0]
-
+        #import time
         # Compute column 1..n-1
         for i in range(1, len(x)):
+            #timestart = time.time()
             for k in range(self.num_of_states):
                 val = 0
                 if self.emit_prob[k][x[i]] > 0:
@@ -290,7 +294,7 @@ class hmm:
             #print(alpha_hat[i])
             for k in range(self.num_of_states):
                 alpha_hat[i][k] = alpha_hat[i][k] / scaling_factor[i]
-
+            #print(time.time()-timestart)
         return alpha_hat, scaling_factor
 
     def forward_with_log(self, x):
@@ -330,13 +334,14 @@ class hmm:
         #print("Initial emits", beta_hat[len(x)-1])
         # Compute column n-2..0
         for i in range(len(x)-2, -1, -1):
-            #print("Transprob*emits:\n",np.dot(self.trans_prob,emits[x[i+1]]))
-            #print("beta[i+1]", beta_hat[i+1])
+            print("EMIT x[i+1] = %d"% x[i+1])
+            print("Transprob*emits:\n",np.dot(self.trans_prob,emits[x[i+1]]))
+            print("beta[i+1]", beta_hat[i+1])
             beta_hat[i] = np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose())
-            #print("beta[i]", beta_hat[i])
-            #print("Scaling:", scaling[i+1])
+            print("beta[i]", beta_hat[i])
+            print("Scaling:", scaling[i+1])
             beta_hat[i] = beta_hat[i]*scaling[i+1]
-            #print("beta scaled,", beta_hat[i], "\n")
+            print("beta scaled,", beta_hat[i], "\n")
         return beta_hat
         
     def backward_without_scaling(self, x):

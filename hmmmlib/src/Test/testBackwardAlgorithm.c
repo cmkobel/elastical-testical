@@ -5,67 +5,89 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 bool testBackwardAlgorithm() {
+    
+    int i;
+    int j;
+    clock_t t;
+    double time_taken;
     
     /*
      
      TEST 1 - 2*2 HMM
      
      */
-    HMM * hmm = HMMCreate(2, 2);
-    
-    double transitionProbs[2][2] = {
-        {0.5, 0.5},
-        {0.3, 0.7}
-    };
-    
-    double emissionProbs[2][2] = {
-        {0.3, 0.7},
-        {0.8, 0.2}
-    };
-    
-    double initProbs[2] = {0.2, 0.8};
-    
-    hmm->initProbs = initProbs;
-    int i;
-    int j;
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->hiddenStates; j++){
-            hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
+    if(true){
+        HMM * hmm = HMMCreate(2, 2);
+        
+        double transitionProbs[2][2] = {
+            {0.5, 0.5},
+            {0.3, 0.7}
+        };
+        
+        double emissionProbs[2][2] = {
+            {0.3, 0.7},
+            {0.8, 0.2}
+        };
+        
+        double initProbs[2] = {0.2, 0.8};
+        
+        hmm->initProbs = initProbs;
+
+        for(i = 0; i < hmm->hiddenStates; i++){
+            for(j = 0; j < hmm->hiddenStates; j++){
+                hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
+            }
         }
-    }
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->observations; j++){
-            hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
+        for(i = 0; i < hmm->hiddenStates; i++){
+            for(j = 0; j < hmm->observations; j++){
+                hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
+            }
         }
-    }
-    
-    const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
-    const unsigned int obsLenght = 10;
-    
-    double * scaleFactor = calloc(obsLenght, sizeof(double));
-    double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
-    double * beta = backward(hmm, observation, obsLenght, scaleFactor);
-    
-    
-    
-    double test[20] = {1.000000, 1.000000,
-        0.868282, 1.026152,
-        0.862481, 1.041273,
-        0.944879, 1.143683,
-        1.076550, 0.867237,
-        1.267584, 0.950282,
-        0.898964, 1.018758,
-        0.854859, 1.026767,
-        0.848495, 1.026387,
-        0.838486, 1.015142};
-    
-    
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < obsLenght; j++){
-            assert(fabs(beta[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+        
+        const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+        const unsigned int obsLenght = 10;
+        
+        double * scaleFactor = calloc(obsLenght, sizeof(double));
+        
+
+        t = clock();
+        double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
+        t = clock() - t;
+        time_taken = ((double)t)/CLOCKS_PER_SEC;
+        printf("ALPHA TEST 1 running time: %f\n", time_taken);
+        t = clock();
+        double * beta = backward(hmm, observation, obsLenght, scaleFactor);
+        t = clock() - t;
+        time_taken = ((double)t)/CLOCKS_PER_SEC;
+        printf("BETA TEST 1 running time: %f\n", time_taken);
+        
+        
+        
+        double test[20] = {1.000000, 1.000000,
+            0.868282, 1.026152,
+            0.862481, 1.041273,
+            0.944879, 1.143683,
+            1.076550, 0.867237,
+            1.267584, 0.950282,
+            0.898964, 1.018758,
+            0.854859, 1.026767,
+            0.848495, 1.026387,
+            0.838486, 1.015142};
+        
+        
+        for(i = 0; i < hmm->hiddenStates; i++) {
+            for (j = 0; j < obsLenght; j++){
+                assert(fabs(beta[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+            }
         }
+        
+        free(scaleFactor);
+        free(alpha);
+        free(beta);
+        //HMMDeallocate(hmm);
     }
     
     /*
@@ -74,5 +96,81 @@ bool testBackwardAlgorithm() {
      
      */
     
+    if(true){
+        
+        HMM * hmm2 = HMMCreate(7, 4);
+        
+        double transitionProbs2[7][7] = {
+            {0.0 , 0.0 , 0.9 , 0.1 , 0.0 , 0.0 , 0.0},
+            {1.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0},
+            {0.0 , 1.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0},
+            {0.0 , 0.0 , 0.05 , 0.9 , 0.05 , 0.0 , 0.0},
+            {0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 1.0 , 0.0},
+            {0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 1.0},
+            {0.0 , 0.0 , 0.0 , 0.1 , 0.9 , 0.0 , 0.0}
+        };
+        
+        double emissionProbs2[7][4] = {
+            {0.3 , 0.25 , 0.25 , 0.2},
+            {0.2 , 0.35 , 0.15 , 0.3},
+            {0.4 , 0.15 , 0.2 , 0.25},
+            {0.25 , 0.25 , 0.25 , 0.25},
+            {0.2 , 0.4 , 0.3 , 0.1},
+            {0.3 , 0.2 , 0.3 , 0.2},
+            {0.15 , 0.3 , 0.2 , 0.35}
+        };
+        
+        double initProbs2[7] = {0.0 , 0.0 , 0.0 , 1.0 , 0.0 , 0.0 , 0.0};
+        
+        hmm2->initProbs = initProbs2;
+
+        for(i = 0; i < hmm2->hiddenStates; i++){
+            for(j = 0; j < hmm2->hiddenStates; j++){
+                hmm2->transitionProbs[i*hmm2->hiddenStates+j] = transitionProbs2[i][j];
+            }
+        }
+        for(i = 0; i < hmm2->hiddenStates; i++){
+            for(j = 0; j < hmm2->observations; j++){
+                hmm2->emissionProbs[i*hmm2->observations+j] = emissionProbs2[i][j];
+            }
+        }
+        
+        const unsigned int observation2[10] = {0,1,2,3,3,2,1,3,2,1};
+        const unsigned int obsLenght2 = 10;
+        
+        printHMM(hmm2);
+        
+        double * scaleFactor2 = calloc(obsLenght2, sizeof(double));
+        t = clock();
+        double * alpha2 = forward(hmm2, observation2, obsLenght2, scaleFactor2);
+        t = clock() - t;
+        time_taken = ((double)t)/CLOCKS_PER_SEC;
+        printf("ALPHA TEST 1 running time: %f\n", time_taken);
+        t = clock();
+        double * beta2 = backward(hmm2, observation2, obsLenght2, scaleFactor2);
+        t = clock() - t;
+        time_taken = ((double)t)/CLOCKS_PER_SEC;
+        printf("BETA TEST 1 running time: %f\n", time_taken);
+        
+        
+        
+        double test2alpha[70] = {0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+            0.0, 0.0, 0.0297029702970297, 0.8910891089108911, 0.07920792079207922, 0.0, 0.0,
+            0.0, 0.017751479289940822, 0.03550295857988165, 0.7988165680473371, 0.05325443786982248, 0.09467455621301775, 0.0,
+            0.014105201292976783, 0.04231560387893035, 0.03967087863649721, 0.7140758154569498, 0.015868351454598886, 0.04231560387893036, 0.13164854540111665,
+            0.0367677567200097, 0.05170465788751365, 0.05256640218563887, 0.7138434434025496, 0.06698625677426767, 0.013787908770003642, 0.06434357426001698,
+            0.05198659387687777, 0.03171182226489543, 0.055326572081016934, 0.6561285776082829, 0.112934136194607, 0.08082182461391929, 0.011090473360400593,
+            0.03141205283200857, 0.07672500391140769, 0.04730517836050952, 0.5911817003208785, 0.06781341533059485, 0.08949326274723163, 0.09606938649736914,
+            0.06483316415628948, 0.05995980914443716, 0.06108337113044319, 0.575462087135659, 0.049019502784910594, 0.05730280956653559, 0.13233925608172487,
+            0.06080739819354018, 0.03716810567944167, 0.07068361444879583, 0.5452330770139235, 0.17996260493700922, 0.059654928211884464, 0.046490271515404996,
+            0.03669552875343646, 0.09769886257539809, 0.048567519065541305, 0.49506394220074496, 0.10915885400232408, 0.1421395645172638, 0.07067572888529124};
+        
+        
+        for (j = 0; j < obsLenght2; j++){
+            for(i = 0; i < hmm2->hiddenStates; i++) {
+                assert(fabs(alpha2[j*hmm2->hiddenStates+i]-test2alpha[j*hmm2->hiddenStates+i]) < 0.00001);
+            }
+        }
+    }
     return true;
 }

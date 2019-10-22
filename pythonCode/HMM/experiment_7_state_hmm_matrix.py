@@ -36,25 +36,34 @@ m = hmm("hmm-7-state.txt")
     0.15 0.30 0.20 0.35
 
 """
+import time
 print("\n\nFORWARD:")
-alpha, scale = m.forward_with_scaling([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
+timestart = time.time()
+alpha, scale = m.forward_with_scaling([0,1,2,3,3,2,1,3,2,1])
+print(time.time()-timestart)
 print("""\nUsing forloops""")
 for i in alpha:
     print(i)
     
 print("\n\n")
-alpha, scaling = m.forward_using_matrix([0, 0, 0, 0, 0, 1, 1, 0, 0, 0])
+timestart = time.time()
+alpha, scaling = m.forward_using_matrix([0,1,2,3,3,2,1,3,2,1])
+print(time.time()-timestart)
 print("""\nUsing Matrix """)
 for i in alpha:
     print(i)
 
 print("\n\nBACKWARD:")
-beta = m.backward_with_scaling([0, 0, 0, 0, 0, 1, 1, 0, 0, 0], scale)
+timestart = time.time()
+beta = m.backward_with_scaling([0,1,2,3,3,2,1,3,2,1], scale)
+print(time.time()-timestart)
 print("""\nUsing forloops - no scaling""")
 for i in beta:
     print(i)
-    
-beta = m.backward_using_matrix([0, 0, 0, 0, 0, 1, 1, 0, 0, 0], scaling)
+
+timestart = time.time()
+beta = m.backward_using_matrix([0,1,2,3,3,2,1,3,2,1], scaling)
+print(time.time()-timestart)
 print("""\nUsing matrix - no scaling""")
 for i in beta:
     print(i)
