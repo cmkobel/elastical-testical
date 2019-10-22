@@ -15,7 +15,7 @@ addons:
       - cmake
 
 script:
-        - cd hmmmlib/build; cmake .. &&  make
+        - mkdir -p hmmmlib/build; cd hmmmlib/build; cmake .. &&  make
 
 
 
