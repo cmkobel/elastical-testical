@@ -16,7 +16,7 @@ data_grouped = data %>% group_by(observations, algorithm, variant) %>%
 data_grouped %>% ggplot(aes(observations, mean, color = variant)) +
     geom_point() + 
     geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd)) +
-    facet_wrap(.~algorithm)
+    facet_wrap(.~algorithm, scales = "free")
 
 
 ggsave("main.svg", height = 5, width = 7)
