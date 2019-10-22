@@ -1,7 +1,7 @@
 #include "forward.h"
 #include <stdlib.h>
 
-double * forward(HMM *hmm, const int *Y, const int T, double * scalingFactor){
+double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor){
     
     unsigned int i;
     unsigned int j;

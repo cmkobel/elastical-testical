@@ -35,8 +35,8 @@ bool testBaumWelch() {
         }
     }
     
-    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
-    const int obsLenght = 10;
+    const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const unsigned int obsLenght = 10;
     
     baumWelch(hmm, observation, obsLenght, 1);
     
