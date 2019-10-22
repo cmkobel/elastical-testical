@@ -56,7 +56,6 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
 
 
 
-
 start = 10
 stop = 20000
 increment = 1000
