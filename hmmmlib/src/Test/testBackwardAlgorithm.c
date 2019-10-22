@@ -7,6 +7,12 @@
 #include <math.h>
 
 bool testBackwardAlgorithm() {
+    
+    /*
+     
+     TEST 1 - 2*2 HMM
+     
+     */
     HMM * hmm = HMMCreate(2, 2);
     
     double transitionProbs[2][2] = {
@@ -61,6 +67,12 @@ bool testBackwardAlgorithm() {
             assert(fabs(beta[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
         }
     }
+    
+    /*
+     
+     TEST 2 - 7*7 hmm
+     
+     */
     
     return true;
 }
