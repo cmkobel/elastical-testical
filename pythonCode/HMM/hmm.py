@@ -242,7 +242,7 @@ class hmm:
         # Allocate dynamic programming table for forward
         alpha_hat = [ self.num_of_states * [0.0] for i in range(len(x)) ]
         
-        emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(len(self.emit_prob))]
+        emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(self.num_of_obs)]
 
         alpha_hat[0] = np.dot(self.init_prob, emits[0])
         alpha_hat[0] = alpha_hat[0]*(1/np.sum(alpha_hat[0]))
@@ -250,9 +250,9 @@ class hmm:
 
         for i in range(1, len(x)):
             sub_result = np.dot(alpha_hat[i-1],self.trans_prob)
-            print("alpha[i-1]*trans:", sub_result)
+            #print("alpha[i-1]*trans:", sub_result)
             alpha_hat[i] = np.dot(emits[x[i]], np.dot(alpha_hat[i-1],self.trans_prob))
-            print("alpha[i] before scaling:", alpha_hat[i])
+            #print("alpha[i] before scaling:", alpha_hat[i])
             scaling_factor[i] = (1/np.sum(alpha_hat[i]))
             alpha_hat[i] = alpha_hat[i]*scaling_factor[i]
         
@@ -326,17 +326,17 @@ class hmm:
         # Compute column n-1 (base case)
         beta_hat[len(x)-1] = self.num_of_states*[1.0]
         
-        emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(len(self.emit_prob))]
-        print("Initial emits", beta_hat[len(x)-1])
+        emits = [np.diag(np.array(self.emit_prob)[:,i]) for i in range(self.num_of_obs)]
+        #print("Initial emits", beta_hat[len(x)-1])
         # Compute column n-2..0
         for i in range(len(x)-2, -1, -1):
-            print("Transprob*emits:\n",np.dot(self.trans_prob,emits[x[i+1]]))
-            print("beta[i+1]", beta_hat[i+1])
+            #print("Transprob*emits:\n",np.dot(self.trans_prob,emits[x[i+1]]))
+            #print("beta[i+1]", beta_hat[i+1])
             beta_hat[i] = np.dot(beta_hat[i+1], np.dot(self.trans_prob,emits[x[i+1]]).transpose())
-            print("beta[i]", beta_hat[i])
-            print("Scaling:", scaling[i+1])
+            #print("beta[i]", beta_hat[i])
+            #print("Scaling:", scaling[i+1])
             beta_hat[i] = beta_hat[i]*scaling[i+1]
-            print("beta scaled,", beta_hat[i], "\n")
+            #print("beta scaled,", beta_hat[i], "\n")
         return beta_hat
         
     def backward_without_scaling(self, x):
