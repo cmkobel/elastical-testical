@@ -15,7 +15,7 @@ addons:
       - cmake
 
 script:
-        - cd hmmmlib/build; rm CMakeCache.txt; rm -r CMakeFiles/; rm cmake_install.cmake; rm libHMMLIB.so*; rm Makefile; cmake .. &&  make
+        - cd hmmmlib/build; cmake .. &&  make
 
 
 
