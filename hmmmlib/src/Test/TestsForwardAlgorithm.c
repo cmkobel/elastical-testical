@@ -46,7 +46,8 @@ bool testForwardAlgorithm() {
     const unsigned int obsLenght = 10;
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
-    double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
+    double * alpha = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
+    forward(hmm, observation, obsLenght, scaleFactor, alpha);
     
     double test[20] = {0.085714, 0.914286,
         0.148330, 0.851670,

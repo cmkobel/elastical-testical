@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <Accelerate/Accelerate.h>
 
-double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor){
+void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
     unsigned int i;
     unsigned int j;
@@ -16,8 +16,6 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
         }
         new_emission_probs[i] = matrix;
     }
-    
-    double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
     
     // Doing the matrix multiplication and then scalingFactor
     cblas_dsymv(CblasRowMajor, 121, hmm->hiddenStates, 1.0, new_emission_probs[Y[0]], hmm->hiddenStates, hmm->initProbs, 1, 1, alpha, 1);
@@ -40,5 +38,9 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     }
     printf("\n");
     */
-    return alpha;
+    
+    for(i = 0; i < hmm->observations; i++){
+        free(new_emission_probs[i]);
+    }
+    free(new_emission_probs);
 }

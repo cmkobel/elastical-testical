@@ -54,12 +54,14 @@ bool testBackwardAlgorithm() {
         
 
         t = clock();
-        double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
+        double * alpha = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
+        forward(hmm, observation, obsLenght, scaleFactor, alpha);
         t = clock() - t;
         time_taken = ((double)t)/CLOCKS_PER_SEC;
         printf("ALPHA TEST 1 running time: %f\n", time_taken);
         t = clock();
-        double * beta = backward(hmm, observation, obsLenght, scaleFactor);
+        double * beta = calloc(obsLenght*hmm->hiddenStates, sizeof(double));
+        backward(hmm, observation, obsLenght, scaleFactor, beta);
         t = clock() - t;
         time_taken = ((double)t)/CLOCKS_PER_SEC;
         printf("BETA TEST 1 running time: %f\n", time_taken);
@@ -142,12 +144,15 @@ bool testBackwardAlgorithm() {
         
         double * scaleFactor2 = calloc(obsLenght2, sizeof(double));
         t = clock();
-        double * alpha2 = forward(hmm2, observation2, obsLenght2, scaleFactor2);
+
+        double * alpha2 = calloc(obsLenght2*obsLenght2, sizeof(double));
+        forward(hmm2, observation2, obsLenght2, scaleFactor2, alpha2);
         t = clock() - t;
         time_taken = ((double)t)/CLOCKS_PER_SEC;
         printf("ALPHA TEST 1 running time: %f\n", time_taken);
         t = clock();
-        double * beta2 = backward(hmm2, observation2, obsLenght2, scaleFactor2);
+        double * beta2 = calloc(obsLenght2*hmm2->hiddenStates, sizeof(double));
+        backward(hmm2, observation2, obsLenght2, scaleFactor2, beta2);
         t = clock() - t;
         time_taken = ((double)t)/CLOCKS_PER_SEC;
         printf("BETA TEST 1 running time: %f\n", time_taken);

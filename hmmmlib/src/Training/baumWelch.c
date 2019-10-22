@@ -21,10 +21,24 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     //
     double * xi = calloc(hmm->hiddenStates*hmm->hiddenStates*T, sizeof(double));
     
+    //
+    // Scale factor for ALPHA and BETA
+    //
+    double * scaleFactor = calloc(T, sizeof(double));
+    
+    //
+    //
+    //
+    double * beta = calloc(T*hmm->hiddenStates, sizeof(double));
+    
+    //
+    //
+    //
+    double * alpha = calloc(T*hmm->hiddenStates, sizeof(double));
+    
     for(int q = 0; q < itterations; q++) {
-        double * scaleFactor = calloc(T, sizeof(double));
-        double * alpha = forward(hmm, Y, T, scaleFactor);
-        double * beta = backward(hmm, Y, T, scaleFactor);
+        forward(hmm, Y, T, scaleFactor, alpha);
+        backward(hmm, Y, T, scaleFactor, beta);
         
         // Updating gamma
         for(i = 0; i < T; i++){
@@ -116,6 +130,11 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i*hmm->observations+j] = hmm->emissionProbs[i*hmm->observations+j]/sum;
         }
     }
+    
+    free(alpha);
+    free(beta);
+    free(gamma);
+    free(xi);
 }
 
 // Asign random variables to all initprobs, transprobs and obsprobs

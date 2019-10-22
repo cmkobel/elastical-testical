@@ -1,14 +1,17 @@
 #include "posteriorDecoding.h"
 #include <stdlib.h>
 
-double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
+double * posteriorDecoding(HMM * hmm, const unsigned int *Y, const unsigned int T){
     
     unsigned int i;
     unsigned int j;
     
     double * scalingFactor = calloc(T, sizeof(double));
-    double * alpha = forward(hmm, Y, T, scalingFactor);
-    double * beta = backward(hmm, Y, T, scalingFactor);
+    double * beta = calloc(T*hmm->hiddenStates, sizeof(double));
+    double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
+    
+    forward(hmm, Y, T, scalingFactor, beta);
+    backward(hmm, Y, T, scalingFactor, beta);
 
     double * z = calloc(T, sizeof(double));
     double posterior;
