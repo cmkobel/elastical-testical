@@ -30,7 +30,7 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
         scalingFactor[i] = 1.0/cblas_dasum(hmm->hiddenStates, alpha+hmm->hiddenStates*i, 1);
         cblas_dscal(hmm->hiddenStates, scalingFactor[i], alpha+hmm->hiddenStates*i, 1);
     }
-    
+    /*
     printf("Forward\n");
     for(i = 0; i < T; i++){
         for(j = 0; j < hmm->hiddenStates; j++){
@@ -39,5 +39,6 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
         printf("\n");
     }
     printf("\n");
+    */
     return alpha;
 }

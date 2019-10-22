@@ -42,8 +42,8 @@ bool testForwardAlgorithm() {
         }
     }
     
-    const int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
-    const int obsLenght = 10;
+    const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
+    const unsigned int obsLenght = 10;
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
     double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
@@ -59,10 +59,9 @@ bool testForwardAlgorithm() {
         0.165653, 0.834347,
         0.157773, 0.842227};
     
-    
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < obsLenght; j++){
-            assert(fabs(alpha[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+    for (j = 0; j < obsLenght; j++){
+        for(i = 0; i < hmm->hiddenStates; i++) {
+            assert(fabs(alpha[j*hmm->hiddenStates+i]-test[j*hmm->hiddenStates+i]) < 0.00001);
         }
     }
     
