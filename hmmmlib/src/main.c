@@ -9,29 +9,27 @@
 #include <stdio.h>
 
 #include "hmm.h"
-#include "hmm.c"
+//#include "hmm.c"
 
 #include "TestsForwardAlgorithm.h"
-#include "TestsForwardAlgorithm.c"
+//#include "TestsForwardAlgorithm.c"
 
 
 #include "testBackwardAlgorithm.h"
-#include "testBackwardAlgorithm.c"
+//#include "testBackwardAlgorithm.c"
 
 
 #include "TestBaumWelch.h"
-#include "TestBaumWelch.c"
+//#include "TestBaumWelch.c"
 
 
 #include "TestViterbi.h"
-#include "TestViterbi.c"
+//#include "TestViterbi.c"
 
 #include "posteriorDecoding.h"
-#include "posteriorDecoding.c"
+//#include "posteriorDecoding.c"
 
-int main_test();
-
-int main_test() {
+int main() {
     
     /*
      Testing the forward algorithm

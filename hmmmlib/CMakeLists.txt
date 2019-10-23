@@ -13,7 +13,7 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/Training)
 
 file(GLOB SOURCES
-       ${PROJECT_SOURCE_DIR}/src/main_test.c
+       ${PROJECT_SOURCE_DIR}/src/main.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.h
        ${PROJECT_SOURCE_DIR}/src/Evaluation/*.c
@@ -24,12 +24,18 @@ file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/Test/*.h
        ${PROJECT_SOURCE_DIR}/src/Training/*.c
        ${PROJECT_SOURCE_DIR}/src/Training/*.h)
+#
+# Uncomment the following to create a library
+#
+#add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/main_test.c)
+#target_link_libraries(HMMLIB m)
+#set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/main_test.c)
-
-target_link_libraries(HMMLIB m)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
+#
+# Comment the following to create a library
+#
+add_executable(HMMLIB ${SOURCES})
+target_link_libraries(HMMLIB m cblas)
 
 foreach(FILE ${SOURCES}) 
     # Get the directory of the source file

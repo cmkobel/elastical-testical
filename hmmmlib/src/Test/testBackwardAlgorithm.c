@@ -1,11 +1,11 @@
 #include "testBackwardAlgorithm.h"
 #include "hmm.h"
 #include "backward.h"
-#include "backward.c"
+//#include "backward.c"
 
 
 #include "forward.h"
-#include "forward.c"
+//#include "forward.c"
 
 #include <assert.h>
 #include <stdlib.h>

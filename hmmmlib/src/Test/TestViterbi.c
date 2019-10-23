@@ -2,7 +2,7 @@
 
 
 #include "viterbi.h"
-#include "viterbi.c"
+//#include "viterbi.c"
 
 #include "hmm.h"
 

@@ -21,8 +21,10 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     //
     double * xi = calloc(hmm->hiddenStates*hmm->hiddenStates*T, sizeof(double));
     
+    double * xiDenominator = calloc(T-1, sizeof(double));
+    double * scaleFactor = calloc(T, sizeof(double));
+    
     for(int q = 0; q < itterations; q++) {
-        double * scaleFactor = calloc(T, sizeof(double));
         double * alpha = forward(hmm, Y, T, scaleFactor);
         double * beta = backward(hmm, Y, T, scaleFactor);
         
@@ -34,12 +36,11 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
                 for(l = 0; l < hmm->hiddenStates; l++){
                     denominator += alpha[l*T+i]*beta[l*T+i];
                 }
-                printf("Nynerator:%f\n", numerator);
-                printf("Denominator:%f\n", denominator);
                 gamma[i*hmm->hiddenStates+j] = numerator/denominator;
             }
         }
         
+        /*
         printf("Gamma\n");
         for(i = 0; i < T; i++) {
             for (j = 0; j < hmm->hiddenStates; j++){
@@ -49,9 +50,8 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             printf("\n");
         }
         printf("\n");
-        
+        */
         // xi denominator
-        double * xiDenominator = calloc(T-1, sizeof(double));
         
         for(l = 0; l < T-1; l++){
             for(i = 0; i < hmm->hiddenStates; i++){
@@ -60,13 +60,13 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
                 }
             }
         }
-        
+        /*
         printf("XI Denominator\n");
         for(i = 0; i < T-1; i++){
             printf("%f, ", xiDenominator[i]);
         }
         printf("\n\n");
-        
+        */
         // Updating xi
         for(i = 0; i < hmm->hiddenStates; i++){
             for(j = 0; j < hmm->hiddenStates; j++){
@@ -121,12 +121,10 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->observations+j];
             for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i*hmm->observations+j] = hmm->emissionProbs[i*hmm->observations+j]/sum;
         }
-        free(scaleFactor);
-        
-        free(xiDenominator);
-        
     }
-
+    
+    free(scaleFactor);
+    free(xiDenominator);
     free(gamma);
     free(xi);
     
