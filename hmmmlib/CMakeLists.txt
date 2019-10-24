@@ -3,14 +3,14 @@ project(HMMLIB)
 
  
 include_directories(
-       ${CMAKE_SOURCE_DIR}/src
+       ${CMAKE_SOURCE_DIR}/src/
        ${CMAKE_SOURCE_DIR}/src/Decoding
        ${CMAKE_SOURCE_DIR}/src/Evaluation
        ${CMAKE_SOURCE_DIR}/src/HMM
        ${CMAKE_SOURCE_DIR}/src/Training)
 
 file(GLOB SOURCES
-       ${PROJECT_SOURCE_DIR}/src/main.c
+       ${PROJECT_SOURCE_DIR}/src/shared.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.h
        ${PROJECT_SOURCE_DIR}/src/Evaluation/*.c
@@ -23,14 +23,14 @@ file(GLOB SOURCES
 #
 # Uncomment the following to create a library
 #
-add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/main.c)
+add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/shared.c)
 target_link_libraries(HMMLIB m)
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE 1) #or #set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 
 
 
-# Add tests for the executable
+# Add Tests content for the executable
 include_directories(
        ${CMAKE_SOURCE_DIR}/src
        ${CMAKE_SOURCE_DIR}/src/Decoding
@@ -39,7 +39,7 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/Test
        ${CMAKE_SOURCE_DIR}/src/Training)
 
-file(GLOB SOURCES
+file(GLOB exeSOURCES
        ${PROJECT_SOURCE_DIR}/src/main.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.h
@@ -56,10 +56,10 @@ file(GLOB SOURCES
 #
 # Comment the following to create a library
 #
-add_executable(exeHMMLIB ${SOURCES})
+add_executable(exeHMMLIB ${exeSOURCES})
 target_link_libraries(exeHMMLIB m cblas)
 
-foreach(FILE ${SOURCES}) 
+foreach(FILE ${exeSOURCES}) 
     # Get the directory of the source file
     get_filename_component(PARENT_DIR "${FILE}" DIRECTORY)
 

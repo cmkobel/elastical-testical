@@ -9,40 +9,44 @@
 #include <stdio.h>
 
 #include "hmm.h"
+#include "hmm.c"
 
-#include "TestsForwardAlgorithm.h"
-#include "testBackwardAlgorithm.h"
-#include "TestBaumWelch.h"
-#include "TestViterbi.h"
+#include "backward.h"
+#include "backward.c"
+
+#include "forward.h"
+#include "forward.c"
+
+#include "viterbi.h"
+#include "viterbi.c"
+
+#include "baumWelch.h"
+#include "baumWelch.c"
+
 #include "posteriorDecoding.h"
+#include "posteriorDecoding.c"
 
-int main() {
+
+
+
+/* 
+int main_test() {
     
-    /*
-     Testing the forward algorithm
-     */
     if(testForwardAlgorithm()){
         printf("\nall Forward Algorithm tests succed\n");
     }
    
-    /*
-     Testing the backward algorithm
-    */
     if(testBackwardAlgorithm()){
         printf("\nall Backward Algorithm tests succed\n");
     }
-    /*
-     Testing the backward algorithm
-     */
+    
     if(testBaumWelch()){
         printf("\nall Baum Welch tests succed\n");
     }
-    /*
-     Testing the viterbi algorithm
-     */
+    
     if(testViterbi()){
         printf("\nall Viterbi tests succed\n");
     }
     return 0;
 }
-    
+     */
