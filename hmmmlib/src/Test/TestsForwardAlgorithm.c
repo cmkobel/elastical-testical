@@ -8,7 +8,7 @@
 
 #include "TestsForwardAlgorithm.h"
 #include "hmm.h"
-#include "forward.h"
+#include "forward_blas.h"
 #include <assert.h>
 #include <stdlib.h>
 #include <math.h>

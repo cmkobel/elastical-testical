@@ -1,7 +1,7 @@
 #include "testBackwardAlgorithm.h"
 #include "hmm.h"
-#include "backward.h"
-#include "forward.h"
+#include "backward_blas.h"
+#include "forward_blas.h"
 #include <assert.h>
 #include <stdlib.h>
 #include <math.h>
