@@ -1,4 +1,4 @@
-#include "forward.h"
+#include "forward_blas.h"
 #include <stdlib.h>
 #include <Accelerate/Accelerate.h>
 
