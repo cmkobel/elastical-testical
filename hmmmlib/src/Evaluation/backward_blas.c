@@ -9,8 +9,10 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
     
     //Creating the emission probs m*n into m, n*n matrix
     double ** new_emission_probs = calloc(hmm->observations, sizeof(double *));
+    double * matrix = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
+    
     for(i = 0; i < hmm->observations; i++){
-        double * matrix = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
+        
         for(j = 0; j < hmm->hiddenStates; j++){
             matrix[j*hmm->hiddenStates+j] = hmm->emissionProbs[j*hmm->observations+i];
         }
@@ -18,6 +20,8 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
         cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, hmm->hiddenStates, 1.0, hmm->transitionProbs, hmm->hiddenStates, matrix, hmm->hiddenStates, 0.0, emission_probs, hmm->hiddenStates);
         new_emission_probs[i] = emission_probs;
     }
+    
+    free(matrix);
     
 //double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
     // Initial setting the beta[T] values, these are said to be 1
