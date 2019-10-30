@@ -6,6 +6,7 @@
 //  Copyright © 2019 Thor Jakobsen. All rights reserved.
 //
 
+
 #include <stdio.h>
 
 #include "hmm.h"
