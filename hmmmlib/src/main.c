@@ -15,7 +15,7 @@
 #include "testBackwardAlgorithm.h"
 #include "TestBaumWelch.h"
 #include "TestViterbi.h"
-#include "posteriorDecoding.h"
+#include "TestPosteriorDecoding.h"
 
 int main() {
     
@@ -44,6 +44,12 @@ int main() {
     if(testViterbi()){
         printf("\nall Viterbi tests succed\n");
     }
+
+    if(testPosteriorDecoding()){
+        printf("\nall (none) Posterior Decoding tests succed\n");
+    }
+
+    
     return 0;
 }
     
