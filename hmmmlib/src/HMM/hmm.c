@@ -101,10 +101,7 @@ void HMMDeallocate(HMM * hmm){
     free(hmm->initProbs);
     free(hmm->emissionProbs);
     free(hmm->transitionProbs);
-    
-    //free(hmm->hiddenStates);
-    //free(hmm->observations);
-    //free(hmm);
+    free(hmm);
     
     
     

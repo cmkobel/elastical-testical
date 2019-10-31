@@ -10,8 +10,6 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
     //
     // [state][time]
     //
-    //double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
-    // Initial setting the beta[T] values, these are said to be 1
     for(i = 0; i < hmm->hiddenStates; i++){
         beta[i*T+(T-1)] = 1;
     }

@@ -10,9 +10,6 @@ void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sca
     //
     // [state][time]
     //
-    //double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
-
-    // Initial is the same as the initProbs times the probs of emitting Y[0]
     for(i = 0; i < hmm->hiddenStates; i++){
         alpha[i*T+0] = hmm->initProbs[i]*hmm->emissionProbs[i*hmm->observations+Y[0]];
         scalingFactor[0] += alpha[i*T+0];

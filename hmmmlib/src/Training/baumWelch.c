@@ -1,7 +1,7 @@
 #include "baumWelch.h"
 #include <stdlib.h>
 
-void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int itterations){
+void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int iterations){
     
     //Initial random init of HMM
     
@@ -27,7 +27,7 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
     double * beta = calloc(hmm->hiddenStates*T, sizeof(double));
     
-    for(int q = 0; q < itterations; q++) {
+    for(int q = 0; q < iterations; q++) {
         forward(hmm, Y, T, scaleFactor, alpha);
         backward(hmm, Y, T, scaleFactor, beta);
         
@@ -125,7 +125,8 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
             for (j = 0; j < hmm->observations; j++) hmm->emissionProbs[i*hmm->observations+j] = hmm->emissionProbs[i*hmm->observations+j]/sum;
         }
     }
-    
+    free(alpha);
+    free(beta);
     free(scaleFactor);
     free(xiDenominator);
     free(gamma);
