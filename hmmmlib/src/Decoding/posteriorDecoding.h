@@ -4,7 +4,7 @@
 #pragma once
 
 #include <stdio.h>
-#include "forward.h"
+//#include "forward.h"
 #include "backward.h"
 #include "hmm.h"
 

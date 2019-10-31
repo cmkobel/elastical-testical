@@ -8,7 +8,7 @@ double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
     double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
     double * beta = calloc(hmm->hiddenStates*T, sizeof(double));
     double * scalingFactor = calloc(T, sizeof(double));
-    forward(hmm, Y, T, scalingFactor, alpha); // scalingFactor bliver sat her.
+    F(hmm, Y, T, scalingFactor, alpha); // scalingFactor bliver sat her.
     backward(hmm, Y, T, scalingFactor, beta); // scalingFactor bliver brugt her.
 
     //print alpha

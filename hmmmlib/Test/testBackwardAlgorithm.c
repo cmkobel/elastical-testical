@@ -1,18 +1,13 @@
 #include "testBackwardAlgorithm.h"
 #include "hmm.h"
 #include "backward.h"
-//#include "backward.c"
-
-
-#include "forward.h"
-//#include "forward.c"
 
 #include <assert.h>
 #include <stdlib.h>
 #include <math.h>
 
 extern bool testBackwardAlgorithm() {
-    HMM * hmm = HMMCreate(2, 2);
+    HMM * hmm = HMMCreate(2, 2, conventional);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},

@@ -8,13 +8,12 @@
 
 #include "TestsForwardAlgorithm.h"
 #include "hmm.h"
-#include "forward.h"
 #include <assert.h>
 #include <stdlib.h>
 #include <math.h>
 
 bool testForwardAlgorithm() {
-    HMM * hmm = HMMCreate(2, 2);
+    HMM * hmm = HMMCreate(2, 2, conventional);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},
@@ -47,7 +46,7 @@ bool testForwardAlgorithm() {
     
     double * alpha = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
     double * scaleFactor = calloc(obsLenght, sizeof(double));
-    forward(hmm, observation, obsLenght, scaleFactor, alpha);
+    F(hmm, observation, obsLenght, scaleFactor, alpha);
     
     double test[20] = {0.085714, 0.148330, 0.155707, 0.156585, 0.156690, 0.634280, 0.722736, 0.230843, 0.165653, 0.157773,
         0.914286, 0.851670, 0.844293, 0.843415, 0.843310, 0.365720, 0.277264, 0.769157, 0.834347, 0.842227};
@@ -58,6 +57,8 @@ bool testForwardAlgorithm() {
             assert(fabs(alpha[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
         }
     }
+    
+    
     
     return true;
 }

@@ -13,7 +13,7 @@
 
 
 extern bool testViterbi() {
-    HMM * hmm = HMMCreate(7, 4);
+    HMM * hmm = HMMCreate(7, 4, conventional);
     
 
     double initProbs[7] = {0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00};
@@ -65,7 +65,7 @@ extern bool testViterbi() {
     
     unsigned int expectedTest1[99] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1};
 
-    int * obs = obsTest1;
+    unsigned int * obs = &obsTest1;
     int nData = 99;
     
 

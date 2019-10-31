@@ -3,8 +3,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations) {
+HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations, const struct vFuncs * funcs) {
     HMM * newHMM = calloc(1, sizeof(HMM));
+    
+    newHMM->funcs = funcs;
     
     newHMM->hiddenStates = hiddenStates;
     newHMM->observations = observations;
@@ -57,6 +59,12 @@ bool valdidateHMM(const HMM *hmm){
     }
     
     return true;
+}
+
+void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
+    
+    hmm->funcs->forward(hmm, Y, T, scalingFactor, alpha);
+    
 }
 
 //should be static

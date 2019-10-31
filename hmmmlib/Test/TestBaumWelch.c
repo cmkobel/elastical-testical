@@ -1,13 +1,11 @@
 #include "TestBaumWelch.h"
 #include "baumWelch.h"
-//#include "baumWelch.c"
-
 #include "hmm.h"
 #include <assert.h>
 #include <math.h>
 
 bool testBaumWelch() {
-    HMM * hmm = HMMCreate(2, 2);
+    HMM * hmm = HMMCreate(2, 2, conventional);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},
@@ -58,4 +56,5 @@ bool testBaumWelch() {
     //printHMM(hmm);
     
     return valdidateHMM(hmm);
+
 }

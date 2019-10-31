@@ -10,13 +10,26 @@ struct HMM {
     double * emissionProbs;
     double * initProbs;
     
+    const struct vFuncs * funcs;
+    
 };
+
 typedef struct HMM HMM;
 
-HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations);
+struct vFuncs{
+    
+    void *(*forward)(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha);
+    
+};
+
+HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations, const struct vFuncs * funcs);
 
 bool valdidateHMM(const HMM *hmm);
+
+void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha);
 
 void printHMM(const HMM *hmm);
 
 void HMMDeallocate(HMM * hmm);
+
+extern const struct vFuncs conventional[];
