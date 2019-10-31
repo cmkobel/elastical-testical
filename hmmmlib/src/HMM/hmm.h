@@ -19,6 +19,7 @@ typedef struct HMM HMM;
 struct vFuncs{
     
     void *(*forward)(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha);
+    void *(*backward)(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta);
     
 };
 
@@ -27,6 +28,8 @@ HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations
 bool valdidateHMM(const HMM *hmm);
 
 void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha);
+
+void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta);
 
 void printHMM(const HMM *hmm);
 

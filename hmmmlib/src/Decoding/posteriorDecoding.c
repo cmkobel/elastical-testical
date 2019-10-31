@@ -2,14 +2,15 @@
 #include <stdlib.h>
 #include <math.h>
 
-double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
+double * posteriorDecoding(HMM * hmm, const unsigned int *Y, const int T){
     //                     hmm-obj    data          len(data)
     
     double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
     double * beta = calloc(hmm->hiddenStates*T, sizeof(double));
     double * scalingFactor = calloc(T, sizeof(double));
+    
     F(hmm, Y, T, scalingFactor, alpha); // scalingFactor bliver sat her.
-    backward(hmm, Y, T, scalingFactor, beta); // scalingFactor bliver brugt her.
+    B(hmm, Y, T, scalingFactor, beta); // scalingFactor bliver brugt her.
 
     //print alpha
     /* for (unsigned int i = 0; i < count; i++)
@@ -53,12 +54,12 @@ double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
     free(beta);
     
     
-    for (unsigned int i = 0; i < T; i++) {
-        printf("%d", z[i]);
-    }
-    printf("\n");
-    
-    printf("leaving\n");
+//    for (unsigned int i = 0; i < T; i++) {
+//        printf("%d", z[i]);
+//    }
+//    printf("\n");
+//
+//    printf("leaving\n");
     
 
     return z_;

@@ -1,6 +1,5 @@
 #include "testBackwardAlgorithm.h"
 #include "hmm.h"
-#include "backward.h"
 
 #include <assert.h>
 #include <stdlib.h>
@@ -41,8 +40,8 @@ extern bool testBackwardAlgorithm() {
     double * beta = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
-    forward(hmm, observation, obsLenght, scaleFactor, alpha);
-    backward(hmm, observation, obsLenght, scaleFactor, beta);
+    F(hmm, observation, obsLenght, scaleFactor, alpha);
+    B(hmm, observation, obsLenght, scaleFactor, beta);
     
     /* 
     printf("scaleFactor from backward");

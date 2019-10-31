@@ -24,29 +24,29 @@ int main() {
         printf("\nall Forward Algorithm tests succeeded\n");
     }
 
-//    /*
-//     Testing the backward algorithm
-//    */
-//    if(testBackwardAlgorithm()){
-//        printf("\nall Backward Algorithm tests succeeded\n");
-//    }
-//    /*
-//     Testing the backward algorithm
-//     */
-//    if(testBaumWelch()){
-//        printf("\nall Baum Welch tests succeeded\n");
-//    }
-//    /*
-//     Testing the viterbi algorithm
-//     */
-//    if(testViterbi()){
-//        printf("\nall Viterbi tests succeeded\n");
-//    }
-//
-//    if(testPosteriorDecoding()){
-//        printf("\nall (none) Posterior Decoding tests succeeded\n");
-//    }
-//    
+    /*
+     Testing the backward algorithm
+    */
+    if(testBackwardAlgorithm()){
+        printf("\nall Backward Algorithm tests succeeded\n");
+    }
+    /*
+     Testing the backward algorithm
+     */
+    if(testBaumWelch()){
+        printf("\nall Baum Welch tests succeeded\n");
+    }
+    /*
+     Testing the viterbi algorithm
+     */
+    if(testViterbi()){
+        printf("\nall Viterbi tests succeeded\n");
+    }
+
+    if(testPosteriorDecoding()){
+        printf("\nall (none) Posterior Decoding tests succeeded\n");
+    }
+    
     return 0;
 }
     

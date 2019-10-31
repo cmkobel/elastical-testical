@@ -50,4 +50,3 @@ void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sca
     */
     //return alpha;
 }
-const struct vFuncs conventional[] = { { forward } };

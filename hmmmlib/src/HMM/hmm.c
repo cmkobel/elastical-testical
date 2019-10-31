@@ -67,6 +67,12 @@ void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFa
     
 }
 
+void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
+    
+    hmm->funcs->backward(hmm, Y, T, scalingFactor, beta);
+    
+}
+
 //should be static
 void printHMM(const HMM *hmm){
     
