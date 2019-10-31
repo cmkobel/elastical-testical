@@ -6,7 +6,8 @@ setwd("~/bioinformatics/hmm/git_hmmmlib/test_framework/plots")
 #data <- read_csv("../time2.csv",)
 #data <- read_csv("../short.csv")
 #data <- read_csv("../medium.csv")
-data <- read_csv("../oct-31.csv")
+#data <- read_csv("../oct-31.csv")
+data <- read_csv("../oct-31-2.csv")
 
 
 
@@ -19,21 +20,24 @@ data_grouped = data %>% group_by(observations, algorithm, variant) %>%
 p_mean = data_grouped %>% ggplot(aes(observations, mean, color = variant)) +
     geom_point() + 
     geom_line() + 
-    geom_pointrange(aes(ymin=(mean-sd), ymax=(mean+sd))) +
+    geom_errorbar(aes(ymin=(mean-sd), ymax=(mean+sd) ), width = 10000) +
     facet_wrap(.~algorithm, scales = "free") +
-    labs(y = "normalized mean time [s]")
+    labs(y = "mean time [s]", caption = "error bars: standard deviation")
+p_mean
 
 p_mean_normalized = data_grouped %>% ggplot(aes(observations, mean/observations, color = variant)) +
     geom_point() + 
     geom_line() + 
-    geom_pointrange(aes(ymin=(mean-sd)/observations, ymax=(mean+sd)/observations)) +
+    geom_errorbar(aes(ymin=(mean-sd)/observations, ymax=(mean+sd)/observations ), width = 10000) +
     facet_wrap(.~algorithm, scales = "free") +
-    labs(y = "normalized mean time [s]")
+    labs(y = "normalized mean time [s]", caption = "error bars: standard deviation")
+p_mean_normalized
 
 
-ggsave("main.svg", height = 5, width = 7)
-ggsave("main.pdf", height = 5, width = 7)
-ggsave("main.png", height = 5, width = 7)
+ggsave("all.pdf", height = 5, width = 7, plot = p_mean)
+ggsave("all_normalized.pdf", height = 5, width = 7, plot = p_mean_normalized)
+
+
 
 
 
