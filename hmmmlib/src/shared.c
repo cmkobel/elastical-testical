@@ -27,26 +27,3 @@
 #include "posteriorDecoding.c"
 
 
-
-
-/* 
-int main_test() {
-    
-    if(testForwardAlgorithm()){
-        printf("\nall Forward Algorithm tests succed\n");
-    }
-   
-    if(testBackwardAlgorithm()){
-        printf("\nall Backward Algorithm tests succed\n");
-    }
-    
-    if(testBaumWelch()){
-        printf("\nall Baum Welch tests succed\n");
-    }
-    
-    if(testViterbi()){
-        printf("\nall Viterbi tests succed\n");
-    }
-    return 0;
-}
-     */

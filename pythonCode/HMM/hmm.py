@@ -312,7 +312,9 @@ class hmm:
         """
         Returns the posterior decoding of x and its loglikelihood (which might be -inf if the decoding is not a possible path)
         """
+        #print 'x', x # ACGT
         alpha_hat, scaling_factor = self.forward_with_scaling(x)
+        print alpha_hat
         beta_hat = self.backward_with_scaling(x, scaling_factor)
 
         z = [None] * len(x)
