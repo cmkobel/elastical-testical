@@ -42,10 +42,12 @@ extern bool testBackwardAlgorithm() {
     
     const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
     const unsigned int obsLenght = 10;
+    double * alpha = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
+    double * beta = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
-    double * alpha = forward(hmm, observation, obsLenght, scaleFactor);
-    double * beta = backward(hmm, observation, obsLenght, scaleFactor);
+    forward(hmm, observation, obsLenght, scaleFactor, alpha);
+    backward(hmm, observation, obsLenght, scaleFactor, beta);
     
     /* 
     printf("scaleFactor from backward");

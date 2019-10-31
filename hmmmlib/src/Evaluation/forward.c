@@ -1,7 +1,7 @@
 #include "forward.h"
 #include <stdlib.h>
 
-double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor){
+void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
     unsigned int i;
     unsigned int j;
@@ -10,7 +10,7 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     //
     // [state][time]
     //
-    double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
+    //double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
 
     // Initial is the same as the initProbs times the probs of emitting Y[0]
     for(i = 0; i < hmm->hiddenStates; i++){
@@ -50,5 +50,5 @@ double * forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     }
     printf("\n");
     */
-    return alpha;
+    //return alpha;
 }

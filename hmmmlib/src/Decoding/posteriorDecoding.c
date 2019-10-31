@@ -5,10 +5,11 @@
 double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
     //                     hmm-obj    data          len(data)
     
-    
+    double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
+    double * beta = calloc(hmm->hiddenStates*T, sizeof(double));
     double * scalingFactor = calloc(T, sizeof(double));
-    double * alpha = forward(hmm, Y, T, scalingFactor); // scalingFactor bliver sat her.
-    double * beta = backward(hmm, Y, T, scalingFactor); // scalingFactor bliver brugt her.
+    forward(hmm, Y, T, scalingFactor, alpha); // scalingFactor bliver sat her.
+    backward(hmm, Y, T, scalingFactor, beta); // scalingFactor bliver brugt her.
 
     //print alpha
     /* for (unsigned int i = 0; i < count; i++)
@@ -51,7 +52,7 @@ double * posteriorDecoding(HMM * hmm, const int *Y, const int T){
     free(alpha);
     free(beta);
     
-
+    
     for (unsigned int i = 0; i < T; i++) {
         printf("%d", z[i]);
     }

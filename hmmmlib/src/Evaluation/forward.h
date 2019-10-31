@@ -9,4 +9,4 @@
  given a HMM hmm
  
  */
-double *forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor);
+void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha);

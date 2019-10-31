@@ -24,9 +24,12 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     double * xiDenominator = calloc(T-1, sizeof(double));
     double * scaleFactor = calloc(T, sizeof(double));
     
+    double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
+    double * beta = calloc(hmm->hiddenStates*T, sizeof(double));
+    
     for(int q = 0; q < itterations; q++) {
-        double * alpha = forward(hmm, Y, T, scaleFactor);
-        double * beta = backward(hmm, Y, T, scaleFactor);
+        forward(hmm, Y, T, scaleFactor, alpha);
+        backward(hmm, Y, T, scaleFactor, beta);
         
         // Updating gamma
         for(i = 0; i < T; i++){

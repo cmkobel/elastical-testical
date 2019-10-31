@@ -1,7 +1,7 @@
 #include "backward.h"
 #include <stdlib.h>
 
-double *backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor){
+void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
     
     unsigned int i;
     unsigned int j;
@@ -10,7 +10,7 @@ double *backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     //
     // [state][time]
     //
-    double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
+    //double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
     // Initial setting the beta[T] values, these are said to be 1
     for(i = 0; i < hmm->hiddenStates; i++){
         beta[i*T+(T-1)] = 1;
@@ -40,6 +40,6 @@ double *backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     }
     printf("\n");
      */
-    return beta;
+    //return beta;
     
 }
