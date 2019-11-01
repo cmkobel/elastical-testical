@@ -11,7 +11,7 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
     // [state][time]
     //
     for(i = 0; i < hmm->hiddenStates; i++){
-        beta[i*T+(T-1)] = 1;
+        beta[T*hmm->hiddenStates-1-i] = 1.0;
     }
     
     // Now for the step"BACKWARD" step
@@ -20,24 +20,22 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
             for(int l = 0; l < hmm->hiddenStates; l++){
                 double emissionProb = hmm->emissionProbs[l*hmm->observations+Y[i+1]];
                 double transitionProb = hmm->transitionProbs[j*hmm->hiddenStates+l];
-                double oldBeta = beta[l*T+(i+1)];
+                double oldBeta = beta[(i+1)*hmm->hiddenStates+l];
                 
-                beta[j*T+i] += transitionProb*emissionProb*oldBeta;
+                beta[i*hmm->hiddenStates+j] += transitionProb*emissionProb*oldBeta;
             }
-            beta[j*T+i] = beta[j*T+i] / scalingFactor[i+1];
+            beta[i*hmm->hiddenStates+j] = beta[i*hmm->hiddenStates+j] / scalingFactor[i+1];
         }
     }
     
-    /* 
-    printf("Backward\n");
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < T; j++) {
-            printf("%f, ", beta[i*T+j]);
-        }
-    printf("\n");
-    }
-    printf("\n");
-     */
-    //return beta;
+//    printf("Backward\n");
+//    for(i = 0; i < T; i++){
+//       for(j = 0; j < hmm->hiddenStates; j++){
+//           printf("%f, ", beta[i*hmm->hiddenStates+j]);
+//       }
+//       printf("\n");
+//    }
+//    printf("\n");
+
     
 }

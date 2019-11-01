@@ -52,13 +52,24 @@ extern bool testBackwardAlgorithm() {
     printf("\n");
      */
     
-    double test[20] = {0.838486, 0.848495, 0.854859, 0.898964, 1.267584, 1.076550, 0.944879, 0.862481, 0.868282, 1.000000, 1.015142, 1.026387, 1.026767, 1.018758, 0.950282, 0.867237, 1.143683, 1.041273, 1.026152, 1.000000};
+    double test[20] = {
+        0.838486, 1.015142,
+        0.848495, 1.026387,
+        0.854859, 1.026767,
+        0.898964, 1.018758,
+        1.267584, 0.950282,
+        1.076550, 0.867237,
+        0.944879, 1.143683,
+        0.862481, 1.041273,
+        0.868282, 1.026152,
+        1.000000, 1.000000
+    };
     
     
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < obsLenght; j++){
-            assert(fabs(beta[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
-        }
+    for(i = 0; i < obsLenght; i++){
+       for(j = 0; j < hmm->hiddenStates; j++){
+           assert(fabs(beta[i*hmm->hiddenStates+j] - test[i*hmm->hiddenStates+j] < 0.00001));
+       }
     }
     
     return true;

@@ -48,16 +48,25 @@ bool testForwardAlgorithm() {
     double * scaleFactor = calloc(obsLenght, sizeof(double));
     F(hmm, observation, obsLenght, scaleFactor, alpha);
     
-    double test[20] = {0.085714, 0.148330, 0.155707, 0.156585, 0.156690, 0.634280, 0.722736, 0.230843, 0.165653, 0.157773,
-        0.914286, 0.851670, 0.844293, 0.843415, 0.843310, 0.365720, 0.277264, 0.769157, 0.834347, 0.842227};
+    double test[20] = {
+        0.085714, 0.914286,
+        0.148330, 0.851670,
+        0.155707, 0.844293,
+        0.156585, 0.843415,
+        0.156690, 0.843310,
+        0.634280, 0.365720,
+        0.722736, 0.277264,
+        0.230843, 0.769157,
+        0.165653, 0.834347,
+        0.157773, 0.842227
+    };
     
     
-    for(i = 0; i < hmm->hiddenStates; i++) {
-        for (j = 0; j < obsLenght; j++){
-            assert(fabs(alpha[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+    for(i = 0; i < obsLenght; i++){
+        for(j = 0; j < hmm->hiddenStates; j++){
+            assert(fabs(alpha[i*hmm->hiddenStates+j]-test[i*hmm->hiddenStates+j] < 0.00001));
         }
     }
-    
     
     
     return true;
