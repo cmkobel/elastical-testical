@@ -23,11 +23,21 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
     
     free(matrix);
     
-//double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
+    //double *beta = calloc(hmm->hiddenStates*T, sizeof(double));
     // Initial setting the beta[T] values, these are said to be 1
+    
     for(i = 0; i < hmm->hiddenStates; i++){
-        beta[i] = 1;
+        beta[hmm->hiddenStates*T-1-i] = 1;
     }
+    
+    printf("Backward\n");
+    for(i = 0; i < T; i++){
+        for(j = 0; j < hmm->hiddenStates; j++){
+            printf("%f, ", beta[i*hmm->hiddenStates+j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
     
     for(i = 1; i < T; i++){
         /*
@@ -40,8 +50,8 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
         }
         printf("\n");
         */
-        cblas_dgemv(CblasRowMajor, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[T-i]], hmm->hiddenStates, beta+hmm->hiddenStates*(i-1), 1, 0, beta+hmm->hiddenStates*i, 1);
-        cblas_dscal(hmm->hiddenStates, scalingFactor[T-i], beta+hmm->hiddenStates*i, 1);
+        cblas_dgemv(CblasRowMajor, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, 1.0, new_emission_probs[Y[T-i]], hmm->hiddenStates, beta+hmm->hiddenStates*T-i*hmm->hiddenStates, 1, 0, beta+hmm->hiddenStates*T-i*hmm->hiddenStates-hmm->hiddenStates, 1);
+        cblas_dscal(hmm->hiddenStates, scalingFactor[T-i], beta+hmm->hiddenStates*T-i*hmm->hiddenStates-hmm->hiddenStates, 1);
         /*
         for(j = 0; j < hmm->hiddenStates; j++){
             printf("%f, ", beta[i*hmm->hiddenStates+j]);
@@ -50,7 +60,7 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
         */
     }
     
-    /*
+    
     printf("Backward\n");
     for(i = 0; i < T; i++){
         for(j = 0; j < hmm->hiddenStates; j++){
@@ -59,7 +69,7 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
         printf("\n");
     }
     printf("\n");
-    */
+    
     for(i = 0; i < hmm->observations; i++){
         free(new_emission_probs[i]);
     }

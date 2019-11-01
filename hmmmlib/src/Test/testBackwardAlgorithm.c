@@ -80,12 +80,13 @@ bool testBackwardAlgorithm() {
             0.838486, 1.015142};
         
         
-        for(i = 0; i < hmm->hiddenStates; i++) {
-            for (j = 0; j < obsLenght; j++){
-                assert(fabs(beta[i*obsLenght+j]-test[i*obsLenght+j]) < 0.00001);
+
+        for(i = 0; i < obsLenght; i++){
+            for(j = 0; j < hmm->hiddenStates; j++){
+                assert(fabs(beta[i*hmm->hiddenStates+j]-test[(obsLenght-i-1)*hmm->hiddenStates+j]) < 0.00001);
             }
         }
-        
+
         free(scaleFactor);
         free(alpha);
         free(beta);
@@ -182,15 +183,16 @@ bool testBackwardAlgorithm() {
             0.876315, 0.730823, 0.242038, 1.043087, 0.799506, 0.400538, 1.831926,
             0.232683, 0.867638, 1.013022, 1.000000, 0.317258, 2.176545, 1.243165};
         
-        for (j = 0; j < obsLenght2; j++){
-            for(i = 0; i < hmm2->hiddenStates; i++) {
-                assert(fabs(alpha2[j*hmm2->hiddenStates+i]-test2alpha[j*hmm2->hiddenStates+i]) < 0.00001);
+
+        for(i = 0; i < obsLenght2; i++){
+            for(j = 0; j < hmm2->hiddenStates; j++){
+                assert(fabs(beta2[i*hmm2->hiddenStates+j]-test2beta[(obsLenght2-i-1)*hmm2->hiddenStates+j]) < 0.00001);
             }
         }
         
         for (j = 0; j < obsLenght2; j++){
             for(i = 0; i < hmm2->hiddenStates; i++) {
-                assert(fabs(beta2[j*hmm2->hiddenStates+i]-test2beta[j*hmm2->hiddenStates+i]) < 0.00001);
+                assert(fabs(alpha2[j*hmm2->hiddenStates+i]-test2alpha[j*hmm2->hiddenStates+i]) < 0.00001);
             }
         }
     }

@@ -61,11 +61,11 @@ bool testViterbi() {
     
     unsigned int expectedTest1[99] = {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1};
 
-    int * obs = obsTest1;
+    //int * obs = obsTest1;
     int nData = 99;
     
 
-    unsigned int * viterbiResult = viterbi(hmm, obs, nData);
+    unsigned int * viterbiResult = viterbi(hmm, &obsTest1, nData);
     
     
     for (int i = 0; i < nData; i++) {
