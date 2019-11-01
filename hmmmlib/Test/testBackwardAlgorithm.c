@@ -6,7 +6,7 @@
 #include <math.h>
 
 extern bool testBackwardAlgorithm() {
-    HMM * hmm = HMMCreate(2, 2, conventional);
+    HMM * hmmCon = HMMConventional(2, 2);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},
@@ -20,37 +20,28 @@ extern bool testBackwardAlgorithm() {
     
     double initProbs[2] = {0.2, 0.8};
     
-    hmm->initProbs = initProbs;
+    hmmCon->initProbs = initProbs;
     int i;
     int j;
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->hiddenStates; j++){
-            hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
+    for(i = 0; i < hmmCon->hiddenStates; i++){
+        for(j = 0; j < hmmCon->hiddenStates; j++){
+            hmmCon->transitionProbs[i*hmmCon->hiddenStates+j] = transitionProbs[i][j];
         }
     }
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->observations; j++){
-            hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
+    for(i = 0; i < hmmCon->hiddenStates; i++){
+        for(j = 0; j < hmmCon->observations; j++){
+            hmmCon->emissionProbs[i*hmmCon->observations+j] = emissionProbs[i][j];
         }
     }
     
     const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
     const unsigned int obsLenght = 10;
-    double * alpha = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
-    double * beta = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
+    double * alphaCon = calloc(hmmCon->hiddenStates*obsLenght, sizeof(double));
+    double * betaCon = calloc(hmmCon->hiddenStates*obsLenght, sizeof(double));
     
     double * scaleFactor = calloc(obsLenght, sizeof(double));
-    F(hmm, observation, obsLenght, scaleFactor, alpha);
-    B(hmm, observation, obsLenght, scaleFactor, beta);
-    
-    /* 
-    printf("scaleFactor from backward");
-    for (unsigned int i = 0; i < obsLenght; i++) {
-        
-        printf(" %f", scaleFactor[i]);
-    }
-    printf("\n");
-     */
+    F(hmmCon, observation, obsLenght, scaleFactor, alphaCon);
+    B(hmmCon, observation, obsLenght, scaleFactor, betaCon);
     
     double test[20] = {
         0.838486, 1.015142,
@@ -67,8 +58,8 @@ extern bool testBackwardAlgorithm() {
     
     
     for(i = 0; i < obsLenght; i++){
-       for(j = 0; j < hmm->hiddenStates; j++){
-           assert(fabs(beta[i*hmm->hiddenStates+j] - test[i*hmm->hiddenStates+j] < 0.00001));
+       for(j = 0; j < hmmCon->hiddenStates; j++){
+           assert(abs(betaCon[i*hmmCon->hiddenStates+j] - test[i*hmmCon->hiddenStates+j] < 0.00001));
        }
     }
     

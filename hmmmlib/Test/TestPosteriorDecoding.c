@@ -12,7 +12,7 @@
 
 
 extern bool testPosteriorDecoding() {
-    HMM * hmm = HMMCreate(7, 4, conventional);
+    HMM * hmm = HMMConventional(7, 4);
     
 
     double initProbs[7] = {0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00};

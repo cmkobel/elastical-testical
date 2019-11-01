@@ -5,7 +5,7 @@
 #include <math.h>
 
 bool testBaumWelch() {
-    HMM * hmm = HMMCreate(2, 2, conventional);
+    HMM * hmm = HMMConventional(2, 2);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},

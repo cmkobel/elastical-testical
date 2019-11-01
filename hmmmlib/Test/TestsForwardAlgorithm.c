@@ -13,7 +13,8 @@
 #include <math.h>
 
 bool testForwardAlgorithm() {
-    HMM * hmm = HMMCreate(2, 2, conventional);
+    HMM * hmmCon = HMMConventional(2, 2);
+    HMM * hmmBLAS = HMMBLAS(2, 2);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},
@@ -27,26 +28,34 @@ bool testForwardAlgorithm() {
     
     double initProbs[2] = {0.2, 0.8};
     
-    hmm->initProbs = initProbs;
+    hmmCon->initProbs = initProbs;
+    hmmBLAS->initProbs = initProbs;
     int i;
     int j;
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->hiddenStates; j++){
-            hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
+    for(i = 0; i < hmmCon->hiddenStates; i++){
+        for(j = 0; j < hmmCon->hiddenStates; j++){
+            hmmBLAS->transitionProbs[i*hmmCon->hiddenStates+j] = transitionProbs[i][j];
+            hmmCon->transitionProbs[i*hmmCon->hiddenStates+j] = transitionProbs[i][j];
         }
     }
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->observations; j++){
-            hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
+    for(i = 0; i < hmmCon->hiddenStates; i++){
+        for(j = 0; j < hmmCon->observations; j++){
+            hmmBLAS->emissionProbs[i*hmmCon->observations+j] = emissionProbs[i][j];
+            hmmCon->emissionProbs[i*hmmCon->observations+j] = emissionProbs[i][j];
         }
     }
     
     const unsigned int observation[10] = {0, 0, 0, 0, 0, 1, 1, 0, 0, 0};
     const unsigned int obsLenght = 10;
     
-    double * alpha = calloc(hmm->hiddenStates*obsLenght, sizeof(double));
-    double * scaleFactor = calloc(obsLenght, sizeof(double));
-    F(hmm, observation, obsLenght, scaleFactor, alpha);
+    double * alphaCon = calloc(hmmCon->hiddenStates*obsLenght, sizeof(double));
+    double * alphaBLAS = calloc(hmmCon->hiddenStates*obsLenght, sizeof(double));
+    
+    double * scaleFactorAlpha = calloc(obsLenght, sizeof(double));
+    double * scaleFactorBLAS = calloc(obsLenght, sizeof(double));
+    
+    F(hmmCon, observation, obsLenght, scaleFactorAlpha, alphaCon);
+    F(hmmBLAS, observation, obsLenght, scaleFactorBLAS, alphaBLAS);
     
     double test[20] = {
         0.085714, 0.914286,
@@ -63,8 +72,9 @@ bool testForwardAlgorithm() {
     
     
     for(i = 0; i < obsLenght; i++){
-        for(j = 0; j < hmm->hiddenStates; j++){
-            assert(fabs(alpha[i*hmm->hiddenStates+j]-test[i*hmm->hiddenStates+j] < 0.00001));
+        for(j = 0; j < hmmCon->hiddenStates; j++){
+            assert(abs(alphaBLAS[i*hmmCon->hiddenStates+j]-test[i*hmmCon->hiddenStates+j] < 0.00001));
+            assert(abs(alphaCon[i*hmmCon->hiddenStates+j]-test[i*hmmCon->hiddenStates+j] < 0.00001));
         }
     }
     

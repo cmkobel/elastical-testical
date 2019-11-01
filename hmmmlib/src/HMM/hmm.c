@@ -1,32 +1,42 @@
-#include "hmm.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
-HMM * HMMCreate(const unsigned int hiddenStates, const unsigned int observations, const struct vFuncs * funcs) {
+#include "hmm.h"
+#include "forward.h"
+#include "backward.h"
+#include "forward_blas.h"
+#include "backward_blas.h"
+
+HMM * HMMConventional(const unsigned int hiddenStates, const unsigned int observations) {
     HMM * newHMM = calloc(1, sizeof(HMM));
     
-    newHMM->funcs = funcs;
-    
+    newHMM->forward = forward;
+    newHMM->backward = backward;
+
     newHMM->hiddenStates = hiddenStates;
     newHMM->observations = observations;
-    
-    // The init probs
-    //
-    // [state]
-    //
+
     newHMM->initProbs = calloc(newHMM->hiddenStates ,sizeof(double));
-    
-    // The transition probability is a N*N matrix
-    //
-    // [from state][to state]
-    //
     newHMM->transitionProbs = calloc(newHMM->hiddenStates*newHMM->hiddenStates, sizeof(double));
+    newHMM->emissionProbs = calloc(newHMM->hiddenStates*newHMM->observations, sizeof(double));
     
-    // The emission probability is a M*N matrix
-    //
-    // [state][observation]
-    //
+    return newHMM;
+}
+
+HMM * HMMBLAS(const unsigned int hiddenStates, const unsigned int observations) {
+    
+    HMM * newHMM = calloc(1, sizeof(HMM));
+    
+    newHMM->forward = forward_blas;
+    newHMM->backward = backward_blas;
+
+    newHMM->hiddenStates = hiddenStates;
+    newHMM->observations = observations;
+
+    newHMM->initProbs = calloc(newHMM->hiddenStates ,sizeof(double));
+    newHMM->transitionProbs = calloc(newHMM->hiddenStates*newHMM->hiddenStates, sizeof(double));
     newHMM->emissionProbs = calloc(newHMM->hiddenStates*newHMM->observations, sizeof(double));
     
     return newHMM;
@@ -63,13 +73,13 @@ bool valdidateHMM(const HMM *hmm){
 
 void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
-    hmm->funcs->forward(hmm, Y, T, scalingFactor, alpha);
+    hmm->forward(hmm, Y, T, scalingFactor, alpha);
     
 }
 
 void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
     
-    hmm->funcs->backward(hmm, Y, T, scalingFactor, beta);
+    hmm->backward(hmm, Y, T, scalingFactor, beta);
     
 }
 
