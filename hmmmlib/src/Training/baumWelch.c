@@ -28,6 +28,7 @@ void baumWelch(HMM *hmm, const unsigned int *Y, const unsigned int T, const int 
     double * beta = calloc(hmm->hiddenStates*T, sizeof(double));
     
     for(int q = 0; q < iterations; q++) {
+        
         F(hmm, Y, T, scaleFactor, alpha);
         B(hmm, Y, T, scaleFactor, beta);
         

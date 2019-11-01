@@ -11,10 +11,12 @@ void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sca
     //
     // [state][time]
     //
+    
     for(i = 0; i < hmm->hiddenStates; i++){
         alpha[i*T+0] = hmm->initProbs[i]*hmm->emissionProbs[i*hmm->observations+Y[0]];
         scalingFactor[0] += alpha[i*T+0];
     }
+    
     // Scaling step
     for(j = 0; j < hmm->hiddenStates; j++){
         alpha[j*T+0] = alpha[j*T+0]/scalingFactor[0];
@@ -38,7 +40,7 @@ void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sca
             alpha[j*T+i] = alpha[j*T+i]/scalingFactor[i];
         }
     }
-    /*
+    
     printf("\n\n");
     for(i = 0; i < hmm->hiddenStates; i++) {
         for (j = 0; j < T; j++){
@@ -47,6 +49,6 @@ void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sca
         printf("\n");
     }
     printf("\n");
-    */
+    
     //return alpha;
 }
