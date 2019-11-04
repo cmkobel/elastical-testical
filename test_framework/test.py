@@ -141,6 +141,7 @@ def test_baumwelch():
 
 
 print('viterbi', test_viterbi())
+"""
 print('fw', test_forward())
 print('bw', test_backward())
-print('baumwelch', test_baumwelch())
+print('baumwelch', test_baumwelch()) """

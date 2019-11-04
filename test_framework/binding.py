@@ -27,7 +27,8 @@ class binded_HMM:
         self.libhmm = c.CDLL(os.path.abspath(address_to_so))
         
         # Set restypes for internal functions.
-        self.libhmm.HMMCreate.restype = c.POINTER(HMM)
+        #self.libhmm.HMMCreate.restype = c.POINTER(HMM)
+        self.libhmm.HMMConventional.restype = c.POINTER(HMM)
         self.libhmm.valdidateHMM.restype = c.c_bool
         self.libhmm.printHMM.restype = c.c_void_p
         self.libhmm.HMMDeallocate.restype = c.c_void_p
@@ -41,7 +42,7 @@ class binded_HMM:
 
 
         # Create HMM object
-        self.hmm = self.libhmm.HMMCreate(n_hiddenstates, n_observations)
+        self.hmm = self.libhmm.HMMConventional(n_hiddenstates, n_observations)
         
 
         """ 
