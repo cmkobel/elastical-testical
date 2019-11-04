@@ -99,8 +99,8 @@ class binded_HMM:
     ## Setters ##
     def setInitProbs(self, pi):
         if len(pi) != self.hmm[0].hiddenStates:
-            raise Exception(f'Failed to set initProbs[]. initProbs[] should contain {self.hmm[0].hiddenStates} values but {len(pi)} were given.')
-
+            #raise Exception(f'Failed to set initProbs[]. initProbs[] should contain {self.hmm[0].hiddenStates} values but {len(pi)} were given.')
+            pass
         self.hmm[0].initProbs = (c.c_double * self.hmm[0].hiddenStates)(*pi)
 
 
