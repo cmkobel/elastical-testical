@@ -121,7 +121,6 @@ void printHMM(const HMM *hmm){
 }
 
 void HMMDeallocate(HMM * hmm){
-    
     free(hmm->initProbs);
     free(hmm->emissionProbs);
     free(hmm->transitionProbs);
