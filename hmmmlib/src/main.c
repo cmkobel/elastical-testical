@@ -14,7 +14,6 @@
 #include "TestBaumWelch.h"
 #include "TestViterbi.h"
 #include "TestPosteriorDecoding.h"
-#include "cblas.h"
 
 int main() {
     

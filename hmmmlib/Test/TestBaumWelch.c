@@ -54,7 +54,7 @@ bool testBaumWelch() {
     
     //printf("AFTER: \n");
     //printHMM(hmm);
-    
+
     return valdidateHMM(hmm);
 
 }

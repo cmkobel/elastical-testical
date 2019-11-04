@@ -126,7 +126,5 @@ void HMMDeallocate(HMM * hmm){
     free(hmm->emissionProbs);
     free(hmm->transitionProbs);
     free(hmm);
-    
-    
-    
+
 }
