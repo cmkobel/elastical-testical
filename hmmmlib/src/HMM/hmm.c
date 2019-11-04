@@ -122,11 +122,10 @@ void printHMM(const HMM *hmm){
 
 void HMMDeallocate(HMM * hmm){
     
-    printf("trying to dealloc\n");
     free(hmm->initProbs);
     free(hmm->emissionProbs);
     free(hmm->transitionProbs);
-    printf("successfully deallocated\n");
+    free(hmm);
 }
 
 

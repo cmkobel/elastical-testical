@@ -79,5 +79,7 @@ bool testForwardAlgorithm() {
     }
     
     
+    HMMDeallocate(hmmCon);
+    
     return true;
 }
