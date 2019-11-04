@@ -73,13 +73,13 @@ bool valdidateHMM(const HMM *hmm){
 
 void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
-    hmm->forward(hmm, Y, T, scalingFactor, alpha); // Writes scalingFactor
+    hmm->forward(hmm, Y, T, scalingFactor, alpha); // Writes to scalingFactor
     
 }
 
 void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
     
-    hmm->backward(hmm, Y, T, scalingFactor, beta); // Reads scalingFactor
+    hmm->backward(hmm, Y, T, scalingFactor, beta); // Reads from scalingFactor
     
 }
 

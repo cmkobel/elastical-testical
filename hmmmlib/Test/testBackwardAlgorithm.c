@@ -21,8 +21,10 @@ extern bool testBackwardAlgorithm() {
     
     double initProbs[2] = {0.2, 0.8};
     
-    hmmCon->initProbs = initProbs;
-    hmmBlas->initProbs = initProbs;
+    for(unsigned int i = 0; i < hmmCon->hiddenStates; i++){
+        hmmCon->initProbs[i] = initProbs[i];
+        hmmBlas->initProbs[i] = initProbs[i];
+    }
     int i;
     int j;
     for(i = 0; i < hmmCon->hiddenStates; i++){
@@ -74,6 +76,9 @@ extern bool testBackwardAlgorithm() {
            assert(abs(betaCon[i*hmmCon->hiddenStates+j] - test[i*hmmCon->hiddenStates+j] < 0.00001));
        }
     }
+    
+    HMMDeallocate(hmmCon);
+    HMMDeallocate(hmmBlas);
     
     return true;
 }

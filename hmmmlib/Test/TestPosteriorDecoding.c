@@ -36,7 +36,6 @@ extern bool testPosteriorDecoding() {
     for(unsigned int i = 0; i < hmm->hiddenStates; i++){
         hmm->initProbs[i] = initProbs[i];
     }
-
     for(unsigned int i = 0; i < hmm->hiddenStates; i++){
         for(unsigned int j = 0; j < hmm->hiddenStates; j++){
             hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];

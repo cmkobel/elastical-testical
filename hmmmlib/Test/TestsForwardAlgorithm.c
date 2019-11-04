@@ -28,8 +28,12 @@ bool testForwardAlgorithm() {
     
     double initProbs[2] = {0.2, 0.8};
     
-    hmmCon->initProbs = initProbs;
-    hmmBLAS->initProbs = initProbs;
+    for(unsigned int i = 0; i < hmmCon->hiddenStates; i++){
+        hmmCon->initProbs[i] = initProbs[i];
+        hmmBLAS->initProbs[i] = initProbs[i];
+    }
+
+    
     int i;
     int j;
     for(i = 0; i < hmmCon->hiddenStates; i++){
@@ -78,6 +82,9 @@ bool testForwardAlgorithm() {
         }
     }
     
+    
+    HMMDeallocate(hmmCon);
+    HMMDeallocate(hmmBLAS);
     
     return true;
 }
