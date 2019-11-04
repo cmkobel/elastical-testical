@@ -59,6 +59,8 @@ extern bool testPosteriorDecoding() {
         //printf("%u(%u) ", result[i], expected[i]);
         assert(result[i] == expected[i]);
     }
+    
+    HMMDeallocate(hmm);
 
     return true;
 }
