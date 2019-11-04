@@ -26,4 +26,12 @@
 #include "posteriorDecoding.h"
 #include "posteriorDecoding.c"
 
+#include "forward_blas.h"
+#include "forward_blas.c"
+
+#include "backward_blas.h"
+#include "backward_blas.c"
+
+#include <cblas.h>
+
 

@@ -20,7 +20,7 @@ class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse uden
 
 class binded_HMM:
 
-    def __init__(self, n_hiddenstates, n_observations, address_to_so = "../hmmmlib/build/libHMMLIB.so"):
+    def __init__(self, n_hiddenstates, n_observations, address_to_so = "../../hmmmlib/build/libHMMLIB.so"):
         
         
         # Load the shared library into ctypes.
@@ -37,7 +37,7 @@ class binded_HMM:
         self.libhmm.backward.restype = c.POINTER(c.c_double)
         self.libhmm.viterbi.restype = c.POINTER(c.c_uint)
         self.libhmm.baumWelch.restype = c.c_void_p
-        self.libhmm.posteriorDecoding.restype = c.POINTER(c.c_double)
+        self.libhmm.posteriorDecoding.restype = c.POINTER(c.c_uint)
 
 
         # Create HMM object
@@ -175,6 +175,15 @@ class binded_HMM:
                                      len(observation_data)) 
         return [output[i] for i in range(len(observation_data))] # Evt. generator?
 
+
+    def posteriorDecoding(self, observation_data):
+        output = self.libhmm.posteriorDecoding(self.hmm,
+                                               (c.c_uint * len(observation_data))(*observation_data),
+                                               len(observation_data)) 
+        return [output[i] for i in range(len(observation_data))] # Evt. generator?
+
+
+    
     
     def baumWelch(self, observation_data, n_iterations):
         output = self.libhmm.baumWelch(self.hmm,

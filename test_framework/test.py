@@ -33,7 +33,36 @@ def test_viterbi():
     o.deallocate()
     return returnvalue
 
-#print('post vit', o.validate()) # issue 24 on github
+
+
+def test_posterior_decoding():
+    # create HMM for testing posterior_decoding
+    o = binded_HMM(7, 4)
+    o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
+    o.setTransitionProbs([[0.00, 0.00, 0.90, 0.10, 0.00, 0.00, 0.00],
+                        [1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+                        [0.00, 1.00, 0.00, 0.00, 0.00, 0.00, 0.00],
+                        [0.00, 0.00, 0.05, 0.90, 0.05, 0.00, 0.00],
+                        [0.00, 0.00, 0.00, 0.00, 0.00, 1.00, 0.00],
+                        [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 1.00],
+                        [0.00, 0.00, 0.00, 0.10, 0.90, 0.00, 0.00]])
+    o.setEmissionProbs([[0.30, 0.25, 0.25, 0.20],
+                        [0.20, 0.35, 0.15, 0.30],
+                        [0.40, 0.15, 0.20, 0.25],
+                        [0.25, 0.25, 0.25, 0.25],
+                        [0.20, 0.40, 0.30, 0.10],
+                        [0.30, 0.20, 0.30, 0.20],
+                        [0.15, 0.30, 0.20, 0.35]])
+
+    test_posterior_decoding_data = [0, 1, 3, 3, 2, 1, 2, 3, 0, 0, 1, 2, 1, 0, 2, 3, 0, 1, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1, 2, 3, 0, 1, 2, 1, 0, 3, 2, 1, 0, 0, 1, 0, 3, 2, 0, 3, 0, 0, 0, 3, 1, 1, 0, 0, 3, 1, 0, 3, 1, 0, 3, 0, 1, 0, 3, 2, 0, 1, 0, 3, 1, 0, 2, 1, 3, 0, 2, 1, 0, 3, 2, 0, 1, 2, 0, 3, 1, 0, 2, 3, 0, 1, 2, 0, 1, 3, 0, 1, 2, 0, 3, 1, 2, 3, 0]
+    test_posterior_decoding_output = o.posterior_decoding(test_posterior_decoding_data)
+    test_posterior_decoding_expected = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0]
+    for i, j in zip(test_posterior_decoding_output, test_posterior_decoding_expected):
+        assert i == j
+
+    returnvalue = copy(o.validate())
+    o.deallocate()
+    return returnvalue
 
 
 
