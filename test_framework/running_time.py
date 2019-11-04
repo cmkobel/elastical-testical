@@ -62,50 +62,92 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
 
 
 start = 10
-stop = 10011
+stop = 5011
 increment = 1000
-replicates = 5
-file = 'data/pantro3_X.fasta'
+replicates = 4
+file = '../../test_framework/data/pantro3_X.fasta'
 
 
 print('observations, time, algorithm, variant')
 
 
+
 # Viterbi
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.viterbi, start, stop, increment, file, '1D')
 
 
 # Forward
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.forward, start, stop, increment, file, '1D')
 
 
 # Backward
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.backward, start, stop, increment, file, '1D') 
 
 
 # Baum-Welch
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.baumWelch, start, stop, increment, file, '1D_1it', n_iterations = 1)
 
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.baumWelch, start, stop, increment, file, '1D_2it', n_iterations = 2)
 
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.baumWelch, start, stop, increment, file, '1D_3it', n_iterations = 3)
 
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.baumWelch, start, stop, increment, file, '1D_4it', n_iterations = 4)
-
-o = hmm_binding.binded_HMM(7, 4)
+""" 
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.baumWelch, start, stop, increment, file, '1D_5it', n_iterations = 5)
 
-o = hmm_binding.binded_HMM(7, 4)
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
 standard_test(o, o.baumWelch, start, stop, increment, file, '1D_6it', n_iterations = 6)
 
 
+ """
+
+
+
+
+
+# Viterbi
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.viterbi, start, stop, increment, file, 'BLAS')
+
+
+# Forward
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.forward, start, stop, increment, file, 'BLAS')
+
+
+# Backward
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.backward, start, stop, increment, file, 'BLAS') 
+
+
+# Baum-Welch
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_1it', n_iterations = 1)
+
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_2it', n_iterations = 2)
+
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_3it', n_iterations = 3)
+
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_4it', n_iterations = 4)
+""" 
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_5it', n_iterations = 5)
+
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_6it', n_iterations = 6)
+
+ """
 
 
 
