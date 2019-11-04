@@ -1,6 +1,7 @@
 #include "backward_blas.h"
 #include <stdlib.h>
-#include <Accelerate/Accelerate.h>
+//#include <Accelerate/Accelerate.h> // for mac os
+#include <cblas.h> // for Debian linux
 
 void backward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
     
