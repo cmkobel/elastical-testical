@@ -23,5 +23,6 @@ branches:
   only:
     - master
 
-
-
+jobs:
+  allow_failures:
+    - os: osx
