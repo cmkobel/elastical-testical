@@ -39,21 +39,20 @@ extern bool testViterbi() {
         {0.15, 0.30, 0.20, 0.35}
     };
     
-    unsigned int i;
-    unsigned int j;
     
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->hiddenStates; j++){
+    
+    for(unsigned int i = 0; i < hmm->hiddenStates; i++){
+        for(unsigned int j = 0; j < hmm->hiddenStates; j++){
             hmm->transitionProbs[i*hmm->hiddenStates+j] = transitionProbs[i][j];
         }
     }
-    for(i = 0; i < hmm->hiddenStates; i++){
-        for(j = 0; j < hmm->observations; j++){
+    for(unsigned int i = 0; i < hmm->hiddenStates; i++){
+        for(unsigned int j = 0; j < hmm->observations; j++){
             hmm->emissionProbs[i*hmm->observations+j] = emissionProbs[i][j];
         }
     }
     
-    for(i = 0; i < hmm->hiddenStates; i++){
+    for(unsigned int i = 0; i < hmm->hiddenStates; i++){
         hmm->initProbs[i] = initProbs[i];
     }
     

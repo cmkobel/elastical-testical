@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-double * posteriorDecoding(HMM * hmm, const unsigned int *Y, const int T){
+unsigned int * posteriorDecoding(HMM * hmm, const unsigned int *Y, const int T){
     //                     hmm-obj    data          len(data)
     
     double * alpha = calloc(hmm->hiddenStates*T, sizeof(double));
@@ -12,13 +12,16 @@ double * posteriorDecoding(HMM * hmm, const unsigned int *Y, const int T){
     F(hmm, Y, T, scalingFactor, alpha); // scalingFactor bliver sat her.
     B(hmm, Y, T, scalingFactor, beta); // scalingFactor bliver brugt her.
 
-    //print alpha
-    /* for (unsigned int i = 0; i < count; i++)
-    {
-        ;
-    
-    } */
-
+    // Debug print alpha
+    /* printf("Forward\n1:\t");
+    for (unsigned int i = 0; i < T; i++){
+        for (unsigned int j = 0; j < hmm->hiddenStates; j++){
+            printf("%f, ", alpha[i*hmm->hiddenStates+j]);
+        }
+        printf("\n%d:\t", i+2);
+    }
+    printf("\n");
+ */
 
     unsigned int * z = calloc(T, sizeof(unsigned int));
     double * z_ = calloc(T, sizeof(double));
@@ -28,10 +31,8 @@ double * posteriorDecoding(HMM * hmm, const unsigned int *Y, const int T){
 
     for (unsigned int i = 0; i < T; i++) {
         for (unsigned int k = 0; k < hmm->hiddenStates; k++) {
-            posterior[k] = alpha[i*T+k]*beta[i*T+k];
-            /* if(alpha[i*T+k]*beta[i*T+k] > posterior){
-                posterior = alpha[i*T+k]*beta[i*T+k];
-            } */
+            //posterior[k] = alpha[i*T+k]*beta[i*T+k];
+            posterior[k] = alpha[i*hmm->hiddenStates+k] * beta[i*hmm->hiddenStates+k];
         }
 
         // argmax posterior
@@ -62,5 +63,5 @@ double * posteriorDecoding(HMM * hmm, const unsigned int *Y, const int T){
 //    printf("leaving\n");
     
 
-    return z_;
+    return z;
 }
