@@ -99,17 +99,22 @@ class binded_HMM:
     ## Setters ##
     def setInitProbs(self, pi):
         if len(pi) != self.hmm[0].hiddenStates:
-            #raise Exception(f'Failed to set initProbs[]. initProbs[] should contain {self.hmm[0].hiddenStates} values but {len(pi)} were given.')
-            pass
+            ##raise Exception(f'Failed to set initProbs[]. initProbs[] should contain {self.hmm[0].hiddenStates} values but {len(pi)} were given.')
+            raise Exception('error1')
+            
         self.hmm[0].initProbs = (c.c_double * self.hmm[0].hiddenStates)(*pi)
 
 
     def setTransitionProbs(self, new_trans_p):
         if len(new_trans_p) != self.hmm[0].hiddenStates:
-            raise Exception(f'Failed to set transitionProbs[]. transitionProbs[] should contain {self.hmm[0].hiddenStates} rows but {len(new_trans_p)} were given.')
+            #raise Exception(f'Failed to set transitionProbs[]. transitionProbs[] should contain {self.hmm[0].hiddenStates} rows but {len(new_trans_p)} were given.')
+            raise Exception('error2')
+            
         for row in new_trans_p:
             if len(row) != self.hmm[0].hiddenStates:
-                raise Exception(f'Failed to set transitionProbs[]. transitionProbs[] should contain {self.hmm[0].hiddenStates} columns but {len(row)} were given.')
+                #raise Exception(f'Failed to set transitionProbs[]. transitionProbs[] should contain {self.hmm[0].hiddenStates} columns but {len(row)} were given.')
+                raise Exception('error3')
+                
 
         one_dimensional = [j for sub in new_trans_p for j in sub]
         # print(one_dimensional)
@@ -118,10 +123,14 @@ class binded_HMM:
 
     def setEmissionProbs(self, new_emiss_p):
         if len(new_emiss_p) != self.hmm[0].hiddenStates:
-            raise Exception(f'Failed to set emissionProbs[]. emissionProbs[] should contain {self.hmm[0].hiddenStates} rows but {len(new_emiss_p)} were given.')
+            #raise Exception(f'Failed to set emissionProbs[]. emissionProbs[] should contain {self.hmm[0].hiddenStates} rows but {len(new_emiss_p)} were given.')
+            raise Exception('error4')
+            
         for row in new_emiss_p:
             if len(row) != self.hmm[0].observations:
-                raise Exception(f'Failed to set emissionProbs[]. emissionProbs[] should contain {self.hmm[0].observations} columns but {len(row)} were given.')
+                #raise Exception(f'Failed to set emissionProbs[]. emissionProbs[] should contain {self.hmm[0].observations} columns but {len(row)} were given.')
+                raise Exception('error5')
+                
 
         one_dimensional = [j for sub in new_emiss_p for j in sub]
         # print(one_dimensional)
