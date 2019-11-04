@@ -34,8 +34,9 @@ class binded_HMM:
         self.libhmm.HMMDeallocate.restype = c.c_void_p
 
         # Set restypes for algorithms.
-        self.libhmm.forward.restype = c.POINTER(c.c_double)
-        self.libhmm.backward.restype = c.POINTER(c.c_double)
+        #self.libhmm.forward.restype = c.POINTER(c.c_double)
+        self.libhmm.F.restype = c.c_void_p
+        self.libhmm.B.restype = c.c_void_p
         self.libhmm.viterbi.restype = c.POINTER(c.c_uint)
         self.libhmm.baumWelch.restype = c.c_void_p
         self.libhmm.posteriorDecoding.restype = c.POINTER(c.c_uint)
@@ -133,21 +134,50 @@ class binded_HMM:
         
 
     ## Algorithms ##
-    def forward(self, observation_data):
-        """ Returns a tuple. 1: The table denoting the probability of each 
-            state for each observation. 2: The scalefactors used for each 
-            column in said table. """
+    def forward(self, observation_data, as_pointers = True):
+        """ Returns a tuple. 1: pointer to alpha 2: Pointer to scalefactor """
+        
+        hs = self.hmm[0].hiddenStates
+        
         scalefactor = len(observation_data) * [0]
-        scalefactor_p = (c.c_double * len(observation_data))(*scalefactor)
-        output = self.libhmm.forward(self.hmm,
-                                     (c.c_int * len(observation_data))(*observation_data),
-                                     len(observation_data),
-                                     scalefactor_p)
-        #print('after execution:', [scalefactor_p[i] for i in range(len(observation_data))])
-        return [output[i] for i in range(len(observation_data)*self.hmm[0].hiddenStates)], scalefactor_p
+        scalefactor_c = (c.c_double * len(observation_data))(*scalefactor)
 
+        # empty alpha matrix
+        alpha_matrix = len(observation_data) * hs * [0]
+        alpha_matrix_c = (len(observation_data) * hs * c.c_double)(*alpha_matrix)
+        
+    
+        self.libhmm.F(self.hmm,
+                      (c.c_int * len(observation_data))(*observation_data),
+                      len(observation_data),
+                      scalefactor_c,
+                      alpha_matrix_c)
+        
+        return alpha_matrix_c, scalefactor_c
+    
+    def backward(self, observation_data, scalefactor_c = None, as_pointers = True):
+        """ Returns a tuple. 1: pointer to alpha 2: Pointer to scalefactor_c """
+    
+        if scalefactor_c == None: # Compute scalefactor yourself
+            scalefactor_c = self.forward(observation_data)[1]
+        
+        hs = self.hmm[0].hiddenStates
 
-    def backward(self, observation_data, scalefactor_from_forward = None):
+        
+        # empty beta matrix
+        beta_matrix = len(observation_data) * hs * [0]
+        beta_matrix_c = (len(observation_data) * hs * c.c_double)(*beta_matrix)
+        
+    
+        self.libhmm.B(self.hmm,
+                      (c.c_int * len(observation_data))(*observation_data),
+                      len(observation_data),
+                      scalefactor_c,
+                      beta_matrix_c)
+        
+        return beta_matrix_c, scalefactor_c
+
+    def obackward(self, observation_data, alpha_from_forward, scalefactor_from_forward = None):
         """ Inputs: 1: observation data: a list of integers, 2: scalefactors
                 for each columnn in observation data provided from forward. If
                 not supplied, the scalefactors will be retrieved automatically, 
@@ -155,13 +185,17 @@ class binded_HMM:
             Outputs: Returns the table denoting the probability of each 
                 state for each observation. 2: The scalefactors used for each 
                 column in said table. """
+        
         if scalefactor_from_forward == None: # retrieve scalefactors automatically
             scalefactor = len(observation_data) * [0]
             scalefactor_from_forward = (c.c_double * len(observation_data))(*scalefactor)
             output = self.libhmm.forward(self.hmm,
                                          (c.c_int * len(observation_data))(*observation_data),
                                          len(observation_data),
-                                         scalefactor_from_forward)
+                                         scalefactor_from_forward,
+                                         (c.c_double * len(observation_data))( *(len(observation_data) * [0] )))
+        
+
 
         output = self.libhmm.backward(self.hmm,
                                      (c.c_int * len(observation_data))(*observation_data),

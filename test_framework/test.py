@@ -55,7 +55,7 @@ def test_posterior_decoding():
                         [0.15, 0.30, 0.20, 0.35]])
 
     test_posterior_decoding_data = [0, 1, 3, 3, 2, 1, 2, 3, 0, 0, 1, 2, 1, 0, 2, 3, 0, 1, 3, 1, 2, 0, 3, 1, 2, 0, 3, 1, 2, 3, 0, 1, 2, 1, 0, 3, 2, 1, 0, 0, 1, 0, 3, 2, 0, 3, 0, 0, 0, 3, 1, 1, 0, 0, 3, 1, 0, 3, 1, 0, 3, 0, 1, 0, 3, 2, 0, 1, 0, 3, 1, 0, 2, 1, 3, 0, 2, 1, 0, 3, 2, 0, 1, 2, 0, 3, 1, 0, 2, 3, 0, 1, 2, 0, 1, 3, 0, 1, 2, 0, 3, 1, 2, 3, 0]
-    test_posterior_decoding_output = o.posterior_decoding(test_posterior_decoding_data)
+    test_posterior_decoding_output = o.posteriorDecoding(test_posterior_decoding_data)
     test_posterior_decoding_expected = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0]
     for i, j in zip(test_posterior_decoding_output, test_posterior_decoding_expected):
         assert i == j
@@ -75,18 +75,19 @@ def test_forward():
                         [0.3, 0.7]])
     o2.setEmissionProbs([[.3, .7],
                         [.8, .2]])
-    test_for_back_bw_data = [0, 0, 0, 0, 0, 1, 1, 0, 0, 0]
+    data = [0, 0, 0, 0, 0, 1, 1, 0, 0, 0]
 
-    test_forward_output, scalefactor_from_forward = o2.forward(test_for_back_bw_data)
-    test_forward_expected = [0.085714, 0.148330, 0.155707, 0.156585, 0.156690, 0.634280, 0.722736, 0.230843, 0.165653, 0.157773, 0.914286, 0.851670, 0.844293, 0.843415, 0.843310, 0.365720, 0.277264, 0.769157, 0.834347, 0.842227]
-    for i, j in zip(test_forward_output, test_forward_expected):
+    output, scalefactor_from_forward = o2.forward(data)
+    output = [output[i] for i in range(len(data)*len(o2.getTransitionProbs()))]
+    expected = [0.08571428571428569, 0.9142857142857143, 0.14832962138084632, 0.8516703786191537, 0.1557067218345664, 0.8442932781654335, 0.15658545239699356, 0.8434145476030065, 0.15669025947764703, 0.843309740522353, 0.6342802366859542, 0.3657197633140457, 0.7227357992924823, 0.2772642007075177, 0.23084308303092038, 0.7691569169690796, 0.1656531912620611, 0.834346808737939, 0.1577734760873247, 0.8422265239126754]
+    for i, j in zip(output, expected):
         assert (i - j) < 0.00001
-    assert o2.validate()
-
-    return o2.validate()
+        #print(i, j)
 
 
-
+    returnvalue = copy(o2.validate())
+    o2.deallocate()
+    return returnvalue
 
 
 def test_backward():
@@ -96,19 +97,24 @@ def test_backward():
                         [0.3, 0.7]])
     o2.setEmissionProbs([[.3, .7],
                         [.8, .2]])
-    test_for_back_bw_data = [0, 0, 0, 0, 0, 1, 1, 0, 0, 0]
+    data = [0, 0, 0, 0, 0, 1, 1, 0, 0, 0]
 
+    output, scalefactor_from_backward = o2.backward(data)
+    output = [output[i] for i in range(len(data)*2)]
+    
+    # oexpected is the expected values of the same hmm, but with wide alpha and beta tables instead of narrow
+    #oexpected = [0.838486, 0.848495, 0.854859, 0.898964, 1.267584, 1.076550, 0.944879, 0.862481, 0.868282, 1.000000, 1.015142, 1.026387, 1.026767, 1.018758, 0.950282, 0.867237, 1.143683, 1.041273, 1.026152, 1.000000]
+    expected = [0.838486, 1.015142, 0.848495, 1.026387, 0.854859, 1.026767, 0.898964, 1.018758, 1.267584, 0.950282, 1.076550, 0.867237, 0.944879, 1.143683, 0.862481, 1.041273, 0.868282, 1.026152, 1.000000, 1.000000]
+    
 
-    test_forward_output, scalefactor_from_forward = o2.forward(test_for_back_bw_data)
-
-
-    test_backward_output = o2.backward(test_for_back_bw_data, scalefactor_from_forward)
-    test_backward_expected = [0.838486, 0.848495, 0.854859, 0.898964, 1.267584, 1.076550, 0.944879, 0.862481, 0.868282, 1.000000, 1.015142, 1.026387, 1.026767, 1.018758, 0.950282, 0.867237, 1.143683, 1.041273, 1.026152, 1.000000]
-    for i, j, in zip(test_backward_output, test_backward_expected):
+    for i, j in zip(output, expected):
         assert (i - j) < 0.00001
-    assert o2.validate()
+        #print(i, j)
 
-    return o2.validate()
+
+    returnvalue = copy(o2.validate())
+    o2.deallocate()
+    return returnvalue
 
 
 
@@ -141,7 +147,7 @@ def test_baumwelch():
 
 
 print('viterbi', test_viterbi())
-"""
 print('fw', test_forward())
 print('bw', test_backward())
-print('baumwelch', test_baumwelch()) """
+print('baum-welch', test_baumwelch()) 
+print('posterior decoding', test_posterior_decoding())

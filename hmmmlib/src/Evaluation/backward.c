@@ -14,7 +14,7 @@ void backward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sc
         beta[T*hmm->hiddenStates-1-i] = 1.0;
     }
     
-    // Now for the step"BACKWARD" step
+    // Now for the "BACKWARD" step
     for(i = T-1; i-- >0;){
         for(j = 0; j < hmm->hiddenStates; j++){
             for(int l = 0; l < hmm->hiddenStates; l++){

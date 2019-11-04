@@ -73,13 +73,13 @@ bool valdidateHMM(const HMM *hmm){
 
 void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
-    hmm->forward(hmm, Y, T, scalingFactor, alpha);
+    hmm->forward(hmm, Y, T, scalingFactor, alpha); // Writes scalingFactor
     
 }
 
 void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
     
-    hmm->backward(hmm, Y, T, scalingFactor, beta);
+    hmm->backward(hmm, Y, T, scalingFactor, beta); // Reads scalingFactor
     
 }
 
@@ -122,12 +122,12 @@ void printHMM(const HMM *hmm){
 
 void HMMDeallocate(HMM * hmm){
     
-    printf("trying to dealloc\n");
+    //printf("Trying to deallocate ...");
     free(hmm->initProbs);
     free(hmm->emissionProbs);
     free(hmm->transitionProbs);
     //free(hmm);
-    printf("successfully deallocated\n");
+    //printf(" success.\n");
     
 }
 

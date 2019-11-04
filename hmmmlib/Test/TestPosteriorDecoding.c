@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
+// skal linjen hvor "TestPosteriorDecoding.h" inkluderes ikke slettes?
+
 
 extern bool testPosteriorDecoding() {
     HMM * hmm = HMMConventional(7, 4);
