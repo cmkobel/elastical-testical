@@ -1,7 +1,7 @@
 #include "forward_blas.h"
 #include <stdlib.h>
-#include <Accelerate/Accelerate.h> // for mac os
-//#include <cblas.h> // for Debian linux
+//#include <Accelerate/Accelerate.h> // for mac os
+#include <cblas.h> // for GNUlinux
 
 void forward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
