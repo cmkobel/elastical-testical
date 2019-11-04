@@ -4,9 +4,9 @@ from copy import copy
 ## These tests are equivalent to the ones in main_test.c
 ## Made in order to check that the python-binding is successfull.
 
-def test_viterbi():
+def test_viterbi(hmmType = None):
     # create HMM for testing viterbi
-    o = binded_HMM(7, 4)
+    o = binded_HMM(7, 4, hmmType = hmmType)
     o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
     o.setTransitionProbs([[0.00, 0.00, 0.90, 0.10, 0.00, 0.00, 0.00],
                         [1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
@@ -35,9 +35,9 @@ def test_viterbi():
 
 
 
-def test_posterior_decoding():
+def test_posterior_decoding(hmmType = None):
     # create HMM for testing posterior_decoding
-    o = binded_HMM(7, 4)
+    o = binded_HMM(7, 4, hmmType = hmmType)
     o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
     o.setTransitionProbs([[0.00, 0.00, 0.90, 0.10, 0.00, 0.00, 0.00],
                         [1.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00],
@@ -68,8 +68,8 @@ def test_posterior_decoding():
 
 
 
-def test_forward():
-    o2 = binded_HMM(2, 2)
+def test_forward(hmmType = None):
+    o2 = binded_HMM(2, 2, hmmType = hmmType)
     o2.setInitProbs([.2, .8])
     o2.setTransitionProbs([[0.5, 0.5],
                         [0.3, 0.7]])
@@ -90,8 +90,8 @@ def test_forward():
     return returnvalue
 
 
-def test_backward():
-    o2 = binded_HMM(2, 2)
+def test_backward(hmmType = None):
+    o2 = binded_HMM(2, 2, hmmType = hmmType)
     o2.setInitProbs([.2, .8])
     o2.setTransitionProbs([[0.5, 0.5],
                         [0.3, 0.7]])
@@ -123,8 +123,8 @@ def test_backward():
 
 
 
-def test_baumwelch():
-    o2 = binded_HMM(2, 2)
+def test_baumwelch(hmmType = None):
+    o2 = binded_HMM(2, 2, hmmType = hmmType)
     o2.setInitProbs([.2, .8])
     o2.setTransitionProbs([[0.5, 0.5],
                         [0.3, 0.7]])
@@ -146,8 +146,15 @@ def test_baumwelch():
 
 
 
-print('viterbi', test_viterbi())
-print('fw', test_forward())
-print('bw', test_backward())
-print('baum-welch', test_baumwelch()) 
-print('posterior decoding', test_posterior_decoding())
+print('Conventional viterbi', test_viterbi("Conventional"))
+print('Conventional fw', test_forward("Conventional"))
+print('Conventional bw', test_backward("Conventional"))
+print('Conventional baum-welch', test_baumwelch("Conventional")) 
+print('Conventional posterior decoding', test_posterior_decoding("Conventional"))
+
+print('BLAS viterbi', test_viterbi("BLAS"))
+print('BLAS fw', test_forward("BLAS"))
+print('BLAS bw', test_backward("BLAS"))
+print('BLAS baum-welch', test_baumwelch("BLAS")) 
+print('BLAS posterior decoding', test_posterior_decoding("BLAS"))
+

@@ -20,7 +20,7 @@ class HMM(c.Structure): # Jeg kan ikke finde ud af at definere denne klasse uden
 
 class binded_HMM:
 
-    def __init__(self, n_hiddenstates, n_observations, address_to_so = "../../hmmmlib/build/libHMMLIB.so"):
+    def __init__(self, n_hiddenstates, n_observations, address_to_so = "../../hmmmlib/build/libHMMLIB.so", hmmType = None):
         
         
         # Load the shared library into ctypes.
@@ -29,6 +29,8 @@ class binded_HMM:
         # Set restypes for internal functions.
         #self.libhmm.HMMCreate.restype = c.POINTER(HMM)
         self.libhmm.HMMConventional.restype = c.POINTER(HMM)
+        self.libhmm.HMMBLAS.restype = c.POINTER(HMM)
+        
         self.libhmm.valdidateHMM.restype = c.c_bool
         self.libhmm.printHMM.restype = c.c_void_p
         self.libhmm.HMMDeallocate.restype = c.c_void_p
@@ -43,8 +45,15 @@ class binded_HMM:
 
 
         # Create HMM object
-        self.hmm = self.libhmm.HMMConventional(n_hiddenstates, n_observations)
-        
+        if hmmType == None:
+            print("Warning, the hmmType defaults to Conventional when none is given.")
+
+        if hmmType == "Conventional" or hmmType == None:
+            self.hmm = self.libhmm.HMMConventional(n_hiddenstates, n_observations)
+            #print(" (A conventional hmm was created)")
+        elif hmmType == "BLAS":
+            self.hmm = self.libhmm.HMMBLAS(n_hiddenstates, n_observations)
+            #print(" (A BLAS hmm was created)")
 
         """ 
         print('The following variables are accessible from the HMM struct')
