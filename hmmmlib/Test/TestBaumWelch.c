@@ -5,7 +5,7 @@
 #include <math.h>
 
 bool testBaumWelch() {
-    HMM * hmm = HMMBLAS(2, 2);
+    HMM * hmm = HMMConventional(2, 2);
     
     double transitionProbs[2][2] = {
         {0.5, 0.5},
@@ -19,7 +19,10 @@ bool testBaumWelch() {
     
     double initProbs[2] = {0.2, 0.8};
     
-    hmm->initProbs = initProbs;
+    for(unsigned int i = 0; i < hmm->hiddenStates; i++){
+        hmm->initProbs[i] = initProbs[i];
+    }
+    
     int i;
     int j;
     for(i = 0; i < hmm->hiddenStates; i++){
@@ -52,9 +55,8 @@ bool testBaumWelch() {
     assert(fabs(hmm->emissionProbs[0]-0.46160107308583781) < epsilon);
     assert(fabs(hmm->emissionProbs[1*hmm->observations+1]-0.084984433203479412) < epsilon);
     
-    //printf("AFTER: \n");
-    //printHMM(hmm);
-
+    HMMDeallocate(hmm);
+    
     return valdidateHMM(hmm);
 
 }
