@@ -18,7 +18,7 @@ addons:
 
 
 script:
-  - mkdir -p hmmmlib/build; cd hmmmlib/build; cmake .. &&  make && ../build/exeHMMLIB  && python3 ../../test_framework/test.py
+  - mkdir -p hmmmlib/build; cd hmmmlib/build; cmake .. &&  make && ../build/exeHMMLIB  && python3 --version && python3 ../../test_framework/test.py
 
 
 branches:
