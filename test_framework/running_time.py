@@ -15,7 +15,7 @@ def read_fasta(n_lines, file):
 
 
 
-def standard_test(o, test_setup, start, stop, increment, file, algorithm_version = '', linewidth = 60, **kwargs):
+def standard_test(o, test_setup, start, stop, increment, file, variant = '', algorithm_version = '', linewidth = 60, **kwargs):
     algorithm_name = test_setup.__name__
 
     print(f'Testing the following range:', file = sys.stderr)
@@ -51,7 +51,7 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
             t0 = time.time()
             test_standard_output = test_setup(test_standard_data, **kwargs)
             t1 = time.time()
-            print(f'{i*linewidth}, {t1-t0}, {algorithm_name}, {algorithm_version}')
+            print(f'{i*linewidth}, {t1-t0}, {algorithm_name}, {variant}, {algorithm_version}')
         print('', file = sys.stderr, flush = True) # newline
 
     o.deallocate()
@@ -62,92 +62,98 @@ def standard_test(o, test_setup, start, stop, increment, file, algorithm_version
 
 
 start = 10
-stop = 5011
+stop = 2011
 increment = 1000
 replicates = 4
 file = '../../test_framework/data/pantro3_X.fasta'
 
 
-print('observations, time, algorithm, variant')
+print('observations, time, algorithm, variant, iterations')
 
 
+## Conventional ##
 
 # Viterbi
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.viterbi, start, stop, increment, file, '1D')
+standard_test(o, o.viterbi, start, stop, increment, file, 'Conventional')
 
+# Posterior Decoding
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
+standard_test(o, o.posteriorDecoding, start, stop, increment, file, 'Conventional')
 
 # Forward
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.forward, start, stop, increment, file, '1D')
-
+standard_test(o, o.forward, start, stop, increment, file, 'Conventional')
 
 # Backward
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.backward, start, stop, increment, file, '1D') 
-
+standard_test(o, o.backward, start, stop, increment, file, 'Conventional') 
 
 # Baum-Welch
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D_1it', n_iterations = 1)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'Conventional', '1', n_iterations = 1)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D_2it', n_iterations = 2)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'Conventional', '2', n_iterations = 2)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D_3it', n_iterations = 3)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'Conventional', '3', n_iterations = 3)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D_4it', n_iterations = 4)
-""" 
-o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D_5it', n_iterations = 5)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'Conventional', '4', n_iterations = 4)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
-standard_test(o, o.baumWelch, start, stop, increment, file, '1D_6it', n_iterations = 6)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'Conventional', '5', n_iterations = 5)
+
+o = hmm_binding.binded_HMM(7, 4, hmmType = "Conventional")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'Conventional', '6', n_iterations = 6)
 
 
- """
 
 
-
+## BLAS ##
 
 
 # Viterbi
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
 standard_test(o, o.viterbi, start, stop, increment, file, 'BLAS')
 
+# Posterior Decoding
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.posteriorDecoding, start, stop, increment, file, 'BLAS')
 
 # Forward
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
 standard_test(o, o.forward, start, stop, increment, file, 'BLAS')
 
-
 # Backward
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
 standard_test(o, o.backward, start, stop, increment, file, 'BLAS') 
 
-
 # Baum-Welch
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
-standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_1it', n_iterations = 1)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS', '1', n_iterations = 1)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
-standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_2it', n_iterations = 2)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS', '2', n_iterations = 2)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
-standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_3it', n_iterations = 3)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS', '3', n_iterations = 3)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
-standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_4it', n_iterations = 4)
-""" 
-o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
-standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_5it', n_iterations = 5)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS', '4', n_iterations = 4)
 
 o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
-standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS_6it', n_iterations = 6)
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS', '5', n_iterations = 5)
 
- """
+o = hmm_binding.binded_HMM(7, 4, hmmType = "BLAS")
+standard_test(o, o.baumWelch, start, stop, increment, file, 'BLAS', '6', n_iterations = 6)
+
+
+
+
+
+
 
 
 
