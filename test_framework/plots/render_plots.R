@@ -40,8 +40,8 @@ p_mean_normalized
 
 
 
-ggsave("all.pdf", height = 5, width = 7, plot = p_mean)
-ggsave("all_normalized.pdf", height = 5, width = 7, plot = p_mean_normalized)
+ggsave("all.pdf", height = 5, width = 8.5, plot = p_mean)
+ggsave("all_normalized.pdf", height = 5, width = 8.5, plot = p_mean_normalized)
 
 
 
