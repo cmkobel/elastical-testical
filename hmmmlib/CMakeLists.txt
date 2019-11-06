@@ -6,6 +6,8 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/
        ${CMAKE_SOURCE_DIR}/src/Decoding
        ${CMAKE_SOURCE_DIR}/src/Evaluation
+       ${CMAKE_SOURCE_DIR}/src/Evaluation/blas
+       ${CMAKE_SOURCE_DIR}/src/Evaluation/conventional
        ${CMAKE_SOURCE_DIR}/src/HMM
        ${CMAKE_SOURCE_DIR}/src/Training)
 
@@ -13,8 +15,10 @@ file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/shared.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.h
-       ${PROJECT_SOURCE_DIR}/src/Evaluation/*.c
-       ${PROJECT_SOURCE_DIR}/src/Evaluation/*.h
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/blas/*.c
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/blas/*.h
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/conventional/*.c
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/conventional/*.h
        ${PROJECT_SOURCE_DIR}/src/HMM/*.c
        ${PROJECT_SOURCE_DIR}/src/HMM/*.h
        ${PROJECT_SOURCE_DIR}/src/Training/*.c
@@ -34,19 +38,24 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE 1) #or #s
 
 # Add Tests content for the executable
 include_directories(
-       ${CMAKE_SOURCE_DIR}/src
+       ${CMAKE_SOURCE_DIR}/src/
        ${CMAKE_SOURCE_DIR}/src/Decoding
        ${CMAKE_SOURCE_DIR}/src/Evaluation
+       ${CMAKE_SOURCE_DIR}/src/Evaluation/blas
+       ${CMAKE_SOURCE_DIR}/src/Evaluation/conventional
        ${CMAKE_SOURCE_DIR}/src/HMM
        ${CMAKE_SOURCE_DIR}/Test
        ${CMAKE_SOURCE_DIR}/src/Training)
+
 
 file(GLOB exeSOURCES
        ${PROJECT_SOURCE_DIR}/src/main.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.c
        ${PROJECT_SOURCE_DIR}/src/Decoding/*.h
-       ${PROJECT_SOURCE_DIR}/src/Evaluation/*.c
-       ${PROJECT_SOURCE_DIR}/src/Evaluation/*.h
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/blas/*.c
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/blas/*.h
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/conventional/*.c
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/conventional/*.h
        ${PROJECT_SOURCE_DIR}/src/HMM/*.c
        ${PROJECT_SOURCE_DIR}/src/HMM/*.h
        ${PROJECT_SOURCE_DIR}/Test/*.c
