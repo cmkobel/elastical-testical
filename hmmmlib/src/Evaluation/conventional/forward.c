@@ -48,6 +48,4 @@ void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * sca
 //        printf("\n");
 //    }
 //    printf("\n");
-    
-    //return alpha;
 }
