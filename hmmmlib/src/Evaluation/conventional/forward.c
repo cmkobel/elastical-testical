@@ -1,5 +1,4 @@
 #include "forward.h"
-#include "hmm.h"
 #include <stdlib.h>
 
 void forward(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
