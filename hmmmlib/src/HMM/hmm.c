@@ -9,6 +9,7 @@
 #include "forward_blas.h"
 #include "backward_blas.h"
 #include "forward_csr.h"
+#include "backward_csr.h"
 
 HMM * HMMConventional(const unsigned int hiddenStates, const unsigned int observations) {
     HMM * newHMM = calloc(1, sizeof(HMM));
@@ -48,7 +49,7 @@ HMM * HMMCsr(const unsigned int hiddenStates, const unsigned int observations) {
     HMM * newHMM = calloc(1, sizeof(HMM));
     
     newHMM->forward = forward_csr;
-    newHMM->backward = backward_blas;
+    newHMM->backward = backward_csr;
 
     newHMM->hiddenStates = hiddenStates;
     newHMM->observations = observations;
@@ -67,15 +68,15 @@ bool valdidateHMM(const HMM *hmm){
     unsigned int j = 0;
     double sum = 0.0;
     
+    float epsilon = 0.000001;
+    
     //Summing initprobs
     for(i=0; i < hmm->hiddenStates; i++){
         sum += hmm->initProbs[i];
     }
-    if(sum != 1.0){
+    if(fabs(sum-1.0) < epsilon){
         return false;
     }
-    
-    float epsilon = 0.000001;
     
     for (i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;

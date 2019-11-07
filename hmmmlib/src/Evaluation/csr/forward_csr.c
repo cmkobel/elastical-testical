@@ -1,15 +1,16 @@
 #include "forward_csr.h"
 #include <stdlib.h>
-//#include <Accelerate/Accelerate.h> // for mac os
-#include <cblas.h> // for GNUlinux
+#include <Accelerate/Accelerate.h> // for mac os
+//#include <cblas.h> // for GNUlinux
 
-void csr(HMM * hmm, double ** sparseMatrixs, int * ia, int * ja, double * a){
+int csr(HMM * hmm, double ** sparseMatrixs, int * ia, int * ja, double * a){
     
     unsigned int i;
     unsigned int j;
     unsigned int l;
     
     int nnz = 0;
+    int nnz_count = 0;
     
     for(l = 0; l < hmm->observations; l++){
         for (i = 0; i < hmm->hiddenStates; i++) {
@@ -18,6 +19,7 @@ void csr(HMM * hmm, double ** sparseMatrixs, int * ia, int * ja, double * a){
                     a[nnz] = sparseMatrixs[l][j*hmm->hiddenStates+i];
                     if(l == 0){
                         ja[nnz] = j;
+                        nnz_count++;
                     }
                     nnz++;
                 }
@@ -27,26 +29,7 @@ void csr(HMM * hmm, double ** sparseMatrixs, int * ia, int * ja, double * a){
             }
         }
     }
-    
-//    printf("A: \n");
-//    for(i = 0; i < hmm->hiddenStates*hmm->hiddenStates*hmm->observations; i++){
-//        if(a[i] == 0.0) break;
-//        printf("%f, ", a[i]);
-//    }
-//    printf("\nAI: \n");
-//    for(i = 0; i < hmm->hiddenStates+1; i++){
-//        printf("%d, ", ia[i]);
-//    }
-//    printf("\nJA: \n");
-//    for(i = 0; i < hmm->hiddenStates*hmm->hiddenStates; i++){
-//        if(a[i] == 0.0) break;
-//        printf("%d, ", ja[i]);
-//    }
-    
-//    free(a);
-//    free(ja);
-//    free(ia);
-    
+    return nnz_count;
 }
 
 void forward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
@@ -92,7 +75,9 @@ void forward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
     int * ja = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(int));
     double * a = calloc(hmm->observations*hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
     
-    csr(hmm, new_emission_probs, ia, ja, a);
+    int znn = csr(hmm, new_emission_probs, ia, ja, a);
+    
+    //printf("%d", znn);
     
     for(i = 0; i < hmm->observations; i++){
         free(new_emission_probs[i]);
@@ -112,13 +97,18 @@ void forward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
 //    printf("\n\n");
     
     for(i = 1; i<T; i++){
+        
         for (int row=0; row < hmm->hiddenStates; row++) {
+            
             double sum = 0.0;
+            
             for(int idx=ia[row]; idx<ia[row+1]; idx++) {
-                sum += a[Y[i]*11+idx] * alpha[(i-1)*hmm->hiddenStates+ja[idx]];
+            
+                sum += a[Y[i]*znn+idx] * alpha[(i-1)*hmm->hiddenStates+ja[idx]];
+            
             }
             alpha[i*hmm->hiddenStates+row] = sum;
-        }
+    }
         
 //        printf("Forward\n");
 //        for(int l = 0; l < T; l++){
