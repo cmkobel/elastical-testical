@@ -32,6 +32,13 @@
 #include "backward_blas.h"
 #include "backward_blas.c"
 
+#include "forward_csr.c"
+#include "forward_csr.h"
+
+#include "backward_csr.c"
+#include "backward_csr.h"
+
+
 #include <cblas.h>
 
 
