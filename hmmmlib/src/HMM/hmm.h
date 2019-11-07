@@ -21,6 +21,8 @@ HMM * HMMConventional(const unsigned int hiddenStates, const unsigned int observ
 
 HMM * HMMBLAS(const unsigned int hiddenStates, const unsigned int observations);
 
+HMM * HMMCsr(const unsigned int hiddenStates, const unsigned int observations);
+
 bool valdidateHMM(const HMM *hmm);
 
 void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha);

@@ -32,9 +32,6 @@
 #include "backward_blas.h"
 #include "backward_blas.c"
 
-
-
-
 #include <cblas.h>
 
 
