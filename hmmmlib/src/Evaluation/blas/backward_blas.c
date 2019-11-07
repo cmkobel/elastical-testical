@@ -1,14 +1,13 @@
 #include "backward_blas.h"
 #include <stdlib.h>
-//#include <Accelerate/Accelerate.h> // for mac os
-#include <cblas.h> // for GNUlinux
+#include <Accelerate/Accelerate.h> // for mac os
+//#include <cblas.h> // for GNUlinux
 
 void backward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
     
     unsigned int i;
     unsigned int j;
     
-    //Creating the emission probs m*n into m, n*n matrix
     double ** new_emission_probs = calloc(hmm->observations, sizeof(double *));
     double * matrix = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
     
@@ -20,6 +19,15 @@ void backward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double
         double * emission_probs = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
         cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, hmm->hiddenStates, 1.0, hmm->transitionProbs, hmm->hiddenStates, matrix, hmm->hiddenStates, 0.0, emission_probs, hmm->hiddenStates);
         new_emission_probs[i] = emission_probs;
+        
+//        printf("------- Y[i] == %d -------\n", i);
+//        for(int k = 0; k < hmm->hiddenStates; k++){
+//            for(j = 0; j < hmm->hiddenStates; j++){
+//                printf("%f, ", emission_probs[k*hmm->hiddenStates+j]);
+//            }
+//            printf("\n");
+//        }
+//        printf("\n\n\n");
 
     }
     
