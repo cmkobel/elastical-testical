@@ -68,15 +68,15 @@ bool valdidateHMM(const HMM *hmm){
     unsigned int j = 0;
     double sum = 0.0;
     
+    float epsilon = 0.000001;
+    
     //Summing initprobs
     for(i=0; i < hmm->hiddenStates; i++){
         sum += hmm->initProbs[i];
     }
-    if(sum != 1.0){
+    if(fabs(sum-1.0) < epsilon){
         return false;
     }
-    
-    float epsilon = 0.000001;
     
     for (i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;

@@ -165,28 +165,28 @@ extern bool testBackwardAlgorithm() {
     free(alpha2);
     free(beta2);
     HMMDeallocate(hmm2);
-//    
-//    HMM * hmm3 = HMMCsr(7, 4);
-//    
-//    for(i = 0; i < hmm3->hiddenStates; i++){
-//       hmm3->initProbs[i] = initProbs2[i];
-//    }
-//    for(i = 0; i < hmm3->hiddenStates; i++){
-//      for(j = 0; j < hmm3->hiddenStates; j++){
-//          hmm3->transitionProbs[i*hmm3->hiddenStates+j] = transitionProbs2[i][j];
-//      }
-//    }
-//    for(i = 0; i < hmm3->hiddenStates; i++){
-//      for(j = 0; j < hmm3->observations; j++){
-//          hmm3->emissionProbs[i*hmm3->observations+j] = emissionProbs2[i][j];
-//      }
-//    }
-//
-//    double * scaleFactor3 = calloc(obsLenght2, sizeof(double));
-//    double * alpha3 = calloc(obsLenght2*hmm3->hiddenStates, sizeof(double));
-//    F(hmm3, observation2, obsLenght2, scaleFactor3, alpha3);
-//    double * beta3 = calloc(obsLenght2*hmm3->hiddenStates, sizeof(double));
-//    B(hmm3, observation2, obsLenght2, scaleFactor3, beta3);
+    
+    HMM * hmm3 = HMMCsr(7, 4);
+    
+    for(i = 0; i < hmm3->hiddenStates; i++){
+       hmm3->initProbs[i] = initProbs2[i];
+    }
+    for(i = 0; i < hmm3->hiddenStates; i++){
+      for(j = 0; j < hmm3->hiddenStates; j++){
+          hmm3->transitionProbs[i*hmm3->hiddenStates+j] = transitionProbs2[i][j];
+      }
+    }
+    for(i = 0; i < hmm3->hiddenStates; i++){
+      for(j = 0; j < hmm3->observations; j++){
+          hmm3->emissionProbs[i*hmm3->observations+j] = emissionProbs2[i][j];
+      }
+    }
+
+    double * scaleFactor3 = calloc(obsLenght2, sizeof(double));
+    double * alpha3 = calloc(obsLenght2*hmm3->hiddenStates, sizeof(double));
+    F(hmm3, observation2, obsLenght2, scaleFactor3, alpha3);
+    double * beta3 = calloc(obsLenght2*hmm3->hiddenStates, sizeof(double));
+    B(hmm3, observation2, obsLenght2, scaleFactor3, beta3);
 
     return true;
 }
