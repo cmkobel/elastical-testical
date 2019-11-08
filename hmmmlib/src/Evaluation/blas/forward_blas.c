@@ -29,6 +29,7 @@ void forward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double 
     free(matrix);
     
     
+    
     // Doing the matrix multiplication and then scalingFactor
     scalingFactor[0] = cblas_dasum(hmm->hiddenStates, alpha, 1);
     cblas_dscal(hmm->hiddenStates, (1.0/scalingFactor[0]), alpha, 1);
