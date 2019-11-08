@@ -108,16 +108,7 @@ void forward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double *
             
             }
             alpha[i*hmm->hiddenStates+row] = sum;
-    }
-        
-//        printf("Forward\n");
-//        for(int l = 0; l < T; l++){
-//            for(j = 0; j < hmm->hiddenStates; j++){
-//                printf("%f, ", alpha[l*hmm->hiddenStates+j]);
-//            }
-//            printf("\n");
-//        }
-//        printf("\n");
+        }
         
         scalingFactor[i] = 1.0/cblas_dasum(hmm->hiddenStates, alpha+hmm->hiddenStates*i, 1);
         cblas_dscal(hmm->hiddenStates, scalingFactor[i], alpha+hmm->hiddenStates*i, 1);
