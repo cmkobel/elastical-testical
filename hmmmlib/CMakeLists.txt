@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.7.2)
 project(HMMLIB)
 
+
+
+
  
 include_directories(
        ${CMAKE_SOURCE_DIR}/src/
