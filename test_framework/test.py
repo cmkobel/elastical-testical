@@ -4,7 +4,7 @@ from copy import copy
 ## These tests are equivalent to the ones in main_test.c
 ## Made in order to check that the python-binding is successfull.
 
-def test_viterbi(hmmType = None):
+def test_viterbi(hmmType = "Conventional"):
     # create HMM for testing viterbi
     o = binded_HMM(7, 4, hmmType = hmmType)
     o.setInitProbs([0.00, 0.00, 0.00, 1.00, 0.00, 0.00, 0.00])
@@ -28,7 +28,7 @@ def test_viterbi(hmmType = None):
     test_viterbi_expected = [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1]
     for i, j in zip(test_viterbi_output, test_viterbi_expected):
         assert i == j
-
+    
     returnvalue = copy(o.validate())
     o.deallocate()
     return returnvalue
@@ -140,21 +140,30 @@ def test_baumwelch(hmmType = None):
     assert o2.hmm[0].transitionProbs[1*o2.hmm[0].hiddenStates + 1] - 0.78554317773503979 < epsilon
     assert o2.hmm[0].emissionProbs[0] - 0.46160107308583781 < epsilon
     assert o2.hmm[0].emissionProbs[1*o2.hmm[0].observations + 1] - 0.084984433203479412 < epsilon
-    assert o2.validate()
-
-    return o2.validate()
 
 
+    #o2.presentHMM()
+    returnvalue = copy(o2.validate())
+    o2.deallocate()
+    return returnvalue
 
-print('Conventional viterbi', test_viterbi("Conventional"))
+
 print('Conventional fw', test_forward("Conventional"))
 print('Conventional bw', test_backward("Conventional"))
 print('Conventional baum-welch', test_baumwelch("Conventional")) 
 print('Conventional posterior decoding', test_posterior_decoding("Conventional"))
+print('Conventional viterbi', test_viterbi("Conventional"))
 
-print('BLAS viterbi', test_viterbi("BLAS"))
 print('BLAS fw', test_forward("BLAS"))
 print('BLAS bw', test_backward("BLAS"))
 print('BLAS baum-welch', test_baumwelch("BLAS")) 
 print('BLAS posterior decoding', test_posterior_decoding("BLAS"))
+print('BLAS viterbi', test_viterbi("BLAS"))
 
+print('CSR fw', test_forward("CSR"))
+print('CSR bw', test_backward("CSR"))
+print('CSR viterbi', test_viterbi("CSR"))
+"""
+print('CSR posterior decoding', test_posterior_decoding("CSR"))
+print('CSR baum-welch', test_baumwelch("CSR")) 
+"""

@@ -78,6 +78,8 @@ extern bool testViterbi() {
     free(viterbiResult);
     
 
+    assert(valdidateHMM(hmm) == true);
+    HMMDeallocate(hmm);
     
     return true;
 }

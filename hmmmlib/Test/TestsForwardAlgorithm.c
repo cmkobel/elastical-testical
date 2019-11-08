@@ -82,9 +82,12 @@ bool testForwardAlgorithm() {
         }
     }
     
-    
+    assert(valdidateHMM(hmmCon) == true);
+    assert(valdidateHMM(hmmBLAS) == true);
+
     HMMDeallocate(hmmCon);
     HMMDeallocate(hmmBLAS);
+    
     
     HMM * hmm2 = HMMCsr(7, 4);
            
@@ -151,7 +154,10 @@ bool testForwardAlgorithm() {
     
     free(alpha2);
     free(scaleFactor2);
+    assert(valdidateHMM(hmm2) == true);
     HMMDeallocate(hmm2);
+    
+    
     
     return true;
 }
