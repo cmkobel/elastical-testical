@@ -20,6 +20,8 @@ addons:
 script:
   - mkdir -p hmmmlib/build; cd hmmmlib/build; cmake .. &&  make && ../build/exeHMMLIB  && python3 --version && python3 ../../test_framework/test.py
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 branches:
   only:
