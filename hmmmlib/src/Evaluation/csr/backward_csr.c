@@ -49,19 +49,6 @@ void backward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double 
         double * emission_probs = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
         cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, hmm->hiddenStates, 1.0, hmm->transitionProbs, hmm->hiddenStates, matrix, hmm->hiddenStates, 0.0, emission_probs, hmm->hiddenStates);
         new_emission_probs[i] = emission_probs;
-<<<<<<< HEAD
-=======
-        /* 
-        printf("------- Y[i] == %d -------\n", i);
-        for(int k = 0; k < hmm->hiddenStates; k++){
-            for(j = 0; j < hmm->hiddenStates; j++){
-                printf("%f, ", emission_probs[k*hmm->hiddenStates+j]);
-            }
-            printf("\n");
-        }
-        printf("\n\n\n"); */
->>>>>>> 78da1c8eb066d2672822d304d74343baa8fa0915
-
     }
     
     free(matrix);
@@ -80,8 +67,7 @@ void backward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double 
         free(new_emission_probs[i]);
     }
     free(new_emission_probs);
-<<<<<<< HEAD
-
+    
     for(i = 1; i<T; i++){
         for (int row=0; row < hmm->hiddenStates; row++) {
             double sum = 0.0;
@@ -91,47 +77,6 @@ void backward_csr(HMM *hmm, const unsigned int *Y, const unsigned int T, double 
             beta[hmm->hiddenStates*(T-i)-hmm->hiddenStates+row] = sum;
         }
         cblas_dscal(hmm->hiddenStates, scalingFactor[T-i], beta+hmm->hiddenStates*T-i*hmm->hiddenStates-hmm->hiddenStates, 1);
-=======
-    /* 
-    printf("\nAI: \n");
-    for(i = 0; i < hmm->hiddenStates+1; i++){
-        printf("%d, ", ia[i]);
-    }
-    printf("\nJA: \n");
-    for(i = 0; i < hmm->hiddenStates*hmm->hiddenStates; i++){
-        if(a[i] == 0.0) break;
-        printf("%d, ", ja[i]);
-    }
-
-    printf("\n\n");
-     */
-    for(i = 1; i<T; i++){
-        /* 
-        printf("%d, \n", Y[T-i]);
-        for(int row=0; row < znn; row++){
-            printf("%f ,", a[(Y[T-i]*znn)+row]);
-        } */
-        
-        for (int row=0; row < hmm->hiddenStates; row++) {
-            double sum = 0.0;
-            for(int idx=ia[row]; idx<ia[row+1]; idx++) {
-                //printf("%f, %f\n", beta[hmm->hiddenStates*(T-i)+ja[idx]], a[Y[T-i]*znn+idx]);
-                sum += a[Y[T-i]*znn+idx] * beta[hmm->hiddenStates*(T-i)+ja[idx]];
-            }
-            beta[hmm->hiddenStates*(T-i)-hmm->hiddenStates+row] = sum;
-        }
-        //cblas_dscal(hmm->hiddenStates, scalingFactor[T-i], beta+hmm->hiddenStates*T-i*hmm->hiddenStates-hmm->hiddenStates, 1);
-        /* 
-        printf("BETA\n");
-        for(int l = 0; l < T; l++){
-            for(j = 0; j < hmm->hiddenStates; j++){
-                printf("%f, ", beta[l*hmm->hiddenStates+j]);
-            }
-            printf("\n");
-        }
-        printf("\n");
-         */
->>>>>>> 78da1c8eb066d2672822d304d74343baa8fa0915
     }
     
     free(ia);
