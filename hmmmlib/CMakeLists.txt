@@ -3,7 +3,7 @@ project(HMMLIB)
 
 
 
-add_custom_target(HMMLIB
+add_custom_target(covtest
    COMMAND "ctest -VV" )
 
 
