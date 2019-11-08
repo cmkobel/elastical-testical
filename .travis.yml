@@ -16,6 +16,7 @@ addons:
       - libatlas-base-dev
       - python3
       - lcov
+      - tree
 
 
 script:
@@ -37,6 +38,7 @@ after_success:
   - lcov --remove coverage.info '/usr/*' "${HOME}"'/.cache/*' --output-file coverage.info
   # output coverage data for debugging (optional)
   - lcov --list coverage.info
+  - tree
   # Uploading to CodeCov
   # '-f' specifies file(s) to use and disables manual coverage gathering and file search which has already been done above
   - bash <(curl -s https://codecov.io/bash) -f coverage.info || echo "Codecov did not collect coverage reports"
