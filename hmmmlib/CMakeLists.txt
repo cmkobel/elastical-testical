@@ -3,9 +3,6 @@ project(HMMLIB)
 
 
 
-add_custom_target(covtest
-   COMMAND "ctest -VV" )
-
 
  
 include_directories(
@@ -101,5 +98,8 @@ foreach(FILE ${exeSOURCES})
 
     source_group("${GROUP}" FILES "${FILE}")
 endforeach()
+
+
+
 
 
