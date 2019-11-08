@@ -1,4 +1,5 @@
-# Hidden Markov-Model Library [![Build Status](https://travis-ci.org/cmkobel/hmmmlib.svg?branch=master)](https://travis-ci.org/cmkobel/hmmmlib)
+[![Build Status](https://travis-ci.org/cmkobel/hmmmlib.svg?branch=master)](https://travis-ci.org/cmkobel/hmmmlib)
+# Hidden Markov-Model Library
 
 * HMM library written in C 
 * Has Python bindings allowing it to be used by Python as well
@@ -26,7 +27,7 @@ A brief and clear presentation of what the student should be able do to after th
 
 ## WEEKLY MEETING:
 
-* INTERNAL: Torsdag kl 12
+* INTERNAL: Torsdag kl 11
 * THOMAS: Torsdag kl 12
 
 ## GENERAL WORK PLAN
@@ -38,11 +39,11 @@ A brief and clear presentation of what the student should be able do to after th
 
 ### Evaluation problem
 Evaluation problem answers the question: what is the probability that a particular sequence of symbols is produced by a particular model?
-For evaluation we use two algorithms: the forward algorithm or the backwards algorithm
+For evaluation we use two algorithms: the forward algorithm or the backward algorithm
 
 ### Decoding problem
 Decoding problem answers the question: Given a sequence of symbols (your observations) and a model, what is the most likely sequence of states that produced the sequence.
-For decoding we use the Viterbi algorithm.
+For decoding we use the Viterbi algorithm and Posterior Decoding.
 
 ### Training problem
 Training problem answers the question: Given a model structure and a set of sequences, find the model that best fits the data.
@@ -50,7 +51,7 @@ For this problem we can use the Baum Welch = forward-backward algorithm
 
 Possible optimisations: 
 
-* Solving the "training" problem as a constrinted optimisation problem and use lagrange multipliers.
+* Solving the "training" problem as a constrinted optimisation problem and use lagrange multipliers?
 
 ## DOCUMENTATION
 

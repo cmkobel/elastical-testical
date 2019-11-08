@@ -1,7 +1,7 @@
 #include "forward_blas.h"
 #include <stdlib.h>
-#include <Accelerate/Accelerate.h> // for mac os
-//#include <cblas.h> // for GNUlinux
+//#include <Accelerate/Accelerate.h> // for mac os
+#include <cblas.h> // for GNUlinux
 
 void forward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
     
@@ -28,7 +28,7 @@ void forward_blas(HMM *hmm, const unsigned int *Y, const unsigned int T, double 
     }
     free(matrix);
     
-    
+
     // Doing the matrix multiplication and then scalingFactor
     scalingFactor[0] = cblas_dasum(hmm->hiddenStates, alpha, 1);
     cblas_dscal(hmm->hiddenStates, (1.0/scalingFactor[0]), alpha, 1);

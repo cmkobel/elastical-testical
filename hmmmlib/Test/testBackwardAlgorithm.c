@@ -77,7 +77,10 @@ extern bool testBackwardAlgorithm() {
        }
     }
     
+    assert(valdidateHMM(hmmCon) == true);
     HMMDeallocate(hmmCon);
+
+    assert(valdidateHMM(hmmBlas) == true);
     HMMDeallocate(hmmBlas);
     
     HMM * hmm2 = HMMBLAS(7, 4);
@@ -164,6 +167,7 @@ extern bool testBackwardAlgorithm() {
     }
     free(alpha2);
     free(beta2);
+    assert(valdidateHMM(hmm2) == true);
     HMMDeallocate(hmm2);
     
     HMM * hmm3 = HMMCsr(7, 4);
@@ -193,7 +197,9 @@ extern bool testBackwardAlgorithm() {
             assert(fabs(beta3[i*hmm2->hiddenStates+j]-test2beta[(obsLenght2-i-1)*hmm2->hiddenStates+j]) < 0.00001);
         }
     }
-    
+
+    assert(valdidateHMM(hmm3) == true);
+    HMMDeallocate(hmm3);
 
     return true;
 }

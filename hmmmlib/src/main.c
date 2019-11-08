@@ -21,30 +21,30 @@ int main() {
      Testing the forward algorithm
      */
     if(testForwardAlgorithm()){
-        printf("\nall Forward Algorithm tests succeeded\n");
+        printf("all Forward Algorithm tests succeeded\n");
     }
 
     /*
      Testing the backward algorithm
     */
     if(testBackwardAlgorithm()){
-        printf("\nall Backward Algorithm tests succeeded\n");
+        printf("all Backward Algorithm tests succeeded\n");
     }
     /*
      Testing the backward algorithm
      */
     if(testBaumWelch()){
-        printf("\nall Baum Welch tests succeeded\n");
+        printf("all Baum Welch tests succeeded\n");
     }
     /*
      Testing the viterbi algorithm
      */
     if(testViterbi()){
-        printf("\nall Viterbi tests succeeded\n");
+        printf("all Viterbi tests succeeded\n");
     }
 
     if(testPosteriorDecoding()){
-        printf("\nall Posterior Decoding tests succeeded\n");
+        printf("all Posterior Decoding tests succeeded\n");
     }
     
     return 0;

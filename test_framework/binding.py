@@ -30,6 +30,8 @@ class binded_HMM:
         #self.libhmm.HMMCreate.restype = c.POINTER(HMM)
         self.libhmm.HMMConventional.restype = c.POINTER(HMM)
         self.libhmm.HMMBLAS.restype = c.POINTER(HMM)
+        self.libhmm.HMMCsr.restype = c.POINTER(HMM)
+        
         
         self.libhmm.valdidateHMM.restype = c.c_bool
         self.libhmm.printHMM.restype = c.c_void_p
@@ -43,6 +45,10 @@ class binded_HMM:
         self.libhmm.baumWelch.restype = c.c_void_p
         self.libhmm.posteriorDecoding.restype = c.POINTER(c.c_uint)
 
+        self.n_hiddenstates = n_hiddenstates
+        self.n_observations = n_observations
+
+        self.hmmType = hmmType
 
         # Create HMM object
         if hmmType == None:
@@ -54,6 +60,8 @@ class binded_HMM:
         elif hmmType == "BLAS":
             self.hmm = self.libhmm.HMMBLAS(n_hiddenstates, n_observations)
             #print(" (A BLAS hmm was created)")
+        elif hmmType == "CSR":
+            self.hmm = self.libhmm.HMMCsr(n_hiddenstates, n_observations)
 
         """ 
         print('The following variables are accessible from the HMM struct')
@@ -63,33 +71,39 @@ class binded_HMM:
 
 
     def presentHMM(self):
-        hs = self.hmm[0].hiddenStates
-        obs = self.hmm[0].observations
+        
+        
 
         print('Presenting the HMM with the presentHMM()-function from the python-binding')
-        print(' hiddenStates =', hs)
-        print(' observations =', obs)
+        print(' hiddenStates =', self.n_hiddenstates)
+        print(' observations =', self.n_observations)
         
         print()
-        formattedInitProbs = ["{:7.3f}".format(self.hmm[0].initProbs[i]) for i in range(hs)]
-        print(' initProbs:', ''.join(formattedInitProbs))
+        formattedInitProbs = ["{:7.3f}".format(self.hmm[0].initProbs[i]) for i in range(self.n_hiddenstates)]
+        print(' initProbs: [self.n_hiddenstates]\n ', ''.join(formattedInitProbs), end = '')
+        print('\t(' + str(sum([self.hmm[0].initProbs[i] for i in range(self.n_hiddenstates)])) + ')')
 
 
         print()
-        print(' transitionProbs: [hs][hs]', end = '\n  ')
-        for row in range(hs):
-            for col in range(hs):
-                print("{:7.3f}".format(self.hmm[0].transitionProbs[row*hs+col]), end = ' ')
-            print(end = '\n  ')
+        print(' transitionProbs: [self.n_hiddenstates][self.n_hiddenstates]', end = '\n  ')
+        for row in range(self.n_hiddenstates):
+            row_sum = 0
+            for col in range(self.n_hiddenstates):
+                value = self.hmm[0].transitionProbs[row*self.n_hiddenstates+col]
+                print("{:7.3f}".format(value), end = ' ')
+                row_sum += value
+            print(end = '\t(' + str(row_sum) + ')\n  ')
         print()
 
         
-        print(' emissionProbs: [hs][obs]', end = '\n  ') # [7][4] eller [hs][obs]
-        for row in range(hs):
-            for col in range(obs):
-                #print(round(self.hmm[0].emissionProbs[row*obs+col], 3), end = '  ')
-                print("{:7.3f}".format(self.hmm[0].emissionProbs[row*obs+col]), end = ' ')
-            print(end = '\n  ') 
+        print(' emissionProbs: [self.n_hiddenstates][self.n_observations]', end = '\n  ') # [7][4] eller [self.n_hiddenstates][self.n_observations]
+        for row in range(self.n_hiddenstates):
+            row_sum = 0
+            for col in range(self.n_observations):
+                value = self.hmm[0].emissionProbs[row*self.n_observations+col]
+                print("{:7.3f}".format(self.hmm[0].emissionProbs[row*self.n_observations+col]), end = ' ')
+                row_sum += value
+            print(end = '\t(' + str(row_sum) + ')\n  ')
         print()
         print(' The internal validation state is:', self.libhmm.valdidateHMM(self.hmm))
 
@@ -98,71 +112,71 @@ class binded_HMM:
 
     ## Setters ##
     def setInitProbs(self, pi):
-        if len(pi) != self.hmm[0].hiddenStates:
-            raise Exception('Failed to set initProbs[]. initProbs[] should contain {a} values but {b} were given.'.format(a = self.hmm[0].hiddenStates, b = len(pi)))
+        if len(pi) != self.n_hiddenstates:
+            raise Exception('Failed to set initProbs[]. initProbs[] should contain {a} values but {b} were given.'.format(a = self.n_hiddenstates, b = len(pi)))
             #raise Exception('error1')
             
-        self.hmm[0].initProbs = (c.c_double * self.hmm[0].hiddenStates)(*pi)
+        self.hmm[0].initProbs = (c.c_double * self.n_hiddenstates)(*pi)
 
 
     def setTransitionProbs(self, new_trans_p):
-        if len(new_trans_p) != self.hmm[0].hiddenStates:
-            raise Exception('Failed to set transitionProbs[]. transitionProbs[] should contain {a} rows but {b} were given.'.format(a = self.hmm[0].hiddenStates, b = len(new_trans_p)))
+        if len(new_trans_p) != self.n_hiddenstates:
+            raise Exception('Failed to set transitionProbs[]. transitionProbs[] should contain {a} rows but {b} were given.'.format(a = self.n_hiddenstates, b = len(new_trans_p)))
             #raise Exception('error2')
             
         for row in new_trans_p:
-            if len(row) != self.hmm[0].hiddenStates:
-                raise Exception('Failed to set transitionProbs[]. transitionProbs[] should contain {a} columns but {b} were given.'.format(a = self.hmm[0].hiddenStates, b = len(row)))
+            if len(row) != self.n_hiddenstates:
+                raise Exception('Failed to set transitionProbs[]. transitionProbs[] should contain {a} columns but {b} were given.'.format(a = self.n_hiddenstates, b = len(row)))
                 #raise Exception('error3')
                 
 
         one_dimensional = [j for sub in new_trans_p for j in sub]
         # print(one_dimensional)
-        self.hmm[0].transitionProbs = (c.c_double * (self.hmm[0].hiddenStates * self.hmm[0].hiddenStates))(*one_dimensional)
+        self.hmm[0].transitionProbs = (c.c_double * (self.n_hiddenstates * self.n_hiddenstates))(*one_dimensional)
 
 
     def setEmissionProbs(self, new_emiss_p):
-        if len(new_emiss_p) != self.hmm[0].hiddenStates:
-            raise Exception('Failed to set emissionProbs[]. emissionProbs[] should contain {a} rows but {b} were given.'.format(a = self.hmm[0].hiddenStates, b = len(new_emiss_p)))
+        if len(new_emiss_p) != self.n_hiddenstates:
+            raise Exception('Failed to set emissionProbs[]. emissionProbs[] should contain {a} rows but {b} were given.'.format(a = self.n_hiddenstates, b = len(new_emiss_p)))
             #raise Exception('error4')
             
         for row in new_emiss_p:
-            if len(row) != self.hmm[0].observations:
-                raise Exception('Failed to set emissionProbs[]. emissionProbs[] should contain {a} columns but {b} were given.'.format(a = self.hmm[0].observations, b = len(row)))
+            if len(row) != self.n_observations:
+                raise Exception('Failed to set emissionProbs[]. emissionProbs[] should contain {a} columns but {b} were given.'.format(a = self.n_observations, b = len(row)))
                 #raise Exception('error5')
                 
 
         one_dimensional = [j for sub in new_emiss_p for j in sub]
         # print(one_dimensional)
-        self.hmm[0].emissionProbs = (c.c_double * (self.hmm[0].hiddenStates * self.hmm[0].observations))(*one_dimensional)
+        self.hmm[0].emissionProbs = (c.c_double * (self.n_hiddenstates * self.n_observations))(*one_dimensional)
 
 
     ## Getters ##
     def getInitProbs(self):
-        return [self.hmm[0].initProbs[i] for i in range(self.hmm[0].hiddenStates)]
+        return [self.hmm[0].initProbs[i] for i in range(self.n_hiddenstates)]
 
     def getTransitionProbs(self):
-        hs = self.hmm[0].hiddenStates
-        return [[self.hmm[0].transitionProbs[row * hs + col] for col in range(hs)] for row in range(hs)]
+        self.n_hiddenstates = self.n_hiddenstates
+        return [[self.hmm[0].transitionProbs[row * self.n_hiddenstates + col] for col in range(self.n_hiddenstates)] for row in range(self.n_hiddenstates)]
 
     def getEmissionProbs(self):
-        hs = self.hmm[0].hiddenStates
-        obs = self.hmm[0].observations
-        return [[self.hmm[0].emissionProbs[row*obs + col] for col in range(obs)] for row in range(hs)]
+        self.n_hiddenstates = self.n_hiddenstates
+        self.n_observations = self.n_observations
+        return [[self.hmm[0].emissionProbs[row*self.n_observations + col] for col in range(self.n_observations)] for row in range(self.n_hiddenstates)]
         
 
     ## Algorithms ##
     def forward(self, observation_data, as_pointers = True):
         """ Returns a tuple. 1: pointer to alpha 2: Pointer to scalefactor """
         
-        hs = self.hmm[0].hiddenStates
+        self.n_hiddenstates = self.n_hiddenstates
         
         scalefactor = len(observation_data) * [0]
         scalefactor_c = (c.c_double * len(observation_data))(*scalefactor)
 
         # empty alpha matrix
-        alpha_matrix = len(observation_data) * hs * [0]
-        alpha_matrix_c = (len(observation_data) * hs * c.c_double)(*alpha_matrix)
+        alpha_matrix = len(observation_data) * self.n_hiddenstates * [0]
+        alpha_matrix_c = (len(observation_data) * self.n_hiddenstates * c.c_double)(*alpha_matrix)
         
     
         self.libhmm.F(self.hmm,
@@ -179,12 +193,12 @@ class binded_HMM:
         if scalefactor_c == None: # Compute scalefactor yourself
             scalefactor_c = self.forward(observation_data)[1]
         
-        hs = self.hmm[0].hiddenStates
+        self.n_hiddenstates = self.n_hiddenstates
 
         
         # empty beta matrix
-        beta_matrix = len(observation_data) * hs * [0]
-        beta_matrix_c = (len(observation_data) * hs * c.c_double)(*beta_matrix)
+        beta_matrix = len(observation_data) * self.n_hiddenstates * [0]
+        beta_matrix_c = (len(observation_data) * self.n_hiddenstates * c.c_double)(*beta_matrix)
         
     
         self.libhmm.B(self.hmm,
@@ -219,7 +233,7 @@ class binded_HMM:
                                      (c.c_int * len(observation_data))(*observation_data),
                                      len(observation_data),
                                      (c.c_double * len(observation_data))(*scalefactor_from_forward))
-        return [output[i] for i in range(len(observation_data)*self.hmm[0].hiddenStates)] # Evt. generator?
+        return [output[i] for i in range(len(observation_data)*self.n_hiddenstates)] # Evt. generator?
     
 
     def viterbi(self, observation_data):
