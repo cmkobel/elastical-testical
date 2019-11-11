@@ -1,35 +1,33 @@
 #include "forward_sblas.h"
 #include <stdlib.h>
-//#include <Accelerate/Accelerate.h> // for mac os
-#include <cblas.h> // for GNUlinux
+#include <Accelerate/Accelerate.h> // for mac os
+//#include <cblas.h> // for GNUlinux
 
-int csr(HMM * hmm, double ** sparseMatrixs, int * ia, int * ja, double * a){
+int hulla_csr(HMM * hmm, double ** sparseMatrixs, int * ia, int * ja, double * a){
     
     unsigned int i;
     unsigned int j;
-    unsigned int l;
     
     int nnz = 0;
-    int nnz_count = 0;
     
-    for(l = 0; l < hmm->observations; l++){
+    for (j = 0; j < hmm->hiddenStates; j++) {
         for (i = 0; i < hmm->hiddenStates; i++) {
-            for (j = 0; j < hmm->hiddenStates; j++) {
-                if (sparseMatrixs[l][j*hmm->hiddenStates+i] != 0.0) {
-                    a[nnz] = sparseMatrixs[l][j*hmm->hiddenStates+i];
-                    if(l == 0){
-                        ja[nnz] = j;
-                        nnz_count++;
-                    }
-                    nnz++;
-                }
-            }
-            if(l == 0){
-                ia[i+1] = nnz;
+            if (sparseMatrixs[0][j*hmm->hiddenStates+i] != 0.0) {
+                a[nnz] = sparseMatrixs[0][j*hmm->hiddenStates+i];
+                ja[nnz] = i;
+                ia[nnz] = j;
+                nnz++;
             }
         }
     }
-    return nnz_count;
+    
+    for(i = 1; i < hmm->observations; i++){
+        for(j = 0; j < nnz; j++){
+            a[nnz*i+j] = sparseMatrixs[i][ia[j]*hmm->hiddenStates+ja[j]];
+        }
+    }
+    
+    return nnz;
 }
 
 void forward_sblas(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
@@ -54,7 +52,6 @@ void forward_sblas(HMM *hmm, const unsigned int *Y, const unsigned int T, double
         double * emission_probs = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
         cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, hmm->hiddenStates, hmm->hiddenStates, hmm->hiddenStates, 1.0, hmm->transitionProbs, hmm->hiddenStates, matrix, hmm->hiddenStates, 0.0, emission_probs, hmm->hiddenStates);
         new_emission_probs[i] = emission_probs;
-        
 //        printf("------- Y[i] == %d -------\n", i);
 //        for(int k = 0; k < hmm->hiddenStates; k++){
 //            for(j = 0; j < hmm->hiddenStates; j++){
@@ -63,7 +60,7 @@ void forward_sblas(HMM *hmm, const unsigned int *Y, const unsigned int T, double
 //            printf("\n");
 //        }
 //        printf("\n\n\n");
-        
+
     }
     free(matrix);
     
@@ -71,11 +68,11 @@ void forward_sblas(HMM *hmm, const unsigned int *Y, const unsigned int T, double
     scalingFactor[0] = cblas_dasum(hmm->hiddenStates, alpha, 1);
     cblas_dscal(hmm->hiddenStates, (1.0/scalingFactor[0]), alpha, 1);
     
-    int * ia = calloc(hmm->hiddenStates+1, sizeof(int));
+    int * ia = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(int));
     int * ja = calloc(hmm->hiddenStates*hmm->hiddenStates, sizeof(int));
     double * a = calloc(hmm->observations*hmm->hiddenStates*hmm->hiddenStates, sizeof(double));
     
-    int znn = csr(hmm, new_emission_probs, ia, ja, a);
+    int znn = hulla_csr(hmm, new_emission_probs, ia, ja, a);
     
     //printf("%d", znn);
     
@@ -85,16 +82,22 @@ void forward_sblas(HMM *hmm, const unsigned int *Y, const unsigned int T, double
     free(new_emission_probs);
     
 //    printf("\nAI: \n");
-//    for(i = 0; i < hmm->hiddenStates+1; i++){
+//    for(i = 0; i < znn; i++){
 //        printf("%d, ", ia[i]);
 //    }
 //    printf("\nJA: \n");
-//    for(i = 0; i < hmm->hiddenStates*hmm->hiddenStates; i++){
-//        if(a[i] == 0.0) break;
+//    for(i = 0; i < znn; i++){
 //        printf("%d, ", ja[i]);
 //    }
 //
 //    printf("\n\n");
+    
+    for(i = 0; i<hmm->observations; i++){
+        for(j=0; j < znn; j++){
+            printf("%f, ",a[i*znn+j]);
+        }
+        printf("\n");
+    }
     
     for(i = 1; i<T; i++){
         

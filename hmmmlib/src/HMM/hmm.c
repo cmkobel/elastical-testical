@@ -6,10 +6,14 @@
 #include "hmm.h"
 #include "forward.h"
 #include "backward.h"
+
 #include "forward_blas.h"
 #include "backward_blas.h"
+
 #include "forward_csr.h"
 #include "backward_csr.h"
+
+#include "forward_sblas.h"
 
 HMM * HMMConventional(const unsigned int hiddenStates, const unsigned int observations) {
     HMM * newHMM = calloc(1, sizeof(HMM));
@@ -49,6 +53,23 @@ HMM * HMMCsr(const unsigned int hiddenStates, const unsigned int observations) {
     HMM * newHMM = calloc(1, sizeof(HMM));
 
     newHMM->forward = forward_csr;
+    newHMM->backward = backward_csr;
+
+    newHMM->hiddenStates = hiddenStates;
+    newHMM->observations = observations;
+
+    newHMM->initProbs = calloc(newHMM->hiddenStates ,sizeof(double));
+    newHMM->transitionProbs = calloc(newHMM->hiddenStates*newHMM->hiddenStates, sizeof(double));
+    newHMM->emissionProbs = calloc(newHMM->hiddenStates*newHMM->observations, sizeof(double));
+
+    return newHMM;
+}
+
+HMM * HMMSBLAS(const unsigned int hiddenStates, const unsigned int observations) {
+
+    HMM * newHMM = calloc(1, sizeof(HMM));
+
+    newHMM->forward = forward_sblas;
     newHMM->backward = backward_csr;
 
     newHMM->hiddenStates = hiddenStates;
