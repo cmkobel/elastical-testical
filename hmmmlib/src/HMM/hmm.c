@@ -64,51 +64,52 @@ HMM * HMMCsr(const unsigned int hiddenStates, const unsigned int observations) {
 //should be static
 bool valdidateHMM(const HMM *hmm){
 
-    double sum;
+    unsigned int i = 0;
+    unsigned int j = 0;
+    double sum = 0.0;
 
     double epsilon = 0.00001;
 
-    // Init probs.
-    sum = 0.0;
-    for (unsigned i = 0; i < hmm->hiddenStates; i++) {
+    //Summing initprobs
+
+    for(i = 0; i < hmm->hiddenStates; i++) {
         sum += hmm->initProbs[i];
+        printf("sum is %f\n", sum);
     }
     if(fabs(sum - 1.0) > epsilon) {
-        printf("Error: the sum of initProbs is %f\n", sum);
+        printf("will return false because of the initprobs\n");
         return false;
     }
 
 
-    // Transition matrix
-    for (unsigned i = 0; i < hmm->hiddenStates; i++) {
+    for (i = 0; i < hmm->hiddenStates; i++) {
+
+
         sum = 0.0;
-        for (unsigned j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i*hmm->hiddenStates+j];
+        for (j = 0; j < hmm->hiddenStates; j++) sum += hmm->transitionProbs[i*hmm->hiddenStates+j];
         if (fabs(sum-1.0) > epsilon) {
-            printf("Error: the sum of row %d in transitionProbs is %f", i, sum);
+            printf("will return false because of the transprobs\n");
             return false;
         }
-    }
 
-    // Emission matrix
-    for (unsigned i = 0; i < hmm->hiddenStates; i++) {
         sum = 0.0;
-        for (unsigned j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->observations+j];
+        for (j = 0; j < hmm->observations; j++) sum += hmm->emissionProbs[i*hmm->hiddenStates+j];
         if (fabs(sum-1.0) > epsilon) {
-            printf("Error: the sum of row %d in emissionProbs is %f", i, sum);
+            printf("will return false because of the initprobs\n");
             return false;
         } 
     }
-
+    //printf("will return true now\n");
     return true;
 }
 
-void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha) {
+void F(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * alpha){
 
     hmm->forward(hmm, Y, T, scalingFactor, alpha); // Writes to scalingFactor
 
 }
 
-void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta) {
+void B(HMM *hmm, const unsigned int *Y, const unsigned int T, double * scalingFactor, double * beta){
 
     hmm->backward(hmm, Y, T, scalingFactor, beta); // Reads from scalingFactor
 
