@@ -100,7 +100,7 @@ void forward_sblas(HMM *hmm, const unsigned int *Y, const unsigned int T, double
         printf("\n");
     }
 
-        struct rsb_mtx_t *mtxAp = NULL; /* matrix structure pointer */
+    struct rsb_mtx_t *mtxAp = NULL; /* matrix structure pointer */
     const int bs = RSB_DEFAULT_BLOCKING;
     const int brA = bs, bcA = bs;
     const RSB_DEFAULT_TYPE one = 1;

@@ -3,7 +3,7 @@ project(HMMLIB)
 
 
 
-
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fopenmp")
 
 
  
@@ -16,7 +16,8 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/Evaluation/csr
        ${CMAKE_SOURCE_DIR}/src/Evaluation/sblas
        ${CMAKE_SOURCE_DIR}/src/HMM
-       ${CMAKE_SOURCE_DIR}/src/Training)
+       ${CMAKE_SOURCE_DIR}/src/Training
+       /usr/local/include)
 
 file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/shared.c
@@ -35,12 +36,27 @@ file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/Training/*.c
        ${PROJECT_SOURCE_DIR}/src/Training/*.h)
 
-#
-# Uncomment the following to create a library
-#
+# Initialize shared object
 add_library(HMMLIB SHARED ${PROJECT_SOURCE_DIR}/src/shared.c)
+
 target_link_libraries(HMMLIB m)
 target_link_libraries(HMMLIB cblas)
+ 
+# RSB dependency
+
+target_link_libraries(HMMLIB rsb)
+#target_link_libraries(HMMLIB hwloc)
+#target_link_libraries(HMMLIB z)
+target_link_libraries(HMMLIB gfortran)
+
+
+target_link_libraries(HMMLIB /usr/local/lib/librsb.a)
+#target_link_libraries(HMMLIB /usr/local/include)
+
+
+
+
+
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY POSITION_INDEPENDENT_CODE 1) #or #set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
@@ -58,7 +74,8 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/Evaluation/sblas
        ${CMAKE_SOURCE_DIR}/src/HMM
        ${CMAKE_SOURCE_DIR}/Test
-       ${CMAKE_SOURCE_DIR}/src/Training)
+       ${CMAKE_SOURCE_DIR}/src/Training
+       /usr/local/include)
 
 
 file(GLOB exeSOURCES
@@ -86,6 +103,20 @@ file(GLOB exeSOURCES
 #
 add_executable(exeHMMLIB ${exeSOURCES})
 target_link_libraries(exeHMMLIB m cblas)
+target_link_libraries(exeHMMLIB rsb)
+#target_link_libraries(exeHMMLIB hwloc)
+#target_link_libraries(exeHMMLIB z)
+target_link_libraries(exeHMMLIB gfortran)
+
+
+target_link_libraries(exeHMMLIB /usr/local/lib/librsb.a)
+#target_link_libraries(exeHMMLIB /usr/local/include)
+
+
+
+
+
+
 
 foreach(FILE ${exeSOURCES}) 
     # Get the directory of the source file
