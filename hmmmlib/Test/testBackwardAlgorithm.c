@@ -192,11 +192,14 @@ extern bool testBackwardAlgorithm() {
     double * beta3 = calloc(obsLenght2*hmm3->hiddenStates, sizeof(double));
     B(hmm3, observation2, obsLenght2, scaleFactor3, beta3);
     
-
+    for(i = 0; i < obsLenght2; i++){
+        for(j = 0; j < hmm2->hiddenStates; j++){
+            assert(fabs(beta3[i*hmm2->hiddenStates+j]-test2beta[(obsLenght2-i-1)*hmm2->hiddenStates+j]) < 0.00001);
+        }
+    }
 
     assert(valdidateHMM(hmm3) == true);
     HMMDeallocate(hmm3);
-
 
     return true;
 }

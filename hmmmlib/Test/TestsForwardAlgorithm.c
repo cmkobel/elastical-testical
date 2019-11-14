@@ -90,6 +90,7 @@ bool testForwardAlgorithm() {
     
     
     HMM * hmm2 = HMMCsr(7, 4);
+    HMM * hmmSBLAS = HMMSBLAS(7, 4);
            
     double transitionProbs2[7][7] = {
        {0.0 , 0.0 , 0.9 , 0.1 , 0.0 , 0.0 , 0.0},
@@ -115,20 +116,27 @@ bool testForwardAlgorithm() {
 
     for(i = 0; i < hmm2->hiddenStates; i++){
         hmm2->initProbs[i] = initProbs2[i];
+        hmmSBLAS->initProbs[i] = initProbs2[i];
     }
     for(i = 0; i < hmm2->hiddenStates; i++){
        for(j = 0; j < hmm2->hiddenStates; j++){
            hmm2->transitionProbs[i*hmm2->hiddenStates+j] = transitionProbs2[i][j];
+           hmmSBLAS->transitionProbs[i*hmm2->hiddenStates+j] = transitionProbs2[i][j];
        }
     }
     for(i = 0; i < hmm2->hiddenStates; i++){
        for(j = 0; j < hmm2->observations; j++){
            hmm2->emissionProbs[i*hmm2->observations+j] = emissionProbs2[i][j];
+           hmmSBLAS->emissionProbs[i*hmm2->observations+j] = emissionProbs2[i][j];
        }
     }
 
     const unsigned int observation2[10] = {0,1,2,3,3,2,1,3,2,1};
     const unsigned int obsLenght2 = 10;
+    
+    double * scaleFactorS = calloc(obsLenght2, sizeof(double));
+    double * alphaS = calloc(obsLenght2*hmm2->hiddenStates, sizeof(double));
+    F(hmmSBLAS, observation2, obsLenght2, scaleFactorS, alphaS);
     
     double * scaleFactor2 = calloc(obsLenght2, sizeof(double));
     double * alpha2 = calloc(obsLenght2*hmm2->hiddenStates, sizeof(double));
@@ -153,11 +161,10 @@ bool testForwardAlgorithm() {
     }
     
     free(alpha2);
-    free(scaleFactor2);
+    free(scaleFactorS);
     assert(valdidateHMM(hmm2) == true);
     HMMDeallocate(hmm2);
-    
-    
+    HMMDeallocate(hmmSBLAS);
     
     return true;
 }

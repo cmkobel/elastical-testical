@@ -38,6 +38,11 @@
 #include "backward_csr.c"
 #include "backward_csr.h"
 
+#include "forward_sblas.c"
+#include "forward_sblas.h"
+
+#include "backward_sblas.c"
+#include "backward_sblas.h"
 
 #include <cblas.h>
 

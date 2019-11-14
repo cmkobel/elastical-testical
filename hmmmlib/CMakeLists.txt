@@ -14,6 +14,7 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/Evaluation/blas
        ${CMAKE_SOURCE_DIR}/src/Evaluation/conventional
        ${CMAKE_SOURCE_DIR}/src/Evaluation/csr
+       ${CMAKE_SOURCE_DIR}/src/Evaluation/sblas
        ${CMAKE_SOURCE_DIR}/src/HMM
        ${CMAKE_SOURCE_DIR}/src/Training)
 
@@ -27,6 +28,8 @@ file(GLOB SOURCES
        ${PROJECT_SOURCE_DIR}/src/Evaluation/conventional/*.h
        ${PROJECT_SOURCE_DIR}/src/Evaluation/csr/*.c
        ${PROJECT_SOURCE_DIR}/src/Evaluation/csr/*.h
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/sblas/*.c
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/sblas/*.h
        ${PROJECT_SOURCE_DIR}/src/HMM/*.c
        ${PROJECT_SOURCE_DIR}/src/HMM/*.h
        ${PROJECT_SOURCE_DIR}/src/Training/*.c
@@ -52,6 +55,7 @@ include_directories(
        ${CMAKE_SOURCE_DIR}/src/Evaluation/blas
        ${CMAKE_SOURCE_DIR}/src/Evaluation/conventional
        ${CMAKE_SOURCE_DIR}/src/Evaluation/csr
+       ${CMAKE_SOURCE_DIR}/src/Evaluation/sblas
        ${CMAKE_SOURCE_DIR}/src/HMM
        ${CMAKE_SOURCE_DIR}/Test
        ${CMAKE_SOURCE_DIR}/src/Training)
@@ -67,6 +71,8 @@ file(GLOB exeSOURCES
        ${PROJECT_SOURCE_DIR}/src/Evaluation/conventional/*.h
        ${PROJECT_SOURCE_DIR}/src/Evaluation/csr/*.c
        ${PROJECT_SOURCE_DIR}/src/Evaluation/csr/*.h
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/sblas/*.c
+       ${PROJECT_SOURCE_DIR}/src/Evaluation/sblas/*.h
        ${PROJECT_SOURCE_DIR}/src/HMM/*.c
        ${PROJECT_SOURCE_DIR}/src/HMM/*.h
        ${PROJECT_SOURCE_DIR}/Test/*.c
